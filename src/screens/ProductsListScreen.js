@@ -13,8 +13,6 @@ type Props = {
 
 class ProductsListScreen extends Component<Props> {
   onProductPress(product) {
-    console.log(product.name);
-
     this.props.navigation.navigate("DetailScreen", {
       title: product.name,
       product
