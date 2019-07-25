@@ -9,6 +9,7 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 import ProductsListScreen from "../screens/ProductsListScreen";
+import ProductDetailScreen from "../screens/ProductDetailScreen";
 import TabBarIcon from "../components/TabBarIcon";
 import { Icon } from "react-native-elements";
 
@@ -18,8 +19,12 @@ const ListScreen = {
   screen: ProductsListScreen,
   navigationOptions: { title: "Products" }
 };
+const DetailScreen = {
+  screen: ProductDetailScreen,
+  navigationOptions: { title: "Product Detail" }
+};
 
-export const ListStack = createStackNavigator({ ListScreen });
+export const ListStack = createStackNavigator({ ListScreen, DetailScreen });
 ListStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon

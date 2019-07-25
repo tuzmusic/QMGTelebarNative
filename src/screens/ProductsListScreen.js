@@ -7,12 +7,13 @@ import type { ProductCollection } from "../models/Product";
 import ProductListCellView from "../components/ProductListCellView";
 
 type Props = {
-  products: Product[]
+  products: Product[],
+  navigation: Object
 };
 
 class ProductsListScreen extends Component<Props> {
   onProductPress() {
-    console.log("hello");
+    this.props.navigation.navigate("DetailScreen");
   }
 
   render() {
