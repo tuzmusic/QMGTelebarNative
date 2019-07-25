@@ -1,7 +1,13 @@
 // @flow
 import React, { Component } from "react";
-import { View, Text, ImageBackground } from "react-native";
-import { Image } from "react-native-elements";
+import {
+  View,
+  Text,
+  ImageBackground,
+  ActivityIndicator,
+  Image
+} from "react-native";
+// import { Image } from "react-native-elements";
 import Product from "../models/Product";
 
 type Props = { product: Product };
@@ -11,12 +17,16 @@ const ProductListCellView = ({ product }: Props) => {
 
   return (
     <View style={styles.cellContainer}>
-      <Image
+      <ImageBackground
         source={{ uri: product.images[0].src }}
         style={styles.backgroundImage}
-      />
-      <NameText> {product.name} </NameText>
-      <PriceText> ${product.price} </PriceText>
+        // PlaceholderContent={<ActivityIndicator />}
+      >
+        <View style={styles.textContainer}>
+          <NameText> {product.name} </NameText>
+          <PriceText> ${product.price} </PriceText>
+        </View>
+      </ImageBackground>
     </View>
   );
 };
@@ -27,21 +37,30 @@ const styles = {
     borderBottomWidth: 0.5,
     borderBottomColor: "grey",
     width: "100%",
-    height: "11%"
+    height: "15%"
     // paddingVertical: 10
   },
   backgroundImage: {
-    width: "120%",
-    height: "120%",
-    backgroundColor: "lightblue",
-    justifyContent: "center",
-    alignItems: "center"
+    width: "100%",
+    height: "100%",
+    justifyContent: "center"
+    // padding: 10
+  },
+  textContainer: {
+    backgroundColor: "black",
+    maxWidth: "50%",
+    padding: 5,
+    opacity: 0.75
   }
 };
 const baseSize = 14;
 const text = {
-  name: { fontSize: baseSize + 4, fontWeight: "bold" },
-  price: { fontSize: baseSize + 2, color: "green" }
+  name: {
+    fontSize: baseSize + 8,
+    fontWeight: "bold",
+    color: "white"
+  },
+  price: { fontSize: baseSize + 4, color: "white" }
 };
 const NameText = props => <Text style={text.name}>{props.children}</Text>;
 const PriceText = props => <Text style={text.price}>{props.children}</Text>;
