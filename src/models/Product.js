@@ -1,5 +1,5 @@
 // @flow
-import html from "html-to-text";
+// import html from "html-to-text";
 
 export type ProductCollection = { [number]: Product };
 
@@ -60,12 +60,14 @@ export default class Product {
       attributes
     } = apiJson;
 
-    const description = html.fromString(apiJson.description, {
-      wordwrap: false
-    });
-    const shortDescription = html.fromString(apiJson.short_description, {
-      wordwrap: false
-    });
+    // const description = html.fromString(apiJson.description, {
+    //   wordwrap: false
+    // });
+    // const shortDescription = html.fromString(apiJson.short_description, {
+    //   wordwrap: false
+    // });
+    const description = apiJson.description;
+    const shortDescription = apiJson.shortDescription;
 
     let json: Object = {
       id,
