@@ -12,19 +12,19 @@ export function fetchProducts(): ProductAction {
 }
 
 export async function fetchProductsApi(): Promise<Object[]> {
-  console.log("called api");
+  // console.log("called api");
   const { data } = await axios.get(ApiUrls.getProducts);
-  console.log("got data from axios call");
+  // console.log("got data from axios call");
   return data;
 }
 
 export function* fetchProductsSaga(): Saga<void> {
   try {
-    console.log("started fetchProductsSaga");
+    // console.log("started fetchProductsSaga");
     const res: Object[] = yield call(fetchProductsApi);
-    console.log("returned from api");
+    // console.log("returned from api");
     const products: ProductCollection = Product.collectionFromApiArray(res);
-    console.log("converted array to collection", Object.keys(products).length);
+    // console.log("converted array to collection", Object.keys(products).length);
     yield put({ type: "FETCH_PRODUCTS_SUCCESS", products });
   } catch (error) {
     yield put({ type: "FETCH_PRODUCTS_FAILURE", error });

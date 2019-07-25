@@ -13,15 +13,12 @@ import Product from "../models/Product";
 type Props = { product: Product };
 
 const ProductListCellView = ({ product }: Props) => {
-  console.log(product.images[0].src);
-
   return (
     <View style={styles.cellContainer}>
       <ImageBackground
         source={{ uri: product.images[0].src }}
         style={styles.backgroundImage}
         imageStyle={styles.imageStyle}
-        // PlaceholderContent={<ActivityIndicator />}
       >
         <View style={styles.textContainer}>
           <NameText> {product.name} </NameText>
@@ -38,19 +35,18 @@ const styles = {
     borderBottomWidth: 0.5,
     borderBottomColor: "grey",
     width: "100%",
-    height: "15%"
-    // paddingVertical: 10
+    height: "15%",
+    backgroundColor: "lightblue"
   },
   backgroundImage: {
     width: "100%",
     height: "100%",
     justifyContent: "center"
-    // padding: 10
   },
   imageStyle: {
-    height: "140%",
-    width: "140%",
-    left: "-20%"
+    // height: "140%",
+    // width: "140%",
+    // left: "-20%",
     // top: "-20%"
   },
   textContainer: {
