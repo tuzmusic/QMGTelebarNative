@@ -11,7 +11,40 @@ type Props = {
 };
 
 class ProductsListScreen extends Component<Props> {
+  onProductPress() {
+    console.log("hello");
+  }
+
   render() {
+    const WithFlatList = ({ products }) => {
+      return (
+        <FlatList
+          data={products}
+          renderItem={({ item }) => (
+            <ProductListCellView
+              product={item}
+              onProductPress={this.onProductPress.bind(this)}
+            />
+          )}
+          keyExtractor={item => `${item.id}`}
+        />
+      );
+    };
+
+    const WithMap = ({ products }) => {
+      return (
+        <ScrollView contentContainerStyle={styles.container}>
+          {products.map(p => (
+            <ProductListCellView
+              product={p}
+              key={p.id}
+              onProductPress={this.onProductPress.bind(this)}
+            />
+          ))}
+        </ScrollView>
+      );
+    };
+
     return <WithMap products={this.props.products} />;
     // return <WithFlatList products={this.props.products} />;
   }
@@ -21,29 +54,10 @@ export default connect(({ productsReducer }) => ({
   products: Object.values(productsReducer.products)
 }))(ProductsListScreen);
 
-const WithFlatList = ({ products }) => {
-  return (
-    <FlatList
-      data={products}
-      renderItem={({ item }) => <ProductListCellView product={item} />}
-      keyExtractor={item => `${item.id}`}
-    />
-  );
-};
-
-const WithMap = ({ products }) => {
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {products.map(p => (
-        <ProductListCellView product={p} key={p.id} />
-      ))}
-    </ScrollView>
-  );
-};
-
 const styles = {
   container: {
     flex: 1,
-    height: "100%"
+    height: "100%",
+    width: "100%"
   }
 };

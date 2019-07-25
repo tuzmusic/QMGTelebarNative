@@ -5,16 +5,20 @@ import {
   Text,
   ImageBackground,
   ActivityIndicator,
-  Image
+  Image,
+  TouchableOpacity
 } from "react-native";
 // import { Image } from "react-native-elements";
 import Product from "../models/Product";
 
-type Props = { product: Product };
+type Props = { product: Product, onProductPress: () => {} };
 
-const ProductListCellView = ({ product }: Props) => {
+const ProductListCellView = ({ product, ...props }: Props) => {
   return (
-    <View style={styles.cellContainer}>
+    <TouchableOpacity
+      onPress={props.onProductPress}
+      style={styles.cellContainer}
+    >
       <ImageBackground
         source={{ uri: product.images[0].src }}
         style={styles.backgroundImage}
@@ -25,7 +29,7 @@ const ProductListCellView = ({ product }: Props) => {
           <PriceText> ${product.price} </PriceText>
         </View>
       </ImageBackground>
-    </View>
+    </TouchableOpacity>
   );
 };
 export default ProductListCellView;
