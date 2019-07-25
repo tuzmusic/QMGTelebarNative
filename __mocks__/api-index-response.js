@@ -3418,9 +3418,9 @@ export default response = [
   },
   {
     id: 986,
-    name: "3 Muskateers",
-    slug: "3-muskateers",
-    permalink: "https://telebardelivery.com/product/3-muskateers/",
+    name: "3 Musketeers",
+    slug: "3-musketeers",
+    permalink: "https://telebardelivery.com/product/3-musketeers/",
     date_created: "2019-04-21T06:20:23",
     date_created_gmt: "2019-04-21T06:20:23",
     date_modified: "2019-04-21T06:20:23",

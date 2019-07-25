@@ -20,6 +20,7 @@ const ProductListCellView = ({ product }: Props) => {
       <ImageBackground
         source={{ uri: product.images[0].src }}
         style={styles.backgroundImage}
+        imageStyle={styles.imageStyle}
         // PlaceholderContent={<ActivityIndicator />}
       >
         <View style={styles.textContainer}>
@@ -45,6 +46,12 @@ const styles = {
     height: "100%",
     justifyContent: "center"
     // padding: 10
+  },
+  imageStyle: {
+    height: "140%",
+    width: "140%",
+    left: "-20%"
+    // top: "-20%"
   },
   textContainer: {
     backgroundColor: "black",
