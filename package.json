@@ -25,7 +25,12 @@
     "eslint": "^6.1.0",
     "jest": "^24.8.0",
     "metro-react-native-babel-preset": "^0.55.0",
-    "react-test-renderer": "16.8.6"
+    "react-test-renderer": "16.8.6",
+    "flow-bin": "^0.100.0",
+    "flow-typed": "^2.6.0",
+    "jest-mock-axios": "^3.0.0",
+    "prettier-eslint": "^8.8.2",
+    "redux-saga-tester": "^1.0.468"
   },
   "jest": {
     "preset": "react-native"

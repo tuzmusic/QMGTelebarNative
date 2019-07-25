@@ -19,6 +19,7 @@ node_modules/react-native/Libraries/polyfills/.*
 ; These should not be required directly
 ; require from fbjs/lib instead: require('fbjs/lib/warning')
 node_modules/warning/.*
+addnode_modules/.*
 
 ; Flow doesn't support platforms
 .*/Libraries/Utilities/HMRLoadingView.js
@@ -96,4 +97,4 @@ untyped-import
 untyped-type-import
 
 [version]
-^0.98.0
+0.100.0
