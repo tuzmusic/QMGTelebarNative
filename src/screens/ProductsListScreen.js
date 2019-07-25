@@ -12,47 +12,33 @@ type Props = {
 };
 
 class ProductsListScreen extends Component<Props> {
-  onProductPress() {
-    this.props.navigation.navigate("DetailScreen");
+  onProductPress(product) {
+    console.log(product.name);
+
+    this.props.navigation.navigate("DetailScreen", {
+      title: product.name,
+      product
+    });
   }
 
   render() {
-    const WithFlatList = ({ products }) => {
-      return (
-        <FlatList
-          data={products}
-          renderItem={({ item }) => (
-            <ProductListCellView
-              product={item}
-              onProductPress={this.onProductPress.bind(this)}
-            />
-          )}
-          keyExtractor={item => `${item.id}`}
-        />
-      );
-    };
-
-    const WithMap = ({ products }) => {
-      return (
-        <ScrollView contentContainerStyle={styles.container}>
-          {products.map(p => (
-            <ProductListCellView
-              product={p}
-              key={p.id}
-              onProductPress={this.onProductPress.bind(this)}
-            />
-          ))}
-        </ScrollView>
-      );
-    };
-
-    return <WithMap products={this.props.products} />;
-    // return <WithFlatList products={this.props.products} />;
+    return (
+      <FlatList
+        data={this.props.products}
+        renderItem={({ item }) => (
+          <ProductListCellView
+            product={item}
+            onProductPress={this.onProductPress.bind(this)}
+          />
+        )}
+        keyExtractor={item => `${item.id}`}
+      />
+    );
   }
 }
 
 export default connect(({ productsReducer }) => ({
-  products: Object.values(productsReducer.products)
+  products: Object.values(productsReducer.products).map(p => new Product(p))
 }))(ProductsListScreen);
 
 const styles = {

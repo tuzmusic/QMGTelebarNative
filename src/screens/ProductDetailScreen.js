@@ -1,11 +1,22 @@
+// @flow
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
+import Product from "../models/Product";
 
-export default class ProductDetailScreen extends Component {
+type Props = { product: Product };
+
+export default class ProductDetailScreen extends Component<Props> {
+  product: Product;
+  constructor(props: Props) {
+    super(props);
+    this.product =
+      this.props.product || this.props.navigation.getParam("product");
+  }
+
   render() {
     return (
       <View>
-        <Text> textInComponent </Text>
+        <Text> {this.product.name} </Text>
       </View>
     );
   }

@@ -11,12 +11,14 @@ import {
 // import { Image } from "react-native-elements";
 import Product from "../models/Product";
 
-type Props = { product: Product, onProductPress: () => {} };
+type Props = { product: Product, onProductPress: Product => {} };
 
 const ProductListCellView = ({ product, ...props }: Props) => {
   return (
     <TouchableOpacity
-      onPress={props.onProductPress}
+      onPress={() => {
+        props.onProductPress(product);
+      }}
       style={styles.cellContainer}
     >
       <ImageBackground
@@ -39,7 +41,7 @@ const styles = {
     borderBottomWidth: 0.5,
     borderBottomColor: "grey",
     width: "100%",
-    height: "15%",
+    height: 100,
     backgroundColor: "lightblue"
   },
   backgroundImage: {
