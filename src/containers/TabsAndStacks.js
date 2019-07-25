@@ -10,6 +10,7 @@ import {
 } from "react-navigation";
 import ProductsListScreen from "../screens/ProductsListScreen";
 import TabBarIcon from "../components/TabBarIcon";
+import { Icon } from "react-native-elements";
 
 /* STACK/TAB CONFIGURATION */
 
@@ -20,10 +21,11 @@ const ListScreen = {
 
 export const ListStack = createStackNavigator({ ListScreen });
 ListStack.navigationOptions = {
-  /* tabBarIcon: ({ focused }) => (
+  tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
+      type={"ionicon"}
       name={Platform.OS === "ios" ? "ios-list" : "md-list"}
     />
-  ) */
+  )
 };
