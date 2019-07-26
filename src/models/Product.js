@@ -60,14 +60,9 @@ export default class Product {
       attributes
     } = apiJson;
 
-    const description = html.fromString(apiJson.description, {
-      wordwrap: false
-    });
-    const shortDescription = html.fromString(apiJson.short_description, {
-      wordwrap: false
-    });
-    // const description = apiJson.description;
-    // const shortDescription = apiJson.shortDescription;
+    const fromHtml = str => html.fromString(str, { wordwrap: false });
+    const description = fromHtml(apiJson.description);
+    const shortDescription = fromHtml(apiJson.short_description);
 
     let json: Object = {
       id,
