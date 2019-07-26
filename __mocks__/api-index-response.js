@@ -1,4 +1,4 @@
-export default response = [
+export const products = [
   {
     id: 1042,
     name: "M&M",
@@ -4161,6 +4161,300 @@ export default response = [
       collection: [
         {
           href: "https://telebardelivery.com/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  }
+];
+
+export const subscription_products = [
+  {
+    id: 935,
+    name: "1 Delivery a Month for only $5",
+    slug: "monthly-subscription",
+    permalink: "https://telebardelivery.com/product/monthly-subscription/",
+    date_created: "2019-04-06T21:53:54",
+    date_modified: "2019-07-15T04:06:04",
+    type: "subscription",
+    status: "publish",
+    featured: false,
+    catalog_visibility: "visible",
+    description: "<p>Get your chocolate every month!</p>\n",
+    short_description: "",
+    sku: "",
+    price: "5",
+    regular_price: "5",
+    sale_price: "",
+    date_on_sale_from: "",
+    date_on_sale_to: "",
+    price_html:
+      '<span class="label_price">price:</span><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>5.00</span> <span class="subscription-details"> / month</span>',
+    on_sale: false,
+    purchasable: true,
+    total_sales: 1,
+    virtual: false,
+    downloadable: false,
+    downloads: [],
+    download_limit: -1,
+    download_expiry: -1,
+    download_type: "standard",
+    external_url: "",
+    button_text: "",
+    tax_status: "taxable",
+    tax_class: "",
+    manage_stock: false,
+    stock_quantity: null,
+    in_stock: true,
+    backorders: "no",
+    backorders_allowed: false,
+    backordered: false,
+    sold_individually: false,
+    weight: "",
+    dimensions: {
+      length: "",
+      width: "",
+      height: ""
+    },
+    shipping_required: true,
+    shipping_taxable: true,
+    shipping_class: "united-states",
+    shipping_class_id: 42,
+    reviews_allowed: true,
+    average_rating: "0.00",
+    rating_count: 0,
+    related_ids: [938, 924],
+    upsell_ids: [],
+    cross_sell_ids: [],
+    parent_id: 0,
+    purchase_note: "",
+    categories: [
+      {
+        id: 57,
+        name: "Subscription",
+        slug: "subscription"
+      }
+    ],
+    tags: [],
+    images: [
+      {
+        id: 1106,
+        date_created: "2019-04-22T21:07:26",
+        date_modified: "2019-04-22T21:07:26",
+        src:
+          "https://telebardelivery.com/wp-content/uploads/2019/04/monthly-1.png",
+        name: "monthly",
+        alt: "",
+        position: 0
+      }
+    ],
+    attributes: [],
+    default_attributes: [],
+    variations: [],
+    grouped_products: [],
+    menu_order: 0,
+    _links: {
+      self: [
+        {
+          href: "https://telebardelivery.com/wp-json/wc/v1/products/935"
+        }
+      ],
+      collection: [
+        {
+          href: "https://telebardelivery.com/wp-json/wc/v1/products"
+        }
+      ]
+    }
+  },
+  {
+    id: 924,
+    name: "2 Deliveries a Month for only $10",
+    slug: "biweekly-subscription",
+    permalink: "https://telebardelivery.com/product/biweekly-subscription/",
+    date_created: "2019-04-06T17:20:20",
+    date_modified: "2019-07-15T04:06:36",
+    type: "subscription",
+    status: "publish",
+    featured: false,
+    catalog_visibility: "visible",
+    description: "<p>Get your chocolate every 2 weeks!</p>\n",
+    short_description: "",
+    sku: "",
+    price: "10",
+    regular_price: "10",
+    sale_price: "",
+    date_on_sale_from: "",
+    date_on_sale_to: "",
+    price_html:
+      '<span class="label_price">price:</span><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>10.00</span> <span class="subscription-details"> / month</span>',
+    on_sale: false,
+    purchasable: true,
+    total_sales: 0,
+    virtual: false,
+    downloadable: false,
+    downloads: [],
+    download_limit: -1,
+    download_expiry: -1,
+    download_type: "standard",
+    external_url: "",
+    button_text: "",
+    tax_status: "taxable",
+    tax_class: "",
+    manage_stock: false,
+    stock_quantity: null,
+    in_stock: true,
+    backorders: "no",
+    backorders_allowed: false,
+    backordered: false,
+    sold_individually: false,
+    weight: "",
+    dimensions: {
+      length: "",
+      width: "",
+      height: ""
+    },
+    shipping_required: true,
+    shipping_taxable: true,
+    shipping_class: "united-states",
+    shipping_class_id: 42,
+    reviews_allowed: true,
+    average_rating: "0.00",
+    rating_count: 0,
+    related_ids: [938, 935],
+    upsell_ids: [],
+    cross_sell_ids: [],
+    parent_id: 0,
+    purchase_note: "",
+    categories: [
+      {
+        id: 57,
+        name: "Subscription",
+        slug: "subscription"
+      }
+    ],
+    tags: [],
+    images: [
+      {
+        id: 1105,
+        date_created: "2019-04-22T21:07:16",
+        date_modified: "2019-04-22T21:07:16",
+        src:
+          "https://telebardelivery.com/wp-content/uploads/2019/04/biweekly-1.png",
+        name: "biweekly",
+        alt: "",
+        position: 0
+      }
+    ],
+    attributes: [],
+    default_attributes: [],
+    variations: [],
+    grouped_products: [],
+    menu_order: 0,
+    _links: {
+      self: [
+        {
+          href: "https://telebardelivery.com/wp-json/wc/v1/products/924"
+        }
+      ],
+      collection: [
+        {
+          href: "https://telebardelivery.com/wp-json/wc/v1/products"
+        }
+      ]
+    }
+  },
+  {
+    id: 938,
+    name: "4 Deliveries a Month for only $20",
+    slug: "weekly-subscription",
+    permalink: "https://telebardelivery.com/product/weekly-subscription/",
+    date_created: "2019-04-06T22:00:31",
+    date_modified: "2019-07-24T03:57:14",
+    type: "subscription",
+    status: "publish",
+    featured: false,
+    catalog_visibility: "visible",
+    description: "<p>Get your chocolate every week!</p>\n",
+    short_description: "",
+    sku: "",
+    price: "20",
+    regular_price: "20",
+    sale_price: "",
+    date_on_sale_from: "",
+    date_on_sale_to: "",
+    price_html:
+      '<span class="label_price">price:</span><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>20.00</span> <span class="subscription-details"> / month</span>',
+    on_sale: false,
+    purchasable: true,
+    total_sales: 2,
+    virtual: false,
+    downloadable: false,
+    downloads: [],
+    download_limit: -1,
+    download_expiry: -1,
+    download_type: "standard",
+    external_url: "",
+    button_text: "",
+    tax_status: "taxable",
+    tax_class: "",
+    manage_stock: false,
+    stock_quantity: null,
+    in_stock: true,
+    backorders: "no",
+    backorders_allowed: false,
+    backordered: false,
+    sold_individually: false,
+    weight: "",
+    dimensions: {
+      length: "",
+      width: "",
+      height: ""
+    },
+    shipping_required: true,
+    shipping_taxable: true,
+    shipping_class: "united-states",
+    shipping_class_id: 42,
+    reviews_allowed: true,
+    average_rating: "0.00",
+    rating_count: 0,
+    related_ids: [935, 924],
+    upsell_ids: [],
+    cross_sell_ids: [],
+    parent_id: 0,
+    purchase_note: "",
+    categories: [
+      {
+        id: 57,
+        name: "Subscription",
+        slug: "subscription"
+      }
+    ],
+    tags: [],
+    images: [
+      {
+        id: 1107,
+        date_created: "2019-04-22T21:07:34",
+        date_modified: "2019-04-22T21:07:34",
+        src:
+          "https://telebardelivery.com/wp-content/uploads/2019/04/weekly-1.png",
+        name: "weekly",
+        alt: "",
+        position: 0
+      }
+    ],
+    attributes: [],
+    default_attributes: [],
+    variations: [],
+    grouped_products: [],
+    menu_order: 0,
+    _links: {
+      self: [
+        {
+          href: "https://telebardelivery.com/wp-json/wc/v1/products/938"
+        }
+      ],
+      collection: [
+        {
+          href: "https://telebardelivery.com/wp-json/wc/v1/products"
         }
       ]
     }
