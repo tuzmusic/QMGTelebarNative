@@ -4174,7 +4174,9 @@ export const subscription_products = [
     slug: "monthly-subscription",
     permalink: "https://telebardelivery.com/product/monthly-subscription/",
     date_created: "2019-04-06T21:53:54",
+    date_created_gmt: "2019-04-06T21:53:54",
     date_modified: "2019-07-15T04:06:04",
+    date_modified_gmt: "2019-07-15T04:06:04",
     type: "subscription",
     status: "publish",
     featured: false,
@@ -4185,8 +4187,10 @@ export const subscription_products = [
     price: "5",
     regular_price: "5",
     sale_price: "",
-    date_on_sale_from: "",
-    date_on_sale_to: "",
+    date_on_sale_from: null,
+    date_on_sale_from_gmt: null,
+    date_on_sale_to: null,
+    date_on_sale_to_gmt: null,
     price_html:
       '<span class="label_price">price:</span><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>5.00</span> <span class="subscription-details"> / month</span>',
     on_sale: false,
@@ -4197,14 +4201,13 @@ export const subscription_products = [
     downloads: [],
     download_limit: -1,
     download_expiry: -1,
-    download_type: "standard",
     external_url: "",
     button_text: "",
     tax_status: "taxable",
     tax_class: "",
     manage_stock: false,
     stock_quantity: null,
-    in_stock: true,
+    stock_status: "instock",
     backorders: "no",
     backorders_allowed: false,
     backordered: false,
@@ -4222,7 +4225,7 @@ export const subscription_products = [
     reviews_allowed: true,
     average_rating: "0.00",
     rating_count: 0,
-    related_ids: [938, 924],
+    related_ids: [924, 938],
     upsell_ids: [],
     cross_sell_ids: [],
     parent_id: 0,
@@ -4239,12 +4242,13 @@ export const subscription_products = [
       {
         id: 1106,
         date_created: "2019-04-22T21:07:26",
+        date_created_gmt: "2019-04-22T21:07:26",
         date_modified: "2019-04-22T21:07:26",
+        date_modified_gmt: "2019-04-22T21:07:26",
         src:
           "https://telebardelivery.com/wp-content/uploads/2019/04/monthly-1.png",
         name: "monthly",
-        alt: "",
-        position: 0
+        alt: ""
       }
     ],
     attributes: [],
@@ -4252,15 +4256,578 @@ export const subscription_products = [
     variations: [],
     grouped_products: [],
     menu_order: 0,
+    meta_data: [
+      {
+        id: 10466,
+        key: "_vc_post_settings",
+        value: {
+          vc_grid_id: []
+        }
+      },
+      {
+        id: 10467,
+        key: "_vc_post_settings",
+        value: {
+          vc_grid_id: []
+        }
+      },
+      {
+        id: 10503,
+        key: "_vc_post_settings",
+        value: {
+          vc_grid_id: []
+        }
+      },
+      {
+        id: 10504,
+        key: "_subscription_payment_sync_date",
+        value: "0"
+      },
+      {
+        id: 10505,
+        key: "slide_template",
+        value: "default"
+      },
+      {
+        id: 10506,
+        key: "trx_addons_post_views_count",
+        value: "27"
+      },
+      {
+        id: 10507,
+        key: "trx_addons_post_likes_count",
+        value: "0"
+      },
+      {
+        id: 10508,
+        key: "eg_sources_html5_mp4",
+        value: ""
+      },
+      {
+        id: 10509,
+        key: "eg_sources_html5_ogv",
+        value: ""
+      },
+      {
+        id: 10510,
+        key: "eg_sources_html5_webm",
+        value: ""
+      },
+      {
+        id: 10511,
+        key: "eg_sources_youtube",
+        value: ""
+      },
+      {
+        id: 10512,
+        key: "eg_sources_vimeo",
+        value: ""
+      },
+      {
+        id: 10513,
+        key: "eg_sources_wistia",
+        value: ""
+      },
+      {
+        id: 10514,
+        key: "eg_sources_image",
+        value: ""
+      },
+      {
+        id: 10515,
+        key: "eg_sources_iframe",
+        value: ""
+      },
+      {
+        id: 10516,
+        key: "eg_sources_soundcloud",
+        value: ""
+      },
+      {
+        id: 10517,
+        key: "eg_vimeo_ratio",
+        value: "0"
+      },
+      {
+        id: 10518,
+        key: "eg_youtube_ratio",
+        value: "0"
+      },
+      {
+        id: 10519,
+        key: "eg_wistia_ratio",
+        value: "0"
+      },
+      {
+        id: 10520,
+        key: "eg_html5_ratio",
+        value: "0"
+      },
+      {
+        id: 10521,
+        key: "eg_soundcloud_ratio",
+        value: "0"
+      },
+      {
+        id: 10522,
+        key: "eg_settings_custom_meta_skin",
+        value: ""
+      },
+      {
+        id: 10523,
+        key: "eg_settings_custom_meta_element",
+        value: ""
+      },
+      {
+        id: 10524,
+        key: "eg_settings_custom_meta_setting",
+        value: ""
+      },
+      {
+        id: 10525,
+        key: "eg_settings_custom_meta_style",
+        value: ""
+      },
+      {
+        id: 10526,
+        key: "eg_custom_meta_216",
+        value: "true"
+      },
+      {
+        id: 10527,
+        key: "_subscription_price",
+        value: "5"
+      },
+      {
+        id: 10528,
+        key: "_subscription_trial_length",
+        value: "0"
+      },
+      {
+        id: 10529,
+        key: "_subscription_sign_up_fee",
+        value: "0"
+      },
+      {
+        id: 10530,
+        key: "_subscription_period",
+        value: "month"
+      },
+      {
+        id: 10531,
+        key: "_subscription_period_interval",
+        value: "1"
+      },
+      {
+        id: 10532,
+        key: "_subscription_length",
+        value: "0"
+      },
+      {
+        id: 10533,
+        key: "_subscription_trial_period",
+        value: "day"
+      },
+      {
+        id: 10534,
+        key: "_subscription_limit",
+        value: "no"
+      },
+      {
+        id: 10535,
+        key: "_subscription_one_time_shipping",
+        value: "no"
+      },
+      {
+        id: 19245,
+        key: "tm_meta_cpf",
+        value: {
+          mode: "builder",
+          override_display: "",
+          override_final_total_box: ""
+        }
+      },
+      {
+        id: 19246,
+        key: "tm_meta",
+        value: {
+          tmfbuilder: {
+            section_header_size: ["4"],
+            section_header_title: [""],
+            section_header_title_position: [""],
+            section_header_title_color: [""],
+            section_header_subtitle: [""],
+            section_header_subtitle_position: [""],
+            section_header_subtitle_color: [""],
+            section_divider_type: ["none"],
+            sections: ["6"],
+            sections_slides: [""],
+            sections_size: ["w100"],
+            sections_uniqid: ["5d23b756c6c804.20617969"],
+            sections_style: [""],
+            sections_placement: ["before"],
+            sections_type: [""],
+            sections_class: [""],
+            sections_clogic: [
+              '{"section":"5d23b756c6c804.20617969","toggle":"show","what":"any","rules":[]}'
+            ],
+            sections_logic: [""],
+            sections_internal_name: ["Section"],
+            element_type: [
+              "selectbox",
+              "checkboxes",
+              "header",
+              "selectbox",
+              "selectbox",
+              "textarea"
+            ],
+            div_size: ["w100", "w100", "w100", "w100", "w100", "w100"],
+            selectbox_internal_name: ["Select Box", "Select Box", "Select Box"],
+            selectbox_header_size: ["10", "10", "10"],
+            selectbox_header_title: [
+              "Choose 1 free candy bar per gift",
+              "Add a Birthday Gift Card",
+              "Add a Anniversary Gift Card"
+            ],
+            selectbox_header_title_position: ["", "", ""],
+            selectbox_header_title_color: ["", "", ""],
+            selectbox_header_subtitle: [
+              "",
+              "<p>Add a Birthday Gift Card</p>",
+              "<p>Add a Anniversary Gift Card</p>"
+            ],
+            selectbox_header_subtitle_position: ["", "", ""],
+            selectbox_header_subtitle_color: ["", "", ""],
+            selectbox_divider_type: ["none", "none", "none"],
+            selectbox_enabled: ["1", "1", "1"],
+            selectbox_required: ["1", "0", "0"],
+            selectbox_text_before_price: ["", "", ""],
+            selectbox_text_after_price: ["", "", ""],
+            selectbox_price_type: ["", "", ""],
+            selectbox_hide_amount: ["", "", ""],
+            selectbox_quantity: ["", "", ""],
+            selectbox_quantity_min: ["", "", ""],
+            selectbox_quantity_max: ["", "", ""],
+            selectbox_quantity_step: ["", "", ""],
+            selectbox_quantity_default_value: ["", "", ""],
+            selectbox_placeholder: [
+              "Choose Your Candy",
+              "Choose a Card",
+              "Choose a Card"
+            ],
+            selectbox_use_url: ["", "", ""],
+            selectbox_changes_product_image: ["", "", ""],
+            multiple_selectbox_options_title: [
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese’s",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey’s",
+                "3 Musketeers"
+              ],
+              [
+                "There are two great days in a person's life - the day we are born and the day we discover why.  -William Barclay",
+                "Today you are you! That is truer than true! There is no one alive who is you-er than you!  -Dr. Seuss",
+                "When you wake up every day, it's like a new birthday: it's a new chance to be great again and make great decisions.  -Poo Bear",
+                "Don't just count your years, make your years count.  -George Meredith",
+                "You know you're getting old when you get that one candle on the cake. It's like, 'See if you can blow this out. -Jerry Seinfeld"
+              ],
+              [
+                "The secret of a happy marriage is finding the right person. You know they're right if you love to be with them all the time.  -Julia Child",
+                "A wedding anniversary is the celebration of love, trust, partnership, tolerance and tenacity. The order varies for any given year.  -Paul Sweeney",
+                "You were made perfectly to be loved - and surely I have loved you, in the idea of you, my whole life long.  -Elizabeth Barrett Browning",
+                "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
+                "Love me or hate me, both are in my favour. If you love me, I will always be in your heart, and if you hate me, I will be in your mind.  -Qandeel Baloch"
+              ]
+            ],
+            multiple_selectbox_options_image: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_imagec: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_imagep: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_imagel: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_value: [
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese’s",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey’s",
+                "3 Musketeers"
+              ],
+              [
+                "There are two great days in a person's life - the day we are born and the day we discover why.  -William Barclay",
+                "Today you are you! That is truer than true! There is no one alive who is you-er than you!  -Dr. Seuss",
+                "When you wake up every day, it's like a new birthday: it's a new chance to be great again and make great decisions.  -Poo Bear",
+                "Don't just count your years, make your years count.  -George Meredith",
+                "You know you're getting old when you get that one candle on the cake. It's like, 'See if you can blow this out. -Jerry Seinfeld"
+              ],
+              [
+                "The secret of a happy marriage is finding the right person. You know they're right if you love to be with them all the time.  -Julia Child",
+                "A wedding anniversary is the celebration of love, trust, partnership, tolerance and tenacity. The order varies for any given year.  -Paul Sweeney",
+                "You were made perfectly to be loved - and surely I have loved you, in the idea of you, my whole life long.  -Elizabeth Barrett Browning",
+                "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
+                "Love me or hate me, both are in my favour. If you love me, I will always be in your heart, and if you hate me, I will be in your mind.  -Qandeel Baloch"
+              ]
+            ],
+            multiple_selectbox_options_price: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_sale_price: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_price_type: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_description: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_url: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            selectbox_uniqid: [
+              "5d23b756c6c877.78250726",
+              "5d23b756c6c897.10105797",
+              "5d23b756c6c8a8.55940001"
+            ],
+            selectbox_clogic: [
+              '{"element":"5d23b756c6c877.78250726","toggle":"show","what":"all","rules":[]}',
+              '{"element":"5d23b756c6c897.10105797","toggle":"hide","what":"any","rules":[{"section":"5d23b756c6c804.20617969","element":"4","operator":"is","value":"The%20secret%20of%20a%20happy%20marriage%20is%20finding%20the%20right%20person.%20You%20know%20they\'re%20right%20if%20you%20love%20to%20be%20with%20them%20all%20the%20time.%20%20-Julia%20Child"},{"section":"5d23b756c6c804.20617969","element":"4","operator":"is","value":"A%20wedding%20anniversary%20is%20the%20celebration%20of%20love%2C%20trust%2C%20partnership%2C%20tolerance%20and%20tenacity.%20The%20order%20varies%20for%20any%20given%20year.%20%20-Paul%20Sweeney"},{"section":"5d23b756c6c804.20617969","element":"4","operator":"is","value":"You%20were%20made%20perfectly%20to%20be%20loved%20-%20and%20surely%20I%20have%20loved%20you%2C%20in%20the%20idea%20of%20you%2C%20my%20whole%20life%20long.%20%20-Elizabeth%20Barrett%20Browning"},{"section":"5d23b756c6c804.20617969","element":"4","operator":"is","value":"An%20anniversary%20is%20a%20reminder%20as%20to%20why%20you%20love%20and%20married%20this%20person.%20%20-Zoe%20Foster%20Blake"},{"section":"5d23b756c6c804.20617969","element":"4","operator":"is","value":"Love%20me%20or%20hate%20me%2C%20both%20are%20in%20my%20favour.%20If%20you%20love%20me%2C%20I%20will%20always%20be%20in%20your%20heart%2C%20and%20if%20you%20hate%20me%2C%20I%20will%20be%20in%20your%20mind.%20%20-Qandeel%20Baloch"},{"section":"5d23b756c6c804.20617969","element":"5","operator":"isnotempty","value":""}]}',
+              '{"element":"5d23b756c6c8a8.55940001","toggle":"hide","what":"any","rules":[{"section":"5d23b756c6c804.20617969","element":"3","operator":"is","value":"There%20are%20two%20great%20days%20in%20a%20person\'s%20life%20-%20the%20day%20we%20are%20born%20and%20the%20day%20we%20discover%20why.%20%20-William%20Barclay"},{"section":"5d23b756c6c804.20617969","element":"3","operator":"is","value":"Today%20you%20are%20you!%20That%20is%20truer%20than%20true!%20There%20is%20no%20one%20alive%20who%20is%20you-er%20than%20you!%20%20-Dr.%20Seuss"},{"section":"5d23b756c6c804.20617969","element":"3","operator":"is","value":"When%20you%20wake%20up%20every%20day%2C%20it\'s%20like%20a%20new%20birthday%3A%20it\'s%20a%20new%20chance%20to%20be%20great%20again%20and%20make%20great%20decisions.%20%20-Poo%20Bear"},{"section":"5d23b756c6c804.20617969","element":"3","operator":"is","value":"Don\'t%20just%20count%20your%20years%2C%20make%20your%20years%20count.%20%20-George%20Meredith"},{"section":"5d23b756c6c804.20617969","element":"3","operator":"is","value":"You%20know%20you\'re%20getting%20old%20when%20you%20get%20that%20one%20candle%20on%20the%20cake.%20It\'s%20like%2C%20\'See%20if%20you%20can%20blow%20this%20out.%20-Jerry%20Seinfeld"},{"section":"5d23b756c6c804.20617969","element":"5","operator":"isnotempty","value":""}]}'
+            ],
+            selectbox_logic: ["", "1", "1"],
+            selectbox_class: ["", "", ""],
+            selectbox_container_id: ["", "", ""],
+            selectbox_include_tax_for_fee_price_type: ["", "", ""],
+            selectbox_tax_class_for_fee_price_type: ["", "", ""],
+            selectbox_hide_element_label_in_cart: ["", "", ""],
+            selectbox_hide_element_value_in_cart: ["", "", ""],
+            selectbox_hide_element_label_in_order: ["", "", ""],
+            selectbox_hide_element_value_in_order: ["", "", ""],
+            selectbox_hide_element_label_in_floatbox: ["", "", ""],
+            selectbox_hide_element_value_in_floatbox: ["", "", ""],
+            checkboxes_internal_name: ["Checkboxes"],
+            checkboxes_header_size: ["10"],
+            checkboxes_header_title: [""],
+            checkboxes_header_title_position: [""],
+            checkboxes_header_title_color: [""],
+            checkboxes_header_subtitle: [
+              "<p>Get 4 gifts per month starting at only $20 a month. Includes a gift box, 1 candy bar per week and gift message of your choice each week. Add each additional candy bar for only $5</p>"
+            ],
+            checkboxes_header_subtitle_position: [""],
+            checkboxes_header_subtitle_color: [""],
+            checkboxes_divider_type: ["none"],
+            checkboxes_enabled: ["1"],
+            checkboxes_required: ["0"],
+            checkboxes_text_before_price: [""],
+            checkboxes_text_after_price: [""],
+            checkboxes_hide_amount: [""],
+            checkboxes_quantity: ["right"],
+            checkboxes_quantity_min: ["1"],
+            checkboxes_quantity_max: [""],
+            checkboxes_quantity_step: ["2"],
+            checkboxes_quantity_default_value: ["1"],
+            checkboxes_limit_choices: [""],
+            checkboxes_exactlimit_choices: [""],
+            checkboxes_minimumlimit_choices: [""],
+            checkboxes_use_images: [""],
+            checkboxes_use_lightbox: [""],
+            checkboxes_swatchmode: [""],
+            checkboxes_use_colors: [""],
+            checkboxes_changes_product_image: [""],
+            checkboxes_items_per_row: [""],
+            checkboxes_items_per_row_tablets: [""],
+            checkboxes_items_per_row_tablets_small: [""],
+            checkboxes_items_per_row_smartphones: [""],
+            checkboxes_items_per_row_iphone5: [""],
+            checkboxes_items_per_row_iphone6: [""],
+            checkboxes_items_per_row_iphone6_plus: [""],
+            checkboxes_items_per_row_samsung_galaxy: [""],
+            checkboxes_items_per_row_tablets_galaxy: [""],
+            multiple_checkboxes_options_title: [
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese's",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey's",
+                "3 Muskateers"
+              ]
+            ],
+            multiple_checkboxes_options_image: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_imagec: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_imagep: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_imagel: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_color: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_value: [
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese's",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey's",
+                "3 Muskateers"
+              ]
+            ],
+            multiple_checkboxes_options_price: [
+              ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"]
+            ],
+            multiple_checkboxes_options_sale_price: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_price_type: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_description: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_url: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            checkboxes_uniqid: ["5d23b756c6c8c2.69989172"],
+            checkboxes_clogic: [
+              '{"element":"5d23b756c6c8c2.69989172","toggle":"show","what":"any","rules":[{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"Butterfinger"},{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"Twix"},{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"M%26M"},{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"Snickers"},{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"Skittles"},{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"Reese%E2%80%99s"},{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"M%26M%20Peanut"},{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"Milkyway"},{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"KitKat"},{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"Hershey%E2%80%99s"},{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"3%20Musketeers"}]}'
+            ],
+            checkboxes_logic: ["1"],
+            checkboxes_class: [""],
+            checkboxes_container_id: [""],
+            checkboxes_include_tax_for_fee_price_type: [""],
+            checkboxes_tax_class_for_fee_price_type: [""],
+            checkboxes_hide_element_label_in_cart: [""],
+            checkboxes_hide_element_value_in_cart: [""],
+            checkboxes_hide_element_label_in_order: [""],
+            checkboxes_hide_element_value_in_order: [""],
+            checkboxes_hide_element_label_in_floatbox: [""],
+            checkboxes_hide_element_value_in_floatbox: [""],
+            header_internal_name: ["Heading"],
+            header_size: ["7"],
+            header_title: [""],
+            header_title_position: [""],
+            header_title_color: [""],
+            header_subtitle: [
+              "<p><strong>Pick one of the following gift card messages or write your own custom message!</strong></p>"
+            ],
+            header_subtitle_color: [""],
+            header_subtitle_position: [""],
+            header_uniqid: ["5d23b756c6c8d8.69215115"],
+            header_clogic: [
+              '{"element":"5d23b756c6c8d8.69215115","toggle":"show","what":"all","rules":[{"section":"5d23b756c6c804.20617969","element":"0","operator":"is","value":"Butterfinger"}]}'
+            ],
+            header_logic: [""],
+            header_class: [""],
+            textarea_internal_name: ["Text Area"],
+            textarea_header_size: ["10"],
+            textarea_header_title: [""],
+            textarea_header_title_position: [""],
+            textarea_header_title_color: [""],
+            textarea_header_subtitle: [
+              "<p>Write a custom message to display on the gift card</p>"
+            ],
+            textarea_header_subtitle_position: [""],
+            textarea_header_subtitle_color: [""],
+            textarea_divider_type: ["none"],
+            textarea_enabled: ["1"],
+            textarea_required: ["0"],
+            textarea_price: [""],
+            textarea_sale_price: [""],
+            textarea_text_before_price: [""],
+            textarea_text_after_price: [""],
+            textarea_price_type: [""],
+            textarea_freechars: [""],
+            textarea_hide_amount: [""],
+            textarea_quantity: [""],
+            textarea_quantity_min: [""],
+            textarea_quantity_max: [""],
+            textarea_quantity_step: [""],
+            textarea_quantity_default_value: [""],
+            textarea_placeholder: [""],
+            textarea_min_chars: ["1"],
+            textarea_max_chars: [""],
+            textarea_default_value: [""],
+            textarea_validation1: [""],
+            textarea_uniqid: ["5d23b756c6c8f3.18519071"],
+            textarea_clogic: [
+              '{"element":"5d23b756c6c8f3.18519071","toggle":"hide","what":"any","rules":[{"section":"5d23b756c6c804.20617969","element":"3","operator":"is","value":"There%20are%20two%20great%20days%20in%20a%20person\'s%20life%20-%20the%20day%20we%20are%20born%20and%20the%20day%20we%20discover%20why.%20%20-William%20Barclay"},{"section":"5d23b756c6c804.20617969","element":"3","operator":"is","value":"Today%20you%20are%20you!%20That%20is%20truer%20than%20true!%20There%20is%20no%20one%20alive%20who%20is%20you-er%20than%20you!%20%20-Dr.%20Seuss"},{"section":"5d23b756c6c804.20617969","element":"3","operator":"is","value":"When%20you%20wake%20up%20every%20day%2C%20it\'s%20like%20a%20new%20birthday%3A%20it\'s%20a%20new%20chance%20to%20be%20great%20again%20and%20make%20great%20decisions.%20%20-Poo%20Bear"},{"section":"5d23b756c6c804.20617969","element":"3","operator":"is","value":"Don\'t%20just%20count%20your%20years%2C%20make%20your%20years%20count.%20%20-George%20Meredith"},{"section":"5d23b756c6c804.20617969","element":"3","operator":"is","value":"You%20know%20you\'re%20getting%20old%20when%20you%20get%20that%20one%20candle%20on%20the%20cake.%20It\'s%20like%2C%20\'See%20if%20you%20can%20blow%20this%20out.%20-Jerry%20Seinfeld"},{"section":"5d23b756c6c804.20617969","element":"4","operator":"is","value":"The%20secret%20of%20a%20happy%20marriage%20is%20finding%20the%20right%20person.%20You%20know%20they\'re%20right%20if%20you%20love%20to%20be%20with%20them%20all%20the%20time.%20%20-Julia%20Child"},{"section":"5d23b756c6c804.20617969","element":"4","operator":"is","value":"A%20wedding%20anniversary%20is%20the%20celebration%20of%20love%2C%20trust%2C%20partnership%2C%20tolerance%20and%20tenacity.%20The%20order%20varies%20for%20any%20given%20year.%20%20-Paul%20Sweeney"},{"section":"5d23b756c6c804.20617969","element":"4","operator":"is","value":"You%20were%20made%20perfectly%20to%20be%20loved%20-%20and%20surely%20I%20have%20loved%20you%2C%20in%20the%20idea%20of%20you%2C%20my%20whole%20life%20long.%20%20-Elizabeth%20Barrett%20Browning"},{"section":"5d23b756c6c804.20617969","element":"4","operator":"is","value":"An%20anniversary%20is%20a%20reminder%20as%20to%20why%20you%20love%20and%20married%20this%20person.%20%20-Zoe%20Foster%20Blake"},{"section":"5d23b756c6c804.20617969","element":"4","operator":"is","value":"Love%20me%20or%20hate%20me%2C%20both%20are%20in%20my%20favour.%20If%20you%20love%20me%2C%20I%20will%20always%20be%20in%20your%20heart%2C%20and%20if%20you%20hate%20me%2C%20I%20will%20be%20in%20your%20mind.%20%20-Qandeel%20Baloch"}]}'
+            ],
+            textarea_logic: ["1"],
+            textarea_class: [""],
+            textarea_container_id: [""],
+            textarea_include_tax_for_fee_price_type: [""],
+            textarea_tax_class_for_fee_price_type: [""],
+            textarea_hide_element_label_in_cart: [""],
+            textarea_hide_element_value_in_cart: [""],
+            textarea_hide_element_label_in_order: [""],
+            textarea_hide_element_value_in_order: [""],
+            textarea_hide_element_label_in_floatbox: [""],
+            textarea_hide_element_value_in_floatbox: [""]
+          }
+        }
+      }
+    ],
     _links: {
       self: [
         {
-          href: "https://telebardelivery.com/wp-json/wc/v1/products/935"
+          href: "https://telebardelivery.com/wp-json/wc/v3/products/935"
         }
       ],
       collection: [
         {
-          href: "https://telebardelivery.com/wp-json/wc/v1/products"
+          href: "https://telebardelivery.com/wp-json/wc/v3/products"
         }
       ]
     }
@@ -4271,7 +4838,9 @@ export const subscription_products = [
     slug: "biweekly-subscription",
     permalink: "https://telebardelivery.com/product/biweekly-subscription/",
     date_created: "2019-04-06T17:20:20",
+    date_created_gmt: "2019-04-06T17:20:20",
     date_modified: "2019-07-15T04:06:36",
+    date_modified_gmt: "2019-07-15T04:06:36",
     type: "subscription",
     status: "publish",
     featured: false,
@@ -4282,8 +4851,10 @@ export const subscription_products = [
     price: "10",
     regular_price: "10",
     sale_price: "",
-    date_on_sale_from: "",
-    date_on_sale_to: "",
+    date_on_sale_from: null,
+    date_on_sale_from_gmt: null,
+    date_on_sale_to: null,
+    date_on_sale_to_gmt: null,
     price_html:
       '<span class="label_price">price:</span><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>10.00</span> <span class="subscription-details"> / month</span>',
     on_sale: false,
@@ -4294,14 +4865,13 @@ export const subscription_products = [
     downloads: [],
     download_limit: -1,
     download_expiry: -1,
-    download_type: "standard",
     external_url: "",
     button_text: "",
     tax_status: "taxable",
     tax_class: "",
     manage_stock: false,
     stock_quantity: null,
-    in_stock: true,
+    stock_status: "instock",
     backorders: "no",
     backorders_allowed: false,
     backordered: false,
@@ -4336,12 +4906,13 @@ export const subscription_products = [
       {
         id: 1105,
         date_created: "2019-04-22T21:07:16",
+        date_created_gmt: "2019-04-22T21:07:16",
         date_modified: "2019-04-22T21:07:16",
+        date_modified_gmt: "2019-04-22T21:07:16",
         src:
           "https://telebardelivery.com/wp-content/uploads/2019/04/biweekly-1.png",
         name: "biweekly",
-        alt: "",
-        position: 0
+        alt: ""
       }
     ],
     attributes: [],
@@ -4349,15 +4920,571 @@ export const subscription_products = [
     variations: [],
     grouped_products: [],
     menu_order: 0,
+    meta_data: [
+      {
+        id: 10395,
+        key: "_vc_post_settings",
+        value: {
+          vc_grid_id: []
+        }
+      },
+      {
+        id: 10396,
+        key: "_vc_post_settings",
+        value: {
+          vc_grid_id: []
+        }
+      },
+      {
+        id: 10430,
+        key: "_subscription_payment_sync_date",
+        value: "0"
+      },
+      {
+        id: 10431,
+        key: "slide_template",
+        value: "default"
+      },
+      {
+        id: 10432,
+        key: "trx_addons_post_views_count",
+        value: "27"
+      },
+      {
+        id: 10433,
+        key: "trx_addons_post_likes_count",
+        value: "0"
+      },
+      {
+        id: 10434,
+        key: "eg_sources_html5_mp4",
+        value: ""
+      },
+      {
+        id: 10435,
+        key: "eg_sources_html5_ogv",
+        value: ""
+      },
+      {
+        id: 10436,
+        key: "eg_sources_html5_webm",
+        value: ""
+      },
+      {
+        id: 10437,
+        key: "eg_sources_youtube",
+        value: ""
+      },
+      {
+        id: 10438,
+        key: "eg_sources_vimeo",
+        value: ""
+      },
+      {
+        id: 10439,
+        key: "eg_sources_wistia",
+        value: ""
+      },
+      {
+        id: 10440,
+        key: "eg_sources_image",
+        value: ""
+      },
+      {
+        id: 10441,
+        key: "eg_sources_iframe",
+        value: ""
+      },
+      {
+        id: 10442,
+        key: "eg_sources_soundcloud",
+        value: ""
+      },
+      {
+        id: 10443,
+        key: "eg_vimeo_ratio",
+        value: "0"
+      },
+      {
+        id: 10444,
+        key: "eg_youtube_ratio",
+        value: "0"
+      },
+      {
+        id: 10445,
+        key: "eg_wistia_ratio",
+        value: "0"
+      },
+      {
+        id: 10446,
+        key: "eg_html5_ratio",
+        value: "0"
+      },
+      {
+        id: 10447,
+        key: "eg_soundcloud_ratio",
+        value: "0"
+      },
+      {
+        id: 10448,
+        key: "eg_settings_custom_meta_skin",
+        value: ""
+      },
+      {
+        id: 10449,
+        key: "eg_settings_custom_meta_element",
+        value: ""
+      },
+      {
+        id: 10450,
+        key: "eg_settings_custom_meta_setting",
+        value: ""
+      },
+      {
+        id: 10451,
+        key: "eg_settings_custom_meta_style",
+        value: ""
+      },
+      {
+        id: 10452,
+        key: "eg_custom_meta_216",
+        value: "true"
+      },
+      {
+        id: 10453,
+        key: "_subscription_price",
+        value: "10"
+      },
+      {
+        id: 10454,
+        key: "_subscription_trial_length",
+        value: "0"
+      },
+      {
+        id: 10455,
+        key: "_subscription_sign_up_fee",
+        value: "0"
+      },
+      {
+        id: 10456,
+        key: "_subscription_period",
+        value: "month"
+      },
+      {
+        id: 10457,
+        key: "_subscription_period_interval",
+        value: "1"
+      },
+      {
+        id: 10458,
+        key: "_subscription_length",
+        value: "0"
+      },
+      {
+        id: 10459,
+        key: "_subscription_trial_period",
+        value: "day"
+      },
+      {
+        id: 10460,
+        key: "_subscription_limit",
+        value: "no"
+      },
+      {
+        id: 10461,
+        key: "_subscription_one_time_shipping",
+        value: "no"
+      },
+      {
+        id: 19249,
+        key: "tm_meta_cpf",
+        value: {
+          mode: "builder",
+          override_display: "",
+          override_final_total_box: ""
+        }
+      },
+      {
+        id: 19250,
+        key: "tm_meta",
+        value: {
+          tmfbuilder: {
+            section_header_size: ["4"],
+            section_header_title: [""],
+            section_header_title_position: [""],
+            section_header_title_color: [""],
+            section_header_subtitle: [""],
+            section_header_subtitle_position: [""],
+            section_header_subtitle_color: [""],
+            section_divider_type: ["none"],
+            sections: ["6"],
+            sections_slides: [""],
+            sections_size: ["w100"],
+            sections_uniqid: ["5d23b7e35e4d77.36401328"],
+            sections_style: [""],
+            sections_placement: ["before"],
+            sections_type: [""],
+            sections_class: [""],
+            sections_clogic: [
+              '{"section":"5d23b7e35e4d77.36401328","toggle":"show","what":"any","rules":[]}'
+            ],
+            sections_logic: [""],
+            sections_internal_name: ["Section"],
+            element_type: [
+              "selectbox",
+              "checkboxes",
+              "header",
+              "selectbox",
+              "selectbox",
+              "textarea"
+            ],
+            div_size: ["w100", "w100", "w100", "w100", "w100", "w100"],
+            selectbox_internal_name: ["Select Box", "Select Box", "Select Box"],
+            selectbox_header_size: ["10", "10", "10"],
+            selectbox_header_title: [
+              "Choose 1 free candy bar per gift",
+              "Add a Birthday Gift Card",
+              "Add a Anniversary Gift Card"
+            ],
+            selectbox_header_title_position: ["", "", ""],
+            selectbox_header_title_color: ["", "", ""],
+            selectbox_header_subtitle: [
+              "",
+              "<p>Add a Birthday Gift Card</p>",
+              "<p>Add a Anniversary Gift Card</p>"
+            ],
+            selectbox_header_subtitle_position: ["", "", ""],
+            selectbox_header_subtitle_color: ["", "", ""],
+            selectbox_divider_type: ["none", "none", "none"],
+            selectbox_enabled: ["1", "1", "1"],
+            selectbox_required: ["1", "0", "0"],
+            selectbox_text_before_price: ["", "", ""],
+            selectbox_text_after_price: ["", "", ""],
+            selectbox_price_type: ["", "", ""],
+            selectbox_hide_amount: ["", "", ""],
+            selectbox_quantity: ["", "", ""],
+            selectbox_quantity_min: ["", "", ""],
+            selectbox_quantity_max: ["", "", ""],
+            selectbox_quantity_step: ["", "", ""],
+            selectbox_quantity_default_value: ["", "", ""],
+            selectbox_placeholder: [
+              "Choose Your Candy",
+              "Choose a Card",
+              "Choose a Card"
+            ],
+            selectbox_use_url: ["", "", ""],
+            selectbox_changes_product_image: ["", "", ""],
+            multiple_selectbox_options_title: [
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese’s",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey’s",
+                "3 Musketeers"
+              ],
+              [
+                "There are two great days in a person's life - the day we are born and the day we discover why.  -William Barclay",
+                "Today you are you! That is truer than true! There is no one alive who is you-er than you!  -Dr. Seuss",
+                "When you wake up every day, it's like a new birthday: it's a new chance to be great again and make great decisions.  -Poo Bear",
+                "Don't just count your years, make your years count.  -George Meredith",
+                "You know you're getting old when you get that one candle on the cake. It's like, 'See if you can blow this out. -Jerry Seinfeld"
+              ],
+              [
+                "The secret of a happy marriage is finding the right person. You know they're right if you love to be with them all the time.  -Julia Child",
+                "A wedding anniversary is the celebration of love, trust, partnership, tolerance and tenacity. The order varies for any given year.  -Paul Sweeney",
+                "You were made perfectly to be loved - and surely I have loved you, in the idea of you, my whole life long.  -Elizabeth Barrett Browning",
+                "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
+                "Love me or hate me, both are in my favour. If you love me, I will always be in your heart, and if you hate me, I will be in your mind.  -Qandeel Baloch"
+              ]
+            ],
+            multiple_selectbox_options_image: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_imagec: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_imagep: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_imagel: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_value: [
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese’s",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey’s",
+                "3 Musketeers"
+              ],
+              [
+                "There are two great days in a person's life - the day we are born and the day we discover why.  -William Barclay",
+                "Today you are you! That is truer than true! There is no one alive who is you-er than you!  -Dr. Seuss",
+                "When you wake up every day, it's like a new birthday: it's a new chance to be great again and make great decisions.  -Poo Bear",
+                "Don't just count your years, make your years count.  -George Meredith",
+                "You know you're getting old when you get that one candle on the cake. It's like, 'See if you can blow this out. -Jerry Seinfeld"
+              ],
+              [
+                "The secret of a happy marriage is finding the right person. You know they're right if you love to be with them all the time.  -Julia Child",
+                "A wedding anniversary is the celebration of love, trust, partnership, tolerance and tenacity. The order varies for any given year.  -Paul Sweeney",
+                "You were made perfectly to be loved - and surely I have loved you, in the idea of you, my whole life long.  -Elizabeth Barrett Browning",
+                "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
+                "Love me or hate me, both are in my favour. If you love me, I will always be in your heart, and if you hate me, I will be in your mind.  -Qandeel Baloch"
+              ]
+            ],
+            multiple_selectbox_options_price: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_sale_price: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_price_type: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_description: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_url: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            selectbox_uniqid: [
+              "5d23b7e35e4df9.57432583",
+              "5d23b7e35e4e07.39883701",
+              "5d23b7e35e4e27.23351632"
+            ],
+            selectbox_clogic: [
+              '{"element":"5d23b7e35e4df9.57432583","toggle":"show","what":"all","rules":[]}',
+              '{"element":"5d23b7e35e4e07.39883701","toggle":"hide","what":"any","rules":[{"section":"5d23b7e35e4d77.36401328","element":"4","operator":"is","value":"The%20secret%20of%20a%20happy%20marriage%20is%20finding%20the%20right%20person.%20You%20know%20they\'re%20right%20if%20you%20love%20to%20be%20with%20them%20all%20the%20time.%20%20-Julia%20Child"},{"section":"5d23b7e35e4d77.36401328","element":"4","operator":"is","value":"A%20wedding%20anniversary%20is%20the%20celebration%20of%20love%2C%20trust%2C%20partnership%2C%20tolerance%20and%20tenacity.%20The%20order%20varies%20for%20any%20given%20year.%20%20-Paul%20Sweeney"},{"section":"5d23b7e35e4d77.36401328","element":"4","operator":"is","value":"You%20were%20made%20perfectly%20to%20be%20loved%20-%20and%20surely%20I%20have%20loved%20you%2C%20in%20the%20idea%20of%20you%2C%20my%20whole%20life%20long.%20%20-Elizabeth%20Barrett%20Browning"},{"section":"5d23b7e35e4d77.36401328","element":"4","operator":"is","value":"An%20anniversary%20is%20a%20reminder%20as%20to%20why%20you%20love%20and%20married%20this%20person.%20%20-Zoe%20Foster%20Blake"},{"section":"5d23b7e35e4d77.36401328","element":"4","operator":"is","value":"Love%20me%20or%20hate%20me%2C%20both%20are%20in%20my%20favour.%20If%20you%20love%20me%2C%20I%20will%20always%20be%20in%20your%20heart%2C%20and%20if%20you%20hate%20me%2C%20I%20will%20be%20in%20your%20mind.%20%20-Qandeel%20Baloch"},{"section":"5d23b7e35e4d77.36401328","element":"5","operator":"isnotempty","value":""}]}',
+              '{"element":"5d23b7e35e4e27.23351632","toggle":"hide","what":"any","rules":[{"section":"5d23b7e35e4d77.36401328","element":"3","operator":"is","value":"There%20are%20two%20great%20days%20in%20a%20person\'s%20life%20-%20the%20day%20we%20are%20born%20and%20the%20day%20we%20discover%20why.%20%20-William%20Barclay"},{"section":"5d23b7e35e4d77.36401328","element":"3","operator":"is","value":"Today%20you%20are%20you!%20That%20is%20truer%20than%20true!%20There%20is%20no%20one%20alive%20who%20is%20you-er%20than%20you!%20%20-Dr.%20Seuss"},{"section":"5d23b7e35e4d77.36401328","element":"3","operator":"is","value":"When%20you%20wake%20up%20every%20day%2C%20it\'s%20like%20a%20new%20birthday%3A%20it\'s%20a%20new%20chance%20to%20be%20great%20again%20and%20make%20great%20decisions.%20%20-Poo%20Bear"},{"section":"5d23b7e35e4d77.36401328","element":"3","operator":"is","value":"Don\'t%20just%20count%20your%20years%2C%20make%20your%20years%20count.%20%20-George%20Meredith"},{"section":"5d23b7e35e4d77.36401328","element":"3","operator":"is","value":"You%20know%20you\'re%20getting%20old%20when%20you%20get%20that%20one%20candle%20on%20the%20cake.%20It\'s%20like%2C%20\'See%20if%20you%20can%20blow%20this%20out.%20-Jerry%20Seinfeld"},{"section":"5d23b7e35e4d77.36401328","element":"5","operator":"isnotempty","value":""}]}'
+            ],
+            selectbox_logic: ["", "1", "1"],
+            selectbox_class: ["", "", ""],
+            selectbox_container_id: ["", "", ""],
+            selectbox_include_tax_for_fee_price_type: ["", "", ""],
+            selectbox_tax_class_for_fee_price_type: ["", "", ""],
+            selectbox_hide_element_label_in_cart: ["", "", ""],
+            selectbox_hide_element_value_in_cart: ["", "", ""],
+            selectbox_hide_element_label_in_order: ["", "", ""],
+            selectbox_hide_element_value_in_order: ["", "", ""],
+            selectbox_hide_element_label_in_floatbox: ["", "", ""],
+            selectbox_hide_element_value_in_floatbox: ["", "", ""],
+            checkboxes_internal_name: ["Checkboxes"],
+            checkboxes_header_size: ["10"],
+            checkboxes_header_title: [""],
+            checkboxes_header_title_position: [""],
+            checkboxes_header_title_color: [""],
+            checkboxes_header_subtitle: [
+              "<p>Get 4 gifts per month starting at only $20 a month. Includes a gift box, 1 candy bar per week and gift message of your choice each week. Add each additional candy bar for only $5</p>"
+            ],
+            checkboxes_header_subtitle_position: [""],
+            checkboxes_header_subtitle_color: [""],
+            checkboxes_divider_type: ["none"],
+            checkboxes_enabled: ["1"],
+            checkboxes_required: ["0"],
+            checkboxes_text_before_price: [""],
+            checkboxes_text_after_price: [""],
+            checkboxes_hide_amount: [""],
+            checkboxes_quantity: ["right"],
+            checkboxes_quantity_min: ["1"],
+            checkboxes_quantity_max: [""],
+            checkboxes_quantity_step: ["2"],
+            checkboxes_quantity_default_value: ["1"],
+            checkboxes_limit_choices: [""],
+            checkboxes_exactlimit_choices: [""],
+            checkboxes_minimumlimit_choices: [""],
+            checkboxes_use_images: [""],
+            checkboxes_use_lightbox: [""],
+            checkboxes_swatchmode: [""],
+            checkboxes_use_colors: [""],
+            checkboxes_changes_product_image: [""],
+            checkboxes_items_per_row: [""],
+            checkboxes_items_per_row_tablets: [""],
+            checkboxes_items_per_row_tablets_small: [""],
+            checkboxes_items_per_row_smartphones: [""],
+            checkboxes_items_per_row_iphone5: [""],
+            checkboxes_items_per_row_iphone6: [""],
+            checkboxes_items_per_row_iphone6_plus: [""],
+            checkboxes_items_per_row_samsung_galaxy: [""],
+            checkboxes_items_per_row_tablets_galaxy: [""],
+            multiple_checkboxes_options_title: [
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese's",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey's",
+                "3 Muskateers"
+              ]
+            ],
+            multiple_checkboxes_options_image: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_imagec: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_imagep: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_imagel: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_color: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_value: [
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese's",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey's",
+                "3 Muskateers"
+              ]
+            ],
+            multiple_checkboxes_options_price: [
+              ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"]
+            ],
+            multiple_checkboxes_options_sale_price: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_price_type: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_description: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_url: [
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            checkboxes_uniqid: ["5d23b7e35e4e35.10289074"],
+            checkboxes_clogic: [
+              '{"element":"5d23b7e35e4e35.10289074","toggle":"show","what":"any","rules":[{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"Butterfinger"},{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"Twix"},{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"M%26M"},{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"Snickers"},{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"Skittles"},{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"Reese%E2%80%99s"},{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"M%26M%20Peanut"},{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"Milkyway"},{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"KitKat"},{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"Hershey%E2%80%99s"},{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"3%20Musketeers"}]}'
+            ],
+            checkboxes_logic: ["1"],
+            checkboxes_class: [""],
+            checkboxes_container_id: [""],
+            checkboxes_include_tax_for_fee_price_type: [""],
+            checkboxes_tax_class_for_fee_price_type: [""],
+            checkboxes_hide_element_label_in_cart: [""],
+            checkboxes_hide_element_value_in_cart: [""],
+            checkboxes_hide_element_label_in_order: [""],
+            checkboxes_hide_element_value_in_order: [""],
+            checkboxes_hide_element_label_in_floatbox: [""],
+            checkboxes_hide_element_value_in_floatbox: [""],
+            header_internal_name: ["Heading"],
+            header_size: ["7"],
+            header_title: [""],
+            header_title_position: [""],
+            header_title_color: [""],
+            header_subtitle: [
+              "<p><strong>Pick one of the following gift card messages or write your own custom message!</strong></p>"
+            ],
+            header_subtitle_color: [""],
+            header_subtitle_position: [""],
+            header_uniqid: ["5d23b7e35e4e58.25563773"],
+            header_clogic: [
+              '{"element":"5d23b7e35e4e58.25563773","toggle":"show","what":"all","rules":[{"section":"5d23b7e35e4d77.36401328","element":"0","operator":"is","value":"Butterfinger"}]}'
+            ],
+            header_logic: [""],
+            header_class: [""],
+            textarea_internal_name: ["Text Area"],
+            textarea_header_size: ["10"],
+            textarea_header_title: [""],
+            textarea_header_title_position: [""],
+            textarea_header_title_color: [""],
+            textarea_header_subtitle: [
+              "<p>Write a custom message to display on the gift card</p>"
+            ],
+            textarea_header_subtitle_position: [""],
+            textarea_header_subtitle_color: [""],
+            textarea_divider_type: ["none"],
+            textarea_enabled: ["1"],
+            textarea_required: ["0"],
+            textarea_price: [""],
+            textarea_sale_price: [""],
+            textarea_text_before_price: [""],
+            textarea_text_after_price: [""],
+            textarea_price_type: [""],
+            textarea_freechars: [""],
+            textarea_hide_amount: [""],
+            textarea_quantity: [""],
+            textarea_quantity_min: [""],
+            textarea_quantity_max: [""],
+            textarea_quantity_step: [""],
+            textarea_quantity_default_value: [""],
+            textarea_placeholder: [""],
+            textarea_min_chars: ["1"],
+            textarea_max_chars: [""],
+            textarea_default_value: [""],
+            textarea_validation1: [""],
+            textarea_uniqid: ["5d23b7e35e4e69.36634075"],
+            textarea_clogic: [
+              '{"element":"5d23b7e35e4e69.36634075","toggle":"hide","what":"any","rules":[{"section":"5d23b7e35e4d77.36401328","element":"3","operator":"is","value":"There%20are%20two%20great%20days%20in%20a%20person\'s%20life%20-%20the%20day%20we%20are%20born%20and%20the%20day%20we%20discover%20why.%20%20-William%20Barclay"},{"section":"5d23b7e35e4d77.36401328","element":"3","operator":"is","value":"Today%20you%20are%20you!%20That%20is%20truer%20than%20true!%20There%20is%20no%20one%20alive%20who%20is%20you-er%20than%20you!%20%20-Dr.%20Seuss"},{"section":"5d23b7e35e4d77.36401328","element":"3","operator":"is","value":"When%20you%20wake%20up%20every%20day%2C%20it\'s%20like%20a%20new%20birthday%3A%20it\'s%20a%20new%20chance%20to%20be%20great%20again%20and%20make%20great%20decisions.%20%20-Poo%20Bear"},{"section":"5d23b7e35e4d77.36401328","element":"3","operator":"is","value":"Don\'t%20just%20count%20your%20years%2C%20make%20your%20years%20count.%20%20-George%20Meredith"},{"section":"5d23b7e35e4d77.36401328","element":"3","operator":"is","value":"You%20know%20you\'re%20getting%20old%20when%20you%20get%20that%20one%20candle%20on%20the%20cake.%20It\'s%20like%2C%20\'See%20if%20you%20can%20blow%20this%20out.%20-Jerry%20Seinfeld"},{"section":"5d23b7e35e4d77.36401328","element":"4","operator":"is","value":"The%20secret%20of%20a%20happy%20marriage%20is%20finding%20the%20right%20person.%20You%20know%20they\'re%20right%20if%20you%20love%20to%20be%20with%20them%20all%20the%20time.%20%20-Julia%20Child"},{"section":"5d23b7e35e4d77.36401328","element":"4","operator":"is","value":"A%20wedding%20anniversary%20is%20the%20celebration%20of%20love%2C%20trust%2C%20partnership%2C%20tolerance%20and%20tenacity.%20The%20order%20varies%20for%20any%20given%20year.%20%20-Paul%20Sweeney"},{"section":"5d23b7e35e4d77.36401328","element":"4","operator":"is","value":"You%20were%20made%20perfectly%20to%20be%20loved%20-%20and%20surely%20I%20have%20loved%20you%2C%20in%20the%20idea%20of%20you%2C%20my%20whole%20life%20long.%20%20-Elizabeth%20Barrett%20Browning"},{"section":"5d23b7e35e4d77.36401328","element":"4","operator":"is","value":"An%20anniversary%20is%20a%20reminder%20as%20to%20why%20you%20love%20and%20married%20this%20person.%20%20-Zoe%20Foster%20Blake"},{"section":"5d23b7e35e4d77.36401328","element":"4","operator":"is","value":"Love%20me%20or%20hate%20me%2C%20both%20are%20in%20my%20favour.%20If%20you%20love%20me%2C%20I%20will%20always%20be%20in%20your%20heart%2C%20and%20if%20you%20hate%20me%2C%20I%20will%20be%20in%20your%20mind.%20%20-Qandeel%20Baloch"}]}'
+            ],
+            textarea_logic: ["1"],
+            textarea_class: [""],
+            textarea_container_id: [""],
+            textarea_include_tax_for_fee_price_type: [""],
+            textarea_tax_class_for_fee_price_type: [""],
+            textarea_hide_element_label_in_cart: [""],
+            textarea_hide_element_value_in_cart: [""],
+            textarea_hide_element_label_in_order: [""],
+            textarea_hide_element_value_in_order: [""],
+            textarea_hide_element_label_in_floatbox: [""],
+            textarea_hide_element_value_in_floatbox: [""]
+          }
+        }
+      }
+    ],
     _links: {
       self: [
         {
-          href: "https://telebardelivery.com/wp-json/wc/v1/products/924"
+          href: "https://telebardelivery.com/wp-json/wc/v3/products/924"
         }
       ],
       collection: [
         {
-          href: "https://telebardelivery.com/wp-json/wc/v1/products"
+          href: "https://telebardelivery.com/wp-json/wc/v3/products"
         }
       ]
     }
@@ -4368,7 +5495,9 @@ export const subscription_products = [
     slug: "weekly-subscription",
     permalink: "https://telebardelivery.com/product/weekly-subscription/",
     date_created: "2019-04-06T22:00:31",
+    date_created_gmt: "2019-04-06T22:00:31",
     date_modified: "2019-07-24T03:57:14",
+    date_modified_gmt: "2019-07-24T03:57:14",
     type: "subscription",
     status: "publish",
     featured: false,
@@ -4379,8 +5508,10 @@ export const subscription_products = [
     price: "20",
     regular_price: "20",
     sale_price: "",
-    date_on_sale_from: "",
-    date_on_sale_to: "",
+    date_on_sale_from: null,
+    date_on_sale_from_gmt: null,
+    date_on_sale_to: null,
+    date_on_sale_to_gmt: null,
     price_html:
       '<span class="label_price">price:</span><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>20.00</span> <span class="subscription-details"> / month</span>',
     on_sale: false,
@@ -4391,14 +5522,13 @@ export const subscription_products = [
     downloads: [],
     download_limit: -1,
     download_expiry: -1,
-    download_type: "standard",
     external_url: "",
     button_text: "",
     tax_status: "taxable",
     tax_class: "",
     manage_stock: false,
     stock_quantity: null,
-    in_stock: true,
+    stock_status: "instock",
     backorders: "no",
     backorders_allowed: false,
     backordered: false,
@@ -4433,12 +5563,13 @@ export const subscription_products = [
       {
         id: 1107,
         date_created: "2019-04-22T21:07:34",
+        date_created_gmt: "2019-04-22T21:07:34",
         date_modified: "2019-04-22T21:07:34",
+        date_modified_gmt: "2019-04-22T21:07:34",
         src:
           "https://telebardelivery.com/wp-content/uploads/2019/04/weekly-1.png",
         name: "weekly",
-        alt: "",
-        position: 0
+        alt: ""
       }
     ],
     attributes: [],
@@ -4446,15 +5577,579 @@ export const subscription_products = [
     variations: [],
     grouped_products: [],
     menu_order: 0,
+    meta_data: [
+      {
+        id: 10540,
+        key: "_vc_post_settings",
+        value: {
+          vc_grid_id: []
+        }
+      },
+      {
+        id: 10541,
+        key: "_vc_post_settings",
+        value: {
+          vc_grid_id: []
+        }
+      },
+      {
+        id: 10574,
+        key: "_vc_post_settings",
+        value: {
+          vc_grid_id: []
+        }
+      },
+      {
+        id: 10575,
+        key: "_subscription_payment_sync_date",
+        value: "0"
+      },
+      {
+        id: 10576,
+        key: "slide_template",
+        value: "default"
+      },
+      {
+        id: 10577,
+        key: "trx_addons_post_views_count",
+        value: "44"
+      },
+      {
+        id: 10578,
+        key: "trx_addons_post_likes_count",
+        value: "0"
+      },
+      {
+        id: 10579,
+        key: "eg_sources_html5_mp4",
+        value: ""
+      },
+      {
+        id: 10580,
+        key: "eg_sources_html5_ogv",
+        value: ""
+      },
+      {
+        id: 10581,
+        key: "eg_sources_html5_webm",
+        value: ""
+      },
+      {
+        id: 10582,
+        key: "eg_sources_youtube",
+        value: ""
+      },
+      {
+        id: 10583,
+        key: "eg_sources_vimeo",
+        value: ""
+      },
+      {
+        id: 10584,
+        key: "eg_sources_wistia",
+        value: ""
+      },
+      {
+        id: 10585,
+        key: "eg_sources_image",
+        value: ""
+      },
+      {
+        id: 10586,
+        key: "eg_sources_iframe",
+        value: ""
+      },
+      {
+        id: 10587,
+        key: "eg_sources_soundcloud",
+        value: ""
+      },
+      {
+        id: 10588,
+        key: "eg_vimeo_ratio",
+        value: "0"
+      },
+      {
+        id: 10589,
+        key: "eg_youtube_ratio",
+        value: "0"
+      },
+      {
+        id: 10590,
+        key: "eg_wistia_ratio",
+        value: "0"
+      },
+      {
+        id: 10591,
+        key: "eg_html5_ratio",
+        value: "0"
+      },
+      {
+        id: 10592,
+        key: "eg_soundcloud_ratio",
+        value: "0"
+      },
+      {
+        id: 10593,
+        key: "eg_settings_custom_meta_skin",
+        value: ""
+      },
+      {
+        id: 10594,
+        key: "eg_settings_custom_meta_element",
+        value: ""
+      },
+      {
+        id: 10595,
+        key: "eg_settings_custom_meta_setting",
+        value: ""
+      },
+      {
+        id: 10596,
+        key: "eg_settings_custom_meta_style",
+        value: ""
+      },
+      {
+        id: 10597,
+        key: "eg_custom_meta_216",
+        value: "true"
+      },
+      {
+        id: 10598,
+        key: "_subscription_price",
+        value: "20"
+      },
+      {
+        id: 10599,
+        key: "_subscription_trial_length",
+        value: "0"
+      },
+      {
+        id: 10600,
+        key: "_subscription_sign_up_fee",
+        value: "0"
+      },
+      {
+        id: 10601,
+        key: "_subscription_period",
+        value: "month"
+      },
+      {
+        id: 10602,
+        key: "_subscription_period_interval",
+        value: "1"
+      },
+      {
+        id: 10603,
+        key: "_subscription_length",
+        value: "0"
+      },
+      {
+        id: 10604,
+        key: "_subscription_trial_period",
+        value: "day"
+      },
+      {
+        id: 10605,
+        key: "_subscription_limit",
+        value: "no"
+      },
+      {
+        id: 10606,
+        key: "_subscription_one_time_shipping",
+        value: "no"
+      },
+      {
+        id: 19247,
+        key: "tm_meta_cpf",
+        value: {
+          mode: "builder",
+          override_display: "",
+          override_final_total_box: ""
+        }
+      },
+      {
+        id: 19248,
+        key: "tm_meta",
+        value: {
+          tmfbuilder: {
+            section_header_size: ["4"],
+            section_header_title: [""],
+            section_header_title_position: [""],
+            section_header_title_color: [""],
+            section_header_subtitle: [""],
+            section_header_subtitle_position: [""],
+            section_header_subtitle_color: [""],
+            section_divider_type: ["none"],
+            sections: ["6"],
+            sections_slides: [""],
+            sections_size: ["w100"],
+            sections_uniqid: ["5d23b5e4bc9533.13897733"],
+            sections_style: [""],
+            sections_placement: ["before"],
+            sections_type: [""],
+            sections_class: [""],
+            sections_clogic: [
+              '{"section":"5d23b5e4bc9533.13897733","toggle":"show","what":"any","rules":[]}'
+            ],
+            sections_logic: [""],
+            sections_internal_name: ["Section"],
+            element_type: [
+              "checkboxes",
+              "checkboxes",
+              "header",
+              "selectbox",
+              "selectbox",
+              "textarea"
+            ],
+            div_size: ["w100", "w100", "w100", "w100", "w100", "w100"],
+            checkboxes_internal_name: ["Checkboxes", "Checkboxes"],
+            checkboxes_header_size: ["10", "10"],
+            checkboxes_header_title: [
+              "Choose 4 separate or mix and match candy to began placing your order",
+              ""
+            ],
+            checkboxes_header_title_position: ["", ""],
+            checkboxes_header_title_color: ["", ""],
+            checkboxes_header_subtitle: [
+              "",
+              "<p>Get 4 gifts per month starting at only $20 a month. Includes a gift box, 1 candy bar per week and gift message of your choice each week. Add additional candy bars for only $5 each.</p>"
+            ],
+            checkboxes_header_subtitle_position: ["", ""],
+            checkboxes_header_subtitle_color: ["", ""],
+            checkboxes_divider_type: ["none", "none"],
+            checkboxes_enabled: ["1", "1"],
+            checkboxes_required: ["1", "0"],
+            checkboxes_text_before_price: ["", ""],
+            checkboxes_text_after_price: ["", ""],
+            checkboxes_hide_amount: ["", ""],
+            checkboxes_quantity: ["right", "right"],
+            checkboxes_quantity_min: ["1", "1"],
+            checkboxes_quantity_max: ["5", ""],
+            checkboxes_quantity_step: ["1", "2"],
+            checkboxes_quantity_default_value: ["1", "1"],
+            checkboxes_limit_choices: ["", ""],
+            checkboxes_exactlimit_choices: ["4", ""],
+            checkboxes_minimumlimit_choices: ["", ""],
+            checkboxes_use_images: ["", ""],
+            checkboxes_use_lightbox: ["", ""],
+            checkboxes_swatchmode: ["", ""],
+            checkboxes_use_colors: ["", ""],
+            checkboxes_changes_product_image: ["", ""],
+            checkboxes_items_per_row: ["", ""],
+            checkboxes_items_per_row_tablets: ["", ""],
+            checkboxes_items_per_row_tablets_small: ["", ""],
+            checkboxes_items_per_row_smartphones: ["", ""],
+            checkboxes_items_per_row_iphone5: ["", ""],
+            checkboxes_items_per_row_iphone6: ["", ""],
+            checkboxes_items_per_row_iphone6_plus: ["", ""],
+            checkboxes_items_per_row_samsung_galaxy: ["", ""],
+            checkboxes_items_per_row_tablets_galaxy: ["", ""],
+            multiple_checkboxes_options_title: [
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese's",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey's",
+                "3 Muskateers"
+              ],
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese's",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey's",
+                "3 Muskateers"
+              ]
+            ],
+            multiple_checkboxes_options_image: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_imagec: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_imagep: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_imagel: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_color: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_value: [
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese's",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey's",
+                "3 Muskateers"
+              ],
+              [
+                "Butterfinger",
+                "Twix",
+                "M&M",
+                "Snickers",
+                "Skittles",
+                "Reese's",
+                "M&M Peanut",
+                "Milkyway",
+                "KitKat",
+                "Hershey's",
+                "3 Muskateers"
+              ]
+            ],
+            multiple_checkboxes_options_price: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"]
+            ],
+            multiple_checkboxes_options_sale_price: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_price_type: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_description: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            multiple_checkboxes_options_url: [
+              ["", "", "", "", "", "", "", "", "", "", ""],
+              ["", "", "", "", "", "", "", "", "", "", ""]
+            ],
+            checkboxes_uniqid: [
+              "5d23b5e4bc9613.31243931",
+              "5d37d46af20c50.88536732"
+            ],
+            checkboxes_clogic: [
+              '{"element":"5d23b5e4bc9613.31243931","toggle":"show","what":"any","rules":[{"section":"5d23b5e4bc9533.13897733","element":"1","operator":"is","value":"Butterfinger"}]}',
+              '{"element":"5d37d46af20c50.88536732","toggle":"show","what":"any","rules":[{"section":"5d23b5e4bc9533.13897733","element":0,"operator":"isnotempty","value":"Butterfinger"}]}'
+            ],
+            checkboxes_logic: ["", "1"],
+            checkboxes_class: ["", ""],
+            checkboxes_container_id: ["", ""],
+            checkboxes_include_tax_for_fee_price_type: ["", ""],
+            checkboxes_tax_class_for_fee_price_type: ["", ""],
+            checkboxes_hide_element_label_in_cart: ["", ""],
+            checkboxes_hide_element_value_in_cart: ["", ""],
+            checkboxes_hide_element_label_in_order: ["", ""],
+            checkboxes_hide_element_value_in_order: ["", ""],
+            checkboxes_hide_element_label_in_floatbox: ["", ""],
+            checkboxes_hide_element_value_in_floatbox: ["", ""],
+            header_internal_name: ["Heading"],
+            header_size: ["7"],
+            header_title: [""],
+            header_title_position: [""],
+            header_title_color: [""],
+            header_subtitle: [
+              "<p><strong>Pick one of the following gift card messages or write your own custom message!</strong></p>"
+            ],
+            header_subtitle_color: [""],
+            header_subtitle_position: [""],
+            header_uniqid: ["5d23b5e4bc9624.21644017"],
+            header_clogic: [
+              '{"element":"5d23b5e4bc9624.21644017","toggle":"show","what":"all","rules":[]}'
+            ],
+            header_logic: [""],
+            header_class: [""],
+            selectbox_internal_name: ["Select Box", "Select Box"],
+            selectbox_header_size: ["10", "10"],
+            selectbox_header_title: [
+              "Add a Birthday Gift Card",
+              "Add a Anniversary Gift Card"
+            ],
+            selectbox_header_title_position: ["", ""],
+            selectbox_header_title_color: ["", ""],
+            selectbox_header_subtitle: [
+              "<p>Add a Birthday Gift Card</p>",
+              "<p>Add a Anniversary Gift Card</p>"
+            ],
+            selectbox_header_subtitle_position: ["", ""],
+            selectbox_header_subtitle_color: ["", ""],
+            selectbox_divider_type: ["none", "none"],
+            selectbox_enabled: ["1", "1"],
+            selectbox_required: ["0", "0"],
+            selectbox_text_before_price: ["", ""],
+            selectbox_text_after_price: ["", ""],
+            selectbox_price_type: ["", ""],
+            selectbox_hide_amount: ["", ""],
+            selectbox_quantity: ["", ""],
+            selectbox_quantity_min: ["", ""],
+            selectbox_quantity_max: ["", ""],
+            selectbox_quantity_step: ["", ""],
+            selectbox_quantity_default_value: ["", ""],
+            selectbox_placeholder: ["Choose a Card", "Choose a Card"],
+            selectbox_use_url: ["", ""],
+            selectbox_changes_product_image: ["", ""],
+            multiple_selectbox_options_title: [
+              [
+                "There are two great days in a person's life - the day we are born and the day we discover why.  -William Barclay",
+                "Today you are you! That is truer than true! There is no one alive who is you-er than you!  -Dr. Seuss",
+                "When you wake up every day, it's like a new birthday: it's a new chance to be great again and make great decisions.  -Poo Bear",
+                "Don't just count your years, make your years count.  -George Meredith",
+                "You know you're getting old when you get that one candle on the cake. It's like, 'See if you can blow this out. -Jerry Seinfeld"
+              ],
+              [
+                "The secret of a happy marriage is finding the right person. You know they're right if you love to be with them all the time.  -Julia Child",
+                "A wedding anniversary is the celebration of love, trust, partnership, tolerance and tenacity. The order varies for any given year.  -Paul Sweeney",
+                "You were made perfectly to be loved - and surely I have loved you, in the idea of you, my whole life long.  -Elizabeth Barrett Browning",
+                "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
+                "Love me or hate me, both are in my favour. If you love me, I will always be in your heart, and if you hate me, I will be in your mind.  -Qandeel Baloch"
+              ]
+            ],
+            multiple_selectbox_options_image: [
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_imagec: [
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_imagep: [
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_imagel: [
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_value: [
+              [
+                "There are two great days in a person's life - the day we are born and the day we discover why.  -William Barclay",
+                "Today you are you! That is truer than true! There is no one alive who is you-er than you!  -Dr. Seuss",
+                "When you wake up every day, it's like a new birthday: it's a new chance to be great again and make great decisions.  -Poo Bear",
+                "Don't just count your years, make your years count.  -George Meredith",
+                "You know you're getting old when you get that one candle on the cake. It's like, 'See if you can blow this out. -Jerry Seinfeld"
+              ],
+              [
+                "The secret of a happy marriage is finding the right person. You know they're right if you love to be with them all the time.  -Julia Child",
+                "A wedding anniversary is the celebration of love, trust, partnership, tolerance and tenacity. The order varies for any given year.  -Paul Sweeney",
+                "You were made perfectly to be loved - and surely I have loved you, in the idea of you, my whole life long.  -Elizabeth Barrett Browning",
+                "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
+                "Love me or hate me, both are in my favour. If you love me, I will always be in your heart, and if you hate me, I will be in your mind.  -Qandeel Baloch"
+              ]
+            ],
+            multiple_selectbox_options_price: [
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_sale_price: [
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_price_type: [
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_description: [
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            multiple_selectbox_options_url: [
+              ["", "", "", "", ""],
+              ["", "", "", "", ""]
+            ],
+            selectbox_uniqid: [
+              "5d23b5e4bc95e9.64202710",
+              "5d23b5e4bc95f0.82455947"
+            ],
+            selectbox_clogic: [
+              '{"element":"5d23b5e4bc95e9.64202710","toggle":"hide","what":"any","rules":[{"section":"5d23b5e4bc9533.13897733","element":4,"operator":"is","value":"The%20secret%20of%20a%20happy%20marriage%20is%20finding%20the%20right%20person.%20You%20know%20they\'re%20right%20if%20you%20love%20to%20be%20with%20them%20all%20the%20time.%20%20-Julia%20Child"},{"section":"5d23b5e4bc9533.13897733","element":4,"operator":"is","value":"A%20wedding%20anniversary%20is%20the%20celebration%20of%20love%2C%20trust%2C%20partnership%2C%20tolerance%20and%20tenacity.%20The%20order%20varies%20for%20any%20given%20year.%20%20-Paul%20Sweeney"},{"section":"5d23b5e4bc9533.13897733","element":4,"operator":"is","value":"You%20were%20made%20perfectly%20to%20be%20loved%20-%20and%20surely%20I%20have%20loved%20you%2C%20in%20the%20idea%20of%20you%2C%20my%20whole%20life%20long.%20%20-Elizabeth%20Barrett%20Browning"},{"section":"5d23b5e4bc9533.13897733","element":4,"operator":"is","value":"An%20anniversary%20is%20a%20reminder%20as%20to%20why%20you%20love%20and%20married%20this%20person.%20%20-Zoe%20Foster%20Blake"},{"section":"5d23b5e4bc9533.13897733","element":4,"operator":"is","value":"Love%20me%20or%20hate%20me%2C%20both%20are%20in%20my%20favour.%20If%20you%20love%20me%2C%20I%20will%20always%20be%20in%20your%20heart%2C%20and%20if%20you%20hate%20me%2C%20I%20will%20be%20in%20your%20mind.%20%20-Qandeel%20Baloch"},{"section":"5d23b5e4bc9533.13897733","element":5,"operator":"isnotempty","value":""}]}',
+              '{"element":"5d23b5e4bc95f0.82455947","toggle":"hide","what":"any","rules":[{"section":"5d23b5e4bc9533.13897733","element":3,"operator":"is","value":"There%20are%20two%20great%20days%20in%20a%20person\'s%20life%20-%20the%20day%20we%20are%20born%20and%20the%20day%20we%20discover%20why.%20%20-William%20Barclay"},{"section":"5d23b5e4bc9533.13897733","element":3,"operator":"is","value":"Today%20you%20are%20you!%20That%20is%20truer%20than%20true!%20There%20is%20no%20one%20alive%20who%20is%20you-er%20than%20you!%20%20-Dr.%20Seuss"},{"section":"5d23b5e4bc9533.13897733","element":3,"operator":"is","value":"When%20you%20wake%20up%20every%20day%2C%20it\'s%20like%20a%20new%20birthday%3A%20it\'s%20a%20new%20chance%20to%20be%20great%20again%20and%20make%20great%20decisions.%20%20-Poo%20Bear"},{"section":"5d23b5e4bc9533.13897733","element":3,"operator":"is","value":"Don\'t%20just%20count%20your%20years%2C%20make%20your%20years%20count.%20%20-George%20Meredith"},{"section":"5d23b5e4bc9533.13897733","element":3,"operator":"is","value":"You%20know%20you\'re%20getting%20old%20when%20you%20get%20that%20one%20candle%20on%20the%20cake.%20It\'s%20like%2C%20\'See%20if%20you%20can%20blow%20this%20out.%20-Jerry%20Seinfeld"},{"section":"5d23b5e4bc9533.13897733","element":5,"operator":"isnotempty","value":""}]}'
+            ],
+            selectbox_logic: ["1", "1"],
+            selectbox_class: ["", ""],
+            selectbox_container_id: ["", ""],
+            selectbox_include_tax_for_fee_price_type: ["", ""],
+            selectbox_tax_class_for_fee_price_type: ["", ""],
+            selectbox_hide_element_label_in_cart: ["", ""],
+            selectbox_hide_element_value_in_cart: ["", ""],
+            selectbox_hide_element_label_in_order: ["", ""],
+            selectbox_hide_element_value_in_order: ["", ""],
+            selectbox_hide_element_label_in_floatbox: ["", ""],
+            selectbox_hide_element_value_in_floatbox: ["", ""],
+            textarea_internal_name: ["Text Area"],
+            textarea_header_size: ["10"],
+            textarea_header_title: [""],
+            textarea_header_title_position: [""],
+            textarea_header_title_color: [""],
+            textarea_header_subtitle: [
+              "<p>Write a custom message to display on the gift card</p>"
+            ],
+            textarea_header_subtitle_position: [""],
+            textarea_header_subtitle_color: [""],
+            textarea_divider_type: ["none"],
+            textarea_enabled: ["1"],
+            textarea_required: ["0"],
+            textarea_price: [""],
+            textarea_sale_price: [""],
+            textarea_text_before_price: [""],
+            textarea_text_after_price: [""],
+            textarea_price_type: [""],
+            textarea_freechars: [""],
+            textarea_hide_amount: [""],
+            textarea_quantity: [""],
+            textarea_quantity_min: [""],
+            textarea_quantity_max: [""],
+            textarea_quantity_step: [""],
+            textarea_quantity_default_value: [""],
+            textarea_placeholder: [""],
+            textarea_min_chars: ["1"],
+            textarea_max_chars: [""],
+            textarea_default_value: [""],
+            textarea_validation1: [""],
+            textarea_uniqid: ["5d23b5e4bc9642.07058587"],
+            textarea_clogic: [
+              '{"element":"5d23b5e4bc9642.07058587","toggle":"hide","what":"any","rules":[{"section":"5d23b5e4bc9533.13897733","element":3,"operator":"is","value":"There%20are%20two%20great%20days%20in%20a%20person\'s%20life%20-%20the%20day%20we%20are%20born%20and%20the%20day%20we%20discover%20why.%20%20-William%20Barclay"},{"section":"5d23b5e4bc9533.13897733","element":3,"operator":"is","value":"Today%20you%20are%20you!%20That%20is%20truer%20than%20true!%20There%20is%20no%20one%20alive%20who%20is%20you-er%20than%20you!%20%20-Dr.%20Seuss"},{"section":"5d23b5e4bc9533.13897733","element":3,"operator":"is","value":"When%20you%20wake%20up%20every%20day%2C%20it\'s%20like%20a%20new%20birthday%3A%20it\'s%20a%20new%20chance%20to%20be%20great%20again%20and%20make%20great%20decisions.%20%20-Poo%20Bear"},{"section":"5d23b5e4bc9533.13897733","element":3,"operator":"is","value":"Don\'t%20just%20count%20your%20years%2C%20make%20your%20years%20count.%20%20-George%20Meredith"},{"section":"5d23b5e4bc9533.13897733","element":3,"operator":"is","value":"You%20know%20you\'re%20getting%20old%20when%20you%20get%20that%20one%20candle%20on%20the%20cake.%20It\'s%20like%2C%20\'See%20if%20you%20can%20blow%20this%20out.%20-Jerry%20Seinfeld"},{"section":"5d23b5e4bc9533.13897733","element":4,"operator":"is","value":"The%20secret%20of%20a%20happy%20marriage%20is%20finding%20the%20right%20person.%20You%20know%20they\'re%20right%20if%20you%20love%20to%20be%20with%20them%20all%20the%20time.%20%20-Julia%20Child"},{"section":"5d23b5e4bc9533.13897733","element":4,"operator":"is","value":"A%20wedding%20anniversary%20is%20the%20celebration%20of%20love%2C%20trust%2C%20partnership%2C%20tolerance%20and%20tenacity.%20The%20order%20varies%20for%20any%20given%20year.%20%20-Paul%20Sweeney"},{"section":"5d23b5e4bc9533.13897733","element":4,"operator":"is","value":"You%20were%20made%20perfectly%20to%20be%20loved%20-%20and%20surely%20I%20have%20loved%20you%2C%20in%20the%20idea%20of%20you%2C%20my%20whole%20life%20long.%20%20-Elizabeth%20Barrett%20Browning"},{"section":"5d23b5e4bc9533.13897733","element":4,"operator":"is","value":"An%20anniversary%20is%20a%20reminder%20as%20to%20why%20you%20love%20and%20married%20this%20person.%20%20-Zoe%20Foster%20Blake"},{"section":"5d23b5e4bc9533.13897733","element":4,"operator":"is","value":"Love%20me%20or%20hate%20me%2C%20both%20are%20in%20my%20favour.%20If%20you%20love%20me%2C%20I%20will%20always%20be%20in%20your%20heart%2C%20and%20if%20you%20hate%20me%2C%20I%20will%20be%20in%20your%20mind.%20%20-Qandeel%20Baloch"}]}'
+            ],
+            textarea_logic: ["1"],
+            textarea_class: [""],
+            textarea_container_id: [""],
+            textarea_include_tax_for_fee_price_type: [""],
+            textarea_tax_class_for_fee_price_type: [""],
+            textarea_hide_element_label_in_cart: [""],
+            textarea_hide_element_value_in_cart: [""],
+            textarea_hide_element_label_in_order: [""],
+            textarea_hide_element_value_in_order: [""],
+            textarea_hide_element_label_in_floatbox: [""],
+            textarea_hide_element_value_in_floatbox: [""]
+          }
+        }
+      }
+    ],
     _links: {
       self: [
         {
-          href: "https://telebardelivery.com/wp-json/wc/v1/products/938"
+          href: "https://telebardelivery.com/wp-json/wc/v3/products/938"
         }
       ],
       collection: [
         {
-          href: "https://telebardelivery.com/wp-json/wc/v1/products"
+          href: "https://telebardelivery.com/wp-json/wc/v3/products"
         }
       ]
     }
