@@ -20,7 +20,10 @@ class ProductsListScreen extends Component<Props> {
   }
 
   render() {
-    return (
+    // if (this.props.products.length) debugger;
+    return !this.props.products.length ? (
+      <Text>Loading.</Text>
+    ) : (
       <FlatList
         data={this.props.products}
         renderItem={({ item }) => (
@@ -35,9 +38,13 @@ class ProductsListScreen extends Component<Props> {
   }
 }
 
-export default connect(({ productsReducer }) => ({
-  products: Object.values(productsReducer.products).map(p => new Product(p))
-}))(ProductsListScreen);
+export default connect(({ productsReducer }) => {
+  const products = Object.values(productsReducer.products);
+  // if (products.length) debugger;
+  return {
+    products
+  };
+})(ProductsListScreen);
 
 const styles = {
   container: {

@@ -19,6 +19,8 @@ export default class Product {
   relatedIds: number[];
   categories: { id: number, name: string, slug: string }[];
   images: { id: number, src: string, name: string, alt: string }[];
+  tags: { id: number, name: string, slug: string }[];
+
   attributes: {
     id: number,
     name: string,
@@ -29,61 +31,30 @@ export default class Product {
   }[];
   // #endregion
 
-  constructor(json: Object) {
-    this.id = json.id;
-    this.name = json.name;
-    this.slug = json.slug;
-    this.featured = json.featured;
-    this.description = json.description;
-    this.shortDescription = json.shortDescription;
-    this.sku = json.sku;
-    this.price = json.price;
-    this.regularPrice = json.regularPrice;
-    this.salePrice = json.salePrice;
-    this.onSale = json.onSale;
-    this.relatedIds = json.relatedIds;
-    this.categories = json.categories;
-    this.images = json.images;
-    this.attributes = json.attributes;
-  }
-
-  static fromApi(apiJson: Object): Object {
-    const {
-      id,
-      name,
-      slug,
-      featured,
-      sku,
-      categories,
-      images,
-      tags,
-      attributes
-    } = apiJson;
+  static fromApi(apiObj: Object): Product {
+    const prod = new Product();
 
     const fromHtml = str => html.fromString(str, { wordwrap: false });
-    const description = fromHtml(apiJson.description);
-    const shortDescription = fromHtml(apiJson.short_description);
+    prod.description = fromHtml(apiObj.description);
+    prod.shortDescription = fromHtml(apiObj.short_description);
+    prod.price = Number(apiObj.price);
+    prod.regularPrice = Number(apiObj.regular_price);
+    prod.salePrice = Number(apiObj.sale_price) || null;
+    prod.onSale = apiObj.on_sale;
+    prod.relatedIds = apiObj.related_ids;
+    prod.id = apiObj.id;
+    prod.name = apiObj.name;
+    prod.slug = apiObj.slug;
+    prod.featured = apiObj.featured;
+    prod.sku = apiObj.sku;
+    prod.categories = apiObj.categories;
+    prod.images = apiObj.images;
+    prod.tags = apiObj.tags;
+    prod.attributes = apiObj.attributes;
 
-    let json: Object = {
-      id,
-      name,
-      slug,
-      featured,
-      description,
-      shortDescription,
-      sku,
-      price: Number(apiJson.price),
-      regularPrice: Number(apiJson.regular_price),
-      salePrice: Number(apiJson.sale_price) || null,
-      onSale: apiJson.on_sale,
-      relatedIds: apiJson.related_ids,
-      categories,
-      images,
-      tags,
-      attributes
-    };
-    return json;
+    return prod;
   }
+
   static collectionFromApiArray(array: Object[]): ProductCollection {
     const products: ProductCollection = {};
     array.forEach(p => (products[p.id] = Product.fromApi(p)));
