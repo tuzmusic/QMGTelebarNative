@@ -30,6 +30,7 @@ export default class ProductDetailScreen extends Component<Props> {
         <View style={styles.textContainer}>
           <Text style={text.name}>{product.name}</Text>
           <Text style={text.price}>${product.price}</Text>
+          <Text style={text.price}>{product.description}</Text>
         </View>
       </View>
     );
