@@ -4,7 +4,7 @@ import productsSaga, {
   fetchProductsApi,
   fetchProductsSaga
 } from "../src/redux/actions/productActions";
-import apiResponse from "../__mocks__/api-index-response";
+import { products as productsResponse } from "../__mocks__/api-index-response";
 import { productFetchMock } from "../__mocks__/setup-fetch-mocks";
 import axios from "axios";
 import type {
@@ -22,13 +22,13 @@ afterEach(() => mock.reset());
 describe("fetchProductsApi", () => {
   it("fetches the products", async () => {
     const products: Object[] = await fetchProductsApi();
-    expect(products).toEqual(apiResponse);
+    expect(products).toEqual(products);
   });
 });
 
 fdescribe("fetchProductsSaga", () => {
   const products: ProductCollection = Product.collectionFromApiArray(
-    apiResponse
+    productsResponse
   );
   const startAction: FETCH_PRODUCTS_START = { type: "FETCH_PRODUCTS_START" };
   const successAction: FETCH_PRODUCTS_SUCCESS = {

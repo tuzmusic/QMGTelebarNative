@@ -1,6 +1,6 @@
 // @flow
 import productsReducer from "../src/redux/reducers/productsReducer";
-import apiResponse from "../__mocks__/api-index-response";
+import { products as productsResponse } from "../__mocks__/api-index-response";
 import Product from "../src/models/Product";
 import type {
   FETCH_PRODUCTS_START,
@@ -9,7 +9,7 @@ import type {
 } from "../src/redux/reducers/productsReducer";
 
 describe("Products reducer", () => {
-  const products = Product.collectionFromApiArray(apiResponse);
+  const products = Product.collectionFromApiArray(productsResponse);
   const initialState = {
     products: {},
     error: "",
