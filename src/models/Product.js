@@ -1,5 +1,4 @@
 // @flow
-import html from "html-to-text";
 import type { ProductCollection } from "../redux/ProductTypes";
 
 export default class Product {
@@ -36,12 +35,11 @@ export default class Product {
   static fromApi(apiObj: Object): Product {
     const prod = new Product();
 
-    const fromHtml = str => html.fromString(str, { wordwrap: false });
     prod.id = apiObj.id;
     prod.name = apiObj.name;
     prod.slug = apiObj.slug;
-    prod.description = fromHtml(apiObj.description);
-    prod.shortDescription = fromHtml(apiObj.short_description);
+    prod.description = apiObj.description;
+    prod.shortDescription = apiObj.short_description;
     prod.price = Number(apiObj.price);
     prod.images = apiObj.images || [
       {
