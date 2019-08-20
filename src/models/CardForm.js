@@ -1,5 +1,6 @@
 // @flow
 import Form from "./Form";
+import Product from "./Product";
 
 export type CardFormSelectField = {
   title: string,
@@ -15,7 +16,9 @@ export default class CardForm extends Form {
     const base = new CardForm();
     const baseForm = Form.fromApiProduct(obj);
     const form = Object.assign(base, { ...baseForm });
-    const info = obj.form_info;
+
+    // allows this to be called with a direct API product response (an Object with a form_info prop) or on a Product (with a formInfo prop) that we can treat like an Object (pojo)
+    const info = obj.formInfo || obj.form_info;
 
     form.textAreaTitle = info.text_area_title;
 

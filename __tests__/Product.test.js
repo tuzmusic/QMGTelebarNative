@@ -1,5 +1,5 @@
 import Product from "../src/models/Product";
-import Subscription from "../src/models/SubscriptionProduct";
+import CardForm from "../src/models/CardForm";
 import { products } from "../__mocks__/products-response";
 // import expectedProduct from "../__mocks__/mock-created-object";
 
@@ -18,6 +18,7 @@ describe("Product", () => {
 
 function expectedProduct() {
   const prod = new Product();
+
   const props = {
     id: 1042,
     name: "M&M",
@@ -30,9 +31,10 @@ function expectedProduct() {
     images: [
       {
         src:
-          "https://telebar.local/wp-content/uploads/2019/04/Telebar-MM-1-370x370.jpg"
+          "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-MM-1-370x370.jpg"
       }
-    ]
+    ],
+    formInfo: products[0].form_info
   };
   return Object.assign(prod, { ...props });
 }

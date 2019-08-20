@@ -7,7 +7,7 @@ import type { ProductCollection } from "../redux/ProductTypes";
 import ProductListCellView from "../components/ProductListCellView";
 import { DEV_MODE } from "../constants/devMode";
 
-const AUTOMATE = DEV_MODE && true;
+const AUTOMATE = DEV_MODE && false;
 
 type Props = {
   products: Product[],
@@ -17,7 +17,7 @@ type Props = {
 class ProductsListScreen extends Component<Props> {
   automate() {
     setTimeout(() => {
-      this.onProductPress(this.props.products[0]);
+      this.onProductPress(this.props.products[this.props.products.length - 1]);
     }, 1000);
   }
 

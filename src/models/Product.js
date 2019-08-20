@@ -11,7 +11,7 @@ export default class Product {
   shortDescription: string;
   price: number;
   images: { id: number, src: string, name: string, alt: string }[];
-
+  formInfo: Object;
   /* UNUSED
   sku: string;
   regularPrice: number;
@@ -48,6 +48,7 @@ export default class Product {
         src: apiObj.featured_image_url
       }
     ];
+    prod.formInfo = apiObj.form_info;
     /* UNUSED
     prod.sku = apiObj.sku;
     prod.regularPrice = Number(apiObj.regular_price);

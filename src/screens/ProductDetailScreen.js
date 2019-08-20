@@ -4,6 +4,7 @@ import { Text, View, ActivityIndicator } from "react-native";
 import { Image } from "react-native-elements";
 import Product from "../models/Product";
 import { MaterialIndicator } from "react-native-indicators";
+import FormContainer from "../subviews/FormContainer";
 
 type Props = { product: Product };
 
@@ -20,18 +21,19 @@ export default class ProductDetailScreen extends Component<Props> {
     const image = product.images[0];
     return (
       <View style={styles.container}>
-        <View style={styles.imageContainer}>
+        <View /* IMAGE */ style={styles.imageContainer}>
           <Image
             style={[styles.image]}
             source={{ uri: image.src }}
             PlaceholderContent={<ActivityIndicator color={"blue"} />}
           />
         </View>
-        <View style={styles.textContainer}>
+        <View /* BASIC INFO */ style={styles.textContainer}>
           <Text style={text.name}>{product.name}</Text>
           <Text style={text.price}>${product.price}</Text>
           <Text style={text.price}>{product.description}</Text>
         </View>
+        <FormContainer product={product} />
       </View>
     );
   }
