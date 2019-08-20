@@ -20,7 +20,6 @@ class ProductsListScreen extends Component<Props> {
   }
 
   render() {
-    // if (this.props.products.length) debugger;
     return !this.props.products.length ? (
       <Text>Loading.</Text>
     ) : (
@@ -39,10 +38,8 @@ class ProductsListScreen extends Component<Props> {
 }
 
 export default connect(({ productsReducer }) => {
-  const products = Object.values(productsReducer.products);
-  // if (products.length) debugger;
   return {
-    products
+    products: Object.values(productsReducer.products)
   };
 })(ProductsListScreen);
 
