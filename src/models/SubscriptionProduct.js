@@ -9,7 +9,7 @@ export default class SubscriptionProduct extends Product {
     interval: number
   };
 
-  static fromApi(obj: ProductCollection): SubscriptionProduct {
+  static fromApi(obj: Object): SubscriptionProduct {
     const sp = new SubscriptionProduct();
     const p = super.fromApi(obj);
     const prod = Object.assign(sp, { ...p });

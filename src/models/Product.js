@@ -43,7 +43,11 @@ export default class Product {
     prod.description = fromHtml(apiObj.description);
     prod.shortDescription = fromHtml(apiObj.short_description);
     prod.price = Number(apiObj.price);
-    prod.images = apiObj.images;
+    prod.images = apiObj.images || [
+      {
+        src: apiObj.featured_image_url
+      }
+    ];
     /* UNUSED
     prod.sku = apiObj.sku;
     prod.regularPrice = Number(apiObj.regular_price);
