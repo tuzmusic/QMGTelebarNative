@@ -2,5 +2,10 @@
   "javascript.validate.enable": false,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+  "search.exclude": {
+    "**/android": true,
+    "**/flow-typed": true,
+    "**/ios": true
+  }
 }

@@ -3,8 +3,11 @@ import React, { Component } from "react";
 import { FlatList, View, ScrollView, Text } from "react-native";
 import { connect } from "react-redux";
 import Product from "../models/Product";
-import type { ProductCollection } from "../models/Product";
+import type { ProductCollection } from "../redux/ProductTypes";
 import ProductListCellView from "../components/ProductListCellView";
+import { DEV_MODE } from "../constants/devMode";
+
+const AUTOMATE = DEV_MODE && true;
 
 type Props = {
   products: Product[],
@@ -12,6 +15,14 @@ type Props = {
 };
 
 class ProductsListScreen extends Component<Props> {
+  automate() {
+    setTimeout(() => {
+      this.onProductPress(this.props.products[0]);
+    }, 1000);
+  }
+
+  componentDidMount = () => AUTOMATE && this.automate();
+
   onProductPress(product) {
     this.props.navigation.navigate("DetailScreen", {
       title: product.name,

@@ -9,7 +9,6 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 import ProductsListScreen from "../screens/ProductsListScreen";
-import TabBarIcon from "../components/TabBarIcon";
 import { ListStack } from "./TabsAndStacks";
 import { fetchProducts } from "../redux/actions/productActions";
 
