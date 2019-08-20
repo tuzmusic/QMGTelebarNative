@@ -1,7 +1,7 @@
 import SubscriptionProduct from "../src/models/SubscriptionProduct";
 import { response as apiResponse } from "../__mocks__/subscription-products-response";
 
-describe("SubscriptionProduct", () => {
+xdescribe("SubscriptionProduct", () => {
   const obj = apiResponse[0];
   describe("fromApi", () => {
     it("creates an object from an api response", () => {
