@@ -11,10 +11,17 @@ type Props = {
 export default class CardField extends Component<Props> {
   render() {
     const field = this.props.field;
+    const checkedIcon = () => <Text>ø</Text>;
+    const uncheckedIcon = () => <Text>O</Text>;
     return (
       <View>
         <CheckBox title={field.title} />
+        {field.options && <SelectOptions field={field} />}
       </View>
     );
   }
 }
+
+const SelectOptions = ({ field }) => {
+  return field.options.map(opt => <Text>{opt}</Text>);
+};

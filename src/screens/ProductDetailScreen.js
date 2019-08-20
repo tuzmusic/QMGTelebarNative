@@ -1,6 +1,12 @@
 // @flow
 import React, { Component } from "react";
-import { Text, View, ActivityIndicator } from "react-native";
+import {
+  Text,
+  View,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  ScrollView
+} from "react-native";
 import { Image, Divider } from "react-native-elements";
 import Product from "../models/Product";
 import { MaterialIndicator } from "react-native-indicators";
@@ -21,27 +27,31 @@ export default class ProductDetailScreen extends Component<Props> {
     const product = this.product;
     const image = product.images[0];
     return (
-      <View style={styles.container}>
-        <View /* IMAGE */ style={styles.imageContainer}>
-          <Image
-            style={[styles.image]}
-            source={{ uri: image.src }}
-            PlaceholderContent={<ActivityIndicator color={"blue"} />}
-          />
-        </View>
-        <View /* BASIC INFO */ style={styles.basicInfoContainer}>
-          <Text style={text.name}>{product.name}</Text>
-          <Text style={text.price}>${product.price}</Text>
-        </View>
-        <View style={styles.bodyContainer}>
-          <Text style={text.description}>
-            {// the website itself appears to use the short_description
-            product.shortDescription || product.description}
-          </Text>
-          <Space />
-          <FormContainer product={product} />
-        </View>
-      </View>
+      <KeyboardAvoidingView behavior="height" style={{}}>
+        <ScrollView>
+          <View style={styles.container}>
+            <View /* IMAGE */ style={styles.imageContainer}>
+              <Image
+                style={[styles.image]}
+                source={{ uri: image.src }}
+                PlaceholderContent={<ActivityIndicator color={"blue"} />}
+              />
+            </View>
+            <View /* BASIC INFO */ style={styles.basicInfoContainer}>
+              <Text style={text.name}>{product.name}</Text>
+              <Text style={text.price}>${product.price}</Text>
+            </View>
+            <View /* BODY AND FORM */ style={styles.bodyContainer}>
+              <Text style={text.description}>
+                {// the website itself appears to use the short_description
+                product.shortDescription || product.description}
+              </Text>
+              <Space />
+              <FormContainer product={product} />
+            </View>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }
