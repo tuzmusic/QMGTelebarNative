@@ -1,6 +1,6 @@
 // @flow
 import Product from "../../models/Product";
-import type { ProductCollection } from "../../models/Product";
+import type { ProductCollection } from "../../redux/ProductTypes";
 type ProductState = {
   +products: ProductCollection,
   +error: string,
@@ -21,8 +21,6 @@ export default function productsReducer(
     case "FETCH_PRODUCTS_START":
       return { ...state, isLoading: true };
     case "FETCH_PRODUCTS_SUCCESS":
-      console.log(action.products);
-
       return { ...state, isLoading: false, products: action.products };
     case "FETCH_PRODUCTS_FAILURE":
       return { ...state, isLoading: false, error: action.error.message };

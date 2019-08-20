@@ -1,5 +1,5 @@
 import MockAdapter from "axios-mock-adapter";
-import { products } from "./api-index-response";
+import { products } from "./products-response";
 import axios from "axios";
 import { ApiUrls } from "../src/constants/urls";
 

@@ -5,11 +5,9 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* QMGTelebarNativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* QMGTelebarNativeTests.m */; };
 		0262CC39F44416C8EAC9BEAE /* libPods-QMGTelebarNative-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C347A8222E970141A7AC4ABB /* libPods-QMGTelebarNative-tvOSTests.a */; };
-		0315B90D3F5B49CBA8C24E4C /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72062656D4E4409CA517171B /* Entypo.ttf */; };
 		03682B522680609E1675A975 /* libPods-QMGTelebarNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C91F97DB48FFDC1594A369 /* libPods-QMGTelebarNative.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
@@ -20,21 +18,6 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* QMGTelebarNativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* QMGTelebarNativeTests.m */; };
-		3491B36B52864DA5B8801D6A /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DD148437E074B399C888CE8 /* FontAwesome5_Solid.ttf */; };
-		844C7EE5475345D5A44BB588 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC02046C12E647978CE2F6D1 /* SimpleLineIcons.ttf */; };
-		90A5FE01775540228D3BEB11 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5092D0B803D4B04B9A9996E /* MaterialIcons.ttf */; };
-		937EAFD8B6A5487ABF80E29D /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A323B37BB9804F26B95A1450 /* FontAwesome5_Brands.ttf */; };
-		9D325822608F4925A8C0F2A9 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8893D9E011B140AD9AD3DB3C /* Octicons.ttf */; };
-		A78C8ED8487743D19A5AFF41 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 947943627ADF48ADA0FCF22D /* AntDesign.ttf */; };
-		AA240F912521404AAA00C7E8 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 744F4083C188474F8E3921BC /* FontAwesome5_Regular.ttf */; };
-		AF58CBB2E7354FB9A755DE00 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A75AE27CF5D944AAAA94ED41 /* Feather.ttf */; };
-		BD0D1F592E964FBD8658C4BF /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CD51633D948432F8CF076C4 /* FontAwesome.ttf */; };
-		BF312B9A1A0D4F3EBB638308 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E349346EF4940B1A35FB376 /* Foundation.ttf */; };
-		BF534F176C244F699EE3F905 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2BE28D201674BDAB4FFE75F /* Ionicons.ttf */; };
-		C4CEE16D147D4FAD9469EDF2 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 051901B6958E4D569EDC4918 /* EvilIcons.ttf */; };
-		CFF5ABCB113C4AA58D57F8C1 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ACBC18AC5B84890BCD92111 /* Zocial.ttf */; };
-		D14DE25B91D34AAFB1C405C9 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B64BC258AEFE4A3E8BEC6ACE /* MaterialCommunityIcons.ttf */; };
-		F06BDC6863684E8897A75107 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13D3DB0B0C69444C97C8751D /* Fontisto.ttf */; };
 		F1203CD119B1B990A8E4BB9E /* libPods-QMGTelebarNative-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF50719082B17EB66D4F430 /* libPods-QMGTelebarNative-tvOS.a */; };
 /* End PBXBuildFile section */
 
@@ -53,20 +36,6 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "QMGTelebarNative-tvOS";
 		};
-		A6CC3D4822E9F0E20039F782 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A6CC3D4322E9F0E10039F782 /* RNGestureHandler.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNGestureHandler;
-		};
-		A6CC3D4A22E9F0E20039F782 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A6CC3D4322E9F0E10039F782 /* RNGestureHandler.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B5C32A36220C603B000FFB8D;
-			remoteInfo = "RNGestureHandler-tvOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -74,7 +43,6 @@
 		00E356EE1AD99517003FC87E /* QMGTelebarNativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QMGTelebarNativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* QMGTelebarNativeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QMGTelebarNativeTests.m; sourceTree = "<group>"; };
-		051901B6958E4D569EDC4918 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		0B9F4AE351D525B0C75FDA5E /* Pods-QMGTelebarNative-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QMGTelebarNative-tvOS.release.xcconfig"; path = "Target Support Files/Pods-QMGTelebarNative-tvOS/Pods-QMGTelebarNative-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		0F60937329141ABCCC7FD8AF /* Pods-QMGTelebarNativeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QMGTelebarNativeTests.release.xcconfig"; path = "Target Support Files/Pods-QMGTelebarNativeTests/Pods-QMGTelebarNativeTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* QMGTelebarNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QMGTelebarNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,35 +52,19 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = QMGTelebarNative/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = QMGTelebarNative/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = QMGTelebarNative/main.m; sourceTree = "<group>"; };
-		13D3DB0B0C69444C97C8751D /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		1DA7015743D8A59B0D14578A /* Pods-QMGTelebarNative-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QMGTelebarNative-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-QMGTelebarNative-tvOSTests/Pods-QMGTelebarNative-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* QMGTelebarNative-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QMGTelebarNative-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* QMGTelebarNative-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "QMGTelebarNative-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F32719FF72DBAA005BDABEC /* Pods-QMGTelebarNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QMGTelebarNative.release.xcconfig"; path = "Target Support Files/Pods-QMGTelebarNative/Pods-QMGTelebarNative.release.xcconfig"; sourceTree = "<group>"; };
 		3220B8D19472F910436C79CA /* Pods-QMGTelebarNative-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QMGTelebarNative-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-QMGTelebarNative-tvOS/Pods-QMGTelebarNative-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		60C91F97DB48FFDC1594A369 /* libPods-QMGTelebarNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QMGTelebarNative.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E349346EF4940B1A35FB376 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		72062656D4E4409CA517171B /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		744F4083C188474F8E3921BC /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
-		8893D9E011B140AD9AD3DB3C /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		8ACBC18AC5B84890BCD92111 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		8CD51633D948432F8CF076C4 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		8DD148437E074B399C888CE8 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
-		947943627ADF48ADA0FCF22D /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		A0F0E0B1D67380B02515D41F /* Pods-QMGTelebarNativeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QMGTelebarNativeTests.debug.xcconfig"; path = "Target Support Files/Pods-QMGTelebarNativeTests/Pods-QMGTelebarNativeTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A323B37BB9804F26B95A1450 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
-		A5092D0B803D4B04B9A9996E /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		A6CC3D4322E9F0E10039F782 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
-		A75AE27CF5D944AAAA94ED41 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		A7A869A14566B71068025910 /* Pods-QMGTelebarNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QMGTelebarNative.debug.xcconfig"; path = "Target Support Files/Pods-QMGTelebarNative/Pods-QMGTelebarNative.debug.xcconfig"; sourceTree = "<group>"; };
-		B64BC258AEFE4A3E8BEC6ACE /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		BE7D51146DB7FBE981336723 /* Pods-QMGTelebarNative-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QMGTelebarNative-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-QMGTelebarNative-tvOSTests/Pods-QMGTelebarNative-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C03D5BEE950B5549500A1C09 /* libPods-QMGTelebarNativeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QMGTelebarNativeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C347A8222E970141A7AC4ABB /* libPods-QMGTelebarNative-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QMGTelebarNative-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC02046C12E647978CE2F6D1 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F2BE28D201674BDAB4FFE75F /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		FBF50719082B17EB66D4F430 /* libPods-QMGTelebarNative-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QMGTelebarNative-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -199,22 +151,6 @@
 		8086C87C5A504605AE4A836C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				947943627ADF48ADA0FCF22D /* AntDesign.ttf */,
-				72062656D4E4409CA517171B /* Entypo.ttf */,
-				051901B6958E4D569EDC4918 /* EvilIcons.ttf */,
-				A75AE27CF5D944AAAA94ED41 /* Feather.ttf */,
-				8CD51633D948432F8CF076C4 /* FontAwesome.ttf */,
-				A323B37BB9804F26B95A1450 /* FontAwesome5_Brands.ttf */,
-				744F4083C188474F8E3921BC /* FontAwesome5_Regular.ttf */,
-				8DD148437E074B399C888CE8 /* FontAwesome5_Solid.ttf */,
-				13D3DB0B0C69444C97C8751D /* Fontisto.ttf */,
-				6E349346EF4940B1A35FB376 /* Foundation.ttf */,
-				F2BE28D201674BDAB4FFE75F /* Ionicons.ttf */,
-				B64BC258AEFE4A3E8BEC6ACE /* MaterialCommunityIcons.ttf */,
-				A5092D0B803D4B04B9A9996E /* MaterialIcons.ttf */,
-				8893D9E011B140AD9AD3DB3C /* Octicons.ttf */,
-				CC02046C12E647978CE2F6D1 /* SimpleLineIcons.ttf */,
-				8ACBC18AC5B84890BCD92111 /* Zocial.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -222,7 +158,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				A6CC3D4322E9F0E10039F782 /* RNGestureHandler.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -250,15 +185,6 @@
 				00E356EE1AD99517003FC87E /* QMGTelebarNativeTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* QMGTelebarNative-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* QMGTelebarNative-tvOSTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A6CC3D4422E9F0E10039F782 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A6CC3D4922E9F0E20039F782 /* libRNGestureHandler.a */,
-				A6CC3D4B22E9F0E20039F782 /* libRNGestureHandler-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -401,10 +327,6 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = A6CC3D4422E9F0E10039F782 /* Products */;
-					ProjectRef = A6CC3D4322E9F0E10039F782 /* RNGestureHandler.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -417,13 +339,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A6CC3D4922E9F0E20039F782 /* libRNGestureHandler.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNGestureHandler.a;
-			remoteRef = A6CC3D4822E9F0E20039F782 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		A6CC3D4B22E9F0E20039F782 /* libRNGestureHandler-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -447,22 +362,6 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				A78C8ED8487743D19A5AFF41 /* AntDesign.ttf in Resources */,
-				0315B90D3F5B49CBA8C24E4C /* Entypo.ttf in Resources */,
-				C4CEE16D147D4FAD9469EDF2 /* EvilIcons.ttf in Resources */,
-				AF58CBB2E7354FB9A755DE00 /* Feather.ttf in Resources */,
-				BD0D1F592E964FBD8658C4BF /* FontAwesome.ttf in Resources */,
-				937EAFD8B6A5487ABF80E29D /* FontAwesome5_Brands.ttf in Resources */,
-				AA240F912521404AAA00C7E8 /* FontAwesome5_Regular.ttf in Resources */,
-				3491B36B52864DA5B8801D6A /* FontAwesome5_Solid.ttf in Resources */,
-				F06BDC6863684E8897A75107 /* Fontisto.ttf in Resources */,
-				BF312B9A1A0D4F3EBB638308 /* Foundation.ttf in Resources */,
-				BF534F176C244F699EE3F905 /* Ionicons.ttf in Resources */,
-				D14DE25B91D34AAFB1C405C9 /* MaterialCommunityIcons.ttf in Resources */,
-				90A5FE01775540228D3BEB11 /* MaterialIcons.ttf in Resources */,
-				9D325822608F4925A8C0F2A9 /* Octicons.ttf in Resources */,
-				844C7EE5475345D5A44BB588 /* SimpleLineIcons.ttf in Resources */,
-				CFF5ABCB113C4AA58D57F8C1 /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,6 +675,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QMGTelebarNative.app/QMGTelebarNative";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -797,6 +699,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QMGTelebarNative.app/QMGTelebarNative";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};
@@ -818,6 +723,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = QMGTelebarNative;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -838,6 +746,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = QMGTelebarNative;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};
@@ -866,6 +777,9 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -894,6 +808,9 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};
@@ -921,6 +838,9 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QMGTelebarNative-tvOS.app/QMGTelebarNative-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -948,6 +868,9 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QMGTelebarNative-tvOS.app/QMGTelebarNative-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};

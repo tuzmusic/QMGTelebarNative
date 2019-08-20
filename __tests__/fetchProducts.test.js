@@ -4,7 +4,7 @@ import productsSaga, {
   fetchProductsApi,
   fetchProductsSaga
 } from "../src/redux/actions/productActions";
-import { products as productsResponse } from "../__mocks__/api-index-response";
+import { products as productsResponse } from "../__mocks__/products-response";
 import { productFetchMock } from "../__mocks__/setup-fetch-mocks";
 import axios from "axios";
 import type {
@@ -13,7 +13,7 @@ import type {
   FETCH_PRODUCTS_FAILURE
 } from "../src/redux/reducers/productsReducer";
 import Product from "../src/models/Product";
-import type { ProductCollection } from "../src/models/Product";
+import type { ProductCollection } from "../src/redux/ProductTypes";
 // import recordSaga from "../recordSaga";
 
 const mock = productFetchMock();
@@ -35,9 +35,9 @@ fdescribe("fetchProductsSaga", () => {
     type: "FETCH_PRODUCTS_SUCCESS",
     products
   };
-//   it("dispatches the products", async () => {
-//     // using fetchProductsSaga goes through the whole action/saga but recordSaga isn't catching it
-//     const dispatched = await recordSaga(fetchProductsSaga, startAction);
-//     expect(dispatched).toContainEqual(successAction);
-//   });
-// });
+  //   it("dispatches the products", async () => {
+  //     // using fetchProductsSaga goes through the whole action/saga but recordSaga isn't catching it
+  //     const dispatched = await recordSaga(fetchProductsSaga, startAction);
+  //     expect(dispatched).toContainEqual(successAction);
+  //   });
+});

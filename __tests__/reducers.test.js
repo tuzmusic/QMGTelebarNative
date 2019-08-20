@@ -1,6 +1,6 @@
 // @flow
 import productsReducer from "../src/redux/reducers/productsReducer";
-import { products as productsResponse } from "../__mocks__/api-index-response";
+import { products as productsResponse } from "../__mocks__/products-response";
 import Product from "../src/models/Product";
 import type {
   FETCH_PRODUCTS_START,
