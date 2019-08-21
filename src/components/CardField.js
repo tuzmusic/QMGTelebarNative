@@ -20,6 +20,7 @@ export default class CardField extends Component<Props> {
       </View>
     );
   }
+  fixing;
 }
 
 const SelectOptions = ({ field }) => {

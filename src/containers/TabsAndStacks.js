@@ -26,5 +26,5 @@ const DetailScreen = {
 
 export const ListStack = createStackNavigator({ ListScreen, DetailScreen });
 ListStack.navigationOptions = {
-  // tabBarIcon: ({ focused: f }) => icon(f, "list", "", "feather")
+  tabBarIcon: ({ focused: f }) => icon(f, "list", "", "feather")
 };
