@@ -15,9 +15,11 @@ function expectedCardForm(): CardForm {
   const form = new CardForm();
   form.title =
     "Pick one of the following gift card messages or write your own custom message!";
+  form.type = "card";
   form.fields = [
     {
       title: "Add a Birthday Gift Card",
+      type: "select",
       placeholder: "Choose a Card",
       options: [
         "There are two great days in a person's life - the day we are born and the day we discover why. -William Barclay",
@@ -29,6 +31,7 @@ function expectedCardForm(): CardForm {
     },
     {
       title: "Add a Anniversary Gift Card",
+      type: "select",
       placeholder: "Choose a Card",
       options: [
         "The secret of a happy marriage is finding the right person. You know they're right if you love to be with them all the time. -Julia Child",
@@ -37,8 +40,11 @@ function expectedCardForm(): CardForm {
         "An anniversary is a reminder as to why you love and married this person. -Zoe Foster Blake",
         "Love me or hate me, both are in my favour. If you love me, I will always be in your heart, and if you hate me, I will be in your mind. -Qandeel Baloch"
       ]
+    },
+    {
+      type: "textarea",
+      title: "Write a custom message to display on the gift card"
     }
   ];
-  form.textAreaTitle = "Write a custom message to display on the gift card";
   return form;
 }

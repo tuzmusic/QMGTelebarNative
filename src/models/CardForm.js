@@ -20,11 +20,10 @@ export default class CardForm extends Form {
     // allows this to be called with a direct API product response (an Object with a form_info prop) or on a Product (with a formInfo prop) that we can treat like an Object (pojo)
     const info = obj.formInfo || obj.form_info;
 
-    form.textAreaTitle = info.text_area_title;
-
-    form.fields = info.selection_fields.map(f => {
-      const { title, placeholder_text, options } = f;
-      return { title, options, placeholder: placeholder_text };
+    form.fields = info.fields.map(f => {
+      const { placeholder_text, ...form } = f;
+      if (placeholder_text) form.placeholder = placeholder_text;
+      return form;
     });
 
     return form;
