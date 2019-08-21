@@ -10,12 +10,21 @@ type Props = {
   selectionHandler: (field: CardFormSelectField, selection: string) => void,
   isCurrentField: boolean
 };
-type State = { showOptions: boolean, selectedOption: ?string };
+type State = { 
+  showOptions: boolean, 
+  showTextArea: boolean,
+  selectedOption: ?string 
+};
 
 export default class CardField extends Component<Props, State> {
-  state = { showOptions: false, selectedOption: null };
+  state = { 
+    showOptions: false, 
+    showTextArea: false, 
+    selectedOption: null 
+  };
 
   toggleOptions = () => this.setState({ showOptions: !this.state.showOptions });
+  toggleTextArea = () => this.setState({ showTextArea: !this.state.showTextArea });
 
   async handleOptionPress(option: string) {
     await this.setState({ selectedOption: option, showOptions: false });
@@ -24,13 +33,12 @@ export default class CardField extends Component<Props, State> {
 
   render() {
     const field = this.props.field;
-    field.title.startsWith("Add") && console.log(field.title, this.props.isCurrentField);
     return (
       <View>
         <CheckBox 
           title={field.title} 
           checked={this.props.isCurrentField} 
-          onPress={this.toggleOptions.bind(this)}
+          onPress={() => field.type === "select" ? this.toggleOptions() : this.toggleTextArea()}
         />
         {this.state.showOptions && (
           <SelectOptions
@@ -39,11 +47,23 @@ export default class CardField extends Component<Props, State> {
             onOptionPress={this.handleOptionPress.bind(this)}
           />
         )}
+        {this.state.showTextArea && <TextArea dismissOverlay={this.toggleTextArea.bind(this)}/>}
         {this.props.isCurrentField && <Text style={styles.message}>{this.state.selectedOption}</Text>}
       </View>
     );
   }
 }
+
+const TextArea = props => 
+    <Overlay
+      isVisible
+      // height={"auto"}
+      onBackdropPress={props.dismissOverlay}
+    >
+      <View>
+       <Text>Textarea</Text>
+      </View>
+    </Overlay>
 
 type SelectOptionsProps = { 
   field: CardFormSelectField, 
@@ -55,7 +75,6 @@ const SelectOptions = (props: SelectOptionsProps) => {
   return (
     <Overlay
       isVisible
-      overlayStyle={styles.overlay}
       height={"auto"}
       onBackdropPress={props.dismissOverlay}
     >

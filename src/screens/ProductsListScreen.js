@@ -18,7 +18,7 @@ class ProductsListScreen extends Component<Props> {
   automate() {
     setTimeout(() => {
       this.onProductPress(this.props.products[this.props.products.length - 1]);
-    }, 1000);
+    }, 100);
   }
 
   componentDidMount = () => AUTOMATE && this.automate();

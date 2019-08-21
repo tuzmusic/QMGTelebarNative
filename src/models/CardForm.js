@@ -4,6 +4,7 @@ import Product from "./Product";
 
 export type CardFormSelectField = {
   title: string,
+  type: string,
   placeholder: string,
   options: string[]
 };
