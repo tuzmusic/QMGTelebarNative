@@ -19,18 +19,32 @@ expect(form.title).toBe(
   "Pick one of the following gift card messages or write your own custom message!"
 );
 describe("CardFormView", () => {
-  const wrapper = render(
-    <React.Fragment>
-      <CardFormView form={form} />
-    </React.Fragment>
-  );
+  let wrapper, birthdayField;
 
-  const birthdayButton = wrapper.getByText("Add a Birthday Gift Card");
+  beforeEach(() => {
+    wrapper = render(
+      <React.Fragment>
+        <CardFormView form={form} />
+      </React.Fragment>
+    );
+    birthdayField = wrapper.getByText("Add a Birthday Gift Card");
+  });
+
+  const message1 =
+    "There are two great days in a person's life - the day we are born and the day we discover why. -William Barclay";
+  const message2 =
+    "Today you are you! That is truer than true! There is no one alive who is you-er than you! -Dr. Seuss";
 
   it("shows the options for a birthday card when clicked", () => {
-    const firstBdayMessage =
-      "There are two great days in a person's life - the day we are born and the day we discover why. -William Barclay";
-    fireEvent.press(birthdayButton);
-    expect(wrapper.getByText(firstBdayMessage)).toBeDefined();
+    fireEvent.press(birthdayField);
+    expect(wrapper.getByText(message1)).toBeDefined();
+  });
+
+  it("sets an option when clicked", () => {
+    fireEvent.press(birthdayField);
+    const firstOption = wrapper.getByText(message1);
+    fireEvent.press(firstOption);
+    expect(wrapper.queryByText(message2)).toBeNull();
+    expect(wrapper.getByText(message1)).toBeDefined();
   });
 });
