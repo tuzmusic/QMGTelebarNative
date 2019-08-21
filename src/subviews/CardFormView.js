@@ -13,6 +13,7 @@ export default class CardFormView extends Component<Props> {
 
     // THIS IS A BAND-AID. THE API NEEDS TO BE FIXED.
     form.fields = convertFields(form);
+
     return (
       <View>
         <Text style={styles.title}>{form.title}</Text>
