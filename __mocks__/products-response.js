@@ -8,7 +8,7 @@ export const products = [
     short_description:
       "Select the candy of your choice, then select choose one message for your gift card.  You can enter different addresses at checkout if desired",
     featured_image_url:
-      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-MM-1-370x370.jpg",
+      "https://telebar.local/wp-content/uploads/2019/04/Telebar-MM-1-370x370.jpg",
     images: "",
     price: "7",
     regular_price: "7",
@@ -21,9 +21,10 @@ export const products = [
       form_title:
         "Pick one of the following gift card messages or write your own custom message!",
       form_type: "card",
-      selection_fields: [
+      fields: [
         {
           title: "Add a Birthday Gift Card",
+          type: "select",
           placeholder_text: "Choose a Card",
           options: [
             "There are two great days in a person's life - the day we are born and the day we discover why. -William Barclay",
@@ -35,6 +36,7 @@ export const products = [
         },
         {
           title: "Add a Anniversary Gift Card",
+          type: "select",
           placeholder_text: "Choose a Card",
           options: [
             "The secret of a happy marriage is finding the right person. You know they're right if you love to be with them all the time. -Julia Child",
@@ -43,9 +45,12 @@ export const products = [
             "An anniversary is a reminder as to why you love and married this person. -Zoe Foster Blake",
             "Love me or hate me, both are in my favour. If you love me, I will always be in your heart, and if you hate me, I will be in your mind. -Qandeel Baloch"
           ]
+        },
+        {
+          type: "textarea",
+          title: "Write a custom message to display on the gift card"
         }
-      ],
-      text_area_title: "Write a custom message to display on the gift card"
+      ]
     }
   },
   {
@@ -57,7 +62,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Snickers-1-370x370.jpg",
+      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Snickers-1-370x370.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -69,18 +74,28 @@ export const products = [
     form_info: {
       form_title: "Select your frequency",
       form_type: "frequency",
-      options: [
+      fields: [
         {
-          frequency: "Weekly",
-          price: "2"
-        },
-        {
-          frequency: "Biweekly",
-          price: "4.50"
-        },
-        {
-          frequency: "Monthly",
-          price: "10"
+          type: "options",
+          options: [
+            [
+              {
+                frequency: "Weekly",
+                type: "option",
+                price: "2"
+              },
+              {
+                frequency: "Biweekly",
+                type: "option",
+                price: "4.50"
+              },
+              {
+                frequency: "Monthly",
+                type: "option",
+                price: "10"
+              }
+            ]
+          ]
         }
       ]
     }
@@ -94,7 +109,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Skittles-1-370x208.jpg",
+      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Skittles-1-370x208.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -106,18 +121,28 @@ export const products = [
     form_info: {
       form_title: "Select your frequency",
       form_type: "frequency",
-      options: [
+      fields: [
         {
-          frequency: "Weekly",
-          price: "2"
-        },
-        {
-          frequency: "Biweekly",
-          price: "4.50"
-        },
-        {
-          frequency: "Monthly",
-          price: "10"
+          type: "options",
+          options: [
+            [
+              {
+                frequency: "Weekly",
+                type: "option",
+                price: "2"
+              },
+              {
+                frequency: "Biweekly",
+                type: "option",
+                price: "4.50"
+              },
+              {
+                frequency: "Monthly",
+                type: "option",
+                price: "10"
+              }
+            ]
+          ]
         }
       ]
     }
@@ -131,7 +156,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Reeses-1-1-370x370.png",
+      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Reeses-1-1-370x370.png",
     images: "",
     price: "10",
     regular_price: "10",
@@ -143,18 +168,28 @@ export const products = [
     form_info: {
       form_title: "Select your frequency",
       form_type: "frequency",
-      options: [
+      fields: [
         {
-          frequency: "Weekly",
-          price: "2"
-        },
-        {
-          frequency: "Biweekly",
-          price: "4.50"
-        },
-        {
-          frequency: "Monthly",
-          price: "10"
+          type: "options",
+          options: [
+            [
+              {
+                frequency: "Weekly",
+                type: "option",
+                price: "2"
+              },
+              {
+                frequency: "Biweekly",
+                type: "option",
+                price: "4.50"
+              },
+              {
+                frequency: "Monthly",
+                type: "option",
+                price: "10"
+              }
+            ]
+          ]
         }
       ]
     }
@@ -168,7 +203,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-MM-Peanut-1-370x370.jpeg",
+      "https://telebar.local/wp-content/uploads/2019/04/Telebar-MM-Peanut-1-370x370.jpeg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -180,18 +215,28 @@ export const products = [
     form_info: {
       form_title: "Select your frequency",
       form_type: "frequency",
-      options: [
+      fields: [
         {
-          frequency: "Weekly",
-          price: "2"
-        },
-        {
-          frequency: "Biweekly",
-          price: "4.50"
-        },
-        {
-          frequency: "Monthly",
-          price: "10"
+          type: "options",
+          options: [
+            [
+              {
+                frequency: "Weekly",
+                type: "option",
+                price: "2"
+              },
+              {
+                frequency: "Biweekly",
+                type: "option",
+                price: "4.50"
+              },
+              {
+                frequency: "Monthly",
+                type: "option",
+                price: "10"
+              }
+            ]
+          ]
         }
       ]
     }
@@ -205,7 +250,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Milky-Way-1-370x370.jpeg",
+      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Milky-Way-1-370x370.jpeg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -217,18 +262,28 @@ export const products = [
     form_info: {
       form_title: "Select your frequency",
       form_type: "frequency",
-      options: [
+      fields: [
         {
-          frequency: "Weekly",
-          price: "2"
-        },
-        {
-          frequency: "Biweekly",
-          price: "4.50"
-        },
-        {
-          frequency: "Monthly",
-          price: "10"
+          type: "options",
+          options: [
+            [
+              {
+                frequency: "Weekly",
+                type: "option",
+                price: "2"
+              },
+              {
+                frequency: "Biweekly",
+                type: "option",
+                price: "4.50"
+              },
+              {
+                frequency: "Monthly",
+                type: "option",
+                price: "10"
+              }
+            ]
+          ]
         }
       ]
     }
@@ -242,7 +297,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Kitkat-1-370x237.jpg",
+      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Kitkat-1-370x237.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -254,18 +309,28 @@ export const products = [
     form_info: {
       form_title: "Select your frequency",
       form_type: "frequency",
-      options: [
+      fields: [
         {
-          frequency: "Weekly",
-          price: "2"
-        },
-        {
-          frequency: "Biweekly",
-          price: "4.50"
-        },
-        {
-          frequency: "Monthly",
-          price: "10"
+          type: "options",
+          options: [
+            [
+              {
+                frequency: "Weekly",
+                type: "option",
+                price: "2"
+              },
+              {
+                frequency: "Biweekly",
+                type: "option",
+                price: "4.50"
+              },
+              {
+                frequency: "Monthly",
+                type: "option",
+                price: "10"
+              }
+            ]
+          ]
         }
       ]
     }
@@ -279,7 +344,7 @@ export const products = [
     short_description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.	",
     featured_image_url:
-      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Hersheys-1-1-370x230.jpg",
+      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Hersheys-1-1-370x230.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -291,18 +356,28 @@ export const products = [
     form_info: {
       form_title: "Select your frequency",
       form_type: "frequency",
-      options: [
+      fields: [
         {
-          frequency: "Weekly",
-          price: "2"
-        },
-        {
-          frequency: "Biweekly",
-          price: "4.50"
-        },
-        {
-          frequency: "Monthly",
-          price: "10"
+          type: "options",
+          options: [
+            [
+              {
+                frequency: "Weekly",
+                type: "option",
+                price: "2"
+              },
+              {
+                frequency: "Biweekly",
+                type: "option",
+                price: "4.50"
+              },
+              {
+                frequency: "Monthly",
+                type: "option",
+                price: "10"
+              }
+            ]
+          ]
         }
       ]
     }
@@ -316,7 +391,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-3M-1-370x370.jpg",
+      "https://telebar.local/wp-content/uploads/2019/04/Telebar-3M-1-370x370.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -328,18 +403,28 @@ export const products = [
     form_info: {
       form_title: "Select your frequency",
       form_type: "frequency",
-      options: [
+      fields: [
         {
-          frequency: "Weekly",
-          price: "2"
-        },
-        {
-          frequency: "Biweekly",
-          price: "4.50"
-        },
-        {
-          frequency: "Monthly",
-          price: "10"
+          type: "options",
+          options: [
+            [
+              {
+                frequency: "Weekly",
+                type: "option",
+                price: "2"
+              },
+              {
+                frequency: "Biweekly",
+                type: "option",
+                price: "4.50"
+              },
+              {
+                frequency: "Monthly",
+                type: "option",
+                price: "10"
+              }
+            ]
+          ]
         }
       ]
     }
@@ -353,7 +438,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Butterfinger-1-370x370.jpg",
+      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Butterfinger-1-370x370.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -365,18 +450,28 @@ export const products = [
     form_info: {
       form_title: "Select your frequency",
       form_type: "frequency",
-      options: [
+      fields: [
         {
-          frequency: "Weekly",
-          price: "2"
-        },
-        {
-          frequency: "Biweekly",
-          price: "4.50"
-        },
-        {
-          frequency: "Monthly",
-          price: "10"
+          type: "options",
+          options: [
+            [
+              {
+                frequency: "Weekly",
+                type: "option",
+                price: "2"
+              },
+              {
+                frequency: "Biweekly",
+                type: "option",
+                price: "4.50"
+              },
+              {
+                frequency: "Monthly",
+                type: "option",
+                price: "10"
+              }
+            ]
+          ]
         }
       ]
     }
@@ -390,7 +485,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Twix-1-370x370.jpg",
+      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Twix-1-370x370.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -402,18 +497,28 @@ export const products = [
     form_info: {
       form_title: "Select your frequency",
       form_type: "frequency",
-      options: [
+      fields: [
         {
-          frequency: "Weekly",
-          price: "2"
-        },
-        {
-          frequency: "Biweekly",
-          price: "4.50"
-        },
-        {
-          frequency: "Monthly",
-          price: "10"
+          type: "options",
+          options: [
+            [
+              {
+                frequency: "Weekly",
+                type: "option",
+                price: "2"
+              },
+              {
+                frequency: "Biweekly",
+                type: "option",
+                price: "4.50"
+              },
+              {
+                frequency: "Monthly",
+                type: "option",
+                price: "10"
+              }
+            ]
+          ]
         }
       ]
     }
