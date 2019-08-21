@@ -16,18 +16,29 @@ describe("FrequencyForm", () => {
 function expectedFrequencyForm(): FrequencyForm {
   const form = new FrequencyForm();
   form.title = "Select your frequency";
-  form.options = [
+  form.type = "frequency";
+  form.fields = [
     {
-      frequency: "Weekly",
-      price: 2
-    },
-    {
-      frequency: "Biweekly",
-      price: 4.5
-    },
-    {
-      frequency: "Monthly",
-      price: 10
+      type: "options",
+      options: [
+        [
+          {
+            frequency: "Weekly",
+            type: "option",
+            price: "2"
+          },
+          {
+            frequency: "Biweekly",
+            type: "option",
+            price: "4.50"
+          },
+          {
+            frequency: "Monthly",
+            type: "option",
+            price: "10"
+          }
+        ]
+      ]
     }
   ];
   return form;

@@ -2,9 +2,14 @@
 import Form from "./Form";
 import Product from "./Product";
 
-type FrequencyFormOption = { frequency: string, price: number };
+type FrequencyFormOption = {
+  frequency: string,
+  price: number,
+  type: "option"
+};
 
 export default class FrequencyForm extends Form {
+  fields: { type: "options", options: FrequencyFormOption[] };
   options: FrequencyFormOption[];
 
   static fromApiProduct(obj: Object): FrequencyForm {
@@ -13,11 +18,7 @@ export default class FrequencyForm extends Form {
     const form = Object.assign(base, { ...baseForm });
     const info = obj.formInfo || obj.form_info;
 
-    form.options = info.options.map(o => {
-      const { frequency, price } = o;
-      return { frequency, price: Number(price) };
-    });
-
+    form.fields = info.fields;
     return form;
   }
 }
