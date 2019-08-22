@@ -5,6 +5,9 @@ import { Text, View } from "react-native";
 import { Divider, CheckBox } from "react-native-elements";
 import CardForm from "../models/CardForm";
 import CardField from "../components/CardField";
+import { DEV_MODE } from "../constants/devMode";
+
+const AUTOMATE = DEV_MODE && false;
 
 type Props = { form: CardForm };
 

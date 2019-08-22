@@ -7,6 +7,7 @@ import {
   debug
 } from "react-native-testing-library";
 import "@testing-library/jest-native/extend-expect";
+import "react-test-renderer";
 import { products } from "../../__mocks__/products-response";
 import CardFormView from "../../src/subviews/CardFormView";
 import CardForm from "../../src/models/CardForm";

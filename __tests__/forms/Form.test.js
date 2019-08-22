@@ -16,6 +16,7 @@ function expectedBasicForm(): Form {
 
   form.title =
     "Pick one of the following gift card messages or write your own custom message!";
+  form.type = "card";
 
   return form;
 }

@@ -8,7 +8,7 @@ export const products = [
     short_description:
       "Select the candy of your choice, then select choose one message for your gift card.  You can enter different addresses at checkout if desired",
     featured_image_url:
-      "https://telebar.local/wp-content/uploads/2019/04/Telebar-MM-1-370x370.jpg",
+      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-MM-1-370x370.jpg",
     images: "",
     price: "7",
     regular_price: "7",
@@ -62,7 +62,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Snickers-1-370x370.jpg",
+      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Snickers-1-370x370.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -109,7 +109,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Skittles-1-370x208.jpg",
+      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Skittles-1-370x208.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -156,7 +156,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Reeses-1-1-370x370.png",
+      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Reeses-1-1-370x370.png",
     images: "",
     price: "10",
     regular_price: "10",
@@ -203,7 +203,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebar.local/wp-content/uploads/2019/04/Telebar-MM-Peanut-1-370x370.jpeg",
+      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-MM-Peanut-1-370x370.jpeg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -250,7 +250,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Milky-Way-1-370x370.jpeg",
+      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Milky-Way-1-370x370.jpeg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -297,7 +297,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Kitkat-1-370x237.jpg",
+      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Kitkat-1-370x237.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -344,7 +344,7 @@ export const products = [
     short_description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.	",
     featured_image_url:
-      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Hersheys-1-1-370x230.jpg",
+      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Hersheys-1-1-370x230.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -391,7 +391,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebar.local/wp-content/uploads/2019/04/Telebar-3M-1-370x370.jpg",
+      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-3M-1-370x370.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -438,7 +438,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Butterfinger-1-370x370.jpg",
+      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Butterfinger-1-370x370.jpg",
     images: "",
     price: "10",
     regular_price: "10",
@@ -485,7 +485,7 @@ export const products = [
     short_description:
       " Select the candy of your choice, then select how often you would like these delivered and additional options.  You can enter different addresses at checkout if desired.	",
     featured_image_url:
-      "https://telebar.local/wp-content/uploads/2019/04/Telebar-Twix-1-370x370.jpg",
+      "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-Twix-1-370x370.jpg",
     images: "",
     price: "10",
     regular_price: "10",
