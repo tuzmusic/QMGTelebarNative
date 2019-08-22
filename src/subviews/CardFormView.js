@@ -1,22 +1,22 @@
 // @flow
-import type { CardFormSelectField } from "../models/CardForm";
+import type { CardFormField } from "../models/CardForm";
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import { Divider, CheckBox } from "react-native-elements";
 import CardForm from "../models/CardForm";
-import CardField from "../components/CardField";
+import CardFieldView from "../components/CardFieldView";
 import { DEV_MODE } from "../constants/devMode";
 
 const AUTOMATE = DEV_MODE && false;
 
 type Props = { form: CardForm };
 
-type State = { selectedField: ?CardFormSelectField, message: ?string };
+type State = { selectedField: ?CardFormField, message: ?string };
 
 export default class CardFormView extends Component<Props, State> {
   state = { selectedField: null, message: null };
 
-  async handleSelection(field: CardFormSelectField, selection: string) {
+  async handleSelection(field: CardFormField, selection: string) {
     await this.setState({ selectedField: field, message: selection });
   }
 
@@ -31,7 +31,7 @@ export default class CardFormView extends Component<Props, State> {
         <Text style={styles.title}>{form.title}</Text>
         <Space />
         {form.fields.map((field, i) => (
-          <CardField
+          <CardFieldView
             field={field}
             key={i}
             selectionHandler={this.handleSelection.bind(this)}

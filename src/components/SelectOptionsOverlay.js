@@ -1,31 +1,34 @@
 // @flow
 import type { CardFormSelectField } from "../models/CardForm";
-import React from "react";
+import React, {Component} from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { Overlay } from "react-native-elements";
 
-type SelectOptionsProps = { 
+type Props = { 
   field: CardFormSelectField, 
   dismissOverlay: function, 
-  onOptionPress: string => void 
+  onSubmit: string => void 
 }
 
-const SelectOptionsOverlay = (props: SelectOptionsProps) => {
-  return (
-    <Overlay isVisible height={"auto"} onBackdropPress={props.dismissOverlay}>
-      <View>
-        {props.field.options.map((opt, i) => (
-          <TouchableOpacity
-            onPress={() => props.onOptionPress(opt)}
-            style={styles.option}
-            key={i}
-          >
-            <Text>{opt}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-    </Overlay>
-  );
+class SelectOptionsOverlay extends Component<Props> {
+  render() {
+    const props = this.props
+      return (
+        <Overlay isVisible height={"auto"} onBackdropPress={props.dismissOverlay}>
+          <View>
+            {props.field.options.map((opt, i) => (
+              <TouchableOpacity
+                onPress={() => props.onSubmit(opt)}
+                style={styles.option}
+                key={i}
+              >
+                <Text>{opt}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </Overlay>
+    );
+  }
 };
 
 const styles = {  

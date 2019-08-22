@@ -9,9 +9,16 @@ export type CardFormSelectField = {
   options: string[]
 };
 
+export type CardFormTextAreaField = {
+  title: string,
+  type: string
+};
+
+export type CardFormField = CardFormSelectField | CardFormTextAreaField;
+
 export default class CardForm extends Form {
   textAreaTitle: string;
-  fields: CardFormSelectField[];
+  fields: CardFormField[];
 
   static fromApiProduct(obj: Object): CardForm {
     const base = new CardForm();

@@ -17,7 +17,7 @@ type State = { message: string };
 export default class CardFormTextAreaOverlay extends Component<Props, State> {
   state = { message: "" };
   componentDidMount = () => {
-    if (AUTOMATE) this.setState({message: "Custom message!"})    
+    // if (AUTOMATE) this.setState({message: "Custom message!"})    
   };
   
   render() {
