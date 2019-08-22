@@ -7,7 +7,7 @@ import {
   KeyboardAvoidingView,
   ScrollView
 } from "react-native";
-import { Input, Icon, Image, Divider } from "react-native-elements";
+import { Input, Icon, Image, Divider, Button } from "react-native-elements";
 import Product from "../models/Product";
 import { MaterialIndicator } from "react-native-indicators";
 import FormContainer from "../subviews/FormContainer";
@@ -50,6 +50,13 @@ export default class ProductDetailScreen extends Component<Props, State> {
                 />
               </View>
             </View>
+            <View /* BUYING */ style={styles.buyNowContainer}>
+              <Button title="Buy Now" style={{ width: 150 }} />
+              <Text style={styles.totalText}>
+                Total: ${this.state.quantity * this.product.price}
+              </Text>
+            </View>
+            <Space />
             <View /* BODY AND FORM */ style={styles.bodyContainer}>
               <Text style={text.description}>
                 {// the website itself appears to use the short_description
@@ -80,11 +87,16 @@ const text = {
 };
 const full = "100%";
 const styles = {
+  buyNowContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center"
+  },
+  totalText: { fontSize: baseSize + 4, fontWeight: "bold" },
   container: { margin: 20 },
   rowContainer: {
     flexDirection: "row",
     alignItems: "flex-start",
-    // height: 100,
     flex: 1
   },
   imageContainer: {

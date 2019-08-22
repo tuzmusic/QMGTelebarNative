@@ -14,20 +14,14 @@ const Quantity = (props: Props) => {
   const iconProps = {
     size: 30,
     type: "evilicon",
-
-    color: "grey",
-    containerStyle: styles.iconContainer
+    color: "grey"
   };
   return (
     <View style={styles.superContainer}>
       <Text style={styles.text}>Quantity:</Text>
       <View style={styles.row}>
         <Icon name="minus" onPress={() => onChange(-1)} {...iconProps} />
-        <Input
-          // inputContainerStyle={styles.inputContainer}
-          inputStyle={styles.input}
-          value={props.value}
-        />
+        <Input inputStyle={styles.input} value={props.value} />
         <Icon name="plus" onPress={() => onChange(1)} {...iconProps} />
       </View>
     </View>
@@ -37,15 +31,8 @@ const styles = {
   input: {
     borderBottomWidth: 1,
     borderColor: "grey",
+    fontSize: 20,
     textAlign: "center"
-  },
-  inputContainer: {
-    borderBottomWidth: 1,
-    borderWidth: 1,
-    height: 40,
-    width: 50,
-    margin: 0
-    // alignItems: "center"
   },
   row: {
     flexDirection: "row",
@@ -53,7 +40,6 @@ const styles = {
     alignItems: "center",
     width: 40
   },
-  iconContainer: {},
   superContainer: {
     alignItems: "center"
   },
