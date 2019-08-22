@@ -8,7 +8,7 @@ type Props = { value: string, onChange: number => void };
 const Quantity = (props: Props) => {
   function onChange(n) {
     const newVal = Number(props.value) + n;
-    if (newVal > 0) props.onChange(newVal);
+    if (newVal >= 0) props.onChange(newVal);
   }
 
   const iconProps = {

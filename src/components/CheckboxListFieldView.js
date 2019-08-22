@@ -27,6 +27,10 @@ export default class CheckboxListFieldView extends Component<Props, State> {
     this.setState({ selections });
   }
 
+  get totalPrice() {
+    return this.state.selections.reduce((acc, opt) => acc + opt.price, 0);
+  }
+
   render() {
     return (
       <View>
@@ -44,7 +48,12 @@ export default class CheckboxListFieldView extends Component<Props, State> {
             />
           );
         })}
+        <Text style={styles.total}>
+          Options total: ${this.totalPrice.toFixed(2)}
+        </Text>
       </View>
     );
   }
 }
+
+const styles = { total: { fontSize: 16, fontWeight: "bold", margin: 10 } };
