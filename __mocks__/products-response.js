@@ -78,23 +78,21 @@ export const products = [
         {
           type: "options",
           options: [
-            [
-              {
-                frequency: "Weekly",
-                type: "option",
-                price: "2"
-              },
-              {
-                frequency: "Biweekly",
-                type: "option",
-                price: "4.50"
-              },
-              {
-                frequency: "Monthly",
-                type: "option",
-                price: "10"
-              }
-            ]
+            {
+              frequency: "Weekly",
+              type: "option",
+              price: "2"
+            },
+            {
+              frequency: "Biweekly",
+              type: "option",
+              price: "4.50"
+            },
+            {
+              frequency: "Monthly",
+              type: "option",
+              price: "10"
+            }
           ]
         }
       ]
@@ -125,23 +123,21 @@ export const products = [
         {
           type: "options",
           options: [
-            [
-              {
-                frequency: "Weekly",
-                type: "option",
-                price: "2"
-              },
-              {
-                frequency: "Biweekly",
-                type: "option",
-                price: "4.50"
-              },
-              {
-                frequency: "Monthly",
-                type: "option",
-                price: "10"
-              }
-            ]
+            {
+              frequency: "Weekly",
+              type: "option",
+              price: "2"
+            },
+            {
+              frequency: "Biweekly",
+              type: "option",
+              price: "4.50"
+            },
+            {
+              frequency: "Monthly",
+              type: "option",
+              price: "10"
+            }
           ]
         }
       ]
@@ -172,23 +168,21 @@ export const products = [
         {
           type: "options",
           options: [
-            [
-              {
-                frequency: "Weekly",
-                type: "option",
-                price: "2"
-              },
-              {
-                frequency: "Biweekly",
-                type: "option",
-                price: "4.50"
-              },
-              {
-                frequency: "Monthly",
-                type: "option",
-                price: "10"
-              }
-            ]
+            {
+              frequency: "Weekly",
+              type: "option",
+              price: "2"
+            },
+            {
+              frequency: "Biweekly",
+              type: "option",
+              price: "4.50"
+            },
+            {
+              frequency: "Monthly",
+              type: "option",
+              price: "10"
+            }
           ]
         }
       ]
@@ -219,23 +213,21 @@ export const products = [
         {
           type: "options",
           options: [
-            [
-              {
-                frequency: "Weekly",
-                type: "option",
-                price: "2"
-              },
-              {
-                frequency: "Biweekly",
-                type: "option",
-                price: "4.50"
-              },
-              {
-                frequency: "Monthly",
-                type: "option",
-                price: "10"
-              }
-            ]
+            {
+              frequency: "Weekly",
+              type: "option",
+              price: "2"
+            },
+            {
+              frequency: "Biweekly",
+              type: "option",
+              price: "4.50"
+            },
+            {
+              frequency: "Monthly",
+              type: "option",
+              price: "10"
+            }
           ]
         }
       ]
@@ -266,23 +258,21 @@ export const products = [
         {
           type: "options",
           options: [
-            [
-              {
-                frequency: "Weekly",
-                type: "option",
-                price: "2"
-              },
-              {
-                frequency: "Biweekly",
-                type: "option",
-                price: "4.50"
-              },
-              {
-                frequency: "Monthly",
-                type: "option",
-                price: "10"
-              }
-            ]
+            {
+              frequency: "Weekly",
+              type: "option",
+              price: "2"
+            },
+            {
+              frequency: "Biweekly",
+              type: "option",
+              price: "4.50"
+            },
+            {
+              frequency: "Monthly",
+              type: "option",
+              price: "10"
+            }
           ]
         }
       ]
@@ -313,23 +303,21 @@ export const products = [
         {
           type: "options",
           options: [
-            [
-              {
-                frequency: "Weekly",
-                type: "option",
-                price: "2"
-              },
-              {
-                frequency: "Biweekly",
-                type: "option",
-                price: "4.50"
-              },
-              {
-                frequency: "Monthly",
-                type: "option",
-                price: "10"
-              }
-            ]
+            {
+              frequency: "Weekly",
+              type: "option",
+              price: "2"
+            },
+            {
+              frequency: "Biweekly",
+              type: "option",
+              price: "4.50"
+            },
+            {
+              frequency: "Monthly",
+              type: "option",
+              price: "10"
+            }
           ]
         }
       ]
@@ -360,23 +348,21 @@ export const products = [
         {
           type: "options",
           options: [
-            [
-              {
-                frequency: "Weekly",
-                type: "option",
-                price: "2"
-              },
-              {
-                frequency: "Biweekly",
-                type: "option",
-                price: "4.50"
-              },
-              {
-                frequency: "Monthly",
-                type: "option",
-                price: "10"
-              }
-            ]
+            {
+              frequency: "Weekly",
+              type: "option",
+              price: "2"
+            },
+            {
+              frequency: "Biweekly",
+              type: "option",
+              price: "4.50"
+            },
+            {
+              frequency: "Monthly",
+              type: "option",
+              price: "10"
+            }
           ]
         }
       ]
@@ -407,23 +393,21 @@ export const products = [
         {
           type: "options",
           options: [
-            [
-              {
-                frequency: "Weekly",
-                type: "option",
-                price: "2"
-              },
-              {
-                frequency: "Biweekly",
-                type: "option",
-                price: "4.50"
-              },
-              {
-                frequency: "Monthly",
-                type: "option",
-                price: "10"
-              }
-            ]
+            {
+              frequency: "Weekly",
+              type: "option",
+              price: "2"
+            },
+            {
+              frequency: "Biweekly",
+              type: "option",
+              price: "4.50"
+            },
+            {
+              frequency: "Monthly",
+              type: "option",
+              price: "10"
+            }
           ]
         }
       ]
@@ -454,23 +438,21 @@ export const products = [
         {
           type: "options",
           options: [
-            [
-              {
-                frequency: "Weekly",
-                type: "option",
-                price: "2"
-              },
-              {
-                frequency: "Biweekly",
-                type: "option",
-                price: "4.50"
-              },
-              {
-                frequency: "Monthly",
-                type: "option",
-                price: "10"
-              }
-            ]
+            {
+              frequency: "Weekly",
+              type: "option",
+              price: "2"
+            },
+            {
+              frequency: "Biweekly",
+              type: "option",
+              price: "4.50"
+            },
+            {
+              frequency: "Monthly",
+              type: "option",
+              price: "10"
+            }
           ]
         }
       ]
@@ -501,23 +483,21 @@ export const products = [
         {
           type: "options",
           options: [
-            [
-              {
-                frequency: "Weekly",
-                type: "option",
-                price: "2"
-              },
-              {
-                frequency: "Biweekly",
-                type: "option",
-                price: "4.50"
-              },
-              {
-                frequency: "Monthly",
-                type: "option",
-                price: "10"
-              }
-            ]
+            {
+              frequency: "Weekly",
+              type: "option",
+              price: "2"
+            },
+            {
+              frequency: "Biweekly",
+              type: "option",
+              price: "4.50"
+            },
+            {
+              frequency: "Monthly",
+              type: "option",
+              price: "10"
+            }
           ]
         }
       ]

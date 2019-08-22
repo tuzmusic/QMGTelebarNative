@@ -21,23 +21,21 @@ function expectedFrequencyForm(): FrequencyForm {
     {
       type: "options",
       options: [
-        [
-          {
-            frequency: "Weekly",
-            type: "option",
-            price: "2"
-          },
-          {
-            frequency: "Biweekly",
-            type: "option",
-            price: "4.50"
-          },
-          {
-            frequency: "Monthly",
-            type: "option",
-            price: "10"
-          }
-        ]
+        {
+          frequency: "Weekly",
+          type: "option",
+          price: 2
+        },
+        {
+          frequency: "Biweekly",
+          type: "option",
+          price: 4.5
+        },
+        {
+          frequency: "Monthly",
+          type: "option",
+          price: 10
+        }
       ]
     }
   ];
