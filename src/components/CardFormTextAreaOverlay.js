@@ -22,38 +22,41 @@ export default class CardFormTextAreaOverlay extends Component<Props, State> {
   
   render() {
     return (
-      <Overlay
-        isVisible
-        height={"auto"}
-        onBackdropPress={this.props.dismissOverlay}
-      >
-        <KeyboardAvoidingView behavior='position'
+      <KeyboardAvoidingView behavior='position' enabled>
+        <Overlay
+          isVisible
+          height={"auto"}
+          onBackdropPress={this.props.dismissOverlay}
+          overlayStyle={styles.overlay}
         >
-          <Text>{this.props.field.title}</Text>
-          <Input
-            // ref={ref => (this.textInput = ref)}
-            inputStyle={styles.input}
-            inputContainerStyle={styles.inputContainer}
-            placeholder="Write your message here"
-            value={this.state.message}
-            onChangeText={message => this.setState({ message })}
-            multiline={true}
-            textAlignVertical={"top"}
-            numberOfLines={100}
-          />
-          <Button
-            title="Save"
-            containerStyle={styles.buttonContainer}
-            onPress={() => this.props.onSubmit(this.state.message)}
-          />
-        </KeyboardAvoidingView>
-      </Overlay>
+          <React.Fragment><Text style={styles.title}>{this.props.field.title}</Text>
+            <Input
+              // ref={ref => (this.textInput = ref)}
+              inputStyle={styles.input}
+              inputContainerStyle={styles.inputContainer}
+              placeholder="Write your message here"
+              value={this.state.message}
+              onChangeText={message => this.setState({ message })}
+              multiline={true}
+              textAlignVertical={"top"}
+              numberOfLines={100}
+            />
+            <Button
+              title="Save"
+              containerStyle={styles.buttonContainer}
+              onPress={() => this.props.onSubmit(this.state.message)}
+            />
+          </React.Fragment>
+        </Overlay>
+      </KeyboardAvoidingView>
     );
   }
 }
 
 const baseSize = 16;
 const styles = {
+  title: { fontSize: baseSize, paddingHorizontal: 5},
+  overlay: { borderRadius: 5, paddingVertical: 15, paddingHorizontal: 10, },
   buttonContainer: {
     // width: "80%",
     paddingHorizontal: 20,

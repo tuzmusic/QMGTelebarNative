@@ -5,22 +5,29 @@ import { Divider, CheckBox } from "react-native-elements";
 import type { FrequencyFormOption } from "../models/FrequencyForm";
 import FrequencyForm from "../models/FrequencyForm";
 
-type Props = { form: FrequencyForm };
+type Props = { form: FrequencyForm, priceDelegate: number => void };
 type State = { selections: FrequencyFormOption[] };
 
 export default class FrequencyFormView extends Component<Props, State> {
   state = { selections: [] };
-  onCheck(option: FrequencyFormOption) {
-    this.setState({ selections: this.state.selections.concat(option) });
+  async onCheck(option: FrequencyFormOption) {
+    await this.setState({ selections: this.state.selections.concat(option) });
+    this.props.priceDelegate(this.optionsPrice);
   }
-  onUncheck(option: FrequencyFormOption) {
+  async onUncheck(option: FrequencyFormOption) {
     const selections = [...this.state.selections];
     const index = selections.indexOf(option);
     selections.splice(index, 1);
-    this.setState({ selections });
+    await this.setState({ selections });
+    this.props.priceDelegate(this.optionsPrice);
   }
+
   get optionsPrice() {
-    return this.state.selections.reduce((acc, opt) => acc + opt.price, 0);
+    const price = this.state.selections.reduce(
+      (acc, opt) => acc + opt.price,
+      0
+    );
+    return price;
   }
 
   render() {
@@ -30,10 +37,8 @@ export default class FrequencyFormView extends Component<Props, State> {
 
     return (
       <View>
-        {}
         <Text style={styles.title}>Select a subscription (optional)</Text>
         <Space />
-        {}
         {options.map((option: FrequencyFormOption, i) => {
           const title = `${option.frequency}: $${option.price.toFixed(2)}`;
           const checked = this.state.selections.includes(option);

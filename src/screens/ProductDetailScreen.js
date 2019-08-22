@@ -14,7 +14,7 @@ import FormContainer from "../subviews/FormContainer";
 import Quantity from "../components/Quantity";
 
 type Props = { product: Product };
-type State = { message?: ?string, quantity: number };
+type State = { message?: ?string, quantity: number, optionsPrice: number };
 
 export default class ProductDetailScreen extends Component<Props, State> {
   product: Product;
@@ -24,7 +24,12 @@ export default class ProductDetailScreen extends Component<Props, State> {
       this.props.product || this.props.navigation.getParam("product");
   }
 
-  state = { message: null, quantity: 1 };
+  state = { message: null, quantity: 1, optionsPrice: 0 };
+
+  reportPrice = (price: number) => this.setState({ optionsPrice: price });
+  get totalPrice() {
+    return this.state.quantity * this.product.price + this.state.optionsPrice;
+  }
 
   render() {
     const Space = () => <Divider height={20} backgroundColor="transparent" />;
@@ -52,9 +57,7 @@ export default class ProductDetailScreen extends Component<Props, State> {
             </View>
             <View /* BUYING */ style={styles.buyNowContainer}>
               <Button title="Buy Now" style={{ width: 150 }} />
-              <Text style={styles.totalText}>
-                Total: ${this.state.quantity * this.product.price}
-              </Text>
+              <Text style={styles.totalText}>Total: ${this.totalPrice}</Text>
             </View>
             <Space />
             <View /* BODY AND FORM */ style={styles.bodyContainer}>
@@ -63,7 +66,10 @@ export default class ProductDetailScreen extends Component<Props, State> {
                 product.shortDescription || product.description}
               </Text>
               <Space />
-              <FormContainer product={product} />
+              <FormContainer
+                product={product}
+                priceDelegate={this.reportPrice.bind(this)}
+              />
             </View>
           </View>
         </ScrollView>
