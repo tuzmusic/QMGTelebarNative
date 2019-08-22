@@ -20,6 +20,8 @@ export default class CardFormView extends Component<Props, State> {
     await this.setState({ selectedField: field, message: selection });
   }
 
+  cancelSelection = () => this.setState({ selectedField: null, message: null });
+
   render() {
     const form = this.props.form;
     const Space = () => <Divider height={20} backgroundColor="transparent" />;
@@ -30,6 +32,12 @@ export default class CardFormView extends Component<Props, State> {
       <View>
         <Text style={styles.title}>{form.title}</Text>
         <Space />
+        <CheckBox
+          title="No Card"
+          checked={!this.state.selectedField}
+          onPress={this.cancelSelection.bind(this)}
+        />
+
         {form.fields.map((field, i) => (
           <CardFieldView
             field={field}

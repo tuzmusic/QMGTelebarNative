@@ -20,9 +20,12 @@ export default class FormContainer extends Component<Props> {
     const product = this.props.product;
     this.formType = product.formInfo.form_type;
     // debugger;
-    if (this.formType === "card") this.form = CardForm.fromApiProduct(product);
-    if (this.formType === "frequency")
-      this.form = FrequencyForm.fromApiProduct(product);
+    switch (this.formType) {
+      case "card":
+        this.form = CardForm.fromApiProduct(product);
+      case "frequency":
+        this.form = FrequencyForm.fromApiProduct(product);
+    }
   }
 
   render() {
