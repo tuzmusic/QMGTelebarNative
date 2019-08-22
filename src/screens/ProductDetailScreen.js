@@ -11,6 +11,7 @@ import { Input, Icon, Image, Divider } from "react-native-elements";
 import Product from "../models/Product";
 import { MaterialIndicator } from "react-native-indicators";
 import FormContainer from "../subviews/FormContainer";
+import Quantity from "../components/Quantity";
 
 type Props = { product: Product };
 type State = { message?: ?string, quantity: number };
@@ -63,71 +64,6 @@ export default class ProductDetailScreen extends Component<Props, State> {
     );
   }
 }
-
-const Quantity = props => {
-  function onChange(n) {
-    const newVal = Number(props.value) + n;
-    if (newVal > 0) props.onChange(newVal);
-  }
-  const styles = {
-    input: {
-      borderBottomWidth: 1,
-      borderColor: "grey",
-      textAlign: "center"
-    },
-    inputContainer: {
-      borderBottomWidth: 1,
-      borderWidth: 1,
-      height: 40,
-      width: 50,
-      margin: 0
-      // alignItems: "center"
-    },
-    row: {
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "center",
-      width: 40
-    },
-    iconContainer: {},
-    superContainer: {
-      alignItems: "center"
-    },
-    text: {
-      margin: 5,
-      fontSize: 17
-    }
-  };
-  const iconProps = {
-    size: 30,
-    color: "grey",
-    containerStyle: styles.iconContainer
-  };
-  return (
-    <View style={styles.superContainer}>
-      <Text style={styles.text}>Quantity:</Text>
-      <View style={styles.row}>
-        <Icon
-          type="evilicon"
-          name="minus"
-          onPress={() => onChange(-1)}
-          {...iconProps}
-        />
-        <Input
-          // inputContainerStyle={styles.inputContainer}
-          inputStyle={styles.input}
-          value={props.value}
-        />
-        <Icon
-          type="evilicon"
-          name="plus"
-          onPress={() => onChange(1)}
-          {...iconProps}
-        />
-      </View>
-    </View>
-  );
-};
 
 const baseSize = 17;
 const text = {
