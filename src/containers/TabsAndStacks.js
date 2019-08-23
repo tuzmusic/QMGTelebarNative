@@ -9,6 +9,7 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 import ProductsListScreen from "../screens/ProductsListScreen";
+import SubscriptionProductsListScreen from "../screens/SubscriptionProductsListScreen";
 import ProductDetailScreen from "../screens/ProductDetailScreen";
 import TabBarIcon, { icon } from "../components/TabBarIcon";
 import { Icon } from "react-native-elements";
@@ -19,6 +20,12 @@ const ListScreen = {
   screen: ProductsListScreen,
   navigationOptions: { title: "Products" }
 };
+
+const SubscriptionProductsScreen = {
+  screen: SubscriptionProductsListScreen,
+  navigationOptions: { title: "Subscriptions" }
+};
+
 const DetailScreen = {
   screen: ProductDetailScreen,
   navigationOptions: { title: "Product Detail" }
@@ -26,5 +33,13 @@ const DetailScreen = {
 
 export const ListStack = createStackNavigator({ ListScreen, DetailScreen });
 ListStack.navigationOptions = {
+  tabBarIcon: ({ focused: f }) => icon(f, "list", "", "feather")
+};
+
+export const SubscriptionProductsListStack = createStackNavigator({
+  SubscriptionProductsScreen,
+  DetailScreen
+});
+SubscriptionProductsListStack.navigationOptions = {
   tabBarIcon: ({ focused: f }) => icon(f, "list", "", "feather")
 };

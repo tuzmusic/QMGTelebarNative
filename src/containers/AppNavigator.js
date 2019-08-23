@@ -9,16 +9,16 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 import ProductsListScreen from "../screens/ProductsListScreen";
-import { ListStack } from "./TabsAndStacks";
+import { ListStack, SubscriptionProductsListStack } from "./TabsAndStacks";
 import { fetchProducts } from "../redux/actions/productActions";
 
 let initialRouteName;
-initialRouteName = "List";
+initialRouteName = "Subscriptions";
 
 /* TAB NAV */
 
 const TabNavigator = createBottomTabNavigator(
-  { List: ListStack },
+  { List: ListStack, Subscriptions: SubscriptionProductsListStack },
   { initialRouteName }
 );
 
