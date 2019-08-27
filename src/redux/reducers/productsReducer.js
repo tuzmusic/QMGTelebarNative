@@ -27,11 +27,21 @@ export default function productsReducer(
 export function selectProducts(
   state: Types.ProductState
 ): Types.ProductCollection {
-  const filtered: Types.ProductCollection = {};
+  return filterObject(state.products, { type: "simple" });
+}
 
-  for (let key in state.products) {
-    if (state.products[key].type == "simple")
-      filtered[key] = state.products[key];
+export function selectSubscriptionProducts(
+  state: Types.ProductState
+): Types.ProductCollection {
+  return filterObject(state.products, { type: "subscription" });
+}
+
+export function filterObject(obj: Object, predicateObj: Object): Object {
+  const filtered: Object = {};
+  const predKey = Object.keys(predicateObj)[0];
+  const predVal = Object.values(predicateObj)[0];
+  for (let key in obj) {
+    if (obj[key][predKey] == predVal) filtered[key] = obj[key];
   }
 
   return filtered;
