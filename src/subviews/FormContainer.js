@@ -10,34 +10,25 @@ import FrequencyFormView from "./FrequencyFormView";
 type Props = { product: Product, priceDelegate: number => void };
 
 export default class FormContainer extends Component<Props> {
-  form: CardForm | FrequencyForm;
-  formType: "card" | "frequency";
-
-  constructor(props: Props) {
-    super(props);
-    this.props = props;
-
-    const product = this.props.product;
-    this.formType = product.formInfo.form_type;
-    // debugger;
-    switch (this.formType) {
-      case "card":
-        this.form = CardForm.fromApiProduct(product);
-        break;
-      case "frequency":
-        this.form = FrequencyForm.fromApiProduct(product);
-        break;
-    }
-  }
-
   render() {
-    return this.formType === "card" ? (
-      <CardFormView form={this.form} />
-    ) : (
-      <FrequencyFormView
-        form={this.form}
-        priceDelegate={this.props.priceDelegate}
-      />
-    );
+    const product = this.props.product;
+    const formType = product.formInfo.form_type || product.formInfo.type;
+    let form;
+
+    switch (formType) {
+      case "card":
+        form = CardForm.fromApiProduct(product);
+        return <CardFormView form={form} />;
+      case "frequency":
+        form = FrequencyForm.fromApiProduct(product);
+        return (
+          <FrequencyFormView
+            form={form}
+            priceDelegate={this.props.priceDelegate}
+          />
+        );
+      default:
+        return <Text>Form Goes Here</Text>;
+    }
   }
 }

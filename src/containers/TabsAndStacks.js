@@ -11,6 +11,7 @@ import {
 import ProductsListScreen from "../screens/ProductsListScreen";
 import SubscriptionProductsListScreen from "../screens/SubscriptionProductsListScreen";
 import ProductDetailScreen from "../screens/ProductDetailScreen";
+import SubscriptionProductDetailScreen from "../screens/SubscriptionProductDetailScreen";
 import TabBarIcon, { icon } from "../components/TabBarIcon";
 import { Icon } from "react-native-elements";
 
@@ -31,6 +32,11 @@ const DetailScreen = {
   navigationOptions: { title: "Product Detail" }
 };
 
+const SubscriptionProductDetail = {
+  screen: SubscriptionProductDetailScreen,
+  navigationOptions: { title: "Subscription Product Detail" }
+};
+
 export const ListStack = createStackNavigator({ ListScreen, DetailScreen });
 ListStack.navigationOptions = {
   tabBarIcon: ({ focused: f }) => icon(f, "list", "", "feather")
@@ -38,7 +44,8 @@ ListStack.navigationOptions = {
 
 export const SubscriptionProductsListStack = createStackNavigator({
   SubscriptionProductsScreen,
-  DetailScreen
+  DetailScreen,
+  SubscriptionProductDetail
 });
 SubscriptionProductsListStack.navigationOptions = {
   tabBarIcon: ({ focused: f }) => icon(f, "list", "", "feather")

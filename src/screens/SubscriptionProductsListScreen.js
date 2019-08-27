@@ -9,7 +9,7 @@ import { DEV_MODE } from "../constants/devMode";
 import { selectSubscriptionProducts } from "../redux/reducers/productsReducer";
 import SubscriptionProductListCellView from "../components/SubscriptionProductListCellView";
 
-const AUTOMATE = DEV_MODE && false;
+const AUTOMATE = DEV_MODE && true;
 
 type Props = {
   products: Product[],
@@ -26,7 +26,7 @@ class ProductsListScreen extends Component<Props> {
   componentDidMount = () => AUTOMATE && this.automate();
 
   onProductPress(product) {
-    this.props.navigation.navigate("DetailScreen", {
+    this.props.navigation.navigate("SubscriptionProductDetail", {
       title: product.name,
       product
     });

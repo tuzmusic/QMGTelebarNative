@@ -23,6 +23,7 @@ function expectedProduct() {
     id: 1042,
     name: "M&M",
     slug: "mm",
+    type: "simple",
     description:
       "Buy a one time gift for any occasion. Each gift comes with a gift box, a candy bar, and a gift message!",
     shortDescription:

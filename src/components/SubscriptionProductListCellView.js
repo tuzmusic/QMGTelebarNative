@@ -8,7 +8,6 @@ import {
   Image,
   TouchableOpacity
 } from "react-native";
-// import { Image } from "react-native-elements";
 import Product from "../models/Product";
 
 type Props = { product: Product, onProductPress: Product => {} };
