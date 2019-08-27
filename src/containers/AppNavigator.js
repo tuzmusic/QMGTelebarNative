@@ -18,7 +18,7 @@ initialRouteName = "Subscriptions";
 /* TAB NAV */
 
 const TabNavigator = createBottomTabNavigator(
-  { List: ListStack, Subscriptions: SubscriptionProductsListStack },
+  { List: ListStack, Subsciptions: SubscriptionProductsListStack },
   { initialRouteName }
 );
 
