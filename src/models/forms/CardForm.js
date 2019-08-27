@@ -22,8 +22,8 @@ export default class CardForm extends Form {
 
   static fromApiProduct(obj: Object): CardForm {
     const base = new CardForm();
-    const baseForm = Form.fromApiProduct(obj);
-    const form = Object.assign(base, { ...baseForm });
+    const baseForm = super.fromApiProduct(obj);
+    const form: CardForm = Object.assign(base, { ...baseForm });
 
     // allows this to be called with a direct API product response (an Object with a form_info prop) or on a Product (with a formInfo prop) that we can treat like an Object (pojo)
     const info = obj.formInfo || obj.form_info;
