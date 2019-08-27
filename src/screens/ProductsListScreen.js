@@ -6,6 +6,7 @@ import Product from "../models/Product";
 import type { ProductCollection } from "../redux/ProductTypes";
 import ProductListCellView from "../components/ProductListCellView";
 import { DEV_MODE } from "../constants/devMode";
+import { selectProducts } from "../redux/reducers/productsReducer";
 
 const AUTOMATE = DEV_MODE && false;
 
@@ -49,9 +50,8 @@ class ProductsListScreen extends Component<Props> {
 }
 
 export default connect(({ productsReducer }) => {
-  return {
-    products: Object.values(productsReducer.products)
-  };
+  const products = Object.values(selectProducts(productsReducer));
+  return { products };
 })(ProductsListScreen);
 
 const styles = {

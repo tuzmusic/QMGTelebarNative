@@ -99,6 +99,7 @@ export const subscriptionProducts = [
   },
   {
     id: 935,
+    type: "subscription",
     name: "1 Delivery a Month for only $5",
     slug: "monthly-subscription",
     description: "Get your chocolate every month!",
@@ -194,6 +195,7 @@ export const subscriptionProducts = [
   },
   {
     id: 924,
+    type: "subscription",
     name: "2 Deliveries a Month for only $10",
     slug: "biweekly-subscription",
     description: "Get your chocolate every 2 weeks!",

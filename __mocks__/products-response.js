@@ -56,6 +56,7 @@ export const products = [
   },
   {
     id: 1035,
+    type: "simple",
     name: "Snickers",
     slug: "snickers",
     description:
@@ -101,6 +102,7 @@ export const products = [
   },
   {
     id: 1028,
+    type: "simple",
     name: "Skittles",
     slug: "skittles",
     description:
@@ -146,6 +148,7 @@ export const products = [
   },
   {
     id: 1021,
+    type: "simple",
     name: "Reese's",
     slug: "reeses",
     description:
@@ -191,6 +194,7 @@ export const products = [
   },
   {
     id: 1014,
+    type: "simple",
     name: "M&M Peanut",
     slug: "mmpeanut",
     description:
@@ -236,6 +240,7 @@ export const products = [
   },
   {
     id: 1007,
+    type: "simple",
     name: "MilkyWay",
     slug: "milkyway",
     description:
@@ -281,6 +286,7 @@ export const products = [
   },
   {
     id: 1000,
+    type: "simple",
     name: "KitKat",
     slug: "kitkat",
     description:
@@ -326,6 +332,7 @@ export const products = [
   },
   {
     id: 993,
+    type: "simple",
     name: "Hershey's",
     slug: "hersheys",
     description:
@@ -371,6 +378,7 @@ export const products = [
   },
   {
     id: 986,
+    type: "simple",
     name: "3 Muskateers",
     slug: "3-muskateers",
     description:
@@ -416,6 +424,7 @@ export const products = [
   },
   {
     id: 979,
+    type: "simple",
     name: "Butterfinger",
     slug: "butterfinger",
     description:
@@ -461,6 +470,7 @@ export const products = [
   },
   {
     id: 960,
+    type: "simple",
     name: "TWIX",
     slug: "twix",
     description:
