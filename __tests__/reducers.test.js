@@ -6,7 +6,7 @@ import type {
   FETCH_PRODUCTS_START,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE
-} from "../src/redux/reducers/productsReducer";
+} from "../src/redux/ProductTypes";
 
 describe("Products reducer", () => {
   const products = Product.collectionFromApiArray(productsResponse);

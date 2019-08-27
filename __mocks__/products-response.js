@@ -1,6 +1,7 @@
 export const products = [
   {
     id: 1042,
+    type: "simple",
     name: "M&M",
     slug: "mm",
     description:

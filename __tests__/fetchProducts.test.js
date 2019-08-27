@@ -11,7 +11,7 @@ import type {
   FETCH_PRODUCTS_START,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE
-} from "../src/redux/reducers/productsReducer";
+} from "../src/redux/ProductTypes";
 import Product from "../src/models/Product";
 import type { ProductCollection } from "../src/redux/ProductTypes";
 // import recordSaga from "../recordSaga";

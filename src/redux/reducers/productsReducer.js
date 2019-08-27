@@ -1,11 +1,6 @@
 // @flow
 import Product from "../../models/Product";
-import type { ProductCollection } from "../../redux/ProductTypes";
-type ProductState = {
-  +products: ProductCollection,
-  +error: string,
-  +isLoading: boolean
-};
+import * as Types from "../../redux/ProductTypes";
 
 const initialState = {
   products: {},
@@ -14,9 +9,9 @@ const initialState = {
 };
 
 export default function productsReducer(
-  state: ProductState = initialState,
-  action: ProductAction
-): ProductState {
+  state: Types.ProductState = initialState,
+  action: Types.ProductAction
+): Types.ProductState {
   switch (action.type) {
     case "FETCH_PRODUCTS_START":
       return { ...state, isLoading: true };
@@ -29,18 +24,15 @@ export default function productsReducer(
   }
 }
 
-/* ACTION TYPES */
-export type FETCH_PRODUCTS_START = { type: "FETCH_PRODUCTS_START" };
-export type FETCH_PRODUCTS_SUCCESS = {
-  type: "FETCH_PRODUCTS_SUCCESS",
-  products: ProductCollection
-};
-export type FETCH_PRODUCTS_FAILURE = {
-  type: "FETCH_PRODUCTS_FAILURE",
-  error: Error
-};
+export function selectProducts(
+  state: Types.ProductState
+): Types.ProductCollection {
+  const filtered: Types.ProductCollection = {};
 
-export type ProductAction =
-  | FETCH_PRODUCTS_START
-  | FETCH_PRODUCTS_SUCCESS
-  | FETCH_PRODUCTS_FAILURE;
+  for (let key in state.products) {
+    if (state.products[key].type == "simple")
+      filtered[key] = state.products[key];
+  }
+
+  return filtered;
+}

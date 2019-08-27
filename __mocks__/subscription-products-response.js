@@ -1,6 +1,7 @@
-export const response = [
+export const subscriptionProducts = [
   {
     id: 938,
+    type: "subscription",
     name: "4 Deliveries a Month for only $20",
     slug: "weekly-subscription",
     description: "Get your chocolate every week!",
@@ -127,11 +128,11 @@ export const response = [
             "M&M",
             "Snickers",
             "Skittles",
-            "Reese\u2019s",
+            "Reese's",
             "M&M Peanut",
             "Milkyway",
             "KitKat",
-            "Hershey\u2019s",
+            "Hershey's",
             "3 Musketeers"
           ]
         },
@@ -222,11 +223,11 @@ export const response = [
             "M&M",
             "Snickers",
             "Skittles",
-            "Reese\u2019s",
+            "Reese's",
             "M&M Peanut",
             "Milkyway",
             "KitKat",
-            "Hershey\u2019s",
+            "Hershey's",
             "3 Musketeers"
           ]
         },

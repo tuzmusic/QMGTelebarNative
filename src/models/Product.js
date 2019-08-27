@@ -5,6 +5,7 @@ export default class Product {
   // #region TYPE PROPERTY DEFINITIONS
   id: number;
   name: string;
+  type: string;
   slug: string;
   description: string;
   shortDescription: string;
@@ -37,6 +38,7 @@ export default class Product {
 
     prod.id = apiObj.id;
     prod.name = apiObj.name;
+    prod.type = apiObj.type;
     prod.slug = apiObj.slug;
     prod.description = apiObj.description;
     prod.shortDescription = apiObj.short_description;
