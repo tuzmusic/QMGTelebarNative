@@ -1,5 +1,5 @@
 // @flow
-import CardForm from "../../src/models/CardForm";
+import CardForm from "../../src/models/forms/CardForm";
 import { products } from "../../__mocks__/products-response";
 
 describe("CardForm", () => {

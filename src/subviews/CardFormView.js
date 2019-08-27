@@ -1,9 +1,9 @@
 // @flow
-import type { CardFormField } from "../models/CardForm";
+import type { CardFormField } from "../models/forms/CardForm";
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import { Divider, CheckBox } from "react-native-elements";
-import CardForm from "../models/CardForm";
+import CardForm from "../models/forms/CardForm";
 import CardFieldView from "../components/CardFieldView";
 import { DEV_MODE } from "../constants/devMode";
 

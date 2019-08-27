@@ -1,5 +1,5 @@
 // @flow
-import FrequencyForm from "../../src/models/FrequencyForm";
+import FrequencyForm from "../../src/models/forms/FrequencyForm";
 import { products } from "../../__mocks__/products-response";
 
 describe("FrequencyForm", () => {

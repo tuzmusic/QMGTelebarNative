@@ -10,7 +10,7 @@ import "@testing-library/jest-native/extend-expect";
 import "react-test-renderer";
 import { products } from "../../__mocks__/products-response";
 import CardFormView from "../../src/subviews/CardFormView";
-import CardForm from "../../src/models/CardForm";
+import CardForm from "../../src/models/forms/CardForm";
 
 const product = products.find(p => p.id === 1042);
 expect(product.name).toBe("M&M");

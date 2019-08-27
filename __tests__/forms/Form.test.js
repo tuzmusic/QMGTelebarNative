@@ -1,5 +1,5 @@
 // @flow
-import Form from "../../src/models/Form";
+import Form from "../../src/models/forms/Form";
 import { products } from "../../__mocks__/products-response";
 
 describe("Form", () => {

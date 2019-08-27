@@ -2,8 +2,8 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import { Divider, CheckBox } from "react-native-elements";
-import type { FrequencyFormOption } from "../models/FrequencyForm";
-import FrequencyForm from "../models/FrequencyForm";
+import type { FrequencyFormOption } from "../models/forms/FrequencyForm";
+import FrequencyForm from "../models/forms/FrequencyForm";
 
 type Props = { form: FrequencyForm, priceDelegate: number => void };
 type State = { selections: FrequencyFormOption[] };

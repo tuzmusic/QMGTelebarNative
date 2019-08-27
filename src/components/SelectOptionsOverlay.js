@@ -1,5 +1,5 @@
 // @flow
-import type { CardFormSelectField } from "../models/CardForm";
+import type { CardFormSelectField } from "../models/forms/CardForm";
 import React, {Component} from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { Overlay } from "react-native-elements";

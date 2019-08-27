@@ -3,7 +3,7 @@ import type {
   CardFormField,
   CardFormSelectField,
   CardFormTextAreaField
-} from "../models/CardForm";
+} from "../models/forms/CardForm";
 import React, { Component } from "react";
 import { View, Text, KeyboardAvoidingView } from "react-native";
 import { CheckBox, Overlay, Input, Button } from "react-native-elements";

@@ -1,5 +1,5 @@
 import Product from "../src/models/Product";
-import CardForm from "../src/models/CardForm";
+import CardForm from "../src/models/forms/CardForm";
 import { products } from "../__mocks__/products-response";
 // import expectedProduct from "../__mocks__/mock-created-object";
 

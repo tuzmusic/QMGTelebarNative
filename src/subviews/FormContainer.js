@@ -2,8 +2,8 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import Product from "../models/Product";
-import CardForm from "../models/CardForm";
-import FrequencyForm from "../models/FrequencyForm";
+import CardForm from "../models/forms/CardForm";
+import FrequencyForm from "../models/forms/FrequencyForm";
 import CardFormView from "./CardFormView";
 import FrequencyFormView from "./FrequencyFormView";
 
