@@ -7,6 +7,7 @@ import type { ProductCollection } from "../redux/ProductTypes";
 import ProductListCellView from "../components/ProductListCellView";
 import { DEV_MODE } from "../constants/devMode";
 import { selectSubscriptionProducts } from "../redux/reducers/productsReducer";
+import SubscriptionProductListCellView from "../components/SubscriptionProductListCellView";
 
 const AUTOMATE = DEV_MODE && false;
 
@@ -38,7 +39,7 @@ class ProductsListScreen extends Component<Props> {
       <FlatList
         data={this.props.products}
         renderItem={({ item }) => (
-          <ProductListCellView
+          <SubscriptionProductListCellView
             product={item}
             onProductPress={this.onProductPress.bind(this)}
           />
