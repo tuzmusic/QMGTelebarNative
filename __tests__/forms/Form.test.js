@@ -111,3 +111,34 @@ function expectedFields(): Object {
 
   return expectedFields;
 }
+
+describe("creating a whole form", () => {
+  describe("Form.assembleForm", () => {
+    it("assembles a form from its fields (agnostic about how the fields work together or what type of form it is", () => {
+      expect(Form.assembleForm(formObject())).toEqual(expectedAssembledForm());
+    });
+  });
+});
+
+function formObject(): Object {
+  const {
+    checkboxesObj,
+    selectboxObj,
+    headerObj,
+    textareaObj
+  } = fieldObjects();
+  return {
+    form_title: "Placeholder title for subscription product",
+    form_type: "Placeholder type for subscription product",
+    fields: [checkboxesObj, selectboxObj, headerObj, textareaObj]
+  };
+}
+function expectedAssembledForm(): Form {
+  const { checkboxes, selectbox, header, textarea } = expectedFields();
+  const form = {
+    title: "Placeholder title for subscription product",
+    type: "Placeholder type for subscription product",
+    fields: [checkboxes, selectbox, header, textarea]
+  };
+  return Object.assign(new Form(), form);
+}

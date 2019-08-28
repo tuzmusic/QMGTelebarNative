@@ -19,6 +19,10 @@ class FieldCreator {
         return Field.fromApiFormInfo(formInfo);
     }
   }
+
+  static createFieldsFromArray(formInfoArray: Object[]): Field[] {
+    return formInfoArray.map(field => this.createField(field));
+  }
 }
 
 export default FieldCreator;
