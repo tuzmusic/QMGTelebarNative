@@ -19,7 +19,7 @@ expect(form.title).toBe(
   "Pick one of the following gift card messages or write your own custom message!"
 );
 
-xdescribe("CardFormView", () => {
+describe("CardFormView", () => {
   let wrapper, birthdayField;
 
   beforeEach(() => {

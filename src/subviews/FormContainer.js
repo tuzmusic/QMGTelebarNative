@@ -20,13 +20,16 @@ export default class FormContainer extends Component<Props> {
         form = CardForm.fromApiProduct(product);
         return <CardFormView form={form} />;
       case "frequency":
-        form = FrequencyForm.fromApiProduct(product);
-        return (
-          <FrequencyFormView
-            form={form}
-            priceDelegate={this.props.priceDelegate}
-          />
-        );
+        return <Text>FREQUENCY FORM NEEDS UPDATING FOR NEW FORMS API</Text>;
+      /** form = FrequencyForm.fromApiProduct(product);
+       * return (
+       *   <FrequencyFormView
+       *     form={form}
+       *     priceDelegate={this.props.priceDelegate}
+       *   />
+       * );
+       */
+
       default:
         return <Text>Form Goes Here</Text>;
     }
