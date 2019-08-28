@@ -2,7 +2,7 @@
 import Field from "./Field";
 
 class CheckboxesField extends Field {
-  options: { name: string, price: ?number };
+  options: { name: string, price: ?number }[];
   defaultQuantity: number;
   maximumSelections: ?number;
 

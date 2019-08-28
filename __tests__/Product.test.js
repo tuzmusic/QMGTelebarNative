@@ -34,8 +34,8 @@ function expectedProduct() {
         src:
           "https://telebardelivery.com/wp-content/uploads/2019/04/Telebar-MM-1-370x370.jpg"
       }
-    ],
-    formInfo: products[0].form_info
+    ]
+    // formInfo: products[0].form_info
   };
   return Object.assign(prod, { ...props });
 }

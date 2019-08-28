@@ -1,7 +1,7 @@
 import SubscriptionProduct from "../src/models/SubscriptionProduct";
-import { response as apiResponse } from "../__mocks__/subscription-products-response";
+import { subscriptionProducts as apiResponse } from "../__mocks__/subscription-products-response";
 
-xdescribe("SubscriptionProduct", () => {
+describe("SubscriptionProduct", () => {
   const obj = apiResponse[0];
   describe("fromApi", () => {
     it("creates an object from an api response", () => {
@@ -29,5 +29,6 @@ function expectedProduct() {
     period: "month",
     interval: 1
   };
+
   return prod;
 }

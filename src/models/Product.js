@@ -12,24 +12,24 @@ export default class Product {
   price: number;
   images: { id: number, src: string, name: string, alt: string }[];
   formInfo: Object;
-  /* UNUSED
-  sku: string;
-  regularPrice: number;
-  salePrice: ?number;
-  onSale: boolean;
-  relatedIds: number[];
-  featured: boolean;
-  categories: { id: number, name: string, slug: string }[];
-  tags: { id: number, name: string, slug: string }[];
-  attributes: {
-    id: number,
-    name: string,
-    position: number,
-    visible: boolean,
-    variation: boolean,
-    options: string[]
-  }[];
- */
+  /** UNUSED
+   * sku: string;
+   * regularPrice: number;
+   * salePrice: ?number;
+   * onSale: boolean;
+   * relatedIds: number[];
+   * featured: boolean;
+   * categories: { id: number, name: string, slug: string }[];
+   * tags: { id: number, name: string, slug: string }[];
+   * attributes: {
+   *   id: number,
+   *   name: string,
+   *   position: number,
+   *   visible: boolean,
+   *   variation: boolean,
+   *   options: string[]
+   * }[];
+   */
 
   // #endregion
 
@@ -49,16 +49,17 @@ export default class Product {
       }
     ];
     prod.formInfo = apiObj.form_info;
-    /* UNUSED
-    prod.sku = apiObj.sku;
-    prod.regularPrice = Number(apiObj.regular_price);
-    prod.salePrice = Number(apiObj.sale_price) || null;
-    prod.onSale = apiObj.on_sale;
-    prod.relatedIds = apiObj.related_ids;
-    prod.featured = apiObj.featured;
-    prod.categories = apiObj.categories;
-    prod.tags = apiObj.tags;
-    prod.attributes = apiObj.attributes; */
+    /** UNUSED
+     * prod.sku = apiObj.sku;
+     * prod.regularPrice = Number(apiObj.regular_price);
+     * prod.salePrice = Number(apiObj.sale_price) || null;
+     * prod.onSale = apiObj.on_sale;
+     * prod.relatedIds = apiObj.related_ids;
+     * prod.featured = apiObj.featured;
+     * prod.categories = apiObj.categories;
+     * prod.tags = apiObj.tags;
+     * prod.attributes = apiObj.attributes;
+     */
     return prod;
   }
 

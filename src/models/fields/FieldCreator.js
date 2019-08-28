@@ -2,6 +2,7 @@ import SelectboxField from "./SelectboxField";
 import CheckboxesField from "./CheckboxesField";
 import HeaderField from "./HeaderField";
 import TextareaField from "./TextareaField";
+import Field from "./Field";
 
 class FieldCreator {
   static createField(formInfo: Object): Field {
@@ -12,7 +13,7 @@ class FieldCreator {
         return HeaderField.fromApiFormInfo(formInfo);
       case "checkboxes":
         return CheckboxesField.fromApiFormInfo(formInfo);
-      case "selectboxes":
+      case "selectbox":
         return SelectboxField.fromApiFormInfo(formInfo);
       default:
         return Field.fromApiFormInfo(formInfo);
