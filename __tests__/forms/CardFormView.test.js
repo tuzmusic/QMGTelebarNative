@@ -1,13 +1,14 @@
 // @flow
 import React from "react";
+
+import "@testing-library/jest-native/extend-expect";
 import {
   render,
   fireEvent,
   waitForElement,
   debug
 } from "react-native-testing-library";
-import "@testing-library/jest-native/extend-expect";
-import "react-test-renderer";
+
 import { products } from "../../__mocks__/products-response";
 import CardFormView from "../../src/subviews/CardFormView";
 import CardForm from "../../src/models/forms/CardForm";
@@ -19,6 +20,7 @@ const form = CardForm.fromApiProduct(product);
 expect(form.title).toBe(
   "Pick one of the following gift card messages or write your own custom message!"
 );
+
 describe("CardFormView", () => {
   let wrapper, birthdayField;
 

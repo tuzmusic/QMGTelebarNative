@@ -46,6 +46,9 @@
     "redux-saga-tester": "^1.0.468"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFiles": [
+      "./jest.setup.js"
+    ]
   }
 }
