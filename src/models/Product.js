@@ -1,6 +1,6 @@
 // @flow
 import type { ProductCollection } from "../redux/ProductTypes";
-
+import Form from "./forms/Form";
 export default class Product {
   // #region TYPE PROPERTY DEFINITIONS
   id: number;
@@ -10,26 +10,8 @@ export default class Product {
   description: string;
   shortDescription: string;
   price: number;
-  images: { id: number, src: string, name: string, alt: string }[];
+  images: { id?: number, src: string, name?: string, alt?: string }[];
   formInfo: Object;
-  /** UNUSED
-   * sku: string;
-   * regularPrice: number;
-   * salePrice: ?number;
-   * onSale: boolean;
-   * relatedIds: number[];
-   * featured: boolean;
-   * categories: { id: number, name: string, slug: string }[];
-   * tags: { id: number, name: string, slug: string }[];
-   * attributes: {
-   *   id: number,
-   *   name: string,
-   *   position: number,
-   *   visible: boolean,
-   *   variation: boolean,
-   *   options: string[]
-   * }[];
-   */
 
   // #endregion
 
@@ -40,26 +22,16 @@ export default class Product {
     prod.name = apiObj.name;
     prod.type = apiObj.type;
     prod.slug = apiObj.slug;
-    prod.description = apiObj.description;
-    prod.shortDescription = apiObj.short_description;
+    if (apiObj.description) prod.description = apiObj.description;
+    if (apiObj.short_description)
+      prod.shortDescription = apiObj.short_description;
     prod.price = Number(apiObj.price);
     prod.images = apiObj.images || [
       {
         src: apiObj.featured_image_url
       }
     ];
-    prod.formInfo = apiObj.form_info;
-    /** UNUSED
-     * prod.sku = apiObj.sku;
-     * prod.regularPrice = Number(apiObj.regular_price);
-     * prod.salePrice = Number(apiObj.sale_price) || null;
-     * prod.onSale = apiObj.on_sale;
-     * prod.relatedIds = apiObj.related_ids;
-     * prod.featured = apiObj.featured;
-     * prod.categories = apiObj.categories;
-     * prod.tags = apiObj.tags;
-     * prod.attributes = apiObj.attributes;
-     */
+    prod.formInfo = Form.assembleForm(apiObj.form_info);
     return prod;
   }
 

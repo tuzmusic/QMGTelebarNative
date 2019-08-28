@@ -19,7 +19,7 @@ function expectedCardForm(): CardForm {
   form.fields = [
     {
       title: "Add a Birthday Gift Card",
-      type: "select",
+      type: "selectbox",
       placeholder: "Choose a Card",
       options: [
         "There are two great days in a person's life - the day we are born and the day we discover why. -William Barclay",
@@ -31,7 +31,7 @@ function expectedCardForm(): CardForm {
     },
     {
       title: "Add a Anniversary Gift Card",
-      type: "select",
+      type: "selectbox",
       placeholder: "Choose a Card",
       options: [
         "The secret of a happy marriage is finding the right person. You know they're right if you love to be with them all the time. -Julia Child",

@@ -18,8 +18,8 @@ export const subscriptionProducts = [
     date_on_sale_to: null,
     date_on_sale_to_gmt: "",
     form_info: {
-      title: "Placeholder title for subscription product",
-      type: "Placeholder type for subscription product",
+      form_title: "Placeholder title for subscription product",
+      form_type: "Placeholder type for subscription product",
       fields: [
         {
           type: "checkboxes",
@@ -116,8 +116,8 @@ export const subscriptionProducts = [
     date_on_sale_to: null,
     date_on_sale_to_gmt: "",
     form_info: {
-      title: "Placeholder title for subscription product",
-      type: "Placeholder type for subscription product",
+      form_title: "Placeholder title for subscription product",
+      form_type: "Placeholder type for subscription product",
       fields: [
         {
           type: "selectbox",
@@ -212,8 +212,8 @@ export const subscriptionProducts = [
     date_on_sale_to: null,
     date_on_sale_to_gmt: "",
     form_info: {
-      title: "Placeholder title for subscription product",
-      type: "Placeholder type for subscription product",
+      form_title: "Placeholder title for subscription product",
+      form_type: "Placeholder type for subscription product",
       fields: [
         {
           type: "selectbox",

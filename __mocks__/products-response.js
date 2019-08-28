@@ -25,7 +25,7 @@ export const products = [
       fields: [
         {
           title: "Add a Birthday Gift Card",
-          type: "select",
+          type: "selectbox",
           placeholder_text: "Choose a Card",
           options: [
             "There are two great days in a person's life - the day we are born and the day we discover why. -William Barclay",
@@ -37,7 +37,7 @@ export const products = [
         },
         {
           title: "Add a Anniversary Gift Card",
-          type: "select",
+          type: "selectbox",
           placeholder_text: "Choose a Card",
           options: [
             "The secret of a happy marriage is finding the right person. You know they're right if you love to be with them all the time. -Julia Child",
