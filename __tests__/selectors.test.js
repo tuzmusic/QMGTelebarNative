@@ -13,7 +13,11 @@ const props = {
   shortDescription: "string",
   price: 1,
   images: [{ id: 1, src: "string", name: "string", alt: "string" }],
-  formInfo: {}
+  form_info: {
+    form_title: "whatever",
+    form_type: "whatever!",
+    fields: []
+  }
 };
 const productsArray: Object[] = [
   { ...props, id: 1, type: "simple" },
