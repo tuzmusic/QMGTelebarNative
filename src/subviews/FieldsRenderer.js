@@ -16,21 +16,19 @@ type State = {};
 
 class FieldsRenderer extends Component<Props, State> {
   render() {
-    const MockFields = [
-      this.props.fields.find(f => f.type === "checkboxes") || new Field(),
-      this.props.fields.find(f => f.type === "textarea") || new Field(),
-      this.props.fields.find(f => f.type === "selectbox") || new Field(),
-      this.props.fields.find(f => f.type === "header") || new Field()
+    const mockFields = [
+      this.props.fields.find(f => f.type === "checkboxes") || new Field()
+      // this.props.fields.find(f => f.type === "textarea") || new Field(),
+      // this.props.fields.find(f => f.type === "selectbox") || new Field(),
+      // this.props.fields.find(f => f.type === "header") || new Field()
     ];
-    const mockTextareaField: TextareaField = Object.assign(
-      new TextareaField(),
-      {
-        title: "Enter some text!",
-        type: "textarea"
-      }
-    );
 
-    const fields = MockFields;
+    mockFields[0].options = ["Justin", "Travis", "Griffin"].map(n => ({
+      name: n,
+      price: 1
+    }));
+
+    const fields = mockFields;
     return (
       <View>
         {fields.map((field, i: number) => {
