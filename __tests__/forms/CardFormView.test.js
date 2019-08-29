@@ -19,7 +19,7 @@ expect(form.title).toBe(
   "Pick one of the following gift card messages or write your own custom message!"
 );
 
-describe("CardFormView", () => {
+xdescribe("CardFormView", () => {
   let wrapper, birthdayField;
 
   beforeEach(() => {
@@ -29,6 +29,7 @@ describe("CardFormView", () => {
       </React.Fragment>
     );
     birthdayField = wrapper.getByText("Add a Birthday Gift Card");
+    expect(birthdayField).toBeDefined();
   });
 
   const message1 =

@@ -1,11 +1,11 @@
 // @flow
-import type { CardFormSelectField } from "../models/forms/CardForm";
 import React, {Component} from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { Overlay } from "react-native-elements";
+import SelectboxField from "../models/fields/SelectboxField";
 
 type Props = { 
-  field: CardFormSelectField, 
+  field: SelectboxField, 
   dismissOverlay: function, 
   onSubmit: string => void 
 }

@@ -13,13 +13,14 @@ import { ListStack, SubscriptionProductsListStack } from "./TabsAndStacks";
 import { fetchProducts } from "../redux/actions/productActions";
 
 let initialRouteName;
+initialRouteName = "List";
 initialRouteName = "Subscriptions";
 
 /* TAB NAV */
 
 const TabNavigator = createBottomTabNavigator(
-  { List: ListStack, Subscriptions: SubscriptionProductsListStack }
-  // { initialRouteName }
+  { List: ListStack, Subscriptions: SubscriptionProductsListStack },
+  { initialRouteName }
 );
 
 class TabContainer extends Component<Object> {

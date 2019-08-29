@@ -8,7 +8,7 @@ import ProductListCellView from "../components/ProductListCellView";
 import { DEV_MODE } from "../constants/devMode";
 import { selectProducts } from "../redux/reducers/productsReducer";
 
-const AUTOMATE = DEV_MODE && false;
+const AUTOMATE = DEV_MODE && true;
 
 type Props = {
   products: Product[],

@@ -6,6 +6,8 @@ import CardForm from "../models/forms/CardForm";
 import FrequencyForm from "../models/forms/FrequencyForm";
 import CardFormView from "./CardFormView";
 import FrequencyFormView from "./FrequencyFormView";
+import FieldsRenderer from "./FieldsRenderer";
+import Form from "../models/forms/Form";
 
 type Props = { product: Product, priceDelegate: number => void };
 
@@ -29,9 +31,9 @@ export default class FormContainer extends Component<Props> {
        *   />
        * );
        */
-
       default:
-        return <Text>Form Goes Here</Text>;
+        form = Form.assembleForm(product.formInfo);
+        return <FieldsRenderer fields={form.fields} />;
     }
   }
 }

@@ -1,8 +1,8 @@
-import Product from "../Product";
+// @flow
+
+import type Product from "../Product";
 import Field from "../fields/Field";
 import FieldCreator from "../fields/FieldCreator";
-
-// @flow
 
 export default class Form {
   title: string;
@@ -11,7 +11,7 @@ export default class Form {
 
   static fromApiProduct(product: Product | Object): Form {
     const form = new Form();
-    const info = product.formInfo || product.form_info;
+    const info = product.formInfo || product.form_info; // TO-DO: Standardize this API!
     form.title = info.form_title;
     form.type = info.form_type || info.type; // TO-DO: Standardize this API!
     return form;
