@@ -8,6 +8,8 @@ import TextareaField from "../models/fields/TextareaField";
 import SelectboxField from "../models/fields/SelectboxField";
 import HeaderField from "../models/fields/HeaderField";
 import HeaderFieldView from "../components/HeaderFieldView";
+import CheckboxesField from "../models/fields/CheckboxesField";
+import CheckboxesFieldView from "../components/CheckboxesFieldView";
 
 type Props = { fields: Field[] };
 type State = {};
@@ -15,6 +17,7 @@ type State = {};
 class FieldsRenderer extends Component<Props, State> {
   render() {
     const MockFields = [
+      this.props.fields.find(f => f.type === "checkboxes") || new Field(),
       this.props.fields.find(f => f.type === "textarea") || new Field(),
       this.props.fields.find(f => f.type === "selectbox") || new Field(),
       this.props.fields.find(f => f.type === "header") || new Field()
@@ -39,6 +42,8 @@ class FieldsRenderer extends Component<Props, State> {
                 selectionHandler={(field, option) => console.log(field, option)}
               />
             );
+          } else if (field instanceof CheckboxesField) {
+            return <CheckboxesFieldView key={i} field={field} />;
           } else if (field instanceof TextareaField) {
             return (
               <TextareaFieldView
