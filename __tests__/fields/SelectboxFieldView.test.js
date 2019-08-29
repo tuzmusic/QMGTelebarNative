@@ -74,20 +74,28 @@ describe("SelectboxFieldView", () => {
     expect(wrapper.queryByText("This")).toBeNull();
   });
 
-  it("calls handleSubmit when an option is clicked", () => {
+  it("calls handleSubmit with the selected option when an option is clicked", () => {
     const submitSpy = jest.spyOn(SelectboxFieldView.prototype, "handleSubmit");
     fireEvent.press(wrapper.getByText(field.title));
     fireEvent.press(wrapper.getByText("This"));
-    expect(submitSpy).toHaveBeenCalled();
+    expect(submitSpy).toHaveBeenCalledWith("This");
+    submitSpy.mockRestore();
   });
-  describe("showSelection: true", () => {
-    it("shows the selection when an option is clicked", () => {
-      expect(false).toBeTrue();
-    });
-  });
-  describe("showSelection: false", () => {
-    it("doesn't show the selection when an option is clicked", () => {
-      expect(false).toBeTrue();
-    });
+
+  it("shows the selection when an option is clicked, if the showSelection prop is true", () => {
+    const props = {
+      field,
+      selectionHandler: jest.fn(),
+      showSelection: true
+    };
+    wrapper = render(
+      <React.Fragment>
+        <SelectboxFieldView {...props} />
+      </React.Fragment>
+    );
+
+    fireEvent.press(wrapper.getByText(field.title));
+    fireEvent.press(wrapper.getByText("This"));
+    expect(wrapper.getByText("This")).toBeDefined();
   });
 });
