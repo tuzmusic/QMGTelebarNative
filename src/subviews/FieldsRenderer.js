@@ -6,6 +6,8 @@ import SelectboxFieldView from "../components/SelectboxFieldView";
 import TextareaFieldView from "../components/TextareaFieldView";
 import TextareaField from "../models/fields/TextareaField";
 import SelectboxField from "../models/fields/SelectboxField";
+import HeaderField from "../models/fields/HeaderField";
+import HeaderFieldView from "../components/HeaderFieldView";
 
 type Props = { fields: Field[] };
 type State = {};
@@ -14,7 +16,8 @@ class FieldsRenderer extends Component<Props, State> {
   render() {
     const MockFields = [
       this.props.fields.find(f => f.type === "textarea") || new Field(),
-      this.props.fields.find(f => f.type === "selectbox") || new Field()
+      this.props.fields.find(f => f.type === "selectbox") || new Field(),
+      this.props.fields.find(f => f.type === "header") || new Field()
     ];
     const mockTextareaField: TextareaField = Object.assign(
       new TextareaField(),
@@ -45,6 +48,8 @@ class FieldsRenderer extends Component<Props, State> {
                 selectionHandler={(field, option) => console.log(field, option)}
               />
             );
+          } else if (field instanceof HeaderField) {
+            return <HeaderFieldView key={i} field={field} />;
           } else {
             return <Text key={i}>A Field</Text>;
           }
