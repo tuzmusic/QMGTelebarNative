@@ -12,7 +12,11 @@ const AUTOMATE = DEV_MODE && false;
 type Props = {
   field: SelectboxField,
   selectionHandler: (field: SelectboxField, selection: string) => void,
-  showSelection?: boolean
+  // renders selection (below the checkbox) only if selected.
+  // so this component is written to be used in an "exclusive selection" context.
+  // the presence of the checkbox reinforces this, btw.
+  // but whatever.
+  isSelected?: boolean
 };
 type State = {
   showOverlay: boolean,
@@ -40,7 +44,7 @@ export default class SelectboxFieldView extends Component<Props, State> {
     const field = this.props.field;
     const checkBoxProps = {
       title: field.title,
-      checked: this.props.showSelection,
+      checked: this.props.isSelected,
       onPress: this.toggleOverlay.bind(this),
       checkedIcon: "dot-circle-o",
       uncheckedIcon: "circle-o"
@@ -56,7 +60,7 @@ export default class SelectboxFieldView extends Component<Props, State> {
             onSubmit={this.handleSubmit.bind(this)}
           />
         )}
-        {this.props.showSelection && (
+        {this.props.isSelected && (
           <Text style={styles.message}>{this.state.selectedOption}</Text>
         )}
       </View>

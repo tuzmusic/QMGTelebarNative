@@ -8,7 +8,7 @@ import TextAreaOverlay from "./TextAreaOverlay";
 type Props = {
   field: TextareaField,
   selectionHandler: (field: TextareaField, selection: string) => void,
-  showSubmittedText?: boolean
+  isSelected?: boolean
 };
 type State = {
   showOverlay: boolean,
@@ -27,18 +27,14 @@ class TextareaFieldView extends Component<Props, State> {
 
   render() {
     const field = this.props.field;
-    const checkBoxProps = {
-      title: field.title,
-      checked: this.props.showSubmittedText,
-      onPress: this.toggleOverlay.bind(this)
-    };
-
     return (
       <View>
         <CheckBox
           title={field.title}
-          checked={this.props.showSubmittedText}
+          checked={this.props.isSelected}
           onPress={this.toggleOverlay.bind(this)}
+          checkedIcon="dot-circle-o"
+          uncheckedIcon="circle-o"
         />
         {this.state.showOverlay && (
           <TextAreaOverlay
@@ -47,7 +43,7 @@ class TextareaFieldView extends Component<Props, State> {
             onSubmit={this.handleSubmit.bind(this)}
           />
         )}
-        {this.props.showSubmittedText && (
+        {this.props.isSelected && (
           <Text style={styles.message}>{this.state.message}</Text>
         )}
       </View>

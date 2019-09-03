@@ -8,7 +8,6 @@ import {
 } from "react-native-testing-library";
 import CheckboxesField from "../../src/models/fields/CheckboxesField";
 import ChecboxesQuantityFieldView from "../../src/components/ChecboxesQuantityFieldView";
-import { View } from "react-native";
 import { CheckBox } from "react-native-elements";
 
 const fieldInfo = {
@@ -34,7 +33,7 @@ function createWrapper(customProps) {
   return wrapper;
 }
 
-let wrapper = render(<View></View>);
+let wrapper;
 
 describe("ChecboxesQuantityFieldView", () => {
   const box = (i: number) => wrapper.getByText(field.options[i].name);
