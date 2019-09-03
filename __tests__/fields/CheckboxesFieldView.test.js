@@ -7,7 +7,7 @@ import {
   debug
 } from "react-native-testing-library";
 import CheckboxesField from "../../src/models/fields/CheckboxesField";
-import CheckboxesFieldView from "../../src/components/CheckboxesFieldView";
+import ChecboxesQuantityFieldView from "../../src/components/ChecboxesQuantityFieldView";
 import { View } from "react-native";
 import { CheckBox } from "react-native-elements";
 
@@ -28,7 +28,7 @@ function createWrapper(customProps) {
   const props = { field, ...customProps }; // not tested
   wrapper = render(
     <Fragment>
-      <CheckboxesFieldView {...props} />
+      <ChecboxesQuantityFieldView {...props} />
     </Fragment>
   );
   return wrapper;
@@ -36,7 +36,7 @@ function createWrapper(customProps) {
 
 let wrapper = render(<View></View>);
 
-describe("CheckboxesFieldView", () => {
+describe("ChecboxesQuantityFieldView", () => {
   const box = (i: number) => wrapper.getByText(field.options[i].name);
   const check = (i: number) => fireEvent.press(box(i));
 
@@ -86,15 +86,32 @@ describe("CheckboxesFieldView", () => {
       check(0);
       expect(wrapper.queryAllByDisplayValue("1").length).toBe(1);
     });
+
+    it("accepts an initialQuantities prop", () => {
+      const wrapper = createWrapper({ initialQuantities: [3, 0, 7] });
+      expect(wrapper.queryAllByDisplayValue("3").length).toBe(1);
+      expect(wrapper.queryAllByDisplayValue("7").length).toBe(1);
+      const boxes = wrapper.getAllByType(CheckBox);
+      expect(boxes[1].props.checked).toBe(false);
+    });
+
+    it("can change the quantity", () => {
+      check(0);
+      check(1);
+      plusButtons = wrapper.queryAllByTestId("plus");
+      fireEvent.press(plusButtons[0]);
+      fireEvent.press(plusButtons[1]);
+      expect(wrapper.queryAllByDisplayValue("2").length).toBe(2);
+    });
   });
 
   describe("Behavior (selection limits)", () => {
+    beforeEach(() => {
+      wrapper = createWrapper({ maximumSelections: 2 });
+    });
     describe("with limits", () => {
-      beforeEach(() => {
-        wrapper = createWrapper({ maximumSelections: 2 });
-      });
-
       it("limits the number of boxes you can check", () => {
+        wrapper = createWrapper({ maximumSelections: 2 });
         check(0);
         check(1);
         check(2);
@@ -103,11 +120,40 @@ describe("CheckboxesFieldView", () => {
         expect(boxes[1].props.checked).toBe(true);
         expect(boxes[2].props.checked).toBe(false);
       });
-      xit("limits the quantity that can be selected", () => {});
+      describe("at maximum capacity", () => {
+        let boxes, plusButtons;
+        beforeEach(() => {
+          // NOTE: Don't worry about customizing/genericizing this!
+          // This includes treating "maximumSelections" and "maximumQuantity" as one concept
+          // I don't think it's worth our time now, I don't think we need it.
+          wrapper = createWrapper({ maximumSelections: 4 });
+          boxes = wrapper.getAllByType(CheckBox);
+          // check the first two boxes (of 3), exposing the quantity buttons
+          check(0);
+          check(1);
+          plusButtons = wrapper.queryAllByTestId("plus");
+          // press both plus buttons, reaching maximum quantity
+          fireEvent.press(plusButtons[0]);
+          fireEvent.press(plusButtons[1]);
+          expect(wrapper.queryAllByDisplayValue("2").length).toBe(2);
+        });
+
+        it("should prohibit add'l boxes from being checked", () => {
+          expect(boxes.length).toBe(3);
+          check(2);
+          expect(boxes[2].props.checked).toBe(false);
+        });
+
+        it("should prohibit quantity from being increased", () => {
+          fireEvent.press(plusButtons[1]);
+          expect(wrapper.queryAllByDisplayValue("3").length).toBe(0);
+          expect(wrapper.queryAllByDisplayValue("2").length).toBe(2);
+        });
+      });
     });
-    describe("N0 L1M17S!!!1!", () => {
-      xit("doesn't limit the number of boxes you can check", () => {});
-      xit("doesn't limit the quantity you can select", () => {});
-    });
+  });
+  describe("no limits", () => {
+    xit("doesn't limit the number of boxes you can check", () => {});
+    xit("doesn't limit the quantity you can select", () => {});
   });
 });

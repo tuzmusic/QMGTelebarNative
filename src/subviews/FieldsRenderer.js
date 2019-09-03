@@ -9,7 +9,7 @@ import SelectboxField from "../models/fields/SelectboxField";
 import HeaderField from "../models/fields/HeaderField";
 import HeaderFieldView from "../components/HeaderFieldView";
 import CheckboxesField from "../models/fields/CheckboxesField";
-import CheckboxesFieldView from "../components/CheckboxesFieldView";
+import ChecboxesQuantityFieldView from "../components/ChecboxesQuantityFieldView";
 
 type Props = { fields: Field[] };
 type State = {};
@@ -41,7 +41,13 @@ class FieldsRenderer extends Component<Props, State> {
               />
             );
           } else if (field instanceof CheckboxesField) {
-            return <CheckboxesFieldView key={i} field={field} />;
+            return (
+              <ChecboxesQuantityFieldView
+                key={i}
+                field={field}
+                initialValues={[true, true, false]}
+              />
+            );
           } else if (field instanceof TextareaField) {
             return (
               <TextareaFieldView

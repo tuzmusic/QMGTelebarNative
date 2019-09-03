@@ -8,22 +8,36 @@ import { CheckBox, Divider } from "react-native-elements";
 type Props = {
   field: CheckboxesField,
   initialValues?: boolean[],
+  initialQuantities?: number[],
   maximumSelections?: number
 };
 type State = {
-  checked: boolean[]
+  checked: boolean[],
+  quantities: number[]
 };
 type Option = { name: string, price: ?number };
 
-class CheckboxesFieldView extends Component<Props, State> {
+class ChecboxesQuantityFieldView extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+
+    // use initial quantities to set checked values?
+    // or just have each box's checked value be based on its quantity?
+  }
+
   state = {
     checked:
       this.props.initialValues ||
-      Array(this.props.field.options.length).fill(false)
+      Array(this.props.field.options.length).fill(false),
+    quantities:
+      this.props.initialQuantities ||
+      Array(this.props.field.options.length).fill(0)
   };
 
   toggleChecked(i: number) {
     const checked = [...this.state.checked];
+    const quantities = [...this.state.quantities];
+
     const checkedCount = checked.filter(Boolean).length;
     /**if we're checking a box that's unchecked,
      * and there's a maximumSelections value,
@@ -35,6 +49,10 @@ class CheckboxesFieldView extends Component<Props, State> {
     }
     checked[i] = !checked[i];
     this.setState({ ...this.state, checked });
+  }
+
+  changeQuantity(val: number) {
+    // console.log(val);
   }
 
   render() {
@@ -53,8 +71,8 @@ class CheckboxesFieldView extends Component<Props, State> {
             />
             {this.state.checked[i] && (
               <Quantity
-                value={"1"}
-                onChange={() => {}}
+                value={this.state.quantities[i]}
+                onChange={this.changeQuantity.bind(this)}
                 showLabel={false}
                 containerStyle={{
                   marginHorizontal: 20,
@@ -68,7 +86,7 @@ class CheckboxesFieldView extends Component<Props, State> {
     );
   }
 }
-export default CheckboxesFieldView;
+export default ChecboxesQuantityFieldView;
 const Space = ({ height }: { height?: number }) => (
   <Divider height={height || 10} backgroundColor={"transparent"} />
 );

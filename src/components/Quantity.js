@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 import { Input, Icon } from "react-native-elements";
 
 type Props = {
-  value: string,
+  value: number,
   onChange: number => void,
   label?: string,
   showLabel?: boolean,
@@ -13,6 +13,7 @@ type Props = {
 
 const Quantity = (props: Props) => {
   Quantity.defaultProps = { showLabel: true };
+
   function onChange(n) {
     const newVal = Number(props.value) + n;
     if (newVal >= 0) props.onChange(newVal);
@@ -26,9 +27,19 @@ const Quantity = (props: Props) => {
     <View style={[styles.superContainer, props.containerStyle]}>
       {props.showLabel && <Text style={styles.text}>Quantity:</Text>}
       <View style={styles.row}>
-        <Icon name="minus" onPress={() => onChange(-1)} {...iconProps} />
-        <Input inputStyle={styles.input} value={props.value} />
-        <Icon name="plus" onPress={() => onChange(1)} {...iconProps} />
+        <Icon
+          name="minus"
+          onPress={() => onChange(-1)}
+          testID={`minus`}
+          {...iconProps}
+        />
+        <Input inputStyle={styles.input} value={props.value.toString()} />
+        <Icon
+          name="plus"
+          onPress={() => onChange(1)}
+          testID={`plus`}
+          {...iconProps}
+        />
       </View>
     </View>
   );
