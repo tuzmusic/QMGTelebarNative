@@ -34,31 +34,8 @@ class ChecboxesQuantityFieldView extends Component<Props, State> {
       Array(this.props.field.options.length).fill(0)
   };
 
-  _toggleChecked(i: number) {
-    const checked = [...this.state.checked];
-    const quantities = [...this.state.quantities];
-
-    const checkedCount = checked.filter(Boolean).length;
-    /**if we're checking a box that's unchecked,
-     * and there's a maximumSelections value,
-     * and we've already checked the maximum selections,
-     * don't allow the box to be checked.
-     */
-    if (!checked[i] && this.props.maximumSelections) {
-      if (checkedCount == this.props.maximumSelections) return;
-    }
-    checked[i] = !checked[i];
-    this.setState({ ...this.state, checked });
-  }
-
-  toggleChecked(i: number) {
-    const quantities = [...this.state.quantities];
-    const checked = quantities.map(Boolean);
-
-    quantities[i] = checked[i] ? 0 : 1;
-
-    this.setState({ ...this.state, quantities });
-  }
+  toggleChecked = (i: number) =>
+    this.changeQuantity(i, this.state.quantities[i] ? 0 : 1);
 
   changeQuantity(i: number, val: number) {
     const quantities = [...this.state.quantities];
