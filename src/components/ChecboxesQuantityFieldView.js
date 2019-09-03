@@ -34,7 +34,7 @@ class ChecboxesQuantityFieldView extends Component<Props, State> {
       Array(this.props.field.options.length).fill(0)
   };
 
-  toggleChecked(i: number) {
+  _toggleChecked(i: number) {
     const checked = [...this.state.checked];
     const quantities = [...this.state.quantities];
 
@@ -51,8 +51,19 @@ class ChecboxesQuantityFieldView extends Component<Props, State> {
     this.setState({ ...this.state, checked });
   }
 
-  changeQuantity(val: number) {
-    // console.log(val);
+  toggleChecked(i: number) {
+    const quantities = [...this.state.quantities];
+    const checked = quantities.map(Boolean);
+
+    quantities[i] = checked[i] ? 0 : 1;
+
+    this.setState({ ...this.state, quantities });
+  }
+
+  changeQuantity(i: number, val: number) {
+    const quantities = [...this.state.quantities];
+    quantities[i] = val;
+    this.setState({ quantities });
   }
 
   render() {
@@ -66,13 +77,13 @@ class ChecboxesQuantityFieldView extends Component<Props, State> {
             <CheckBox
               title={option.name}
               onPress={this.toggleChecked.bind(this, i)}
-              checked={this.state.checked[i]}
+              checked={this.state.quantities[i] > 0}
               containerStyle={{ flex: 3 }}
             />
-            {this.state.checked[i] && (
+            {this.state.quantities[i] > 0 && (
               <Quantity
                 value={this.state.quantities[i]}
-                onChange={this.changeQuantity.bind(this)}
+                onChange={this.changeQuantity.bind(this, i)}
                 showLabel={false}
                 containerStyle={{
                   marginHorizontal: 20,

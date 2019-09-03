@@ -65,12 +65,13 @@ describe("ChecboxesQuantityFieldView", () => {
       expect(checkbox.props.checked).toBe(false);
     });
 
+    /* Because this is really quantity-based, initial check values would mess up the logic.
     it("accepts an initial values array to pre-set checked boxes", () => {
       const wrapper = createWrapper({ initialValues: [false, true, true] });
       const checkboxes = wrapper.getAllByType(CheckBox);
       const mapped = checkboxes.map(c => c.props.checked);
       expect(mapped).toEqual([false, true, true]);
-    });
+    }); */
   });
 
   describe("Advanced Display (quantity)", () => {

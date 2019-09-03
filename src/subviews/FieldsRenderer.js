@@ -45,7 +45,7 @@ class FieldsRenderer extends Component<Props, State> {
               <ChecboxesQuantityFieldView
                 key={i}
                 field={field}
-                initialValues={[true, true, false]}
+                initialQuantities={[1, 1, 0]}
               />
             );
           } else if (field instanceof TextareaField) {
