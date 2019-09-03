@@ -7,7 +7,8 @@ type Props = {
   value: string,
   onChange: number => void,
   label?: string,
-  showLabel?: boolean
+  showLabel?: boolean,
+  containerStyle?: Object
 };
 
 const Quantity = (props: Props) => {
@@ -22,7 +23,7 @@ const Quantity = (props: Props) => {
     type: "antdesign"
   };
   return (
-    <View style={styles.superContainer}>
+    <View style={[styles.superContainer, props.containerStyle]}>
       {props.showLabel && <Text style={styles.text}>Quantity:</Text>}
       <View style={styles.row}>
         <Icon name="minus" onPress={() => onChange(-1)} {...iconProps} />

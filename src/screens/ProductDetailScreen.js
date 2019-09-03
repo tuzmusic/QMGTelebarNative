@@ -52,6 +52,7 @@ export default class ProductDetailScreen extends Component<Props, State> {
                 <Quantity
                   value={String(this.state.quantity)}
                   onChange={n => this.setState({ quantity: n })}
+                  showLabel={true}
                 />
               </View>
             </View>

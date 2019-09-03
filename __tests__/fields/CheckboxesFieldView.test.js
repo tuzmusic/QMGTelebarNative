@@ -37,6 +37,9 @@ function createWrapper(customProps) {
 let wrapper = render(<View></View>);
 
 describe("CheckboxesFieldView", () => {
+  const box = (i: number) => wrapper.getByText(field.options[i].name);
+  const check = (i: number) => fireEvent.press(box(i));
+
   describe("Display stuff only!", () => {
     beforeEach(() => {
       wrapper = createWrapper();
@@ -53,9 +56,6 @@ describe("CheckboxesFieldView", () => {
     });
 
     it("actually doesn't display the price, because the title will include price info, and the price will just be used in calculations on the order", () => {});
-
-    const box = (i: number) => wrapper.getByText(field.options[i].name);
-    const check = (i: number) => fireEvent.press(box(i));
 
     it("checks and unchecks boxes when pressed", () => {
       check(0);
@@ -74,17 +74,28 @@ describe("CheckboxesFieldView", () => {
   });
 
   describe("Advanced Display (quantity)", () => {
-    // it("shows a quantity selector for checked options", () => {});
+    beforeEach(() => {
+      wrapper = createWrapper();
+    });
+
+    it("should not show a quantity selector for unchecked options", () => {
+      expect(wrapper.queryByDisplayValue("1")).toBeNull();
+    });
+
+    it("shows a quantity selector for checked options", () => {
+      check(0);
+      expect(wrapper.queryAllByDisplayValue("1").length).toBe(1);
+    });
   });
 
   describe("Behavior (selection limits)", () => {
     describe("with limits", () => {
-      // it("limits the number of boxes you can check", () => {});
-      // it("limits the quantity that can be selected", () => {});
+      xit("limits the number of boxes you can check", () => {});
+      xit("limits the quantity that can be selected", () => {});
     });
     describe("N0 L1M17S!!!1!", () => {
-      // it("doesn't limit the number of boxes you can check", () => {});
-      // it("doesn't limit the quantity you can select", () => {});
+      xit("doesn't limit the number of boxes you can check", () => {});
+      xit("doesn't limit the quantity you can select", () => {});
     });
   });
 });
