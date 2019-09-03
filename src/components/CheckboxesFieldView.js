@@ -5,11 +5,16 @@ import CheckboxesField from "../models/fields/CheckboxesField";
 import Quantity from "./Quantity";
 import { CheckBox, Divider } from "react-native-elements";
 
-type Props = { field: CheckboxesField, initialValues?: boolean[] };
+type Props = {
+  field: CheckboxesField,
+  initialValues?: boolean[],
+  maximumSelections?: number
+};
 type State = {
   checked: boolean[]
 };
 type Option = { name: string, price: ?number };
+
 class CheckboxesFieldView extends Component<Props, State> {
   state = {
     checked:
@@ -19,6 +24,15 @@ class CheckboxesFieldView extends Component<Props, State> {
 
   toggleChecked(i: number) {
     const checked = [...this.state.checked];
+    const checkedCount = checked.filter(Boolean).length;
+    /**if we're checking a box that's unchecked,
+     * and there's a maximumSelections value,
+     * and we've already checked the maximum selections,
+     * don't allow the box to be checked.
+     */
+    if (!checked[i] && this.props.maximumSelections) {
+      if (checkedCount == this.props.maximumSelections) return;
+    }
     checked[i] = !checked[i];
     this.setState({ ...this.state, checked });
   }

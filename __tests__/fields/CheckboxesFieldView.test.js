@@ -90,7 +90,19 @@ describe("CheckboxesFieldView", () => {
 
   describe("Behavior (selection limits)", () => {
     describe("with limits", () => {
-      xit("limits the number of boxes you can check", () => {});
+      beforeEach(() => {
+        wrapper = createWrapper({ maximumSelections: 2 });
+      });
+
+      it("limits the number of boxes you can check", () => {
+        check(0);
+        check(1);
+        check(2);
+        const boxes = wrapper.getAllByType(CheckBox);
+        expect(boxes[0].props.checked).toBe(true);
+        expect(boxes[1].props.checked).toBe(true);
+        expect(boxes[2].props.checked).toBe(false);
+      });
       xit("limits the quantity that can be selected", () => {});
     });
     describe("N0 L1M17S!!!1!", () => {
