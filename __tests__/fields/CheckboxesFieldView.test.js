@@ -107,9 +107,6 @@ describe("ChecboxesQuantityFieldView", () => {
   });
 
   describe("Behavior (selection limits)", () => {
-    beforeEach(() => {
-      wrapper = createWrapper({ maximumSelections: 2 });
-    });
     describe("with limits", () => {
       it("limits the number of boxes you can check", () => {
         wrapper = createWrapper({ maximumSelections: 2 });
@@ -150,11 +147,30 @@ describe("ChecboxesQuantityFieldView", () => {
           expect(wrapper.queryAllByDisplayValue("3").length).toBe(0);
           expect(wrapper.queryAllByDisplayValue("2").length).toBe(2);
         });
+
+        xit("should re-allow checking/increasing when quantity is reduced", () => {
+          // this shouldn't need to be tested.
+        });
       });
     });
   });
   describe("no limits", () => {
-    xit("doesn't limit the number of boxes you can check", () => {});
-    xit("doesn't limit the quantity you can select", () => {});
+    beforeEach(() => {
+      wrapper = createWrapper();
+    });
+    it("doesn't limit the number of boxes you can check", () => {
+      check(0);
+      check(1);
+      check(2);
+      expect(wrapper.queryAllByDisplayValue("1").length).toBe(3);
+    });
+    it("doesn't limit the quantity you can select", () => {
+      check(0);
+      plusButtons = wrapper.queryAllByTestId("plus");
+      for (let i = 0; i < 10; i++) {
+        fireEvent.press(plusButtons[0]);
+      }
+      expect(wrapper.queryAllByDisplayValue("11").length).toBe(1);
+    });
   });
 });

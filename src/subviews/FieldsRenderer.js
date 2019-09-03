@@ -2,10 +2,10 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import Field from "../models/fields/Field";
-import SelectboxFieldView from "../components/SelectboxFieldView";
-import TextareaFieldView from "../components/TextareaFieldView";
-import TextareaField from "../models/fields/TextareaField";
 import SelectboxField from "../models/fields/SelectboxField";
+import SelectboxFieldView from "../components/SelectboxFieldView";
+import TextareaField from "../models/fields/TextareaField";
+import TextareaFieldView from "../components/TextareaFieldView";
 import HeaderField from "../models/fields/HeaderField";
 import HeaderFieldView from "../components/HeaderFieldView";
 import CheckboxesField from "../models/fields/CheckboxesField";
