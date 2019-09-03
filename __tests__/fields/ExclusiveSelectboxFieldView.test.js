@@ -52,15 +52,6 @@ function createWrapper(customProps) {
       <ExclusiveSelectboxesFieldView fields={fields} {...props} />
     </Fragment>
   );
-  // wrapper = render(
-  //   <Fragment>
-  //     <ExclusiveSelectboxesFieldView {...props}>
-  //       <SelectboxFieldView field={fields[0]} />
-  //       <SelectboxFieldView field={fields[1]} />
-  //       <TextareaFieldView field={fields[2]} />
-  //     </ExclusiveSelectboxesFieldView>
-  //   </Fragment>
-  // );
   return wrapper;
 }
 
@@ -84,17 +75,55 @@ describe("ExclusiveSelectboxesFieldView", () => {
 
   it("accepts an initialSelection prop", () => {
     const wrapper = createWrapper({ initialSelectionIndex: 2 });
+    checkboxes = wrapper.getAllByType(CheckBox);
     expect(checkboxes[0].props.checked).toBe(false);
     expect(checkboxes[2].props.checked).toBe(true);
   });
 
-  it("shows the value of the currently selected field", () => {
-    fireEvent.press(checkboxes[1]);
-    fireEvent.press(wrapper.getByText("Second field option 2"));
+  it("shows the value of the currently selected field", async () => {
+    await fireEvent.press(checkboxes[1]);
+    await fireEvent.press(wrapper.getByText("Second field option 2"));
+
+    // options should be gone
+    expect(wrapper.queryByText("Second field option 1")).toBeNull();
+    // selected option should still be on screen
+    expect(wrapper.getByText("Second field option 2")).toBeDefined();
     expect(checkboxes[1].props.checked).toBe(true);
   });
 
-  xit("selects one field at a time", () => {});
-  xit("does not show the value of the other fields", () => {});
+  it("selects one field at a time", async () => {
+    // pick the second one
+    await fireEvent.press(checkboxes[1]);
+    await fireEvent.press(wrapper.getByText("Second field option 2"));
+    // pick the first one
+    await fireEvent.press(checkboxes[0]);
+    await fireEvent.press(wrapper.getByText("First field option 2"));
+
+    // first one should be selected and show its selection
+    expect(wrapper.getByText("First field option 2")).toBeDefined();
+    expect(checkboxes[0].props.checked).toBe(true);
+
+    // second one should be not selected and not show its selection
+    expect(wrapper.queryByText("Second field option 2")).toBeNull();
+    expect(checkboxes[1].props.checked).toBe(false);
+  });
+  it("take a cancelTitle prop to render a 'none' field", async () => {
+    const wrapper = createWrapper({ cancelTitle: "None" });
+    checkboxes = wrapper.getAllByType(CheckBox);
+
+    // pick the second one
+    await fireEvent.press(checkboxes[2]);
+    await fireEvent.press(wrapper.getByText("Second field option 2"));
+
+    // select "none"
+    await fireEvent.press(wrapper.getByText("None"));
+
+    // 'none' should be checked
+    expect(checkboxes[0].props.checked).toBe(true);
+
+    // the second one shouldn't be there or be checked
+    expect(wrapper.queryByText("Second field option 2")).toBeNull();
+    expect(checkboxes[2].props.checked).toBe(false);
+  });
   xit("passes the selected value to its parent", () => {});
 });

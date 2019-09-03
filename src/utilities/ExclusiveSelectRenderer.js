@@ -37,7 +37,7 @@ export default class ExclusiveSelectRenderer extends Component {
     const fields: Field[] = FieldCreator.createFieldsFromArray(fieldsInfo);
 
     const props = {
-      initialSelectionIndex: 2
+      // initialSelectionIndex: 2
     };
 
     return (
