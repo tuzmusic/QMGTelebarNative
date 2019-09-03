@@ -19,7 +19,7 @@ class FieldsRenderer extends Component<Props, State> {
     const mockFields = [
       this.props.fields.find(f => f.type === "checkboxes") || new Field()
       // this.props.fields.find(f => f.type === "textarea") || new Field(),
-      // this.props.fields.find(f => f.type === "selectbox") || new Field(),
+      // this.props.fields.find(f => f.type === "selectbox") || new Field()
       // this.props.fields.find(f => f.type === "header") || new Field()
     ];
 

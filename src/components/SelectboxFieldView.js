@@ -41,7 +41,9 @@ export default class SelectboxFieldView extends Component<Props, State> {
     const checkBoxProps = {
       title: field.title,
       checked: this.props.showSelection,
-      onPress: this.toggleOverlay.bind(this)
+      onPress: this.toggleOverlay.bind(this),
+      checkedIcon: "dot-circle-o",
+      uncheckedIcon: "circle-o"
     };
 
     return (

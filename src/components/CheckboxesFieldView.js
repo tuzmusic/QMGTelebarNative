@@ -36,8 +36,6 @@ class CheckboxesFieldView extends Component<Props, State> {
               onPress={this.toggleChecked.bind(this, i)}
               checked={this.state.checked[i]}
               containerStyle={{ flex: 3 }}
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
             />
             {this.state.checked[i] && (
               <Quantity
