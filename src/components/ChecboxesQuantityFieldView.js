@@ -12,23 +12,12 @@ type Props = {
   maximumSelections?: number
 };
 type State = {
-  checked: boolean[],
   quantities: number[]
 };
 type Option = { name: string, price: ?number };
 
 class ChecboxesQuantityFieldView extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    // use initial quantities to set checked values?
-    // or just have each box's checked value be based on its quantity?
-  }
-
   state = {
-    checked:
-      this.props.initialValues ||
-      Array(this.props.field.options.length).fill(false),
     quantities:
       this.props.initialQuantities ||
       Array(this.props.field.options.length).fill(0)
@@ -40,6 +29,11 @@ class ChecboxesQuantityFieldView extends Component<Props, State> {
   changeQuantity(i: number, val: number) {
     const quantities = [...this.state.quantities];
     quantities[i] = val;
+
+    const newTotal = quantities.reduce((acc: number, val: number) => acc + val);
+    if (this.props.maximumSelections && newTotal > this.props.maximumSelections)
+      return;
+
     this.setState({ quantities });
   }
 
