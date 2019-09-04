@@ -21,8 +21,8 @@ describe("setItems", () => {
     expect(result.items).toEqual(items);
   });
 });
-
-describe("setItemQuantity", () => {
+/* 
+xdescribe("setItemQuantity", () => {
   const item = items[0];
   it("should set the item quantity", () => {
     const result = reducer(
@@ -36,3 +36,4 @@ describe("setItemQuantity", () => {
 xdescribe("incrementItemQuantity", () => {});
 xdescribe("decrementItemQuantity", () => {});
 xdescribe("removeItem", () => {});
+ */

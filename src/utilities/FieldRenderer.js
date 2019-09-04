@@ -14,7 +14,7 @@ import TextareaFieldView from "../subviews/fields/TextareaFieldView";
 import HeaderField from "../models/fields/HeaderField";
 import HeaderFieldView from "../subviews/fields/HeaderFieldView";
 import CheckboxesField from "../models/fields/CheckboxesField";
-import ChecboxesQuantityFieldView from "../subviews/fields/ChecboxesQuantityFieldView";
+import CheckboxesQuantityFieldView from "../subviews/fields/CheckboxesQuantityFieldView";
 
 type Props = { field: Field };
 type State = {};
@@ -25,7 +25,7 @@ class FieldRenderer extends Component<Props, State> {
     if (field instanceof SelectboxField) {
       return <SelectboxFieldView {...this.props} />;
     } else if (field instanceof CheckboxesField) {
-      return <ChecboxesQuantityFieldView {...this.props} />;
+      return <CheckboxesQuantityFieldView {...this.props} />;
     } else if (field instanceof TextareaField) {
       return <TextareaFieldView {...this.props} />;
     } else if (field instanceof HeaderField) {

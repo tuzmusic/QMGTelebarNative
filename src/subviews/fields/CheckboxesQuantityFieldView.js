@@ -17,10 +17,7 @@ type State = {
 };
 type Option = { name: string, price: ?number };
 
-export default class ChecboxesQuantityFieldView extends Component<
-  Props,
-  State
-> {
+export class CheckboxesQuantityFieldView extends Component<Props, State> {
   state = {
     quantities:
       this.props.initialQuantities ||
@@ -73,7 +70,8 @@ export default class ChecboxesQuantityFieldView extends Component<
   }
 }
 
-// export default connect()(ChecboxesQuantityFieldView);
+export default CheckboxesQuantityFieldView;
+// export default connect()(CheckboxesQuantityFieldView);
 
 const Space = ({ height }: { height?: number }) => (
   <Divider height={height || 10} backgroundColor={"transparent"} />

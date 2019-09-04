@@ -9,7 +9,7 @@ import TextareaFieldView from "../subviews/fields/TextareaFieldView";
 import HeaderField from "../models/fields/HeaderField";
 import HeaderFieldView from "../subviews/fields/HeaderFieldView";
 import CheckboxesField from "../models/fields/CheckboxesField";
-import ChecboxesQuantityFieldView from "../subviews/fields/ChecboxesQuantityFieldView";
+import CheckboxesQuantityFieldView from "../subviews/fields/CheckboxesQuantityFieldView";
 import FieldRenderer from "./FieldRenderer";
 type Props = { fields: Field[] };
 type State = {};

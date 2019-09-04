@@ -21,7 +21,7 @@ import SubscriptionFormRenderer from "./src/utilities/SubscriptionFormRenderer";
 export default function App() {
   let component = <AppNavigator />;
 
-  component = <SubscriptionFormRenderer />;
+  component = <CheckboxesQuantityRenderer />;
 
   return <Provider store={store}>{component}</Provider>;
 }

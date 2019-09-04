@@ -7,7 +7,7 @@ import {
   debug
 } from "react-native-testing-library";
 import CheckboxesField from "../../src/models/fields/CheckboxesField";
-import { ChecboxesQuantityFieldView } from "../../src/subviews/fields/ChecboxesQuantityFieldView";
+import { CheckboxesQuantityFieldView } from "../../src/subviews/fields/CheckboxesQuantityFieldView";
 import { CheckBox } from "react-native-elements";
 
 const fieldInfo = {
@@ -27,7 +27,7 @@ function createWrapper(customProps) {
   const props = { field, ...customProps };
   wrapper = render(
     <Fragment>
-      <ChecboxesQuantityFieldView {...props} />
+      <CheckboxesQuantityFieldView {...props} />
     </Fragment>
   );
   return wrapper;
@@ -35,7 +35,7 @@ function createWrapper(customProps) {
 
 let wrapper;
 
-describe("ChecboxesQuantityFieldView", () => {
+describe("CheckboxesQuantityFieldView", () => {
   const box = (i: number) => wrapper.getByText(field.options[i].name);
   const check = (i: number) => fireEvent.press(box(i));
 

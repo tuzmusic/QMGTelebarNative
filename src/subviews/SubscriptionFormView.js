@@ -2,7 +2,7 @@
 import React, { Fragment, Component } from "react";
 import { Text, View, ScrollView } from "react-native";
 import Form from "../models/forms/Form";
-import CheckboxesQuantityFieldView from "./fields/ChecboxesQuantityFieldView";
+import CheckboxesQuantityFieldView from "./fields/CheckboxesQuantityFieldView";
 import CheckboxesField from "../models/fields/CheckboxesField";
 import HeaderField from "../models/fields/HeaderField";
 import HeaderFieldView from "./fields/HeaderFieldView";

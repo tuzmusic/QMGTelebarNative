@@ -1,8 +1,14 @@
 // @flow
 
 import type Product from "../Product";
-import Field from "../fields/Field";
+// import Field from "../fields/Field";
 import FieldCreator from "../fields/FieldCreator";
+import TextareaField from "../fields/TextareaField";
+import CheckboxesField from "../fields/CheckboxesField";
+import SelectboxField from "../fields/SelectboxField";
+import HeaderField from "../fields/HeaderField";
+
+type Field = CheckboxesField | SelectboxField | TextareaField | HeaderField;
 
 export default class Form {
   title: string;

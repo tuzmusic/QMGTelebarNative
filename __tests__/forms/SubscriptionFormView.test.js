@@ -45,4 +45,7 @@ describe("SubscriptionFormView", () => {
     expect(getByText(TITLES[4])).toBeDefined();
     expect(getByText(TITLES[5])).toBeDefined();
   });
+
+  xit("shows the total price", () => {});
+  xit("submits all the information for the order", () => {});
 });
