@@ -4,6 +4,7 @@ import { Text, View } from "react-native";
 import CheckboxesField from "../../models/fields/CheckboxesField";
 import Quantity from "../../components/Quantity";
 import { CheckBox, Divider } from "react-native-elements";
+import { connect } from "react-redux";
 
 type Props = {
   field: CheckboxesField,
@@ -16,7 +17,7 @@ type State = {
 };
 type Option = { name: string, price: ?number };
 
-class ChecboxesQuantityFieldView extends Component<Props, State> {
+export class ChecboxesQuantityFieldView extends Component<Props, State> {
   state = {
     quantities:
       this.props.initialQuantities ||
@@ -68,7 +69,9 @@ class ChecboxesQuantityFieldView extends Component<Props, State> {
     );
   }
 }
-export default ChecboxesQuantityFieldView;
+
+export default connect()(ChecboxesQuantityFieldView);
+
 const Space = ({ height }: { height?: number }) => (
   <Divider height={height || 10} backgroundColor={"transparent"} />
 );

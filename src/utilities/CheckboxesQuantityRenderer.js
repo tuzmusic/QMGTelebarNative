@@ -4,7 +4,7 @@ import Field from "../models/fields/Field";
 import FieldCreator from "../models/fields/FieldCreator";
 import CheckboxesQuantityFieldView from "../subviews/fields/ChecboxesQuantityFieldView.js";
 
-export default class CheckboxesQuantityRenderer extends Component {
+export class CheckboxesQuantityRenderer extends Component {
   render() {
     const fieldsInfo: Object[] = [
       {

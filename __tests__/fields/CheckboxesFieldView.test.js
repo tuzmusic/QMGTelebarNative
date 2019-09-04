@@ -7,7 +7,7 @@ import {
   debug
 } from "react-native-testing-library";
 import CheckboxesField from "../../src/models/fields/CheckboxesField";
-import ChecboxesQuantityFieldView from "../../src/subviews/fields/ChecboxesQuantityFieldView";
+import { ChecboxesQuantityFieldView } from "../../src/subviews/fields/ChecboxesQuantityFieldView";
 import { CheckBox } from "react-native-elements";
 
 const fieldInfo = {
