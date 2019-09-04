@@ -4,12 +4,11 @@ import Field from "../../src/models/fields/Field";
 import * as Types from "../../src/redux/FormTypes";
 import * as Actions from "../../src/redux/actions/currentFormActions";
 
+const initialState: Types.FormState = {
+  card: null,
+  items: []
+};
 describe("currentFormReducer and actions", () => {
-  const initialState: Types.FormState = {
-    card: null,
-    items: []
-  };
-
   describe("setCard action", () => {
     const card: Types.Card = { message: "I love you", field: new Field() };
     const setCardAction: Types.SET_CARD = { type: "SET_CARD", card };

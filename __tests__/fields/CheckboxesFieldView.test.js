@@ -24,7 +24,7 @@ const fieldInfo = {
 const field = Object.assign(new CheckboxesField(), fieldInfo);
 
 function createWrapper(customProps) {
-  const props = { field, ...customProps }; // not tested
+  const props = { field, ...customProps };
   wrapper = render(
     <Fragment>
       <ChecboxesQuantityFieldView {...props} />

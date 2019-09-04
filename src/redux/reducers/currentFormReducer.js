@@ -12,6 +12,8 @@ export default function currentformReducer(
   switch (action.type) {
     case "SET_CARD":
       return { ...state, card: action.card };
+    case "SET_ITEMS":
+      return { ...state, items: action.items };
     default:
       return state;
   }

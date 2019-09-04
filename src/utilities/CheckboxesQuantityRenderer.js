@@ -20,9 +20,9 @@ export class CheckboxesQuantityRenderer extends Component {
         type: "checkboxes",
         title: "Pick something for free",
         options: [
-          { name: "First field option 1", quantity: 0 },
-          { name: "First field option 2", quantity: 0 },
-          { name: "First field option 3", quantity: 0 }
+          { name: "First field option 1", price: null, quantity: 0 },
+          { name: "First field option 2", price: null, quantity: 0 },
+          { name: "First field option 3", price: null, quantity: 0 }
         ]
       }
     ];

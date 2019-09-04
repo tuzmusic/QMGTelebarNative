@@ -19,6 +19,10 @@ type Props = {
 };
 
 export class ExclusiveSelectboxesFormSectionView extends React.Component<Props> {
+  static defaultProps = {
+    card: { message: null, field: null }
+  };
+
   handleSelection = (field: ExclusiveField, message: string) => {
     this.props.setCard({ message, field });
   };
