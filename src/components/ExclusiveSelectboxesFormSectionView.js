@@ -10,28 +10,16 @@ import * as FormTypes from "../redux/FormTypes";
 import { setCard } from "../redux/actions/currentFormActions";
 
 type Props = {
-  initialSelectionIndex?: number,
   fields: Field[],
   cancelTitle?: string,
-  // onSubmit: string => void,
   card: FormTypes.Card,
   setCard: FormTypes.Card => void
 };
-type State = { selectedIndex: ?number };
 
-export class ExclusiveSelectboxesFormSectionView extends React.Component<
-  Props,
-  State
-> {
-  state = {
-    selectedIndex:
-      this.props.initialSelectionIndex || (this.props.cancelTitle ? null : 0)
-  };
-
+export class ExclusiveSelectboxesFormSectionView extends React.Component<Props> {
   handleSelection = (field: Field, message: string) => {
     this.props.setCard({ message, field });
   };
-  // cancelSelection = () => this.setState({ selectedIndex: null });
   cancelSelection = () => this.props.setCard({ message: null, field: null });
 
   render() {
@@ -49,7 +37,6 @@ export class ExclusiveSelectboxesFormSectionView extends React.Component<
         {this.props.fields.map((field, i) => {
           const props = {};
 
-          // props.isSelected = this.state.selectedIndex === i;
           props.isSelected = this.props.card.field == field;
           props.selectionHandler = this.handleSelection.bind(this);
 

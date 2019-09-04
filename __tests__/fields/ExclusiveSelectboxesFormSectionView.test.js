@@ -75,15 +75,10 @@ describe("ExclusiveSelectboxesFormSectionView", () => {
     expect(wrapper.getByText("Third field")).toBeDefined();
   });
 
-  it("has the first field selected by default", () => {
-    expect(checkboxes[0].props.checked).toBe(true);
-  });
-
-  it("accepts an initialSelection prop", () => {
-    const wrapper = createWrapper({ initialSelectionIndex: 2 });
-    checkboxes = wrapper.getAllByType(CheckBox);
+  it("with no 'none' field, no field is selected by default", () => {
     expect(checkboxes[0].props.checked).toBe(false);
-    expect(checkboxes[2].props.checked).toBe(true);
+    expect(checkboxes[1].props.checked).toBe(false);
+    expect(checkboxes[2].props.checked).toBe(false);
   });
 
   it("shows the value of the currently selected field", async () => {
