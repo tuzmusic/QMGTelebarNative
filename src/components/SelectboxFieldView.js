@@ -1,19 +1,16 @@
 // @flow
 import React, { Component } from "react";
-import { View, Text } from "react-native";
-import { CheckBox, Overlay, Input, Button } from "react-native-elements";
 import SelectboxField from "../models/fields/SelectboxField";
-import SelectOptionsOverlay from "./SelectOptionsOverlay";
+import Field from "../models/fields/Field";
 import ExclusiveFieldView from "./ExclusiveFieldView";
 
 type Props = {
   field: SelectboxField,
-  selectionHandler: (field: SelectboxField, selection: string) => void,
+  selectionHandler: (field: Field, selection: string) => void,
   isSelected?: boolean
 };
 
 export function SelectboxFieldView(props: Props) {
-  // props.overlay = SelectOptionsOverlay;
   return <ExclusiveFieldView {...props} />;
 }
 
