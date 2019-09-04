@@ -28,11 +28,11 @@ export class ExclusiveSelectboxesFormSectionView extends React.Component<
       this.props.initialSelectionIndex || (this.props.cancelTitle ? null : 0)
   };
 
-  handleSelection = (field: Field, value: string) => {
-    // this.props.setCard({ message: value, field: this.props.fields[index] });
-    this.props.setCard({ message: value, field: field });
+  handleSelection = (field: Field, message: string) => {
+    this.props.setCard({ message, field });
   };
-  cancelSelection = () => this.setState({ selectedIndex: null });
+  // cancelSelection = () => this.setState({ selectedIndex: null });
+  cancelSelection = () => this.props.setCard({ message: null, field: null });
 
   render() {
     return (
@@ -40,7 +40,6 @@ export class ExclusiveSelectboxesFormSectionView extends React.Component<
         {this.props.cancelTitle && (
           <CheckBox
             title={this.props.cancelTitle}
-            // checked={this.state.selectedIndex == null}
             checked={this.props.card.field == null}
             onPress={this.cancelSelection.bind(this)}
             checkedIcon="dot-circle-o"
