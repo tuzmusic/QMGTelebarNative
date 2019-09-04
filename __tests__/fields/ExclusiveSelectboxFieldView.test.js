@@ -11,7 +11,7 @@ import SelectboxField from "../../src/models/fields/SelectboxField";
 import TextareaField from "../../src/models/fields/TextareaField";
 import Field from "../../src/models/fields/Field";
 import FieldCreator from "../../src/models/fields/FieldCreator";
-import ExclusiveSelectboxesFieldView from "../../src/components/ExclusiveSelectboxesFieldView";
+import ExclusiveSelectboxesFormSectionView from "../../src/components/ExclusiveSelectboxesFormSectionView";
 import SelectboxFieldView from "../../src/components/SelectboxFieldView";
 import TextareaFieldView from "../../src/components/TextareaFieldView";
 import { CheckBox } from "react-native-elements";
@@ -49,13 +49,13 @@ function createWrapper(customProps) {
   const props = { fields, onSubmit: (str: string) => {}, ...customProps };
   wrapper = render(
     <Fragment>
-      <ExclusiveSelectboxesFieldView fields={fields} {...props} />
+      <ExclusiveSelectboxesFormSectionView fields={fields} {...props} />
     </Fragment>
   );
   return wrapper;
 }
 
-describe("ExclusiveSelectboxesFieldView", () => {
+describe("ExclusiveSelectboxesFormSectionView", () => {
   let checkboxes;
   beforeEach(() => {
     wrapper = createWrapper();

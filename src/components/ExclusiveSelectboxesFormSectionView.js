@@ -14,7 +14,10 @@ type Props = {
 };
 type State = { selectedIndex: ?number };
 
-class ExclusiveSelectboxesFieldView extends React.Component<Props, State> {
+class ExclusiveSelectboxesFormSectionView extends React.Component<
+  Props,
+  State
+> {
   state = {
     selectedIndex:
       this.props.initialSelectionIndex || (this.props.cancelTitle ? null : 0)
@@ -49,4 +52,4 @@ class ExclusiveSelectboxesFieldView extends React.Component<Props, State> {
     );
   }
 }
-export default ExclusiveSelectboxesFieldView;
+export default ExclusiveSelectboxesFormSectionView;

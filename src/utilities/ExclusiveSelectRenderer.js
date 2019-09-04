@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 import Field from "../models/fields/Field";
 import FieldCreator from "../models/fields/FieldCreator";
 
-import ExclusiveSelectboxesFieldView from "../components/ExclusiveSelectboxesFieldView";
+import ExclusiveSelectboxesFormSectionView from "../components/ExclusiveSelectboxesFormSectionView";
 import SelectboxFieldView from "../components/SelectboxFieldView";
 import TextareaFieldView from "../components/TextareaFieldView";
 
@@ -42,7 +42,7 @@ export default class ExclusiveSelectRenderer extends Component {
 
     return (
       <View style={{ marginHorizontal: 20, marginVertical: 100 }}>
-        <ExclusiveSelectboxesFieldView
+        <ExclusiveSelectboxesFormSectionView
           onSubmit={str => {}}
           cancelTitle="None"
           fields={fields}
