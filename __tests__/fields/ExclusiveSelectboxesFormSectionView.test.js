@@ -1,3 +1,4 @@
+// #region IMPORTS
 // @flow
 import React, { Fragment } from "react";
 import "@testing-library/jest-native/extend-expect";
@@ -15,9 +16,13 @@ import { ExclusiveSelectboxesFormSectionView } from "../../src/components/Exclus
 import SelectboxFieldView from "../../src/components/SelectboxFieldView";
 import TextareaFieldView from "../../src/components/TextareaFieldView";
 import { CheckBox } from "react-native-elements";
+import * as Types from "../../src/redux/FormTypes";
+// #endregion
 
 let wrapper;
+let checkboxes;
 
+// #region SETUP
 const fieldsInfo: Object[] = [
   {
     type: "selectbox",
@@ -45,24 +50,46 @@ const fieldsInfo: Object[] = [
 
 const fields: Field[] = FieldCreator.createFieldsFromArray(fieldsInfo);
 
-function createWrapper(customProps) {
-  const props = {
+let mockCard = { message: null, field: null };
+
+function getWrapperProps() {
+  return {
     fields,
-    // onSubmit: (str: string) => {},
-    setCard: jest.fn(),
-    card: { message: null, field: null },
-    ...customProps
+    setCard: jest.fn().mockImplementation((card: Types.Card) => {
+      mockCard = card;
+    }),
+    card: mockCard
   };
+}
+// #endregion
+// #region WRAPPER UTILITIES
+function createWrapper(customProps) {
   wrapper = render(
     <Fragment>
-      <ExclusiveSelectboxesFormSectionView fields={fields} {...props} />
+      <ExclusiveSelectboxesFormSectionView
+        {...getWrapperProps()}
+        card={{ message: null, field: null }}
+        {...customProps}
+      />
     </Fragment>
   );
   return wrapper;
 }
 
+function updateWrapper(customProps) {
+  wrapper.update(
+    <Fragment>
+      <ExclusiveSelectboxesFormSectionView
+        {...getWrapperProps()}
+        {...customProps}
+      />
+    </Fragment>
+  );
+  checkboxes = wrapper.getAllByType(CheckBox);
+}
+// #endregion
+
 describe("ExclusiveSelectboxesFormSectionView", () => {
-  let checkboxes;
   beforeEach(() => {
     wrapper = createWrapper();
     checkboxes = wrapper.getAllByType(CheckBox);
@@ -85,6 +112,11 @@ describe("ExclusiveSelectboxesFormSectionView", () => {
     await fireEvent.press(checkboxes[1]);
     await fireEvent.press(wrapper.getByText("Second field option 2"));
 
+    const component = wrapper.getByType(ExclusiveSelectboxesFormSectionView);
+    expect(component.props.setCard).toHaveBeenCalled();
+
+    updateWrapper();
+
     // options should be gone
     expect(wrapper.queryByText("Second field option 1")).toBeNull();
     // selected option should still be on screen
@@ -100,6 +132,8 @@ describe("ExclusiveSelectboxesFormSectionView", () => {
     await fireEvent.press(checkboxes[0]);
     await fireEvent.press(wrapper.getByText("First field option 2"));
 
+    updateWrapper();
+
     // first one should be selected and show its selection
     expect(wrapper.getByText("First field option 2")).toBeDefined();
     expect(checkboxes[0].props.checked).toBe(true);
@@ -109,7 +143,7 @@ describe("ExclusiveSelectboxesFormSectionView", () => {
     expect(checkboxes[1].props.checked).toBe(false);
   });
 
-  describe("cancelTitle prop != null", () => {
+  describe("with cancelTitle prop", () => {
     beforeEach(() => {
       wrapper = createWrapper({ cancelTitle: "None" });
       checkboxes = wrapper.getAllByType(CheckBox);
@@ -123,6 +157,8 @@ describe("ExclusiveSelectboxesFormSectionView", () => {
       // select "none"
       await fireEvent.press(wrapper.getByText("None"));
 
+      updateWrapper({ cancelTitle: "None" });
+
       // 'none' should be checked
       expect(checkboxes[0].props.checked).toBe(true);
 
@@ -133,6 +169,8 @@ describe("ExclusiveSelectboxesFormSectionView", () => {
       // pick the second one again
       await fireEvent.press(checkboxes[2]);
       await fireEvent.press(wrapper.getByText("Second field option 2"));
+
+      updateWrapper({ cancelTitle: "None" });
 
       // 'none' should not be checked
       expect(checkboxes[0].props.checked).toBe(false);
