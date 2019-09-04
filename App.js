@@ -14,12 +14,13 @@ if (DEV) {
 
 console.disableYellowBox = true;
 
-import ExclusiveBlah from "./src/utilities/ExclusiveSelectRenderer";
+import ExclusiveSelectRenderer from "./src/utilities/ExclusiveSelectRenderer";
+import CheckboxesQuantityRenderer from "./src/utilities/CheckboxesQuantityRenderer";
 
 export default function App() {
   let component = <AppNavigator />;
 
-  component = <ExclusiveBlah />;
+  component = <CheckboxesQuantityRenderer />;
 
   return <Provider store={store}>{component}</Provider>;
 }
