@@ -1,25 +1,17 @@
 // @flow
+import * as Types from "../FormTypes";
 
-export type FormState = {
-  +message: ?string,
-  +items: Object[]
-};
-
-export type SET_MESSAGE = { type: "SET_MESSAGE", message: string };
-
-export type FormAction = SET_MESSAGE;
-
-const initialState = {
-  message: null,
+const initialState: Types.FormState = {
+  card: null,
   items: []
 };
 export default function currentformReducer(
-  state: FormState = initialState,
-  action: FormAction
-): FormState {
+  state: Types.FormState = initialState,
+  action: Types.FormAction
+): Types.FormState {
   switch (action.type) {
-    case "SET_MESSAGE":
-      return { ...state, message: action.message };
+    case "SET_CARD":
+      return { ...state, card: action.card };
     default:
       return state;
   }
