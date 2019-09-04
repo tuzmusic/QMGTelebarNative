@@ -74,14 +74,6 @@ describe("SelectboxFieldView", () => {
     expect(wrapper.queryByText("This")).toBeNull();
   });
 
-  it("calls handleSubmit with the selected option when an option is clicked", () => {
-    const submitSpy = jest.spyOn(SelectboxFieldView.prototype, "handleSubmit");
-    fireEvent.press(wrapper.getByText(field.title));
-    fireEvent.press(wrapper.getByText("This"));
-    expect(submitSpy).toHaveBeenCalledWith("This");
-    submitSpy.mockRestore();
-  });
-
   it("shows the selection when an option is clicked, if the isSelected prop is true", () => {
     const props = {
       field,

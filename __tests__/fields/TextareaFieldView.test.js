@@ -47,16 +47,6 @@ describe("TextareaField", () => {
     expect(wrapper.queryByType(TextAreaOverlay)).toBeNull();
   });
 
-  it("calls handleSubmit with the message when save is pressed", () => {
-    const submitSpy = jest.spyOn(TextareaFieldView.prototype, "handleSubmit");
-    pressField();
-    const textArea = wrapper.getByType(Input);
-    fireEvent.changeText(textArea, "Some text");
-    pressSave();
-    expect(submitSpy).toHaveBeenCalledWith("Some text");
-    submitSpy.mockRestore();
-  });
-
   it("displays the message when save is pressed (when isSelected is true)", () => {
     const props = {
       field,
