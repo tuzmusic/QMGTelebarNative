@@ -14,10 +14,12 @@ if (DEV) {
 
 console.disableYellowBox = true;
 
+import ExclusiveBlah from "./src/utilities/ExclusiveSelectRenderer";
+
 export default function App() {
-  return (
-    <Provider store={store}>
-      <AppNavigator />
-    </Provider>
-  );
+  let component = <AppNavigator />;
+
+  // component = <ExclusiveBlah />;
+
+  return <Provider store={store}>{component}</Provider>;
 }

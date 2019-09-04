@@ -13,8 +13,8 @@ import { ListStack, SubscriptionProductsListStack } from "./TabsAndStacks";
 import { fetchProducts } from "../redux/actions/productActions";
 
 let initialRouteName;
-initialRouteName = "Subscriptions";
 initialRouteName = "List";
+initialRouteName = "Subscriptions";
 
 /* TAB NAV */
 

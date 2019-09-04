@@ -41,21 +41,13 @@ export default class ExclusiveSelectRenderer extends Component {
     };
 
     return (
-      <View>
+      <View style={{ marginHorizontal: 20, marginVertical: 100 }}>
         <ExclusiveSelectboxesFieldView
+          onSubmit={str => {}}
           cancelTitle="None"
           fields={fields}
           {...props}
         />
-      </View>
-    );
-    return (
-      <View>
-        <ExclusiveSelectboxesFieldView {...props}>
-          <SelectboxFieldView field={fields[0]} />
-          <SelectboxFieldView field={fields[1]} />
-          <TextareaFieldView field={fields[2]} />
-        </ExclusiveSelectboxesFieldView>
       </View>
     );
   }
