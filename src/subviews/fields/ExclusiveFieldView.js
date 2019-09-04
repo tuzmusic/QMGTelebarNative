@@ -2,9 +2,9 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import { CheckBox } from "react-native-elements";
-import Field from "../models/fields/Field";
-import TextareaField from "../models/fields/TextareaField";
-import SelectboxField from "../models/fields/SelectboxField";
+import Field from "../../models/fields/Field";
+import TextareaField from "../../models/fields/TextareaField";
+import SelectboxField from "../../models/fields/SelectboxField";
 import TextAreaOverlay from "./TextAreaOverlay";
 import SelectOptionsOverlay from "./SelectOptionsOverlay";
 

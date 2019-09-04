@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react";
 import { Text, View } from "react-native";
-import HeaderField from "../models/fields/HeaderField";
+import HeaderField from "../../models/fields/HeaderField";
 
 type Props = { field: HeaderField };
 

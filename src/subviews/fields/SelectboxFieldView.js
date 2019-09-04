@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react";
-import SelectboxField from "../models/fields/SelectboxField";
-import Field from "../models/fields/Field";
+import SelectboxField from "../../models/fields/SelectboxField";
+import Field from "../../models/fields/Field";
 import ExclusiveFieldView from "./ExclusiveFieldView";
 
 type Props = {

@@ -1,14 +1,14 @@
 // @flow
 import * as React from "react";
 import { connect } from "react-redux";
-import SelectboxField from "../models/fields/SelectboxField";
-import TextareaField from "../models/fields/TextareaField";
-import FieldRenderer from "../utilities/FieldRenderer";
-import ExclusiveFieldView from "../components/ExclusiveFieldView";
+import SelectboxField from "../../models/fields/SelectboxField";
+import TextareaField from "../../models/fields/TextareaField";
+import FieldRenderer from "../../utilities/FieldRenderer";
+import ExclusiveFieldView from "../../subviews/fields/ExclusiveFieldView";
 import { View } from "react-native";
 import { CheckBox } from "react-native-elements";
-import * as FormTypes from "../redux/FormTypes";
-import { setCard } from "../redux/actions/currentFormActions";
+import * as FormTypes from "../../redux/FormTypes";
+import { setCard } from "../../redux/actions/currentFormActions";
 
 type ExclusiveField = SelectboxField | TextareaField;
 type Props = {

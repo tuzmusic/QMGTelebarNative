@@ -1,8 +1,8 @@
 // @flow
 import React, { Component } from "react";
 import { Text, View } from "react-native";
-import CheckboxesField from "../models/fields/CheckboxesField";
-import Quantity from "./Quantity";
+import CheckboxesField from "../../models/fields/CheckboxesField";
+import Quantity from "../../components/Quantity";
 import { CheckBox, Divider } from "react-native-elements";
 
 type Props = {

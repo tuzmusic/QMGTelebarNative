@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Text, View } from "react-native";
 import Field from "../models/fields/Field";
 import FieldCreator from "../models/fields/FieldCreator";
-import CheckboxesQuantityFieldView from "../components/ChecboxesQuantityFieldView.js";
+import CheckboxesQuantityFieldView from "../subviews/fields/ChecboxesQuantityFieldView.js";
 
 export default class CheckboxesQuantityRenderer extends Component {
   render() {

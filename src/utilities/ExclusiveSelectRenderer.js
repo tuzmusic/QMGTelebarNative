@@ -3,9 +3,9 @@ import { Text, View } from "react-native";
 import Field from "../models/fields/Field";
 import FieldCreator from "../models/fields/FieldCreator";
 
-import ExclusiveSelectboxesFormSectionView from "../components/ExclusiveSelectboxesFormSectionView";
-import SelectboxFieldView from "../components/SelectboxFieldView";
-import TextareaFieldView from "../components/TextareaFieldView";
+import ExclusiveSelectboxesFormSectionView from "../subviews/fields/ExclusiveSelectboxesFormSectionView";
+import SelectboxFieldView from "../subviews/fields/SelectboxFieldView";
+import TextareaFieldView from "../subviews/fields/TextareaFieldView";
 
 export default class ExclusiveSelectRenderer extends Component {
   render() {

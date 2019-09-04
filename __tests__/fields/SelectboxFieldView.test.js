@@ -7,9 +7,9 @@ import {
   waitForElement,
   debug
 } from "react-native-testing-library";
-import SelectboxFieldView from "../../src/components/SelectboxFieldView";
+import SelectboxFieldView from "../../src/subviews/fields/SelectboxFieldView";
 import SelectboxField from "../../src/models/fields/SelectboxField";
-import SelectOptionsOverlay from "../../src/components/SelectOptionsOverlay";
+import SelectOptionsOverlay from "../../src/subviews/fields/SelectOptionsOverlay";
 
 let wrapper;
 const field: SelectboxField = Object.assign(new SelectboxField(), {

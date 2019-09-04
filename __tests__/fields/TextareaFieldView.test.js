@@ -7,9 +7,9 @@ import {
   waitForElement,
   debug
 } from "react-native-testing-library";
-import TextareaFieldView from "../../src/components/TextareaFieldView";
+import TextareaFieldView from "../../src/subviews/fields/TextareaFieldView";
 import TextareaField from "../../src/models/fields/TextareaField";
-import TextAreaOverlay from "../../src/components/TextAreaOverlay";
+import TextAreaOverlay from "../../src/subviews/fields/TextAreaOverlay";
 import { Input } from "react-native-elements";
 
 let wrapper;

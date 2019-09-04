@@ -11,9 +11,9 @@ import {
 import SelectboxField from "../../src/models/fields/SelectboxField";
 import TextareaField from "../../src/models/fields/TextareaField";
 import FieldCreator from "../../src/models/fields/FieldCreator";
-import { ExclusiveSelectboxesFormSectionView } from "../../src/components/ExclusiveSelectboxesFormSectionView";
-import SelectboxFieldView from "../../src/components/SelectboxFieldView";
-import TextareaFieldView from "../../src/components/TextareaFieldView";
+import { ExclusiveSelectboxesFormSectionView } from "../../src/subviews/fields/ExclusiveSelectboxesFormSectionView";
+import SelectboxFieldView from "../../src/subviews/fields/SelectboxFieldView";
+import TextareaFieldView from "../../src/subviews/fields/TextareaFieldView";
 import { CheckBox } from "react-native-elements";
 import * as Types from "../../src/redux/FormTypes";
 // #endregion

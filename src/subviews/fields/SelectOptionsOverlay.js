@@ -2,7 +2,7 @@
 import React, {Component} from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { Overlay } from "react-native-elements";
-import SelectboxField from "../models/fields/SelectboxField";
+import SelectboxField from "../../models/fields/SelectboxField";
 
 type Props = { 
   field: SelectboxField, 

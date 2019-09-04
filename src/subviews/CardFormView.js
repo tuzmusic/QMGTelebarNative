@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { Text, View } from "react-native";
 import { Divider, CheckBox } from "react-native-elements";
 import CardForm from "../models/forms/CardForm";
-import CardFieldView from "../components/CardFieldView";
+import CardFieldView from "../subviews/fields/CardFieldView";
 import { DEV_MODE } from "../constants/devMode";
 
 const AUTOMATE = DEV_MODE && false;

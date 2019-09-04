@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { View, Text, KeyboardAvoidingView } from "react-native";
 import { Overlay, Input, Button } from "react-native-elements";
-import { DEV_MODE } from "../constants/devMode";
+import { DEV_MODE } from "../../constants/devMode";
 
 const AUTOMATE = DEV_MODE && true;
 
@@ -14,7 +14,7 @@ type Props = {
 };
 type State = { message: string };
 
-export default class TextAreaOverlay extends Component<Props, State> {
+export default class CardFormTextAreaOverlay extends Component<Props, State> {
   state = { message: "" };
   componentDidMount = () => {
     // if (AUTOMATE) this.setState({message: "Custom message!"})    

@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react";
-import TextareaField from "../models/fields/TextareaField";
-import Field from "../models/fields/Field";
+import TextareaField from "../../models/fields/TextareaField";
+import Field from "../../models/fields/Field";
 import ExclusiveFieldView from "./ExclusiveFieldView";
 
 type Props = {

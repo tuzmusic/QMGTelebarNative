@@ -7,7 +7,7 @@ import {
   debug
 } from "react-native-testing-library";
 import HeaderField from "../../src/models/fields/HeaderField";
-import HeaderFieldview from "../../src/components/HeaderFieldView";
+import HeaderFieldview from "../../src/subviews/fields/HeaderFieldView";
 
 let wrapper;
 const field = Object.assign(new HeaderField(), {

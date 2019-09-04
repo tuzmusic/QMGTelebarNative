@@ -3,12 +3,12 @@ import type {
   CardFormField,
   CardFormSelectField,
   CardFormTextAreaField
-} from "../models/forms/CardForm";
+} from "../../models/forms/CardForm";
 import React, { Component } from "react";
 import { View, Text, KeyboardAvoidingView } from "react-native";
 import { CheckBox, Overlay, Input, Button } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { DEV_MODE } from "../constants/devMode";
+import { DEV_MODE } from "../../constants/devMode";
 import CardFormTextAreaOverlay from "./CardFormTextAreaOverlay";
 import SelectOptionsOverlay from "./SelectOptionsOverlay";
 
