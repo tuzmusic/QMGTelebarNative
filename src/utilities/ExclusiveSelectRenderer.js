@@ -42,7 +42,11 @@ export default class ExclusiveSelectRenderer extends Component {
 
     return (
       <View>
-        <ExclusiveSelectboxesFieldView fields={fields} {...props} />
+        <ExclusiveSelectboxesFieldView
+          cancelTitle="None"
+          fields={fields}
+          {...props}
+        />
       </View>
     );
     return (

@@ -107,23 +107,45 @@ describe("ExclusiveSelectboxesFieldView", () => {
     expect(wrapper.queryByText("Second field option 2")).toBeNull();
     expect(checkboxes[1].props.checked).toBe(false);
   });
-  it("take a cancelTitle prop to render a 'none' field", async () => {
-    const wrapper = createWrapper({ cancelTitle: "None" });
-    checkboxes = wrapper.getAllByType(CheckBox);
 
-    // pick the second one
-    await fireEvent.press(checkboxes[2]);
-    await fireEvent.press(wrapper.getByText("Second field option 2"));
+  describe("cancelTitle prop != null", () => {
+    beforeEach(() => {
+      wrapper = createWrapper({ cancelTitle: "None" });
+      checkboxes = wrapper.getAllByType(CheckBox);
+    });
 
-    // select "none"
-    await fireEvent.press(wrapper.getByText("None"));
+    it("take a cancelTitle prop to render a 'none' field", async () => {
+      // pick the second one
+      await fireEvent.press(checkboxes[2]);
+      await fireEvent.press(wrapper.getByText("Second field option 2"));
 
-    // 'none' should be checked
-    expect(checkboxes[0].props.checked).toBe(true);
+      // select "none"
+      await fireEvent.press(wrapper.getByText("None"));
 
-    // the second one shouldn't be there or be checked
-    expect(wrapper.queryByText("Second field option 2")).toBeNull();
-    expect(checkboxes[2].props.checked).toBe(false);
+      // 'none' should be checked
+      expect(checkboxes[0].props.checked).toBe(true);
+
+      // the second one shouldn't be there or be checked
+      expect(wrapper.queryByText("Second field option 2")).toBeNull();
+      expect(checkboxes[2].props.checked).toBe(false);
+
+      // pick the second one again
+      await fireEvent.press(checkboxes[2]);
+      await fireEvent.press(wrapper.getByText("Second field option 2"));
+
+      // 'none' should not be checked
+      expect(checkboxes[0].props.checked).toBe(false);
+    });
+
+    it("selects the none field by default when there is one ", () => {
+      expect(checkboxes[0].props.checked).toBe(true);
+      expect(checkboxes[1].props.checked).toBe(false);
+    });
   });
-  xit("passes the selected value to its parent", () => {});
+
+  xit("passes the selected value to its parent", () => {
+    let value;
+
+    wrapper = createWrapper({});
+  });
 });
