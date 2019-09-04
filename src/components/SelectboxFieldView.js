@@ -1,77 +1,20 @@
 // @flow
 import React, { Component } from "react";
-import { View, Text, KeyboardAvoidingView } from "react-native";
+import { View, Text } from "react-native";
 import { CheckBox, Overlay, Input, Button } from "react-native-elements";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { DEV_MODE } from "../constants/devMode";
-import SelectOptionsOverlay from "./SelectOptionsOverlay";
 import SelectboxField from "../models/fields/SelectboxField";
-
-const AUTOMATE = DEV_MODE && false;
+import SelectOptionsOverlay from "./SelectOptionsOverlay";
+import ExclusiveFieldView from "./ExclusiveFieldView";
 
 type Props = {
   field: SelectboxField,
   selectionHandler: (field: SelectboxField, selection: string) => void,
-  // renders selection (below the checkbox) only if selected.
-  // so this component is written to be used in an "exclusive selection" context.
-  // the presence of the checkbox reinforces this, btw.
-  // but whatever.
   isSelected?: boolean
 };
-type State = {
-  showOverlay: boolean,
-  selectedOption: ?string
-};
 
-export default class SelectboxFieldView extends Component<Props, State> {
-  state = {
-    showOverlay: false,
-    selectedOption: null
-  };
-
-  componentDidMount = () => {
-    if (AUTOMATE) this.setState({ showOverlay: true });
-  };
-
-  toggleOverlay = () => this.setState({ showOverlay: !this.state.showOverlay });
-
-  async handleSubmit(option: string) {
-    await this.setState({ selectedOption: option, showOverlay: false });
-    await this.props.selectionHandler(this.props.field, option);
-  }
-
-  render() {
-    const field = this.props.field;
-    const checkBoxProps = {
-      title: field.title,
-      checked: this.props.isSelected,
-      onPress: this.toggleOverlay.bind(this),
-      checkedIcon: "dot-circle-o",
-      uncheckedIcon: "circle-o"
-    };
-
-    return (
-      <View>
-        <CheckBox {...checkBoxProps} />
-        {this.state.showOverlay && (
-          <SelectOptionsOverlay
-            field={field}
-            dismissOverlay={this.toggleOverlay.bind(this)}
-            onSubmit={this.handleSubmit.bind(this)}
-          />
-        )}
-        {this.props.isSelected && (
-          <Text style={styles.message}>{this.state.selectedOption}</Text>
-        )}
-      </View>
-    );
-  }
+export function SelectboxFieldView(props: Props) {
+  // props.overlay = SelectOptionsOverlay;
+  return <ExclusiveFieldView {...props} />;
 }
 
-const styles = {
-  message: {
-    fontSize: 18,
-    fontStyle: "italic",
-    paddingHorizontal: 15
-  }
-};
+export default SelectboxFieldView;

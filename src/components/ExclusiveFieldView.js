@@ -38,6 +38,7 @@ export class ExclusiveFieldView extends Component<Props, State> {
       dismissOverlay: this.toggleOverlay.bind(this),
       onSubmit: this.handleSubmit.bind(this)
     };
+
     if (field instanceof TextareaField) {
       return <TextAreaOverlay field={field} {...props} />;
     } else if (field instanceof SelectboxField) {

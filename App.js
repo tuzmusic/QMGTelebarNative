@@ -19,7 +19,7 @@ import ExclusiveBlah from "./src/utilities/ExclusiveSelectRenderer";
 export default function App() {
   let component = <AppNavigator />;
 
-  // component = <ExclusiveBlah />;
+  component = <ExclusiveBlah />;
 
   return <Provider store={store}>{component}</Provider>;
 }
