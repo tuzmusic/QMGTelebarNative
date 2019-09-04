@@ -8,7 +8,8 @@ import { CheckBox } from "react-native-elements";
 type Props = {
   initialSelectionIndex?: number,
   fields: Field[],
-  cancelTitle?: string
+  cancelTitle?: string,
+  onSubmit: string => void
 };
 type State = { selectedIndex: ?number };
 
@@ -18,8 +19,10 @@ class ExclusiveSelectboxesFieldView extends React.Component<Props, State> {
       this.props.initialSelectionIndex || (this.props.cancelTitle ? null : 0)
   };
 
-  handleSelection = (i: number) => this.setState({ selectedIndex: i });
-  cancelSelection = (i: number) => this.setState({ selectedIndex: null });
+  handleSelection = (index: number, value: string) => {
+    this.setState({ selectedIndex: index }, () => this.props.onSubmit(value));
+  };
+  cancelSelection = () => this.setState({ selectedIndex: null });
 
   render() {
     return (

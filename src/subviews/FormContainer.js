@@ -34,8 +34,8 @@ export default class FormContainer extends Component<Props> {
        */
       default:
         form = Form.assembleForm(product.formInfo);
-        return <ExclusiveSelectRenderer fields={form.fields} />;
-      // return <FieldsRenderer fields={form.fields} />;
+        // return <ExclusiveSelectRenderer fields={form.fields} />;
+        return <FieldsRenderer fields={form.fields} />;
     }
   }
 }

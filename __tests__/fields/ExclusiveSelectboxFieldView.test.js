@@ -46,7 +46,7 @@ const fieldsInfo: Object[] = [
 const fields: Field[] = FieldCreator.createFieldsFromArray(fieldsInfo);
 
 function createWrapper(customProps) {
-  const props = { fields, ...customProps }; // not tested
+  const props = { fields, onSubmit: (str: string) => {}, ...customProps };
   wrapper = render(
     <Fragment>
       <ExclusiveSelectboxesFieldView fields={fields} {...props} />
@@ -143,9 +143,21 @@ describe("ExclusiveSelectboxesFieldView", () => {
     });
   });
 
-  xit("passes the selected value to its parent", () => {
+  it("passes the selected value to its parent", async () => {
     let value;
+    const onSubmit = message => (value = message);
+    wrapper = createWrapper({ onSubmit, cancelTitle: "None" });
+    checkboxes = wrapper.getAllByType(CheckBox);
 
-    wrapper = createWrapper({});
+    // pick the second one
+    await fireEvent.press(checkboxes[2]);
+    await fireEvent.press(wrapper.getByText("Second field option 2"));
+
+    expect(value).toEqual("Second field option 2");
+
+    // select "none"
+    await fireEvent.press(wrapper.getByText("None"));
+
+    expect(value).toEqual(null);
   });
 });

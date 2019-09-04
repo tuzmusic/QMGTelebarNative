@@ -46,7 +46,7 @@ describe("SelectboxFieldView", () => {
     const props = {
       field,
       selectionHandler: jest.fn(),
-      showSelection: false
+      isSelected: false
     };
     wrapper = render(
       <React.Fragment>
@@ -82,11 +82,11 @@ describe("SelectboxFieldView", () => {
     submitSpy.mockRestore();
   });
 
-  it("shows the selection when an option is clicked, if the showSelection prop is true", () => {
+  it("shows the selection when an option is clicked, if the isSelected prop is true", () => {
     const props = {
       field,
       selectionHandler: jest.fn(),
-      showSelection: true
+      isSelected: true
     };
     wrapper = render(
       <React.Fragment>

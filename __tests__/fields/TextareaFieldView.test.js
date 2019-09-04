@@ -57,11 +57,11 @@ describe("TextareaField", () => {
     submitSpy.mockRestore();
   });
 
-  it("displays the message when save is pressed, and showSubmittedText is true", () => {
+  it("displays the message when save is pressed (when isSelected is true)", () => {
     const props = {
       field,
       selectionHandler: jest.fn(),
-      showSubmittedText: true
+      isSelected: true
     };
     wrapper = render(
       <React.Fragment>
