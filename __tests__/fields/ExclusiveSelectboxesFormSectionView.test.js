@@ -10,7 +10,6 @@ import {
 } from "react-native-testing-library";
 import SelectboxField from "../../src/models/fields/SelectboxField";
 import TextareaField from "../../src/models/fields/TextareaField";
-import Field from "../../src/models/fields/Field";
 import FieldCreator from "../../src/models/fields/FieldCreator";
 import { ExclusiveSelectboxesFormSectionView } from "../../src/components/ExclusiveSelectboxesFormSectionView";
 import SelectboxFieldView from "../../src/components/SelectboxFieldView";
@@ -48,19 +47,19 @@ const fieldsInfo: Object[] = [
   }
 ];
 
-const fields: Field[] = FieldCreator.createFieldsFromArray(fieldsInfo);
+type ExclusiveField = SelectboxField | TextareaField;
+const fields: ExclusiveField[] = FieldCreator.createFieldsFromArray(fieldsInfo);
 
 let mockCard = { message: null, field: null };
 
-function getWrapperProps() {
-  return {
-    fields,
-    setCard: jest.fn().mockImplementation((card: Types.Card) => {
-      mockCard = card;
-    }),
-    card: mockCard
-  };
-}
+const setCard = jest.fn().mockImplementation((card: Types.Card) => {
+  mockCard = card;
+});
+const getWrapperProps = () => ({
+  fields,
+  setCard,
+  card: mockCard
+});
 // #endregion
 // #region WRAPPER UTILITIES
 function createWrapper(customProps) {
@@ -182,21 +181,20 @@ describe("ExclusiveSelectboxesFormSectionView", () => {
     });
   });
 
-  xit("passes the selected value to its parent", async () => {
-    let value;
-    const onSubmit = message => (value = message);
-    wrapper = createWrapper({ onSubmit, cancelTitle: "None" });
+  it("passes the selected value to its parent", async () => {
+    wrapper = createWrapper({ cancelTitle: "None" });
     checkboxes = wrapper.getAllByType(CheckBox);
 
     // pick the second one
     await fireEvent.press(checkboxes[2]);
     await fireEvent.press(wrapper.getByText("Second field option 2"));
 
-    expect(value).toEqual("Second field option 2");
+    expect(mockCard.message).toEqual("Second field option 2");
 
     // select "none"
     await fireEvent.press(wrapper.getByText("None"));
 
-    expect(value).toEqual(null);
+    expect(mockCard.message).toEqual(null);
+    expect(mockCard.field).toEqual(null);
   });
 });
