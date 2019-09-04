@@ -2,7 +2,7 @@
 import reducer from "../../src/redux/reducers/currentFormReducer";
 import Field from "../../src/models/fields/Field";
 import * as Types from "../../src/redux/FormTypes";
-import * as Actions from "../../src/redux/actions/currentOrderActions";
+import * as Actions from "../../src/redux/actions/currentFormActions";
 
 describe("currentFormReducer and actions", () => {
   const initialState: Types.FormState = {

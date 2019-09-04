@@ -7,8 +7,8 @@ export type FormState = {
 };
 
 export type Card = {
-  message: string,
-  field: Field
+  message: ?string,
+  field: ?Field
 };
 
 export type OrderItem = { name: string, price: number, quantity: number };
