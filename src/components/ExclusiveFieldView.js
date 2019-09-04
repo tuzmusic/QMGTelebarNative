@@ -27,7 +27,9 @@ export class ExclusiveFieldView extends Component<Props, State> {
   toggleOverlay = () => this.setState({ showOverlay: !this.state.showOverlay });
 
   async handleSubmit(message: string) {
-    await this.setState({ message, showOverlay: false });
+    this.toggleOverlay();
+    if (!message) return;
+    await this.setState({ message });
     await this.props.selectionHandler(this.props.field, message);
   }
 
