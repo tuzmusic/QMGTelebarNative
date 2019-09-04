@@ -2,6 +2,7 @@
 import * as React from "react";
 import Field from "../models/fields/Field";
 import FieldRenderer from "../utilities/FieldRenderer";
+import ExclusiveFieldView from "../components/ExclusiveFieldView";
 import { View } from "react-native";
 import { CheckBox } from "react-native-elements";
 
@@ -42,7 +43,7 @@ class ExclusiveSelectboxesFieldView extends React.Component<Props, State> {
           props.isSelected = this.state.selectedIndex === i;
           props.selectionHandler = this.handleSelection.bind(this, i);
 
-          return <FieldRenderer field={field} key={i} {...props} />;
+          return <ExclusiveFieldView field={field} key={i} {...props} />;
         })}
       </View>
     );
