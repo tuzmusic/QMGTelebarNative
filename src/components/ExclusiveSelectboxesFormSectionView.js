@@ -1,7 +1,8 @@
 // @flow
 import * as React from "react";
 import { connect } from "react-redux";
-import Field from "../models/fields/Field";
+import SelectboxField from "../models/fields/SelectboxField";
+import TextareaField from "../models/fields/TextareaField";
 import FieldRenderer from "../utilities/FieldRenderer";
 import ExclusiveFieldView from "../components/ExclusiveFieldView";
 import { View } from "react-native";
@@ -9,22 +10,25 @@ import { CheckBox } from "react-native-elements";
 import * as FormTypes from "../redux/FormTypes";
 import { setCard } from "../redux/actions/currentFormActions";
 
+type ExclusiveField = SelectboxField | TextareaField;
 type Props = {
-  fields: Field[],
+  fields: ExclusiveField[],
   cancelTitle?: string,
   card: FormTypes.Card,
   setCard: FormTypes.Card => void
 };
 
 export class ExclusiveSelectboxesFormSectionView extends React.Component<Props> {
-  handleSelection = (field: Field, message: string) => {
+  handleSelection = (field: ExclusiveField, message: string) => {
     this.props.setCard({ message, field });
   };
   cancelSelection = () => this.props.setCard({ message: null, field: null });
 
   render() {
-    // console.log("rendering with card", this.props.card.message);
-
+    const defaultIcons = {
+      checkedIcon: "dot-circle-o",
+      uncheckedIcon: "circle-o"
+    };
     return (
       <View>
         {this.props.cancelTitle && (
@@ -32,18 +36,17 @@ export class ExclusiveSelectboxesFormSectionView extends React.Component<Props> 
             title={this.props.cancelTitle}
             checked={this.props.card.field == null}
             onPress={this.cancelSelection.bind(this)}
-            checkedIcon="dot-circle-o"
-            uncheckedIcon="circle-o"
+            {...defaultIcons}
           />
         )}
-        {this.props.fields.map((field, i) => {
-          const props = {};
-
-          props.isSelected = this.props.card.field == field;
-          props.selectionHandler = this.handleSelection.bind(this);
-
-          return <ExclusiveFieldView field={field} key={i} {...props} />;
-        })}
+        {this.props.fields.map((field, i) => (
+          <ExclusiveFieldView
+            field={field}
+            key={i}
+            isSelected={this.props.card.field == field}
+            selectionHandler={this.handleSelection.bind(this)}
+          />
+        ))}
       </View>
     );
   }
@@ -51,13 +54,10 @@ export class ExclusiveSelectboxesFormSectionView extends React.Component<Props> 
 
 const mapState = ({ currentFormReducer }) => {
   const card = currentFormReducer.card || { message: null, field: null };
-  console.log(card);
-
   return { card };
 };
-const mapDispatch = { setCard };
 
 export default connect(
   mapState,
-  mapDispatch
+  { setCard }
 )(ExclusiveSelectboxesFormSectionView);
