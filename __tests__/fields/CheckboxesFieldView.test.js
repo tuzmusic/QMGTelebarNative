@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import "@testing-library/jest-native/extend-expect";
 import {
   render,
@@ -24,28 +24,42 @@ const fieldInfo = {
 };
 const field = Object.assign(new CheckboxesField(), fieldInfo);
 
-function createWrapper(customProps) {
-  const props = { field, ...customProps };
-  wrapper = render(
-    <Fragment>
-      <CheckboxesQuantityFieldView {...props} />
-    </Fragment>
-  );
-  return wrapper;
-}
-function updateCheckboxes() {
-  checkboxes = wrapper.getAllByType(CheckBox);
-}
-function updateQuantityInputs() {
-  quantityInputs = wrapper.getAllByType(Quantity);
-}
+const updateCheckboxes = () => (checkboxes = wrapper.getAllByType(CheckBox));
+const checkbox = i => wrapper.getAllByType(CheckBox)[i];
+const quantInput = i => wrapper.getAllByType(Quantity)[i];
+const updateQuantityInputs = () =>
+  (quantityInputs = wrapper.getAllByType(Quantity));
 
 let wrapper, checkboxes, quantityInputs;
 
-describe("CheckboxesQuantityFieldView", () => {
-  const box = (i: number) => wrapper.getByText(field.options[i].name);
-  const check = (i: number) => fireEvent.press(box(i));
+const Wrapper = props => {
+  const [quantities, setQuantities] = useState([0, 0, 0]);
+  const changeQuantity = (i, val) => {
+    const quants = [...quantities];
+    quants[i] = val;
+    setQuantities(quants);
+  };
 
+  return (
+    <Fragment>
+      <CheckboxesQuantityFieldView
+        changeQuantity={changeQuantity}
+        quantities={quantities}
+        {...props}
+      />
+    </Fragment>
+  );
+};
+
+function createWrapper(customProps) {
+  const wrapper = render(<Wrapper field={field} {...customProps} />);
+  return wrapper;
+}
+
+const box = (i: number) => wrapper.getByText(field.options[i].name);
+const check = (i: number) => fireEvent.press(box(i));
+
+describe("CheckboxesQuantityFieldView", () => {
   describe("Display stuff only!", () => {
     beforeEach(() => {
       wrapper = createWrapper();
@@ -61,12 +75,12 @@ describe("CheckboxesQuantityFieldView", () => {
       expect(wrapper.getByText(field.options[2].name)).toBeDefined();
     });
 
-    it("checks and unchecks boxes when pressed", () => {
-      check(0);
-      const checkbox = wrapper.getAllByType(CheckBox)[0];
-      expect(checkbox.props.checked).toBe(true);
-      check(0);
-      expect(checkbox.props.checked).toBe(false);
+    it("checks and unchecks boxes when pressed", async () => {
+      await check(0);
+      // const checkbox = wrapper.getAllByType(CheckBox)[0];
+      expect(checkbox(0).props.checked).toBe(true);
+      await check(0);
+      expect(checkbox(0).props.checked).toBe(false);
     });
   });
 
@@ -172,26 +186,23 @@ describe("CheckboxesQuantityFieldView", () => {
 });
 
 describe("new tests", () => {
-  describe("does the parent's quantities prop have the same structure as the options? I was going to have a zero-quantity item simply be absent from the quantities object/array, but it may be easier to have quantities simply be an array of numbers that maps to the array of options. UGH!!!", () => {});
-
   it("takes its quantities from its container through the quantities prop", () => {
     wrapper = createWrapper({ quantities: [2, 0, 0] });
-    updateCheckboxes();
-    updateQuantityInputs();
+
     // expect justin to be checked
-    expect(checkboxes[0].props.checked).toBe(true);
+    expect(checkbox(0).props.checked).toBe(true);
     // expect justin's quantity to be 2
-    expect(quantityInputs[0].props.value).toBe(2);
+    expect(quantInput(0).props.value).toBe(2);
     // expect travis and griffin not to be checked
-    expect(checkboxes[1].props.checked).toBe(false);
-    expect(checkboxes[2].props.checked).toBe(false);
+    expect(checkbox(1).props.checked).toBe(false);
+    expect(checkbox(2).props.checked).toBe(false);
   });
+
   it("has default quantities (everything is zero and unchecked)", () => {
     wrapper = createWrapper();
-    updateCheckboxes();
-    expect(checkboxes[0].props.checked).toBe(false);
-    expect(checkboxes[1].props.checked).toBe(false);
-    expect(checkboxes[2].props.checked).toBe(false);
+    expect(checkbox(0).props.checked).toBe(false);
+    expect(checkbox(1).props.checked).toBe(false);
+    expect(checkbox(2).props.checked).toBe(false);
   });
   xit(`updates its parent's quantities`, () => {});
 });

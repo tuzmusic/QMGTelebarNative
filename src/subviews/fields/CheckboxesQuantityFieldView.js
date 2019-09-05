@@ -43,7 +43,7 @@ export class CheckboxesQuantityFieldView extends Component<Props> {
     if (this.props.maximumSelections && newTotal > this.props.maximumSelections)
       return;
 
-    this.props.changeQuantity({ quantities });
+    // this.props.changeQuantity({ quantities });
   }
 
   render() {
