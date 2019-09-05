@@ -9,6 +9,7 @@ import {
 import CheckboxesField from "../../src/models/fields/CheckboxesField";
 import { CheckboxesQuantityFieldView } from "../../src/subviews/fields/CheckboxesQuantityFieldView";
 import { CheckBox } from "react-native-elements";
+import Quantity from "../../src/components/Quantity";
 
 const fieldInfo = {
   type: "checkboxes",
@@ -32,8 +33,14 @@ function createWrapper(customProps) {
   );
   return wrapper;
 }
+function updateCheckboxes() {
+  checkboxes = wrapper.getAllByType(CheckBox);
+}
+function updateQuantityInputs() {
+  quantityInputs = wrapper.getAllByType(Quantity);
+}
 
-let wrapper;
+let wrapper, checkboxes, quantityInputs;
 
 describe("CheckboxesQuantityFieldView", () => {
   const box = (i: number) => wrapper.getByText(field.options[i].name);
@@ -54,8 +61,6 @@ describe("CheckboxesQuantityFieldView", () => {
       expect(wrapper.getByText(field.options[2].name)).toBeDefined();
     });
 
-    it("actually doesn't display the price, because the title will include price info, and the price will just be used in calculations on the order", () => {});
-
     it("checks and unchecks boxes when pressed", () => {
       check(0);
       const checkbox = wrapper.getAllByType(CheckBox)[0];
@@ -63,14 +68,6 @@ describe("CheckboxesQuantityFieldView", () => {
       check(0);
       expect(checkbox.props.checked).toBe(false);
     });
-
-    /* Because this is really quantity-based, initial check values would mess up the logic.
-    it("accepts an initial values array to pre-set checked boxes", () => {
-      const wrapper = createWrapper({ initialValues: [false, true, true] });
-      const checkboxes = wrapper.getAllByType(CheckBox);
-      const mapped = checkboxes.map(c => c.props.checked);
-      expect(mapped).toEqual([false, true, true]);
-    }); */
   });
 
   describe("Advanced Display (quantity)", () => {
@@ -87,7 +84,7 @@ describe("CheckboxesQuantityFieldView", () => {
       expect(wrapper.queryAllByDisplayValue("1").length).toBe(1);
     });
 
-    it("accepts an initialQuantities prop", () => {
+    xit("accepts an initialQuantities prop", () => {
       const wrapper = createWrapper({ initialQuantities: [3, 0, 7] });
       expect(wrapper.queryAllByDisplayValue("3").length).toBe(1);
       expect(wrapper.queryAllByDisplayValue("7").length).toBe(1);
@@ -172,4 +169,29 @@ describe("CheckboxesQuantityFieldView", () => {
       expect(wrapper.queryAllByDisplayValue("11").length).toBe(1);
     });
   });
+});
+
+describe("new tests", () => {
+  describe("does the parent's quantities prop have the same structure as the options? I was going to have a zero-quantity item simply be absent from the quantities object/array, but it may be easier to have quantities simply be an array of numbers that maps to the array of options. UGH!!!", () => {});
+
+  it("takes its quantities from its container through the quantities prop", () => {
+    wrapper = createWrapper({ quantities: [2, 0, 0] });
+    updateCheckboxes();
+    updateQuantityInputs();
+    // expect justin to be checked
+    expect(checkboxes[0].props.checked).toBe(true);
+    // expect justin's quantity to be 2
+    expect(quantityInputs[0].props.value).toBe(2);
+    // expect travis and griffin not to be checked
+    expect(checkboxes[1].props.checked).toBe(false);
+    expect(checkboxes[2].props.checked).toBe(false);
+  });
+  it("has default quantities (everything is zero and unchecked)", () => {
+    wrapper = createWrapper();
+    updateCheckboxes();
+    expect(checkboxes[0].props.checked).toBe(false);
+    expect(checkboxes[1].props.checked).toBe(false);
+    expect(checkboxes[2].props.checked).toBe(false);
+  });
+  xit(`updates its parent's quantities`, () => {});
 });

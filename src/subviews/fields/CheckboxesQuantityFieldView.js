@@ -7,35 +7,43 @@ import { CheckBox, Divider } from "react-native-elements";
 import { connect } from "react-redux";
 
 type Props = {
-  field: CheckboxesField,
+  // ORIGINAL (KEPT)
+  field: CheckboxesField, // { title, type, options }
+  maximumSelections?: number,
+  // NEW
+  quantities?: number[],
+  changeQuantity: (number, number) => void,
+  defaultQuantity?: number,
+
+  // DEPRECATED
   initialValues?: boolean[],
-  initialQuantities?: number[],
-  maximumSelections?: number
+  initialQuantities?: number[]
 };
-type State = {
-  quantities: number[]
-};
+
 type Option = { name: string, price: ?number };
 
-export class CheckboxesQuantityFieldView extends Component<Props, State> {
-  state = {
-    quantities:
-      this.props.initialQuantities ||
-      Array(this.props.field.options.length).fill(0)
-  };
-
+export class CheckboxesQuantityFieldView extends Component<Props> {
   toggleChecked = (i: number) =>
-    this.changeQuantity(i, this.state.quantities[i] ? 0 : 1);
+    this.props.changeQuantity(i, this.quantities[i] ? 0 : 1);
+
+  get quantities(): number[] {
+    // should also handle quantities props with incorrect length (filling out the rest with 0)
+    const { length } = this.props.field.options;
+    return (
+      this.props.quantities ||
+      Array(length).fill(this.props.defaultQuantity || 0)
+    );
+  }
 
   changeQuantity(i: number, val: number) {
-    const quantities = [...this.state.quantities];
+    const quantities = [...this.quantities];
     quantities[i] = val;
 
     const newTotal = quantities.reduce((acc: number, val: number) => acc + val);
     if (this.props.maximumSelections && newTotal > this.props.maximumSelections)
       return;
 
-    this.setState({ quantities });
+    this.props.changeQuantity({ quantities });
   }
 
   render() {
@@ -49,12 +57,12 @@ export class CheckboxesQuantityFieldView extends Component<Props, State> {
             <CheckBox
               title={option.name}
               onPress={this.toggleChecked.bind(this, i)}
-              checked={this.state.quantities[i] > 0}
+              checked={this.quantities[i] > 0}
               containerStyle={{ flex: 3 }}
             />
-            {this.state.quantities[i] > 0 && (
+            {this.quantities[i] > 0 && (
               <Quantity
-                value={this.state.quantities[i]}
+                value={this.quantities[i]}
                 onChange={this.changeQuantity.bind(this, i)}
                 showLabel={false}
                 containerStyle={{
