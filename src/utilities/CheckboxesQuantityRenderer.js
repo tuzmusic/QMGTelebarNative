@@ -54,6 +54,7 @@ export default class CheckboxesQuantityRenderer extends Component<
           field={field}
           changeQuantity={this.changeQuantity}
           quantities={this.state.quantities}
+          maximumSelections={2}
         />
       </View>
     );

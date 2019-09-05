@@ -24,7 +24,7 @@ type Option = { name: string, price: ?number };
 
 export class CheckboxesQuantityFieldView extends Component<Props> {
   toggleChecked = (i: number) =>
-    this.props.changeQuantity(i, this.quantities[i] ? 0 : 1);
+    this.changeQuantity(i, this.quantities[i] ? 0 : 1);
 
   get quantities(): number[] {
     // should also handle quantities props with incorrect length (filling out the rest with 0)
@@ -36,27 +36,24 @@ export class CheckboxesQuantityFieldView extends Component<Props> {
   }
 
   changeQuantity(i: number, val: number) {
-    // console.log(i, val);
-
-    // const quantities = [...this.quantities];
-    // quantities[i] = val;
-
-    const newTotal = this.quantities.reduce(
-      (acc: number, val: number) => acc + val
-    );
-    if (this.props.maximumSelections && newTotal > this.props.maximumSelections)
-      return;
-
+    let max = this.props.maximumSelections;
+    if (max) {
+      const quantities = [...this.quantities];
+      quantities[i] = val;
+      const newTotal = quantities.reduce(
+        (acc: number, val: number) => acc + val
+      );
+      if (newTotal > max) return;
+    }
     this.props.changeQuantity(i, val);
   }
 
   render() {
-    const field = this.props.field;
     return (
       <View>
-        <Text style={styles.title}>{field.title}</Text>
+        <Text style={styles.title}>{this.props.field.title}</Text>
         <Space />
-        {field.options.map((option: Option, i: number) => (
+        {this.props.field.options.map((option: Option, i: number) => (
           <View style={styles.checkboxesContainer} key={i}>
             <CheckBox
               title={option.name}

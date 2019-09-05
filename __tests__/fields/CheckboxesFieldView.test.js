@@ -9,6 +9,7 @@ import {
 import CheckboxesField from "../../src/models/fields/CheckboxesField";
 import { CheckboxesQuantityFieldView } from "../../src/subviews/fields/CheckboxesQuantityFieldView";
 import { CheckBox } from "react-native-elements";
+import { Text } from "react-native";
 import Quantity from "../../src/components/Quantity";
 
 const fieldInfo = {
@@ -33,7 +34,7 @@ const updateQuantityInputs = () =>
 let wrapper, checkboxes, quantityInputs;
 
 const Wrapper = props => {
-  const [quantities, setQuantities] = useState([0, 0, 0]);
+  const [quantities, setQuantities] = useState(props.quantities || [0, 0, 0]);
   const changeQuantity = (i, val) => {
     const quants = [...quantities];
     quants[i] = val;
@@ -42,6 +43,7 @@ const Wrapper = props => {
 
   return (
     <Fragment>
+      <Text testID="quantities">{quantities.join(",")}</Text>
       <CheckboxesQuantityFieldView
         changeQuantity={changeQuantity}
         quantities={quantities}
@@ -98,14 +100,6 @@ describe("CheckboxesQuantityFieldView", () => {
       expect(wrapper.queryAllByDisplayValue("1").length).toBe(1);
     });
 
-    xit("accepts an initialQuantities prop", () => {
-      const wrapper = createWrapper({ initialQuantities: [3, 0, 7] });
-      expect(wrapper.queryAllByDisplayValue("3").length).toBe(1);
-      expect(wrapper.queryAllByDisplayValue("7").length).toBe(1);
-      const boxes = wrapper.getAllByType(CheckBox);
-      expect(boxes[1].props.checked).toBe(false);
-    });
-
     it("can change the quantity", () => {
       check(0);
       check(1);
@@ -123,10 +117,9 @@ describe("CheckboxesQuantityFieldView", () => {
         check(0);
         check(1);
         check(2);
-        const boxes = wrapper.getAllByType(CheckBox);
-        expect(boxes[0].props.checked).toBe(true);
-        expect(boxes[1].props.checked).toBe(true);
-        expect(boxes[2].props.checked).toBe(false);
+        expect(checkbox(0).props.checked).toBe(true);
+        expect(checkbox(1).props.checked).toBe(true);
+        expect(checkbox(2).props.checked).toBe(false);
       });
       describe("at maximum capacity", () => {
         let boxes, plusButtons;
@@ -204,5 +197,11 @@ describe("new tests", () => {
     expect(checkbox(1).props.checked).toBe(false);
     expect(checkbox(2).props.checked).toBe(false);
   });
-  xit(`updates its parent's quantities`, () => {});
+  it(`updates its parent's quantities`, () => {
+    wrapper = createWrapper({ quantities: [2, 0, 0] });
+    const text = wrapper.getByTestId("quantities");
+    expect(text.props.children).toContain("2,0,0");
+    check(1);
+    expect(text.props.children).toContain("2,1,0");
+  });
 });
