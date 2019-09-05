@@ -36,14 +36,18 @@ export class CheckboxesQuantityFieldView extends Component<Props> {
   }
 
   changeQuantity(i: number, val: number) {
-    const quantities = [...this.quantities];
-    quantities[i] = val;
+    // console.log(i, val);
 
-    const newTotal = quantities.reduce((acc: number, val: number) => acc + val);
+    // const quantities = [...this.quantities];
+    // quantities[i] = val;
+
+    const newTotal = this.quantities.reduce(
+      (acc: number, val: number) => acc + val
+    );
     if (this.props.maximumSelections && newTotal > this.props.maximumSelections)
       return;
 
-    // this.props.changeQuantity({ quantities });
+    this.props.changeQuantity(i, val);
   }
 
   render() {
@@ -56,7 +60,7 @@ export class CheckboxesQuantityFieldView extends Component<Props> {
           <View style={styles.checkboxesContainer} key={i}>
             <CheckBox
               title={option.name}
-              onPress={this.toggleChecked.bind(this, i)}
+              onPress={() => this.toggleChecked(i)}
               checked={this.quantities[i] > 0}
               containerStyle={{ flex: 3 }}
             />
