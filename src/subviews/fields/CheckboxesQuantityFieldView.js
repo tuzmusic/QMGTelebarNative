@@ -48,28 +48,33 @@ export class CheckboxesQuantityFieldView extends Component<Props> {
       <View>
         <Text style={styles.title}>{this.props.field.title}</Text>
         <Space />
-        {this.props.field.options.map((option: Option, i: number) => (
-          <View style={styles.checkboxesContainer} key={i}>
-            <CheckBox
-              title={option.name}
-              onPress={() => this.toggleChecked(i)}
-              checked={this.quantities[i] > 0}
-              containerStyle={{ flex: 3 }}
-              testID={this.props.testID && `${this.props.testID}[${i}]`}
-            />
-            {this.quantities[i] > 0 && (
-              <Quantity
-                value={this.quantities[i]}
-                onChange={this.changeQuantity.bind(this, i)}
-                showLabel={false}
-                containerStyle={{
-                  marginHorizontal: 20,
-                  flex: 1
-                }}
+        {this.props.field.options.map((option: Option, i: number) => {
+          const testIdBase = this.props.testID && `${this.props.testID}[${i}]`;
+
+          return (
+            <View style={styles.checkboxesContainer} key={i}>
+              <CheckBox
+                title={option.name}
+                onPress={() => this.toggleChecked(i)}
+                checked={this.quantities[i] > 0}
+                containerStyle={{ flex: 3 }}
+                testID={testIdBase && testIdBase}
               />
-            )}
-          </View>
-        ))}
+              {this.quantities[i] > 0 && (
+                <Quantity
+                  value={this.quantities[i]}
+                  onChange={this.changeQuantity.bind(this, i)}
+                  showLabel={false}
+                  containerStyle={{
+                    marginHorizontal: 20,
+                    flex: 1
+                  }}
+                  testID={testIdBase && testIdBase + "_QUANTITY"}
+                />
+              )}
+            </View>
+          );
+        })}
       </View>
     );
   }

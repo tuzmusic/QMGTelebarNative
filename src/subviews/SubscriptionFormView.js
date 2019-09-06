@@ -61,7 +61,7 @@ export class SubscriptionFormView extends Component<Props, State> {
 
   render() {
     const fields = this.props.form.fields;
-
+    // #region Forms Constants
     const FREE_CANDIES_FIELD = fields[0];
     const EXTRA_CANDIES_FIELD = fields[1];
     const HEADER_FIELD = fields[2];
@@ -81,6 +81,7 @@ export class SubscriptionFormView extends Component<Props, State> {
         CUSTOMER_CARD_FIELD
       ];
     }
+    // #endregion
 
     return (
       <ScrollView>

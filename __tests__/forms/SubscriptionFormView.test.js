@@ -23,8 +23,15 @@ const TITLES = form.fields.map(f => f.title);
 
 const checkbox = (fieldIndex, i) =>
   wrapper.getByTestId(`CHECKBOXES[${fieldIndex}][${i}]`);
-const quantInput = i => wrapper.getAllByType(Quantity)[i];
 const check = (fieldIndex, i) => fireEvent.press(checkbox(fieldIndex, i));
+const checkedCount = fieldIndex => {
+  const testIdBase = `CHECKBOXES[${fieldIndex}]`;
+  return wrapper
+    .getAllByType(CheckBox)
+    .filter(c => c.props.testID && c.props.testID.startsWith(testIdBase))
+    .map(c => c.props.checked)
+    .filter(Boolean).length;
+};
 const pressSubmitButton = () =>
   fireEvent.press(wrapper.getByTestId("SUBMIT_BUTTON"));
 
@@ -76,6 +83,9 @@ describe("SubscriptionFormView integration", () => {
   });
 
   describe("card section", () => {
+    beforeEach(() => {
+      wrapper = createWrapper();
+    });
     it("sets the card", async () => {
       const field = form.fields[3];
       if (!(field instanceof SelectboxField)) return;
@@ -87,21 +97,41 @@ describe("SubscriptionFormView integration", () => {
       await fireEvent.press(wrapper.getByText(field.options[0]));
       pressSubmitButton();
       expect(stateSpy).toHaveBeenCalledWith(expectedArgs);
-      jest.resetAllMocks();
+      stateSpy.mockClear();
     });
   });
 
   describe("checkboxes fields", () => {
-    it("lets you select 4 free candies (and no more)", async () => {
-      await check(0, 0);
-      await check(0, 1);
-      await check(0, 2);
-      await check(0, 3);
-      await check(0, 4);
-      expect(checkbox(0, 0).props.checked).toBe(true);
-      expect(checkbox(0, 4).props.checked).toBe(false);
+    beforeEach(() => {
+      wrapper = createWrapper();
+    });
 
-      expect(wrapper.getAllByText("Butterfinger").length).toBe(4);
+    it("can modifies the quantities when a box is checked", () => {
+      // check initial state
+      expect(checkbox(0, 0).props.checked).toBe(false);
+      expect(wrapper.queryByTestId("CHECKBOXES[0][0]_QUANTITY")).toBeNull();
+      // check first box
+      check(0, 0);
+      // expect box to be checked and quantity to be displayed
+      expect(checkbox(0, 0).props.checked).toBe(true);
+      expect(wrapper.getByTestId("CHECKBOXES[0][0]_QUANTITY")).toBeDefined();
+    });
+
+    it("lets you select 4 free candies (and no more)", () => {
+      // select 4 candies
+      check(0, 0);
+      check(0, 1);
+      check(0, 2);
+      check(0, 3);
+      // there should be 4 checked boxes. (just checking)
+      expect(checkedCount(0)).toBe(4);
+
+      // try to check another box
+      check(0, 4);
+      // we should have failed to check that box
+      expect(checkbox(0, 4).props.checked).toBe(false);
+      // and we should still only have 4 checked boxes
+      expect(checkedCount(0)).toBe(4);
     });
     xit("shows the total price", () => {});
   });
