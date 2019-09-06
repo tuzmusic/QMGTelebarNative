@@ -52,8 +52,6 @@ export class ExclusiveFieldView extends Component<Props, State> {
 
   render() {
     const field = this.props.field;
-    // console.log(field);
-    // console.log("isSelected:", this.props.isSelected);
 
     return (
       <View>

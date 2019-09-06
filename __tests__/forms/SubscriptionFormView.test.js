@@ -12,10 +12,7 @@ import { subscriptionProducts } from "../../__mocks__/subscription-products-resp
 import { CheckBox, Button } from "react-native-elements";
 import * as Types from "../../src/redux/FormTypes";
 import Form from "../../src/models/forms/Form";
-import {
-  SubscriptionFormView,
-  SUBSCRIPTION_FORM_FIELDS
-} from "../../src/subviews/SubscriptionFormView";
+import { SubscriptionFormView } from "../../src/subviews/SubscriptionFormView";
 import Quantity from "../../src/components/Quantity";
 import SelectboxField from "../../src/models/fields/SelectboxField";
 
@@ -23,20 +20,13 @@ const product = subscriptionProducts[0];
 const formInfo = product.form_info;
 const form = Form.assembleForm(formInfo);
 const TITLES = form.fields.map(f => f.title);
-const {
-  FREE_CANDIES,
-  EXTRA_CANDIES,
-  HEADER_FIELD,
-  BIRTHDAY_CARD_FIELD,
-  ANNIV_CARD_FIELD,
-  CUSTOMER_CARD_FIELD
-} = SUBSCRIPTION_FORM_FIELDS;
 
-const checkbox = i => wrapper.getAllByType(CheckBox)[i];
+const checkbox = (fieldIndex, i) =>
+  wrapper.getByTestId(`CHECKBOXES[${fieldIndex}][${i}]`);
 const quantInput = i => wrapper.getAllByType(Quantity)[i];
-const check = (i: number) => fireEvent.press(checkbox(i));
+const check = (fieldIndex, i) => fireEvent.press(checkbox(fieldIndex, i));
 const pressSubmitButton = () =>
-  fireEvent.press(wrapper.getByTestId("submitButton"));
+  fireEvent.press(wrapper.getByTestId("SUBMIT_BUTTON"));
 
 // const box = (i: number) => wrapper.getByText(field.options[i].name);
 
@@ -61,7 +51,7 @@ function createWrapper(customProps) {
   return wrapper;
 }
 
-describe("SubscriptionFormView", () => {
+describe("SubscriptionFormView integration", () => {
   beforeEach(() => {
     wrapper = createWrapper();
   });
@@ -80,14 +70,16 @@ describe("SubscriptionFormView", () => {
   xit("can accept starting values for an existing order", () => {});
 
   it("has a submit button that calls the submitOrder function from props ", () => {
-    fireEvent.press(wrapper.getByTestId("submitButton"));
+    pressSubmitButton();
     expect(submitOrderMock).toHaveBeenCalled();
     jest.resetAllMocks();
   });
 
   describe("card section", () => {
     it("sets the card", async () => {
-      const field: SelectboxField = form.fields[BIRTHDAY_CARD_FIELD];
+      const field = form.fields[3];
+      if (!(field instanceof SelectboxField)) return;
+
       const stateSpy = jest.spyOn(SubscriptionFormView.prototype, "setState");
       const expectedArgs = { card: { message: field.options[0], field } };
 
@@ -99,15 +91,17 @@ describe("SubscriptionFormView", () => {
     });
   });
 
-  xdescribe("checkboxes fields", () => {
-    it("lets you select 4 free candies (and no more)", () => {
-      check(0);
-      check(1);
-      check(2);
-      check(3);
-      check(4);
-      expect(wrapper.getAllByDisplayValue("1").length).toBe(4);
-      expect(checkbox(4).props.checked).toBe(false);
+  describe("checkboxes fields", () => {
+    it("lets you select 4 free candies (and no more)", async () => {
+      await check(0, 0);
+      await check(0, 1);
+      await check(0, 2);
+      await check(0, 3);
+      await check(0, 4);
+      expect(checkbox(0, 0).props.checked).toBe(true);
+      expect(checkbox(0, 4).props.checked).toBe(false);
+
+      expect(wrapper.getAllByText("Butterfinger").length).toBe(4);
     });
     xit("shows the total price", () => {});
   });

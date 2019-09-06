@@ -25,6 +25,7 @@ export class ExclusiveSelectboxesFormSectionView extends React.Component<Props> 
 
   render() {
     const card = this.props.card || { message: null, field: null };
+
     return (
       <View>
         {this.props.cancelTitle && (

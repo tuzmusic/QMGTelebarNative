@@ -13,118 +13,135 @@ import * as FormTypes from "../redux/FormTypes";
 import { Button, Divider } from "react-native-elements";
 import { connect } from "react-redux";
 
-type SubmitOrderFn = ({card: FormTypes.Card, items: FormTypes.OrderItem[]}) => {type:"CREATE_ORDER", order: {}} 
+type SubmitOrderFn = ({
+  card: FormTypes.Card,
+  items: FormTypes.OrderItem[]
+}) => { type: "CREATE_ORDER", order: {} };
 
-type Props = { 
+type Props = {
   form: Form,
-  submitOrder: SubmitOrderFn// redux action
+  submitOrder: SubmitOrderFn // redux action
 };
 
 type State = {
   // these may ultimately be supplied by props???
-  quantities: (number[])[], // controls the checkbox fields; set with setQuantities
+  quantities: number[][], // controls the checkbox fields; set with setQuantities
   card: ?FormTypes.Card // controls card fields; set with setCard
-}
-
-// Subscription Form Structure
-export const SUBSCRIPTION_FORM_FIELDS={
- FREE_CANDIES: 0,
- EXTRA_CANDIES: 1,
- HEADER_FIELD: 2,
- BIRTHDAY_CARD_FIELD: 3,
- ANNIV_CARD_FIELD: 3,
- CUSTOMER_CARD_FIELD: 4,
-}
+};
 
 export class SubscriptionFormView extends Component<Props, State> {
   state = {
-    quantities: [[],[]],
-    card: null 
+    quantities: [[], []],
+    card: null
   };
 
-  // Function signatures!
-  setQuantities: () => void 
-  setCard: (FormTypes.Card) => void
-  handleOrder: function // calls props.submitOrder
-  
   setCard(card: FormTypes.Card) {
-    this.setState({card})
+    this.setState({ card });
   }
-  
+
   processItems(): OrderItem[] {
-    const { quantities } = this.state
+    const { quantities } = this.state;
     // use quantities with the checkbox fields options to create the order items
   }
-  
+
   handleOrder() {
-     // put together the order (submitOrder will take some form-friendly type and use Order.toApi to create a valid order)
-    const order = { card: this.state.card }
-    this.props.submitOrder(order)
+    // put together the order (submitOrder will take some form-friendly type and use Order.toApi to create a valid order)
+    const order = { card: this.state.card, items: [] };
+    order.items = this.processItems();
+    this.props.submitOrder(order);
+  }
+
+  setQuantities(fieldIndex: number, boxIndex: number, value: number) {
+    const allQuantities = this.state.quantities;
+    const quantities = allQuantities[fieldIndex];
+    quantities[boxIndex] = value;
+    allQuantities[fieldIndex] = quantities;
+    this.setState({ quantities: allQuantities });
   }
 
   render() {
-// flow doesn't like me using these in the actual render for some reason.
-    const { FREE_CANDIES,
-            EXTRA_CANDIES,
-            HEADER_FIELD,
-            BIRTHDAY_CARD_FIELD,
-            ANNIV_CARD_FIELD,
-            CUSTOMER_CARD_FIELD
-            } = SUBSCRIPTION_FORM_FIELDS
-    /*
-      Subscription Form Structure:
-      0. Checkboxes - 4 free candies
-      1. Checkboxes - Unlimited $5 candies
-      2. Header
-      3. "Card Form" (selectbox, selectbox, textarea)
-     */
-
-     
     const fields = this.props.form.fields;
+
+    const FREE_CANDIES_FIELD = fields[0];
+    const EXTRA_CANDIES_FIELD = fields[1];
+    const HEADER_FIELD = fields[2];
+    const BIRTHDAY_CARD_FIELD = fields[3];
+    const ANNIV_CARD_FIELD = fields[4];
+    const CUSTOMER_CARD_FIELD = fields[5];
+
+    let CARD_FORM_FIELDS;
+    if (
+      BIRTHDAY_CARD_FIELD instanceof SelectboxField &&
+      ANNIV_CARD_FIELD instanceof SelectboxField &&
+      CUSTOMER_CARD_FIELD instanceof TextareaField
+    ) {
+      CARD_FORM_FIELDS = [
+        BIRTHDAY_CARD_FIELD,
+        ANNIV_CARD_FIELD,
+        CUSTOMER_CARD_FIELD
+      ];
+    }
+
     return (
       <ScrollView>
-        <Button 
-          testID={'submitButton'} 
-          title="Submit" 
-          onPress={this.handleOrder.bind(this)} 
-          containerStyle={styles.buttonContainer} 
+        <Button
+          testID={"SUBMIT_BUTTON"}
+          title="Submit"
+          onPress={this.handleOrder.bind(this)}
+          containerStyle={styles.buttonContainer}
           style={styles.button}
         />
-        <Divider height={20} backgroundColor='transparent'/>
-        <Fragment key={"CARD FORM"}>
-          <CardFormView fields={fields.slice(3)} cancelTitle="No card" card={this.state.card} setCard={this.setCard.bind(this)}/>
-        </Fragment>
-        <Fragment key={"CHECKBOX 1"}>
-          {fields[0] instanceof CheckboxesField && (
-            <CheckboxesQuantityFieldView field={fields[0]} />
-          )}
-        </Fragment>
-        <Fragment key={"CHECKBOX 2"}>
-          {fields[1] instanceof CheckboxesField && (
-            <CheckboxesQuantityFieldView field={fields[1]} />
-          )}
-        </Fragment>
-        <Fragment key={"HEADER"}>
-          {fields[2] instanceof HeaderField && (
-            <HeaderFieldView field={fields[2]} />
-          )}
-        </Fragment>
-        </ScrollView>
+        <Divider height={20} backgroundColor="transparent" />
+        {CARD_FORM_FIELDS && (
+          <CardFormView
+            testID={"CARD_FORM"}
+            fields={CARD_FORM_FIELDS}
+            cancelTitle="No card"
+            card={this.state.card}
+            setCard={this.setCard.bind(this)}
+          />
+        )}
+        {FREE_CANDIES_FIELD instanceof CheckboxesField && (
+          <CheckboxesQuantityFieldView
+            testID="CHECKBOXES[0]"
+            field={FREE_CANDIES_FIELD}
+            quantities={this.state.quantities[0]}
+            maximumSelections={FREE_CANDIES_FIELD.maximumSelections}
+            changeQuantity={(i, v) => this.setQuantities(0, i, v)}
+          />
+        )}
+        {EXTRA_CANDIES_FIELD instanceof CheckboxesField && (
+          <CheckboxesQuantityFieldView
+            testID="CHECKBOXES[1]"
+            field={EXTRA_CANDIES_FIELD}
+            quantities={this.state.quantities[1]}
+            maximumSelections={EXTRA_CANDIES_FIELD.maximumSelections}
+            changeQuantity={(i, v) => this.setQuantities(0, i, v)}
+          />
+        )}
+        {fields[2] instanceof HeaderField && (
+          <HeaderFieldView field={fields[2]} testID={"HEADER"} />
+        )}
+      </ScrollView>
     );
   }
 }
 
 function submitOrder() {
-  return {type:"PLACEHOLDER"}
+  return { type: "PLACEHOLDER" };
 }
 
-const mapState = () => ({})
+const mapState = () => ({});
 
-export default connect(mapState, {submitOrder})(SubscriptionFormView);
+export default connect(
+  mapState,
+  { submitOrder }
+)(SubscriptionFormView);
 
-const styles ={
+const styles = {
   buttonContainer: {
-    width: '100%', alignItems: 'center'
-  }, 
-  button: { width:'50%'}
-}
+    width: "100%",
+    alignItems: "center"
+  },
+  button: { width: "50%" }
+};

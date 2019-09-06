@@ -9,9 +9,10 @@ import { connect } from "react-redux";
 type Props = {
   field: CheckboxesField, // { title, type, options }
   changeQuantity: (number, number) => void,
-  maximumSelections?: number,
+  maximumSelections?: ?number,
   quantities?: number[],
-  defaultQuantity?: number
+  defaultQuantity?: number,
+  testID?: string
 };
 
 type Option = { name: string, price: ?number };
@@ -54,6 +55,7 @@ export class CheckboxesQuantityFieldView extends Component<Props> {
               onPress={() => this.toggleChecked(i)}
               checked={this.quantities[i] > 0}
               containerStyle={{ flex: 3 }}
+              testID={this.props.testID && `${this.props.testID}[${i}]`}
             />
             {this.quantities[i] > 0 && (
               <Quantity
