@@ -8,37 +8,29 @@ import ExclusiveFieldView from "../../subviews/fields/ExclusiveFieldView";
 import { View } from "react-native";
 import { CheckBox } from "react-native-elements";
 import * as FormTypes from "../../redux/FormTypes";
-import { setCard } from "../../redux/actions/currentFormActions";
 
 type ExclusiveField = SelectboxField | TextareaField;
 type Props = {
   fields: ExclusiveField[],
   cancelTitle?: string,
-  card: FormTypes.Card,
+  card: ?FormTypes.Card,
   setCard: FormTypes.Card => void
 };
 
 export class ExclusiveSelectboxesFormSectionView extends React.Component<Props> {
-  static defaultProps = {
-    card: { message: null, field: null }
-  };
-
   handleSelection = (field: ExclusiveField, message: string) => {
     this.props.setCard({ message, field });
   };
   cancelSelection = () => this.props.setCard({ message: null, field: null });
 
   render() {
-    const defaultIcons = {
-      checkedIcon: "dot-circle-o",
-      uncheckedIcon: "circle-o"
-    };
+    const card = this.props.card || { message: null, field: null };
     return (
       <View>
         {this.props.cancelTitle && (
           <CheckBox
             title={this.props.cancelTitle}
-            checked={this.props.card.field == null}
+            checked={card.field == null}
             onPress={this.cancelSelection.bind(this)}
             {...defaultIcons}
           />
@@ -47,7 +39,7 @@ export class ExclusiveSelectboxesFormSectionView extends React.Component<Props> 
           <ExclusiveFieldView
             field={field}
             key={i}
-            isSelected={this.props.card.field == field}
+            isSelected={card.field == field}
             selectionHandler={this.handleSelection.bind(this)}
           />
         ))}
@@ -56,12 +48,7 @@ export class ExclusiveSelectboxesFormSectionView extends React.Component<Props> 
   }
 }
 
-const mapState = ({ currentFormReducer }) => {
-  const card = currentFormReducer.card || { message: null, field: null };
-  return { card };
+const defaultIcons = {
+  checkedIcon: "dot-circle-o",
+  uncheckedIcon: "circle-o"
 };
-
-export default connect(
-  mapState,
-  { setCard }
-)(ExclusiveSelectboxesFormSectionView);
