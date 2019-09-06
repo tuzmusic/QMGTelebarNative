@@ -35,6 +35,9 @@ const {
 const checkbox = i => wrapper.getAllByType(CheckBox)[i];
 const quantInput = i => wrapper.getAllByType(Quantity)[i];
 const check = (i: number) => fireEvent.press(checkbox(i));
+const pressSubmitButton = () =>
+  fireEvent.press(wrapper.getByTestId("submitButton"));
+
 // const box = (i: number) => wrapper.getByText(field.options[i].name);
 
 const submitOrderMock = jest.fn();
@@ -84,14 +87,15 @@ describe("SubscriptionFormView", () => {
 
   describe("card section", () => {
     it("sets the card", async () => {
-      wrapper = createWrapper();
       const field: SelectboxField = form.fields[BIRTHDAY_CARD_FIELD];
+      const stateSpy = jest.spyOn(SubscriptionFormView.prototype, "setState");
       const expectedArgs = { card: { message: field.options[0], field } };
 
       await fireEvent.press(wrapper.getByText(field.title));
       await fireEvent.press(wrapper.getByText(field.options[0]));
-      fireEvent.press(wrapper.getByTestId("submitButton"));
-      expect(submitOrderMock).toHaveBeenCalledWith(expectedArgs);
+      pressSubmitButton();
+      expect(stateSpy).toHaveBeenCalledWith(expectedArgs);
+      jest.resetAllMocks();
     });
   });
 
@@ -108,5 +112,13 @@ describe("SubscriptionFormView", () => {
     xit("shows the total price", () => {});
   });
 
-  xit("submits all the information for the order", () => {});
+  xit("submits all the information for the order", () => {
+    const expectedOrder = {
+      // order properties
+    };
+
+    // Select a bunch of stuff
+    pressSubmitButton();
+    expect(submitOrderMock).toHaveBeenCalledWith(expectedOrder);
+  });
 });
