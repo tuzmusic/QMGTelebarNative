@@ -11,12 +11,15 @@ import HeaderFieldView from "./fields/HeaderFieldView";
 import { ExclusiveSelectboxesFormSectionView as CardFormView } from "./fields/ExclusiveSelectboxesFormSectionView";
 import * as FormTypes from "../redux/FormTypes";
 import { Button, Divider } from "react-native-elements";
+import { connect } from "react-redux";
 
+type SubmitOrderFn = ({card: FormTypes.Card, items: FormTypes.OrderItem[]}) => {type:"CREATE_ORDER", order: {}} 
 
-
-type Props = { form: Form,
-   submitOrder: (card: FormTypes.Card, items: FormTypes.OrderItem[]) => {type:"CREATE_ORDER", order: {}} // redux action
+type Props = { 
+  form: Form,
+  submitOrder: SubmitOrderFn// redux action
 };
+
 type State = {
   // these may ultimately be supplied by props???
   quantities: (number[])[], // controls the checkbox fields; set with setQuantities
@@ -32,7 +35,8 @@ export const SUBSCRIPTION_FORM_FIELDS={
  ANNIV_CARD_FIELD: 3,
  CUSTOMER_CARD_FIELD: 4,
 }
-class SubscriptionFormView extends Component<Props, State> {
+
+export class SubscriptionFormView extends Component<Props, State> {
   state = {
     quantities: [[],[]],
     card: null 
@@ -40,24 +44,21 @@ class SubscriptionFormView extends Component<Props, State> {
 
   // Function signatures!
   setQuantities: () => void 
-  setCard: (string, SelectboxField | TextareaField) => void
+  setCard: (FormTypes.Card) => void
   handleOrder: function // calls props.submitOrder
   
-  setCard = (card: FormTypes.Card) => {
-    // debugger
+  setCard(card: FormTypes.Card) {
     this.setState({card})
   }
   
   processItems(): OrderItem[] {
-    const {quantities} = this.state
+    const { quantities } = this.state
     // use quantities with the checkbox fields options to create the order items
   }
   
-  handleOrder = () => {
+  handleOrder() {
      // put together the order (submitOrder will take some form-friendly type and use Order.toApi to create a valid order)
     const order = { card: this.state.card }
-    console.log(order);
-    
     this.props.submitOrder(order)
   }
 
@@ -85,12 +86,15 @@ class SubscriptionFormView extends Component<Props, State> {
         <Button 
           testID={'submitButton'} 
           title="Submit" 
-          onPress={this.props.submitOrder} 
+          onPress={this.handleOrder.bind(this)} 
           containerStyle={styles.buttonContainer} 
           style={styles.button}
         />
         <Divider height={20} backgroundColor='transparent'/>
-        {/* <Fragment key={"CHECKBOX 1"}>
+        <Fragment key={"CARD FORM"}>
+          <CardFormView fields={fields.slice(3)} cancelTitle="No card" card={this.state.card} setCard={this.setCard.bind(this)}/>
+        </Fragment>
+        <Fragment key={"CHECKBOX 1"}>
           {fields[0] instanceof CheckboxesField && (
             <CheckboxesQuantityFieldView field={fields[0]} />
           )}
@@ -104,15 +108,19 @@ class SubscriptionFormView extends Component<Props, State> {
           {fields[2] instanceof HeaderField && (
             <HeaderFieldView field={fields[2]} />
           )}
-        </Fragment> */}
-        <Fragment key={"CARD FORM"}>
-          <CardFormView fields={fields.slice(3)} cancelTitle="No card" card={this.state.card} setCard={this.setCard}/>
         </Fragment>
-      </ScrollView>
+        </ScrollView>
     );
   }
 }
-export default SubscriptionFormView;
+
+function submitOrder() {
+  return {type:"PLACEHOLDER"}
+}
+
+const mapState = () => ({})
+
+export default connect(mapState, {submitOrder})(SubscriptionFormView);
 
 const styles ={
   buttonContainer: {

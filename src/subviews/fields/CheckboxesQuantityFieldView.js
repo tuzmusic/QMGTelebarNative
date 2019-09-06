@@ -7,17 +7,11 @@ import { CheckBox, Divider } from "react-native-elements";
 import { connect } from "react-redux";
 
 type Props = {
-  // ORIGINAL (KEPT)
   field: CheckboxesField, // { title, type, options }
-  maximumSelections?: number,
-  // NEW
-  quantities?: number[],
   changeQuantity: (number, number) => void,
-  defaultQuantity?: number,
-
-  // DEPRECATED
-  initialValues?: boolean[],
-  initialQuantities?: number[]
+  maximumSelections?: number,
+  quantities?: number[],
+  defaultQuantity?: number
 };
 
 type Option = { name: string, price: ?number };

@@ -25,13 +25,10 @@ const fieldInfo = {
 };
 const field = Object.assign(new CheckboxesField(), fieldInfo);
 
-const updateCheckboxes = () => (checkboxes = wrapper.getAllByType(CheckBox));
 const checkbox = i => wrapper.getAllByType(CheckBox)[i];
 const quantInput = i => wrapper.getAllByType(Quantity)[i];
-const updateQuantityInputs = () =>
-  (quantityInputs = wrapper.getAllByType(Quantity));
 
-let wrapper, checkboxes, quantityInputs;
+let wrapper;
 
 const Wrapper = props => {
   const [quantities, setQuantities] = useState(props.quantities || [0, 0, 0]);
