@@ -9,13 +9,13 @@ import CheckboxesField from "../models/fields/CheckboxesField";
 import HeaderField from "../models/fields/HeaderField";
 import HeaderFieldView from "./fields/HeaderFieldView";
 import { ExclusiveSelectboxesFormSectionView as CardFormView } from "./fields/ExclusiveSelectboxesFormSectionView";
-import * as FormTypes from "../redux/FormTypes";
+import * as Types from "../redux/FormTypes";
 import { Button, Divider } from "react-native-elements";
 import { connect } from "react-redux";
 
 type SubmitOrderFn = ({
-  card: FormTypes.Card,
-  items: FormTypes.OrderItem[]
+  card: Types.Card,
+  items: Types.OrderItem[]
 }) => { type: "CREATE_ORDER", order: {} };
 
 type Props = {
@@ -26,7 +26,7 @@ type Props = {
 type State = {
   // these may ultimately be supplied by props???
   quantities: number[][], // controls the checkbox fields; set with setQuantities
-  card: ?FormTypes.Card // controls card fields; set with setCard
+  card: ?Types.Card // controls card fields; set with setCard
 };
 
 export function quantifiedItemList({
@@ -34,14 +34,21 @@ export function quantifiedItemList({
   items
 }: {
   quantities: number[],
-  items: FormTypes.OrderItem[]
-}): FormTypes.QuantifiedOrderItem[] {
+  items: Types.OrderItem[]
+}): Types.QuantifiedOrderItem[] {
+  if (!items) return [];
   return items
-    .map((item: FormTypes.OrderItem, i: number) => ({
+    .map((item: Types.OrderItem, i: number) => ({
       ...item,
       quantity: quantities[i]
     }))
     .filter(item => item.quantity > 0);
+}
+
+export function totalPrice(items: Types.QuantifiedOrderItem[]): number {
+  let total = 0;
+  items.forEach(item => (total += (item.price || 0) * item.quantity));
+  return total;
 }
 
 export class SubscriptionFormView extends Component<Props, State> {
@@ -50,20 +57,36 @@ export class SubscriptionFormView extends Component<Props, State> {
     card: null
   };
 
-  setCard(card: FormTypes.Card) {
+  setCard(card: Types.Card) {
     this.setState({ card });
-  }
-
-  processItems(): OrderItem[] {
-    const { quantities } = this.state;
-    // use quantities with the checkbox fields options to create the order items
   }
 
   handleOrder() {
     // put together the order (submitOrder will take some form-friendly type and use Order.toApi to create a valid order)
-    const order = { card: this.state.card, items: [] };
-    order.items = this.processItems();
-    this.props.submitOrder(order);
+    const order = {
+      card: this.state.card || { message: null, field: null },
+      items: []
+    };
+    const FREE_CANDIES_FIELD = this.props.form.fields[0];
+    const EXTRA_CANDIES_FIELD = this.props.form.fields[1];
+
+    // this doesn't work (with flow) if we guard/return
+    if (
+      FREE_CANDIES_FIELD instanceof CheckboxesField &&
+      EXTRA_CANDIES_FIELD instanceof CheckboxesField
+    ) {
+      order.items = [
+        ...quantifiedItemList({
+          quantities: this.state.quantities[0],
+          items: FREE_CANDIES_FIELD.options
+        }),
+        ...quantifiedItemList({
+          quantities: this.state.quantities[0],
+          items: EXTRA_CANDIES_FIELD.options
+        })
+      ];
+      this.props.submitOrder(order);
+    }
   }
 
   setQuantities(fieldIndex: number, boxIndex: number, value: number) {
@@ -72,14 +95,6 @@ export class SubscriptionFormView extends Component<Props, State> {
     quantities[boxIndex] = value;
     allQuantities[fieldIndex] = quantities;
     this.setState({ quantities: allQuantities });
-  }
-
-  totalPrice() {
-    const itemsFields = this.props.form.fields.slice(0, 2);
-    const allItems = itemsFields.map(f => f.options);
-    // console.log(allItems);
-
-    return 10;
   }
 
   render() {
@@ -108,7 +123,7 @@ export class SubscriptionFormView extends Component<Props, State> {
 
     return (
       <ScrollView>
-        <Text testID="OPTIONS_PRICE">{`$${this.totalPrice()}`}</Text>
+        <Text testID="OPTIONS_PRICE">{`$${totalPrice([])}`}</Text>
         <Button
           testID={"SUBMIT_BUTTON"}
           title="Submit"

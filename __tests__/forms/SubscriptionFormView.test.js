@@ -14,7 +14,8 @@ import * as Types from "../../src/redux/FormTypes";
 import Form from "../../src/models/forms/Form";
 import {
   SubscriptionFormView,
-  quantifiedItemList
+  quantifiedItemList,
+  totalPrice
 } from "../../src/subviews/SubscriptionFormView";
 import Quantity from "../../src/components/Quantity";
 import SelectboxField from "../../src/models/fields/SelectboxField";
@@ -153,7 +154,15 @@ describe("SubscriptionFormView integration", () => {
         );
       });
 
-      describe("totalPrice", () => {});
+      describe("totalPrice", () => {
+        const items: Types.QuantifiedOrderItem[] = [
+          { name: "Butterfinger", quantity: 1, price: null },
+          { name: "Twix", quantity: 2, price: 5 },
+          { name: "Snickers", quantity: 1, price: 10 }
+        ];
+
+        expect(totalPrice(items)).toEqual(20);
+      });
     });
     it("shows the total price", () => {
       const price = wrapper.getByTestId("OPTIONS_PRICE").props.children;
