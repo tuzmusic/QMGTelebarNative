@@ -29,6 +29,21 @@ type State = {
   card: ?FormTypes.Card // controls card fields; set with setCard
 };
 
+export function quantifiedItemList({
+  quantities,
+  items
+}: {
+  quantities: number[],
+  items: FormTypes.OrderItem[]
+}): FormTypes.QuantifiedOrderItem[] {
+  return items
+    .map((item: FormTypes.OrderItem, i: number) => ({
+      ...item,
+      quantity: quantities[i]
+    }))
+    .filter(item => item.quantity > 0);
+}
+
 export class SubscriptionFormView extends Component<Props, State> {
   state = {
     quantities: [[], []],
@@ -57,21 +72,6 @@ export class SubscriptionFormView extends Component<Props, State> {
     quantities[boxIndex] = value;
     allQuantities[fieldIndex] = quantities;
     this.setState({ quantities: allQuantities });
-  }
-
-  quantifiedItemList({
-    quantities,
-    items
-  }: {
-    quantities: number[],
-    items: FormTypes.OrderItem[]
-  }): FormTypes.QuantifiedOrderItem[] {
-    return items
-      .map((item: FormTypes.OrderItem, i: number) => ({
-        ...item,
-        quantity: quantities[i]
-      }))
-      .filter(item => item.quantity > 0);
   }
 
   totalPrice() {

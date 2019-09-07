@@ -12,7 +12,10 @@ import { subscriptionProducts } from "../../__mocks__/subscription-products-resp
 import { CheckBox, Button } from "react-native-elements";
 import * as Types from "../../src/redux/FormTypes";
 import Form from "../../src/models/forms/Form";
-import { SubscriptionFormView } from "../../src/subviews/SubscriptionFormView";
+import {
+  SubscriptionFormView,
+  quantifiedItemList
+} from "../../src/subviews/SubscriptionFormView";
 import Quantity from "../../src/components/Quantity";
 import SelectboxField from "../../src/models/fields/SelectboxField";
 
@@ -135,8 +138,6 @@ describe("SubscriptionFormView integration", () => {
 
     describe("calculation methods", () => {
       describe("quantifiedItemList", () => {
-        const quantifiedItemList =
-          SubscriptionFormView.prototype.quantifiedItemList;
         const items: Types.OrderItem[] = [
           { name: "Butterfinger", price: null },
           { name: "Twix", price: 5 },
