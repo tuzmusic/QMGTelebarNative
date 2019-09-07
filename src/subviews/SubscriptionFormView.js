@@ -59,6 +59,29 @@ export class SubscriptionFormView extends Component<Props, State> {
     this.setState({ quantities: allQuantities });
   }
 
+  quantifiedItemList({
+    quantities,
+    items
+  }: {
+    quantities: number[],
+    items: FormTypes.OrderItem[]
+  }): FormTypes.QuantifiedOrderItem[] {
+    return items
+      .map((item: FormTypes.OrderItem, i: number) => ({
+        ...item,
+        quantity: quantities[i]
+      }))
+      .filter(item => item.quantity > 0);
+  }
+
+  totalPrice() {
+    const itemsFields = this.props.form.fields.slice(0, 2);
+    const allItems = itemsFields.map(f => f.options);
+    // console.log(allItems);
+
+    return 10;
+  }
+
   render() {
     const fields = this.props.form.fields;
     // #region Forms Constants
@@ -85,6 +108,7 @@ export class SubscriptionFormView extends Component<Props, State> {
 
     return (
       <ScrollView>
+        <Text testID="OPTIONS_PRICE">{`$${this.totalPrice()}`}</Text>
         <Button
           testID={"SUBMIT_BUTTON"}
           title="Submit"

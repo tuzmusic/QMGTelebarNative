@@ -23,10 +23,11 @@ export class CheckboxesQuantityFieldView extends Component<Props> {
 
   get quantities(): number[] {
     // should also handle quantities props with incorrect length (filling out the rest with 0)
-    const { length } = this.props.field.options;
     return (
       this.props.quantities ||
-      Array(length).fill(this.props.defaultQuantity || 0)
+      Array(this.props.field.options.length).fill(
+        this.props.defaultQuantity || 0
+      )
     );
   }
 

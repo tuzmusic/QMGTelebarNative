@@ -11,4 +11,9 @@ export type Card = {
   field: ?Field
 };
 
-export type OrderItem = { name: string, price: ?number, quantity: number };
+export type OrderItem = { name: string, price: ?number };
+export type QuantifiedOrderItem = {
+  name: string,
+  price: ?number,
+  quantity: number
+};

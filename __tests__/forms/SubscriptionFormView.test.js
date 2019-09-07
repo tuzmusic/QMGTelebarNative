@@ -41,17 +41,16 @@ const submitOrderMock = jest.fn();
 
 let wrapper;
 
-const Wrapper = props => {
-  return (
-    <Fragment>
-      <SubscriptionFormView
-        submitOrder={submitOrderMock}
-        form={form}
-        {...props}
-      />
-    </Fragment>
-  );
-};
+const Wrapper = props => (
+  <Fragment>
+    <SubscriptionFormView
+      submitOrder={submitOrderMock}
+      form={form}
+      testID={"SUBSCRIPTION_FORM_VIEW"}
+      {...props}
+    />
+  </Fragment>
+);
 
 function createWrapper(customProps) {
   const wrapper = render(<Wrapper {...customProps} />);
@@ -133,7 +132,36 @@ describe("SubscriptionFormView integration", () => {
       // and we should still only have 4 checked boxes
       expect(checkedCount(0)).toBe(4);
     });
-    xit("shows the total price", () => {});
+
+    describe("calculation methods", () => {
+      describe("quantifiedItemList", () => {
+        const quantifiedItemList =
+          SubscriptionFormView.prototype.quantifiedItemList;
+        const items: Types.OrderItem[] = [
+          { name: "Butterfinger", price: null },
+          { name: "Twix", price: 5 },
+          { name: "Snickers", price: 5 }
+        ];
+        const quantities = [1, 2, 0];
+        const expectedItems: Types.QuantifiedOrderItem[] = [
+          { name: "Butterfinger", quantity: 1, price: null },
+          { name: "Twix", quantity: 2, price: 5 }
+        ];
+        expect(quantifiedItemList({ quantities, items })).toEqual(
+          expectedItems
+        );
+      });
+
+      describe("totalPrice", () => {});
+    });
+    it("shows the total price", () => {
+      const price = wrapper.getByTestId("OPTIONS_PRICE").props.children;
+
+      check(1, 0);
+      check(1, 1);
+
+      expect(price).toEqual("$10");
+    });
   });
 
   xit("submits all the information for the order", () => {

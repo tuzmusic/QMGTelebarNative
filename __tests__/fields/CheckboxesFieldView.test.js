@@ -42,6 +42,7 @@ const Wrapper = props => {
     <Fragment>
       <Text testID="quantities">{quantities.join(",")}</Text>
       <CheckboxesQuantityFieldView
+        testID="CHECKBOXES_VIEW"
         changeQuantity={changeQuantity}
         quantities={quantities}
         {...props}
@@ -175,7 +176,7 @@ describe("CheckboxesQuantityFieldView", () => {
   });
 });
 
-describe("new tests", () => {
+describe("quantities/props", () => {
   it("takes its quantities from its container through the quantities prop", () => {
     wrapper = createWrapper({ quantities: [2, 0, 0] });
 
