@@ -1,3 +1,4 @@
+// #region Imports
 // @flow
 import React, { Fragment, useState } from "react";
 import "@testing-library/jest-native/extend-expect";
@@ -19,6 +20,7 @@ import {
 } from "../../src/subviews/SubscriptionFormView";
 import Quantity from "../../src/components/Quantity";
 import SelectboxField from "../../src/models/fields/SelectboxField";
+// #endregion
 
 const product = subscriptionProducts[0];
 const formInfo = product.form_info;
@@ -109,7 +111,8 @@ describe("SubscriptionFormView integration", () => {
       wrapper = createWrapper();
     });
 
-    it("can modifies the quantities when a box is checked", () => {
+    it("can modify the quantities when a box is checked", () => {
+      /* FIELD 0 */
       // check initial state
       expect(checkbox(0, 0).props.checked).toBe(false);
       expect(wrapper.queryByTestId("CHECKBOXES[0][0]_QUANTITY")).toBeNull();
@@ -118,6 +121,16 @@ describe("SubscriptionFormView integration", () => {
       // expect box to be checked and quantity to be displayed
       expect(checkbox(0, 0).props.checked).toBe(true);
       expect(wrapper.getByTestId("CHECKBOXES[0][0]_QUANTITY")).toBeDefined();
+
+      /* FIELD 1 */
+      // check initial state
+      expect(checkbox(1, 0).props.checked).toBe(false);
+      expect(wrapper.queryByTestId("CHECKBOXES[1][0]_QUANTITY")).toBeNull();
+      // check first box
+      check(1, 0);
+      // expect box to be checked and quantity to be displayed
+      expect(checkbox(1, 0).props.checked).toBe(true);
+      expect(wrapper.getByTestId("CHECKBOXES[1][0]_QUANTITY")).toBeDefined();
     });
 
     it("lets you select 4 free candies (and no more)", () => {
@@ -137,40 +150,39 @@ describe("SubscriptionFormView integration", () => {
       expect(checkedCount(0)).toBe(4);
     });
 
-    describe("calculation methods", () => {
-      describe("quantifiedItemList", () => {
-        const items: Types.OrderItem[] = [
-          { name: "Butterfinger", price: null },
-          { name: "Twix", price: 5 },
-          { name: "Snickers", price: 5 }
-        ];
-        const quantities = [1, 2, 0];
-        const expectedItems: Types.QuantifiedOrderItem[] = [
-          { name: "Butterfinger", quantity: 1, price: null },
-          { name: "Twix", quantity: 2, price: 5 }
-        ];
-        expect(quantifiedItemList({ quantities, items })).toEqual(
-          expectedItems
-        );
-      });
-
-      describe("totalPrice", () => {
-        const items: Types.QuantifiedOrderItem[] = [
-          { name: "Butterfinger", quantity: 1, price: null },
-          { name: "Twix", quantity: 2, price: 5 },
-          { name: "Snickers", quantity: 1, price: 10 }
-        ];
-
-        expect(totalPrice(items)).toEqual(20);
-      });
-    });
     it("shows the total price", () => {
-      const price = wrapper.getByTestId("OPTIONS_PRICE").props.children;
-
       check(1, 0);
       check(1, 1);
 
+      const price = wrapper.getByTestId("OPTIONS_PRICE").props.children;
+
       expect(price).toEqual("$10");
+    });
+  });
+
+  describe("calculation methods", () => {
+    describe("quantifiedItemList", () => {
+      const items: Types.OrderItem[] = [
+        { name: "Butterfinger", price: null },
+        { name: "Twix", price: 5 },
+        { name: "Snickers", price: 5 }
+      ];
+      const quantities = [1, 2, 0];
+      const expectedItems: Types.QuantifiedOrderItem[] = [
+        { name: "Butterfinger", quantity: 1, price: null },
+        { name: "Twix", quantity: 2, price: 5 }
+      ];
+      expect(quantifiedItemList({ quantities, items })).toEqual(expectedItems);
+    });
+
+    describe("totalPrice", () => {
+      const items: Types.QuantifiedOrderItem[] = [
+        { name: "Butterfinger", quantity: 1, price: null },
+        { name: "Twix", quantity: 2, price: 5 },
+        { name: "Snickers", quantity: 1, price: 10 }
+      ];
+
+      expect(totalPrice(items)).toEqual(20);
     });
   });
 

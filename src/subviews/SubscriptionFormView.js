@@ -1,3 +1,4 @@
+// #region Imports
 // @flow
 import React, { Fragment, Component } from "react";
 import { Text, View, ScrollView } from "react-native";
@@ -12,6 +13,7 @@ import { ExclusiveSelectboxesFormSectionView as CardFormView } from "./fields/Ex
 import * as Types from "../redux/FormTypes";
 import { Button, Divider } from "react-native-elements";
 import { connect } from "react-redux";
+// #endregion
 
 type SubmitOrderFn = ({
   card: Types.Card,
@@ -57,9 +59,7 @@ export class SubscriptionFormView extends Component<Props, State> {
     card: null
   };
 
-  setCard(card: Types.Card) {
-    this.setState({ card });
-  }
+  setCard = (card: Types.Card) => this.setState({ card });
 
   handleOrder() {
     // put together the order (submitOrder will take some form-friendly type and use Order.toApi to create a valid order)
@@ -97,6 +97,21 @@ export class SubscriptionFormView extends Component<Props, State> {
     this.setState({ quantities: allQuantities });
   }
 
+  itemList(fieldIndex: number): Types.QuantifiedOrderItem[] {
+    const field = this.props.form.fields[fieldIndex];
+    if (field instanceof CheckboxesField) {
+      const quantities = this.state.quantities[fieldIndex];
+      const items = field.options;
+      return quantifiedItemList({ quantities, items });
+    }
+    return [];
+  }
+
+  totalPrice(): number {
+    const allItems = [...this.itemList(0), ...this.itemList(1)];
+    return totalPrice(allItems);
+  }
+
   render() {
     const fields = this.props.form.fields;
     // #region Forms Constants
@@ -123,7 +138,7 @@ export class SubscriptionFormView extends Component<Props, State> {
 
     return (
       <ScrollView>
-        <Text testID="OPTIONS_PRICE">{`$${totalPrice([])}`}</Text>
+        <Text testID="OPTIONS_PRICE">{`$${this.totalPrice()}`}</Text>
         <Button
           testID={"SUBMIT_BUTTON"}
           title="Submit"
@@ -156,7 +171,7 @@ export class SubscriptionFormView extends Component<Props, State> {
             field={EXTRA_CANDIES_FIELD}
             quantities={this.state.quantities[1]}
             maximumSelections={EXTRA_CANDIES_FIELD.maximumSelections}
-            changeQuantity={(i, v) => this.setQuantities(0, i, v)}
+            changeQuantity={(i, v) => this.setQuantities(1, i, v)}
           />
         )}
         {fields[2] instanceof HeaderField && (
