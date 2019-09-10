@@ -50,7 +50,7 @@ export default class ProductDetailScreen extends Component<Props, State> {
                 <Text style={text.name}>{product.name}</Text>
                 <Text style={text.price}>${product.price}</Text>
                 <Quantity
-                  value={String(this.state.quantity)}
+                  value={this.state.quantity}
                   onChange={n => this.setState({ quantity: n })}
                   showLabel={true}
                 />

@@ -17,11 +17,12 @@ console.disableYellowBox = true;
 import ExclusiveSelectRenderer from "./src/utilities/ExclusiveSelectRenderer";
 import CheckboxesQuantityRenderer from "./src/utilities/CheckboxesQuantityRenderer";
 import SubscriptionFormRenderer from "./src/utilities/SubscriptionFormRenderer";
+import SubscriptionProductDetailRenderer from "./src/utilities/SubscriptionProductDetailRenderer";
 
 export default function App() {
   let component = <AppNavigator />;
 
-  component = <SubscriptionFormRenderer />;
+  // component = <SubscriptionProductDetailRenderer />;
 
   return <Provider store={store}>{component}</Provider>;
 }

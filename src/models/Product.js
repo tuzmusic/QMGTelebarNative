@@ -23,6 +23,7 @@ export default class Product {
     prod.type = apiObj.type;
     prod.slug = apiObj.slug;
     if (apiObj.description) prod.description = apiObj.description;
+
     if (apiObj.short_description)
       prod.shortDescription = apiObj.short_description;
     prod.price = Number(apiObj.price);

@@ -53,7 +53,7 @@ export default class SubscriptionProductDetailScreen extends Component<
                 <Text style={text.name}>{product.name}</Text>
                 <Text style={text.price}>${product.price}</Text>
                 <Quantity
-                  value={String(this.state.quantity)}
+                  value={this.state.quantity}
                   onChange={n => this.setState({ quantity: n })}
                 />
               </View>

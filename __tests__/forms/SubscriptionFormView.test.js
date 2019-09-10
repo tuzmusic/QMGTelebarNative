@@ -20,9 +20,12 @@ import {
 } from "../../src/subviews/SubscriptionFormView";
 import Quantity from "../../src/components/Quantity";
 import SelectboxField from "../../src/models/fields/SelectboxField";
+import SubscriptionProduct from "../../src/models/SubscriptionProduct";
+
 // #endregion
 
-const product = subscriptionProducts[0];
+const product = SubscriptionProduct.fromApi(subscriptionProducts[0]);
+
 const formInfo = product.form_info;
 const form = Form.assembleForm(formInfo);
 const TITLES = form.fields.map(f => f.title);
