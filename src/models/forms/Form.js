@@ -15,15 +15,6 @@ export default class Form {
   type: string;
   fields: Field[];
 
-  static fromApiProduct(obj: Object): Form {
-    const form = new Form();
-    debugger;
-    const info = obj.form_info; // TO-DO: Standardize this API!
-    form.title = info.form_title;
-    form.type = info.form_type || info.type; // TO-DO: Standardize this API!
-    return form;
-  }
-
   static assembleForm(object: Object): Form {
     const form = new Form();
 
