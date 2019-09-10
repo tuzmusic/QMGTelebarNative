@@ -138,7 +138,6 @@ export class SubscriptionFormView extends Component<Props, State> {
 
     return (
       <ScrollView>
-        <Text testID="OPTIONS_PRICE">{`$${this.totalPrice()}`}</Text>
         <Button
           testID={"SUBMIT_BUTTON"}
           title="Submit"

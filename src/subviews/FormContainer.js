@@ -19,8 +19,18 @@ export default class FormContainer extends Component<Props> {
       case "frequency":
         return <Text>FREQUENCY FORM NEEDS UPDATING FOR NEW FORMS API</Text>;
       default:
-        // form = Form.assembleForm(product.formInfo);
         return <FieldsRenderer fields={form.fields} />;
     }
   }
 }
+
+/* 
+
+NOTE: THIS IS NOT USED IN SubscriptionProductDetailScreen
+AND IS NOT USED TO RENDER SubscriptionFormView.
+
+That screen explicitly renders <SubscriptionFormView/>.
+
+This will, MAYBE, be used in ProductDetail, if we don't know the kind of form between products.
+
+*/

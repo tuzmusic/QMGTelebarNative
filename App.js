@@ -16,14 +16,14 @@ console.disableYellowBox = true;
 
 // import ExclusiveSelectRenderer from "./src/utilities/ExclusiveSelectRenderer";
 // import CheckboxesQuantityRenderer from "./src/utilities/CheckboxesQuantityRenderer";
-import SubscriptionFormRenderer from "./src/utilities/SubscriptionFormRenderer";
-// import SubscriptionProductDetailRenderer from "./src/utilities/SubscriptionProductDetailRenderer";
+// import SubscriptionFormRenderer from "./src/utilities/SubscriptionFormRenderer";
+import SubscriptionProductDetailRenderer from "./src/utilities/SubscriptionProductDetailRenderer";
 
 export default function App() {
   let component = <AppNavigator />;
 
-  // component = <SubscriptionProductDetailRenderer />;
-  component = <SubscriptionFormRenderer />;
+  component = <SubscriptionProductDetailRenderer />;
+  // component = <SubscriptionFormRenderer />;
 
   return <Provider store={store}>{component}</Provider>;
 }

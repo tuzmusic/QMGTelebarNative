@@ -13,8 +13,8 @@ type State = {};
 class SubscriptionFormRenderer extends Component<Props, State> {
   render() {
     const product = SubscriptionProduct.fromApi(subscriptionProducts[0]);
-    // const formInfo = product.form_info;
     const form = Form.assembleForm(product.form);
+
     if (form.fields[0] instanceof CheckboxesField)
       console.log(form.fields[0].maximumSelections);
 

@@ -152,15 +152,6 @@ describe("SubscriptionFormView integration", () => {
       // and we should still only have 4 checked boxes
       expect(checkedCount(0)).toBe(4);
     });
-
-    it("shows the total price", () => {
-      check(1, 0);
-      check(1, 1);
-
-      const price = wrapper.getByTestId("OPTIONS_PRICE").props.children;
-
-      expect(price).toEqual("$10");
-    });
   });
 
   describe("calculation methods", () => {

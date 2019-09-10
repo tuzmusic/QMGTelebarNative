@@ -12,6 +12,7 @@ import Product from "../models/Product";
 import { MaterialIndicator } from "react-native-indicators";
 import FormContainer from "../subviews/FormContainer";
 import Quantity from "../components/Quantity";
+import { SubscriptionFormView } from "../subviews/SubscriptionFormView";
 
 type Props = { product: Product };
 type State = { message?: ?string, quantity: number, optionsPrice: number };
@@ -38,7 +39,6 @@ export default class SubscriptionProductDetailScreen extends Component<
     const Space = () => <Divider height={20} backgroundColor="transparent" />;
     const product = this.product;
     const image = product.images[0];
-    debugger;
     return (
       <KeyboardAvoidingView behavior="height" style={{}}>
         <ScrollView>
@@ -50,13 +50,19 @@ export default class SubscriptionProductDetailScreen extends Component<
                 source={{ uri: image.src }}
                 PlaceholderContent={<ActivityIndicator color={"blue"} />}
               />
-              <View /* BASIC INFO */ style={styles.basicInfoContainer}>
+
+              <View /* BASIC INFO & PRICE */ style={styles.basicInfoContainer}>
                 <Text style={text.name}>{product.name}</Text>
-                <Text style={text.price}>${product.price}</Text>
-                <Quantity
-                  value={this.state.quantity}
-                  onChange={n => this.setState({ quantity: n })}
-                />
+                <Text style={text.price}>
+                  Subscription Price:{" "}
+                  <Text testID="SUBSCRIPTION_PRICE">{"$" + product.price}</Text>
+                </Text>
+                <Text style={text.price}>
+                  Options Price:{" "}
+                  <Text testID="OPTIONS_PRICE">
+                    {"$" + this.optionsPrice()}
+                  </Text>
+                </Text>
               </View>
             </View>
 
@@ -67,15 +73,19 @@ export default class SubscriptionProductDetailScreen extends Component<
 
             <Space />
 
-            <View /* BODY AND FORM */ style={styles.bodyContainer}>
+            <View /* BODY (description) */ style={styles.bodyContainer}>
               <Text style={text.description}>
                 {// the website itself appears to use the short_description
                 product.shortDescription || product.description}
               </Text>
-              <Space />
+            </View>
 
-              <FormContainer /* FORM!!! */
-                product={product}
+            <Space />
+
+            <View /* FORM!!! */>
+              <SubscriptionFormView
+                testID={"SUBSCRIPTION_FORM_VIEW"}
+                form={product.form}
                 priceDelegate={this.reportPrice.bind(this)}
               />
             </View>

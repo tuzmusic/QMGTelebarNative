@@ -1,8 +1,11 @@
-// Not actually using flow checking in this file
-// Because we're (unwisely, honestly) trusting that
-// the props passed to the FieldRenderer match with
-// the required props of the field being rendered.
-// Flow doesn't trust that.
+/* 
+Not actually using flow checking in this file
+Because we're (unwisely, honestly) trusting that
+the props passed to the FieldRenderer match with
+the required props of the field being rendered.
+Flow doesn't trust that.
+Could fix this by checking the props as well as checking instanceof.
+ */
 
 import React, { Component } from "react";
 import { Text, View } from "react-native";
@@ -16,10 +19,11 @@ import HeaderFieldView from "../subviews/fields/HeaderFieldView";
 import CheckboxesField from "../models/fields/CheckboxesField";
 import CheckboxesQuantityFieldView from "../subviews/fields/CheckboxesQuantityFieldView";
 
-type Props = { field: Field };
-type State = {};
+type AnyField = SelectboxField | TextareaField | HeaderField | CheckboxesField;
 
-class FieldRenderer extends Component<Props, State> {
+type Props = { field: AnyField };
+
+class FieldRenderer extends Component<Props> {
   render() {
     const field = this.props.field;
     if (field instanceof SelectboxField) {

@@ -51,6 +51,7 @@ export class CheckboxesQuantityFieldView extends Component<Props> {
         <Space />
         {this.props.field.options.map((option: Option, i: number) => {
           const testIdBase = this.props.testID && `${this.props.testID}[${i}]`;
+          // console.log(testIdBase);
 
           return (
             <View style={styles.checkboxesContainer} key={i}>

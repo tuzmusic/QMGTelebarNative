@@ -11,10 +11,12 @@ import HeaderFieldView from "../subviews/fields/HeaderFieldView";
 import CheckboxesField from "../models/fields/CheckboxesField";
 import CheckboxesQuantityFieldView from "../subviews/fields/CheckboxesQuantityFieldView";
 import FieldRenderer from "./FieldRenderer";
-type Props = { fields: Field[] };
-type State = {};
 
-class FieldsRenderer extends Component<Props, State> {
+type AnyField = SelectboxField | TextareaField | HeaderField | CheckboxesField;
+
+type Props = { fields: AnyField[] };
+
+class FieldsRenderer extends Component<Props> {
   render() {
     const fields = this.props.fields;
     return (
