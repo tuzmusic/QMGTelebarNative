@@ -13,24 +13,13 @@ type Props = { product: Product, priceDelegate: number => void };
 export default class FormContainer extends Component<Props> {
   render() {
     const product = this.props.product;
-    const formType = product.formInfo.form_type || product.formInfo.type;
-    let form;
+    const form: Form = product.form;
 
-    debugger;
-
-    switch (formType) {
+    switch (form.type) {
       case "frequency":
         return <Text>FREQUENCY FORM NEEDS UPDATING FOR NEW FORMS API</Text>;
-      /* form = FrequencyForm.fromApiProduct(product);
-        return (
-          <FrequencyFormView
-            form={form}
-            priceDelegate={this.props.priceDelegate}
-          />
-        );
-       */
       default:
-        form = Form.assembleForm(product.formInfo);
+        // form = Form.assembleForm(product.formInfo);
         return <FieldsRenderer fields={form.fields} />;
     }
   }

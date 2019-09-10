@@ -25,11 +25,10 @@ import SubscriptionProduct from "../../src/models/SubscriptionProduct";
 // #endregion
 
 const product = SubscriptionProduct.fromApi(subscriptionProducts[0]);
-
-const formInfo = product.form_info;
-const form = Form.assembleForm(formInfo);
+const form = product.form;
 const TITLES = form.fields.map(f => f.title);
 
+// #region Text Helper Functions
 const checkbox = (fieldIndex, i) =>
   wrapper.getByTestId(`CHECKBOXES[${fieldIndex}][${i}]`);
 const check = (fieldIndex, i) => fireEvent.press(checkbox(fieldIndex, i));
@@ -43,9 +42,9 @@ const checkedCount = fieldIndex => {
 };
 const pressSubmitButton = () =>
   fireEvent.press(wrapper.getByTestId("SUBMIT_BUTTON"));
+// #endregion
 
-// const box = (i: number) => wrapper.getByText(field.options[i].name);
-
+// #region Wrapper Setup
 const submitOrderMock = jest.fn();
 
 let wrapper;
@@ -65,6 +64,7 @@ function createWrapper(customProps) {
   const wrapper = render(<Wrapper {...customProps} />);
   return wrapper;
 }
+// #endregion
 
 describe("SubscriptionFormView integration", () => {
   beforeEach(() => {

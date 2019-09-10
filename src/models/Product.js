@@ -11,7 +11,21 @@ export default class Product {
   shortDescription: string;
   price: number;
   images: { id?: number, src: string, name?: string, alt?: string }[];
-  formInfo: Object;
+  form: Form;
+
+  /* TO DO
+  
+  Product.form SHOULD BE A FORM. Fix this here, and all its implications.
+
+  When the product object is created, ALL processing should occur 
+    (i.e., nothing should be left as thingInfo: Object, 
+      rather, the fromApi method should return a 
+      product with thing: Thing)
+
+      This is, admittedly, less performant (since all processing happens at fetch time),
+      but I'm okay with that. 
+
+ */
 
   // #endregion
 
@@ -32,13 +46,7 @@ export default class Product {
         src: apiObj.featured_image_url
       }
     ];
-    if (apiObj.form_info) prod.formInfo = Form.assembleForm(apiObj.form_info);
+    if (apiObj.form_info) prod.form = Form.assembleForm(apiObj.form_info);
     return prod;
-  }
-
-  static collectionFromApiArray(array: Object[]): AllProductCollection {
-    const products: AllProductCollection = {};
-    array.forEach(p => (products[p.id] = Product.fromApi(p)));
-    return products;
   }
 }

@@ -19,7 +19,7 @@ export default class Form {
     const form = new Form();
 
     form.title = object.form_title;
-    form.type = object.form_type; // TO-DO: Standardize this API!
+    form.type = object.form_type;
     form.fields = FieldCreator.createFieldsFromArray(object.fields);
     return form;
   }

@@ -35,7 +35,7 @@ function expectedProduct() {
     period: "month",
     interval: 1
   };
-  prod.formInfo = expectedForm();
+  prod.form = expectedForm();
 
   return prod;
 }

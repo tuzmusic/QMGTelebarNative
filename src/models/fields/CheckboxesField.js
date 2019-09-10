@@ -15,6 +15,7 @@ class CheckboxesField extends Field {
     field.maximumSelections = formInfo.maximum_selections
       ? Number(formInfo.maximum_selections)
       : null;
+    // debugger;
 
     field.options = formInfo.options.map(opt => ({
       ...opt,

@@ -6,15 +6,21 @@ import Field from "./Field";
 
 class FieldCreator {
   static createField(formInfo: Object): Field {
+    // console.log(formInfo.type);
+
     switch (formInfo.type) {
       case "textarea":
         return TextareaField.fromApiFormInfo(formInfo);
+        break;
       case "header":
         return HeaderField.fromApiFormInfo(formInfo);
+        break;
       case "checkboxes":
         return CheckboxesField.fromApiFormInfo(formInfo);
+        break;
       case "selectbox":
         return SelectboxField.fromApiFormInfo(formInfo);
+        break;
       default:
         return Field.fromApiFormInfo(formInfo);
     }

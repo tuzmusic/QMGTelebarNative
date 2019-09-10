@@ -7,15 +7,6 @@ import SelectboxField from "../../src/models/fields/SelectboxField";
 import HeaderField from "../../src/models/fields/HeaderField";
 import TextareaField from "../../src/models/fields/TextareaField";
 
-describe("Form", () => {
-  describe("fromApiProduct", () => {
-    const product = products[0];
-    it("takes an Api Product object and returns a form with some basic information", () => {
-      expect(Form.fromApiProduct(product)).toEqual(expectedBasicForm());
-    });
-  });
-});
-
 function expectedBasicForm(): Form {
   const form = new Form();
 
