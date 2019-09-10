@@ -22,6 +22,10 @@ type SubmitOrderFn = ({
 
 type Props = {
   form: Form,
+  selectionReporter: ({
+    card: ?Types.Card,
+    items: Types.QuantifiedOrderItem[]
+  }) => void, // sets state of parent
   submitOrder: SubmitOrderFn // redux action
 };
 
@@ -59,14 +63,36 @@ export class SubscriptionFormView extends Component<Props, State> {
     card: null
   };
 
-  setCard = (card: Types.Card) => this.setState({ card });
+  reportState() {
+    if (this.props.selectionReporter)
+      this.props.selectionReporter({
+        items: this.getQuantifiedItems(),
+        card: this.state.card
+      });
+  }
 
-  handleOrder() {
-    // put together the order (submitOrder will take some form-friendly type and use Order.toApi to create a valid order)
-    const order = {
-      card: this.state.card || { message: null, field: null },
-      items: []
-    };
+  setCard = (card: Types.Card) => {
+    this.setState({ card });
+    this.reportState();
+  };
+
+  setQuantities(fieldIndex: number, boxIndex: number, value: number) {
+    const allQuantities = this.state.quantities;
+    const quantities = allQuantities[fieldIndex];
+    quantities[boxIndex] = value;
+    allQuantities[fieldIndex] = quantities;
+
+    const report =
+      this.props.selectionReporter &&
+      this.props.selectionReporter({
+        card: this.state.card,
+        items: this.getQuantifiedItems()
+      });
+
+    this.setState({ quantities: allQuantities }, this.reportState);
+  }
+
+  getQuantifiedItems(): Types.QuantifiedOrderItem[] {
     const FREE_CANDIES_FIELD = this.props.form.fields[0];
     const EXTRA_CANDIES_FIELD = this.props.form.fields[1];
 
@@ -75,26 +101,19 @@ export class SubscriptionFormView extends Component<Props, State> {
       FREE_CANDIES_FIELD instanceof CheckboxesField &&
       EXTRA_CANDIES_FIELD instanceof CheckboxesField
     ) {
-      order.items = [
+      const items: Types.QuantifiedOrderItem[] = [
         ...quantifiedItemList({
           quantities: this.state.quantities[0],
           items: FREE_CANDIES_FIELD.options
         }),
         ...quantifiedItemList({
-          quantities: this.state.quantities[0],
+          quantities: this.state.quantities[1],
           items: EXTRA_CANDIES_FIELD.options
         })
       ];
-      this.props.submitOrder(order);
+      return items;
     }
-  }
-
-  setQuantities(fieldIndex: number, boxIndex: number, value: number) {
-    const allQuantities = this.state.quantities;
-    const quantities = allQuantities[fieldIndex];
-    quantities[boxIndex] = value;
-    allQuantities[fieldIndex] = quantities;
-    this.setState({ quantities: allQuantities });
+    return [];
   }
 
   itemList(fieldIndex: number): Types.QuantifiedOrderItem[] {
@@ -105,11 +124,6 @@ export class SubscriptionFormView extends Component<Props, State> {
       return quantifiedItemList({ quantities, items });
     }
     return [];
-  }
-
-  totalPrice(): number {
-    const allItems = [...this.itemList(0), ...this.itemList(1)];
-    return totalPrice(allItems);
   }
 
   render() {
@@ -138,14 +152,6 @@ export class SubscriptionFormView extends Component<Props, State> {
 
     return (
       <ScrollView>
-        <Button
-          testID={"SUBMIT_BUTTON"}
-          title="Submit"
-          onPress={this.handleOrder.bind(this)}
-          containerStyle={styles.buttonContainer}
-          style={styles.button}
-        />
-        <Divider height={20} backgroundColor="transparent" />
         {CARD_FORM_FIELDS && (
           <CardFormView
             testID={"CARD_FORM"}

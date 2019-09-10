@@ -21,6 +21,7 @@ class SelectOptionsOverlay extends Component<Props> {
                 onPress={() => props.onSubmit(opt)}
                 style={styles.option}
                 key={i}
+                testID={`VISIBLE_SELECT_OPTIONS[${i}]`}
               >
                 <Text>{opt}</Text>
               </TouchableOpacity>

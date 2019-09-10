@@ -1,3 +1,4 @@
+// #region Imports
 // @flow
 import React, { Component } from "react";
 import {
@@ -13,9 +14,13 @@ import { MaterialIndicator } from "react-native-indicators";
 import FormContainer from "../subviews/FormContainer";
 import Quantity from "../components/Quantity";
 import { SubscriptionFormView } from "../subviews/SubscriptionFormView";
+import * as Types from "../redux/FormTypes";
+// #endregion
 
 type Props = { product: Product };
-type State = { message?: ?string, quantity: number, optionsPrice: number };
+type State = {
+  selection: { card: ?Types.Card, items: Types.QuantifiedOrderItem[] }
+};
 
 export default class SubscriptionProductDetailScreen extends Component<
   Props,
@@ -28,12 +33,14 @@ export default class SubscriptionProductDetailScreen extends Component<
       this.props.product || this.props.navigation.getParam("product");
   }
 
-  state = { message: null, quantity: 1, optionsPrice: 0 };
+  state = { selection: { card: null, items: [] } };
 
   reportPrice = (price: number) => this.setState({ optionsPrice: price });
   get totalPrice() {
     return this.state.quantity * this.product.price + this.state.optionsPrice;
   }
+
+  optionsPrice(): number {}
 
   render() {
     const Space = () => <Divider height={20} backgroundColor="transparent" />;

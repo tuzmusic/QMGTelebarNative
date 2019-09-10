@@ -28,84 +28,104 @@ const product = SubscriptionProduct.fromApi(subscriptionProducts[0]);
 const form = product.form;
 const TITLES = form.fields.map(f => f.title);
 
-// #region Text Helper Functions
-const checkbox = (fieldIndex, i) =>
-  wrapper.getByTestId(`CHECKBOXES[${fieldIndex}][${i}]`);
-const check = (fieldIndex, i) => fireEvent.press(checkbox(fieldIndex, i));
-const checkedCount = fieldIndex => {
-  const testIdBase = `CHECKBOXES[${fieldIndex}]`;
-  return wrapper
-    .getAllByType(CheckBox)
-    .filter(c => c.props.testID && c.props.testID.startsWith(testIdBase))
-    .map(c => c.props.checked)
-    .filter(Boolean).length;
-};
-const pressSubmitButton = () =>
-  fireEvent.press(wrapper.getByTestId("SUBMIT_BUTTON"));
-// #endregion
-
 // #region Wrapper Setup
 const submitOrderMock = jest.fn();
 
 let wrapper;
 
-const Wrapper = props => (
-  <Fragment>
-    <SubscriptionFormView
-      submitOrder={submitOrderMock}
-      form={form}
-      testID={"SUBSCRIPTION_FORM_VIEW"}
-      {...props}
-    />
-  </Fragment>
-);
-
+class Wrapper extends React.Component<Object, Object> {
+  state = { selection: {} };
+  render() {
+    return (
+      <Fragment>
+        <Text testID="REPORTED_ITEMS">
+          {JSON.stringify(this.state.selection.items)}
+        </Text>
+        <Text testID="REPORTED_CARD">
+          {this.state.selection.card && this.state.selection.card.message}
+        </Text>
+        <SubscriptionFormView
+          selectionReporter={selection => this.setState({ selection })}
+          submitOrder={submitOrderMock}
+          form={form}
+          testID={"SUBSCRIPTION_FORM_VIEW"}
+          {...this.props}
+        />
+      </Fragment>
+    );
+  }
+}
 function createWrapper(customProps) {
   const wrapper = render(<Wrapper {...customProps} />);
   return wrapper;
 }
 // #endregion
 
+// #region Test Helper Functions
+const checkbox = (fieldIndex, i) =>
+  wrapper.getByTestId(`CHECKBOXES[${fieldIndex}][${i}]`);
+
+const check = (fieldIndex, i) => fireEvent.press(checkbox(fieldIndex, i));
+
+const checkedBoxesInField = fieldIndex => {
+  const testIdBase = `CHECKBOXES[${fieldIndex}]`;
+  return wrapper
+    .getAllByType(CheckBox)
+    .filter(c => c.props.testID && c.props.testID.startsWith(testIdBase))
+    .filter(c => c.props.checked);
+};
+
+const selectFirstCard = async () => {
+  const cardField = form.fields[3];
+  if (!(cardField instanceof SelectboxField)) return;
+
+  await fireEvent.press(wrapper.getByText(cardField.title));
+  await fireEvent.press(wrapper.getByTestId("VISIBLE_SELECT_OPTIONS[0]"));
+};
+
+// #endregion
+
 describe("SubscriptionFormView integration", () => {
-  beforeEach(() => {
-    wrapper = createWrapper();
-  });
-
-  it("shows all the fields", () => {
-    const { getByText } = wrapper;
-
-    expect(getByText(TITLES[0])).toBeDefined();
-    expect(getByText(TITLES[1])).toBeDefined();
-    expect(getByText(TITLES[2])).toBeDefined();
-    expect(getByText(TITLES[3])).toBeDefined();
-    expect(getByText(TITLES[4])).toBeDefined();
-    expect(getByText(TITLES[5])).toBeDefined();
-  });
-
-  xit("can accept starting values for an existing order", () => {});
-
-  it("has a submit button that calls the submitOrder function from props ", () => {
-    pressSubmitButton();
-    expect(submitOrderMock).toHaveBeenCalled();
-    jest.resetAllMocks();
-  });
-
-  describe("card section", () => {
+  describe("overall form", () => {
     beforeEach(() => {
       wrapper = createWrapper();
     });
-    it("sets the card", async () => {
-      const field = form.fields[3];
+
+    it("shows all the fields", () => {
+      const { getByText } = wrapper;
+
+      expect(getByText(TITLES[0])).toBeDefined();
+      expect(getByText(TITLES[1])).toBeDefined();
+      expect(getByText(TITLES[2])).toBeDefined();
+      expect(getByText(TITLES[3])).toBeDefined();
+      expect(getByText(TITLES[4])).toBeDefined();
+      expect(getByText(TITLES[5])).toBeDefined();
+    });
+
+    xit("can accept starting values for an existing order", () => {});
+  });
+
+  describe("card section", () => {
+    let card, field, stateSpy;
+
+    beforeEach(async () => {
+      stateSpy = jest.spyOn(SubscriptionFormView.prototype, "setState");
+      wrapper = createWrapper();
+      field = form.fields[3];
       if (!(field instanceof SelectboxField)) return;
+      card = { message: field.options[0], field };
+      await selectFirstCard();
+    });
 
-      const stateSpy = jest.spyOn(SubscriptionFormView.prototype, "setState");
-      const expectedArgs = { card: { message: field.options[0], field } };
-
-      await fireEvent.press(wrapper.getByText(field.title));
-      await fireEvent.press(wrapper.getByText(field.options[0]));
-      pressSubmitButton();
-      expect(stateSpy).toHaveBeenCalledWith(expectedArgs);
+    it("sets the card", async () => {
+      expect(stateSpy).toHaveBeenCalledWith({ card });
       stateSpy.mockClear();
+    });
+
+    it("uses the selectionReporter prop to send the card to its parent", async () => {
+      expect(wrapper.getByTestId("REPORTED_CARD").props.children).toEqual(
+        card.message
+      );
     });
   });
 
@@ -143,14 +163,62 @@ describe("SubscriptionFormView integration", () => {
       check(0, 2);
       check(0, 3);
       // there should be 4 checked boxes. (just checking)
-      expect(checkedCount(0)).toBe(4);
+      expect(checkedBoxesInField(0).length).toBe(4);
 
       // try to check another box
       check(0, 4);
       // we should have failed to check that box
       expect(checkbox(0, 4).props.checked).toBe(false);
       // and we should still only have 4 checked boxes
-      expect(checkedCount(0)).toBe(4);
+      expect(checkedBoxesInField(0).length).toBe(4);
+    });
+
+    it("uses the selectionReporter prop to send the items to its parent", () => {
+      check(0, 0);
+      check(1, 1);
+      const items = [
+        { name: "Butterfinger", price: null, quantity: 1 },
+        { name: "Twix", price: 5, quantity: 1 }
+      ];
+
+      expect(wrapper.getByTestId("REPORTED_ITEMS").props.children).toEqual(
+        JSON.stringify(items)
+      );
+    });
+  });
+
+  describe("using both fields together", () => {
+    // expected results
+    const cardField = form.fields[3];
+    if (!(cardField instanceof SelectboxField)) return;
+    const card = { message: cardField.options[0], cardField };
+    const items = [
+      { name: "Butterfinger", price: null, quantity: 1 },
+      { name: "Twix", price: 5, quantity: 1 }
+    ];
+
+    beforeEach(async () => {
+      wrapper = createWrapper();
+
+      // select card
+      await selectFirstCard();
+
+      // check boxes (shouldn't nullify card)
+      check(0, 0);
+      check(1, 1);
+
+      // select card again (shouldn't nullify items)
+      await selectFirstCard();
+    });
+    it("reports the quantities", async () => {
+      expect(wrapper.getByTestId("REPORTED_ITEMS").props.children).toEqual(
+        JSON.stringify(items)
+      );
+    });
+    it("reports the card", async () => {
+      expect(wrapper.getByTestId("REPORTED_CARD").props.children).toEqual(
+        card.message
+      );
     });
   });
 
@@ -178,15 +246,5 @@ describe("SubscriptionFormView integration", () => {
 
       expect(totalPrice(items)).toEqual(20);
     });
-  });
-
-  xit("submits all the information for the order", () => {
-    const expectedOrder = {
-      // order properties
-    };
-
-    // Select a bunch of stuff
-    pressSubmitButton();
-    expect(submitOrderMock).toHaveBeenCalledWith(expectedOrder);
   });
 });
