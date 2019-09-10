@@ -16,24 +16,7 @@ type State = {};
 
 class FieldsRenderer extends Component<Props, State> {
   render() {
-    const checkBoxField = this.props.fields.find(f => f.type === "checkboxes");
-    const textAreaField = this.props.fields.find(f => f.type === "textarea");
-    const mockFields = [
-      checkBoxField,
-      textAreaField
-      // this.props.fields.find(f => f.type === "selectbox") || new Field()
-      // this.props.fields.find(f => f.type === "header") || new Field()
-    ];
-    if (checkBoxField instanceof CheckboxesField) {
-      checkBoxField.options = ["Justin", "Travis", "Griffin"].map(n => ({
-        name: n,
-        price: 1
-      }));
-    }
-
-    // const fields = mockFields;
     const fields = this.props.fields;
-    // return <FieldRenderer field={fields[0]} />;
     return (
       <View>
         {fields.map((field, i) => {
