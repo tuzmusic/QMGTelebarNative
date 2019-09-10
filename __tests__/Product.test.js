@@ -1,5 +1,4 @@
 import Product from "../src/models/Product";
-import CardForm from "../src/models/forms/CardForm";
 import { products } from "../__mocks__/products-response";
 import Form from "../src/models/Forms/Form";
 import SelectboxField from "../src/models/fields/SelectboxField";

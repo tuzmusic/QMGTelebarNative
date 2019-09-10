@@ -38,6 +38,7 @@ export default class SubscriptionProductDetailScreen extends Component<
     const Space = () => <Divider height={20} backgroundColor="transparent" />;
     const product = this.product;
     const image = product.images[0];
+    debugger;
     return (
       <KeyboardAvoidingView behavior="height" style={{}}>
         <ScrollView>
@@ -58,18 +59,22 @@ export default class SubscriptionProductDetailScreen extends Component<
                 />
               </View>
             </View>
+
             <View /* BUYING */ style={styles.buyNowContainer}>
               <Button title="Buy Now" style={{ width: 150 }} />
               <Text style={styles.totalText}>Total: ${this.totalPrice}</Text>
             </View>
+
             <Space />
+
             <View /* BODY AND FORM */ style={styles.bodyContainer}>
               <Text style={text.description}>
                 {// the website itself appears to use the short_description
                 product.shortDescription || product.description}
               </Text>
               <Space />
-              <FormContainer
+
+              <FormContainer /* FORM!!! */
                 product={product}
                 priceDelegate={this.reportPrice.bind(this)}
               />

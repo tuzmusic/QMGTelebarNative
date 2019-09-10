@@ -49,8 +49,8 @@ class ProductsListScreen extends Component<Props> {
   }
 }
 
-export default connect(({ productsReducer }) => {
-  const products = Object.values(selectProducts(productsReducer));
+export default connect(state => {
+  const products = Object.values(selectProducts(state));
   return { products };
 })(ProductsListScreen);
 

@@ -35,15 +35,18 @@ export const selectAllProducts: Types.AllProductCollection = createSelector(
 
 export const selectProducts: Types.ProductCollection = createSelector(
   selectAllProducts,
-  products => filterObject(products, { type: "simple" })
+  products => filterCollectionObject(products, { type: "simple" })
 );
 
-export const selectSubscriptionProducts: Types.SubscriptionsProductCollection = createSelector(
+export const selectSubscriptionProducts: Types.SubscriptionProductCollection = createSelector(
   selectAllProducts,
-  products => filterObject(products, { type: "subscription" })
+  products => filterCollectionObject(products, { type: "subscription" })
 );
 
-export function filterObject(obj: Object, predicateObj: Object): Object {
+export function filterCollectionObject<T>(
+  obj: { string: T },
+  predicateObj: Object
+): Object {
   const filtered: Object = {};
   const predKey = Object.keys(predicateObj)[0];
   const predVal = Object.values(predicateObj)[0];

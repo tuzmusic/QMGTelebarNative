@@ -16,7 +16,7 @@ type Props = {
   navigation: Object
 };
 
-class ProductsListScreen extends Component<Props> {
+class SubscriptionProductsListScreen extends Component<Props> {
   automate() {
     setTimeout(() => {
       this.onProductPress(this.props.products[this.props.products.length - 1]);
@@ -50,11 +50,11 @@ class ProductsListScreen extends Component<Props> {
   }
 }
 
-export default connect(({ productsReducer }) => {
-  return {
-    products: Object.values(selectSubscriptionProducts(productsReducer))
-  };
-})(ProductsListScreen);
+const selectProps = state => ({
+  products: Object.values(selectSubscriptionProducts(state))
+});
+
+export default connect(selectProps)(SubscriptionProductsListScreen);
 
 const styles = {
   container: {

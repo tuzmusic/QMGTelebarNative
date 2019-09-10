@@ -22,7 +22,7 @@ const ListScreen = {
   navigationOptions: { title: "Products" }
 };
 
-const SubscriptionProductsScreen = {
+const SubscriptionProductsList = {
   screen: SubscriptionProductsListScreen,
   navigationOptions: { title: "Subscriptions" }
 };
@@ -43,7 +43,7 @@ ListStack.navigationOptions = {
 };
 
 export const SubscriptionProductsListStack = createStackNavigator({
-  SubscriptionProductsScreen,
+  SubscriptionProductsList,
   DetailScreen,
   SubscriptionProductDetail
 });

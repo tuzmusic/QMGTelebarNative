@@ -17,7 +17,6 @@ type State = {};
 class FieldsRenderer extends Component<Props, State> {
   render() {
     const checkBoxField = this.props.fields.find(f => f.type === "checkboxes");
-
     const textAreaField = this.props.fields.find(f => f.type === "textarea");
     const mockFields = [
       checkBoxField,
@@ -32,7 +31,8 @@ class FieldsRenderer extends Component<Props, State> {
       }));
     }
 
-    const fields = mockFields;
+    // const fields = mockFields;
+    const fields = this.props.fields;
     // return <FieldRenderer field={fields[0]} />;
     return (
       <View>

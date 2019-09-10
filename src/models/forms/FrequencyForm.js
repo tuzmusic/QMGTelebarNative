@@ -16,7 +16,7 @@ export default class FrequencyForm extends Form {
     const base = new FrequencyForm();
     const baseForm = Form.fromApiProduct(obj);
     const form = Object.assign(base, { ...baseForm });
-    const info = obj.formInfo || obj.form_info;
+    const info = obj.form_info;
     form.fields = info.fields.map(field => {
       const options = field.options.map(opt => ({
         ...opt,

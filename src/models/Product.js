@@ -32,7 +32,7 @@ export default class Product {
         src: apiObj.featured_image_url
       }
     ];
-    prod.formInfo = Form.assembleForm(apiObj.form_info);
+    if (apiObj.form_info) prod.formInfo = Form.assembleForm(apiObj.form_info);
     return prod;
   }
 
