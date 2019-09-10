@@ -75,12 +75,12 @@ const checkedBoxesInField = fieldIndex => {
     .filter(c => c.props.checked);
 };
 
-const selectFirstCard = async () => {
+const selectFirstCard = async (opt?: number = 0) => {
   const cardField = form.fields[3];
   if (!(cardField instanceof SelectboxField)) return;
 
   await fireEvent.press(wrapper.getByText(cardField.title));
-  await fireEvent.press(wrapper.getByTestId("VISIBLE_SELECT_OPTIONS[0]"));
+  await fireEvent.press(wrapper.getByTestId(`VISIBLE_SELECT_OPTIONS[${opt}]`));
 };
 
 // #endregion
@@ -191,7 +191,7 @@ describe("SubscriptionFormView integration", () => {
     // expected results
     const cardField = form.fields[3];
     if (!(cardField instanceof SelectboxField)) return;
-    const card = { message: cardField.options[0], cardField };
+    const card = { message: cardField.options[1], cardField };
     const items = [
       { name: "Butterfinger", price: null, quantity: 1 },
       { name: "Twix", price: 5, quantity: 1 }
@@ -207,8 +207,8 @@ describe("SubscriptionFormView integration", () => {
       check(0, 0);
       check(1, 1);
 
-      // select card again (shouldn't nullify items)
-      await selectFirstCard();
+      // select another card (shouldn't nullify items; should change the selected card)
+      await selectFirstCard(1);
     });
     it("reports the quantities", async () => {
       expect(wrapper.getByTestId("REPORTED_ITEMS").props.children).toEqual(

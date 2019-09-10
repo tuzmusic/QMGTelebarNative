@@ -15,18 +15,12 @@ import { Button, Divider } from "react-native-elements";
 import { connect } from "react-redux";
 // #endregion
 
-type SubmitOrderFn = ({
-  card: Types.Card,
-  items: Types.OrderItem[]
-}) => { type: "CREATE_ORDER", order: {} };
-
 type Props = {
   form: Form,
   selectionReporter: ({
     card: ?Types.Card,
     items: Types.QuantifiedOrderItem[]
-  }) => void, // sets state of parent
-  submitOrder: SubmitOrderFn // redux action
+  }) => void // reports changes to parent
 };
 
 type State = {
@@ -82,48 +76,18 @@ export class SubscriptionFormView extends Component<Props, State> {
     quantities[boxIndex] = value;
     allQuantities[fieldIndex] = quantities;
 
-    const report =
-      this.props.selectionReporter &&
-      this.props.selectionReporter({
-        card: this.state.card,
-        items: this.getQuantifiedItems()
-      });
-
     this.setState({ quantities: allQuantities }, this.reportState);
   }
 
   getQuantifiedItems(): Types.QuantifiedOrderItem[] {
-    const FREE_CANDIES_FIELD = this.props.form.fields[0];
-    const EXTRA_CANDIES_FIELD = this.props.form.fields[1];
-
-    // this doesn't work (with flow) if we guard/return
-    if (
-      FREE_CANDIES_FIELD instanceof CheckboxesField &&
-      EXTRA_CANDIES_FIELD instanceof CheckboxesField
-    ) {
-      const items: Types.QuantifiedOrderItem[] = [
-        ...quantifiedItemList({
-          quantities: this.state.quantities[0],
-          items: FREE_CANDIES_FIELD.options
-        }),
-        ...quantifiedItemList({
-          quantities: this.state.quantities[1],
-          items: EXTRA_CANDIES_FIELD.options
-        })
-      ];
-      return items;
-    }
-    return [];
-  }
-
-  itemList(fieldIndex: number): Types.QuantifiedOrderItem[] {
-    const field = this.props.form.fields[fieldIndex];
-    if (field instanceof CheckboxesField) {
-      const quantities = this.state.quantities[fieldIndex];
-      const items = field.options;
-      return quantifiedItemList({ quantities, items });
-    }
-    return [];
+    return this.state.quantities.flatMap((arr: number[], i: number) => {
+      const field = this.props.form.fields[i];
+      if (field instanceof CheckboxesField)
+        return quantifiedItemList({
+          quantities: arr,
+          items: field.options
+        });
+    });
   }
 
   render() {
@@ -187,16 +151,7 @@ export class SubscriptionFormView extends Component<Props, State> {
   }
 }
 
-function submitOrder() {
-  return { type: "PLACEHOLDER" };
-}
-
-const mapState = () => ({});
-
-export default connect(
-  mapState,
-  { submitOrder }
-)(SubscriptionFormView);
+export default SubscriptionFormView;
 
 const styles = {
   buttonContainer: {
