@@ -1,15 +1,15 @@
 // @flow
 import productsReducer from "../src/redux/reducers/productsReducer";
 import { products as productsResponse } from "../__mocks__/products-response";
+import { subscriptionProducts as subscriptionProductsResponse } from "../__mocks__/subscription-products-response";
 import Product from "../src/models/Product";
-import type {
-  FETCH_PRODUCTS_START,
-  FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_FAILURE
-} from "../src/redux/ProductTypes";
+import * as Types from "../src/redux/ProductTypes";
+import ProductFactory from "../src/models/ProductFactory";
+
+const response = [...productsResponse, ...subscriptionProductsResponse];
 
 describe("Products reducer", () => {
-  const products = Product.collectionFromApiArray(productsResponse);
+  const products = ProductFactory.collectionFromApiArray(response);
   const initialState = {
     products: {},
     error: "",

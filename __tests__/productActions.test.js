@@ -1,7 +1,15 @@
 // @flow
+import productsSaga, {
+  fetchProducts
+} from "../src/redux/actions/productActions";
+import MockAdapter from "axios-mock-adapter";
+import { call, take, put } from "redux-saga/effects";
+import SagaTester from "redux-saga-tester";
+import { ApiUrls } from "../src/constants/urls";
+import axios from "axios";
+import { async } from "rxjs/internal/scheduler/async";
 import Product from "../src/models/Product";
 import SubscriptionProduct from "../src/models/SubscriptionProduct";
-import ProductFactory from "../src/models/ProductFactory";
 
 const prodObj = {
   id: 1042,
@@ -40,17 +48,25 @@ const subProdObj = {
 };
 
 const objArray = [prodObj, subProdObj];
-
 const collection = {
   "1042": Product.fromApi(prodObj),
   "938": SubscriptionProduct.fromApi(subProdObj)
 };
 
-describe("ProductFactory.collectionFromArray", () => {
-  it("creates an object with correctly typed/constructed values", () => {
-    const result = ProductFactory.collectionFromApiArray(objArray);
-    expect(result).toEqual(collection);
-    expect(result[1042]).toBeInstanceOf(Product);
-    expect(result[938]).toBeInstanceOf(SubscriptionProduct);
+describe("fetchProducts action", () => {
+  let sagaTester;
+  let mock;
+  // beforeEach(() => {
+  mock = new MockAdapter(axios);
+  mock.onGet(ApiUrls.getProducts).reply(200, objArray);
+  const initialState = { products: {} };
+  sagaTester = new SagaTester({ initialState });
+  sagaTester.start(productsSaga);
+  // });
+
+  it("should return data with proper types", async () => {
+    sagaTester.dispatch(fetchProducts());
+    const successAction = await sagaTester.waitFor("FETCH_PRODUCTS_SUCCESS");
+    expect(successAction.products).toEqual(collection);
   });
 });
