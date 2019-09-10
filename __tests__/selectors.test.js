@@ -3,7 +3,9 @@ import * as Types from "../src/redux/ProductTypes";
 import Product from "../src/models/Product";
 import {
   selectProducts,
-  selectSubscriptionProducts
+  selectSubscriptionProducts,
+  selectProductState,
+  selectAllProducts
 } from "../src/redux/reducers/productsReducer";
 
 const props = {
@@ -25,14 +27,29 @@ const productsArray: Object[] = [
   { ...props, id: 3, type: "subscription" },
   { ...props, id: 4, type: "subscription" }
 ];
+const products = Product.collectionFromApiArray(productsArray);
+
+const productState = {
+  products,
+  error: "",
+  isLoading: false
+};
 
 const state: { productsReducer: Types.ProductState } = {
-  productsReducer: {
-    products: Product.collectionFromApiArray(productsArray),
-    error: "",
-    isLoading: false
-  }
+  productsReducer: productState
 };
+
+describe("selectProductsState", () => {
+  it("returns the product state", () => {
+    expect(selectProductState(state)).toEqual(productState);
+  });
+});
+
+describe("selectAllProducts", () => {
+  it("returns all the products and subscription products", () => {
+    expect(selectAllProducts(state)).toEqual(products);
+  });
+});
 
 describe("selectProducts", () => {
   it("selects only products, from the full application state", () => {

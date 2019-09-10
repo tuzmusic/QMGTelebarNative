@@ -1,6 +1,7 @@
 // @flow
 import Product from "../../models/Product";
 import * as Types from "../../redux/ProductTypes";
+import { createSelector } from "reselect";
 
 const initialState = {
   products: {},
@@ -24,21 +25,23 @@ export default function productsReducer(
   }
 }
 
-export function selectProductState(state: Object) {
-  return state.productsReducer;
-}
+export const selectProductState = (state: Object): Types.ProductState =>
+  state.productsReducer;
 
-export function selectProducts(state: Object): Types.ProductCollection {
-  const allProds = selectProductState(state);
-  return filterObject(allProds.products, { type: "simple" });
-}
+export const selectAllProducts: Types.AllProductCollection = createSelector(
+  selectProductState,
+  (state: Types.ProductState) => state.products
+);
 
-export function selectSubscriptionProducts(
-  state: Object
-): Types.ProductCollection {
-  const allProds = selectProductState(state);
-  return filterObject(allProds.products, { type: "subscription" });
-}
+export const selectProducts: Types.ProductCollection = createSelector(
+  selectAllProducts,
+  products => filterObject(products, { type: "simple" })
+);
+
+export const selectSubscriptionProducts: Types.SubscriptionsProductCollection = createSelector(
+  selectAllProducts,
+  products => filterObject(products, { type: "subscription" })
+);
 
 export function filterObject(obj: Object, predicateObj: Object): Object {
   const filtered: Object = {};
