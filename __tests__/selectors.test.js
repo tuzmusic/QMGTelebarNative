@@ -1,6 +1,6 @@
 // @flow
 import * as Types from "../src/redux/ProductTypes";
-import Product from "../src/models/Product";
+import ProductFactory from "../src/models/ProductFactory";
 import {
   selectProducts,
   selectSubscriptionProducts,
@@ -27,7 +27,8 @@ const productsArray: Object[] = [
   { ...props, id: 3, type: "subscription" },
   { ...props, id: 4, type: "subscription" }
 ];
-const products = Product.collectionFromApiArray(productsArray);
+const products = ProductFactory.collectionFromApiArray(productsArray);
+// console.log(products);
 
 const productState = {
   products,

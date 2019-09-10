@@ -1,5 +1,6 @@
 // @flow
 import Product from "../../models/Product";
+import SubscriptionProduct from "../../models/SubscriptionProduct";
 import * as Types from "../../redux/ProductTypes";
 import { createSelector } from "reselect";
 
@@ -35,15 +36,27 @@ export const selectAllProducts: Types.AllProductCollection = createSelector(
 
 export const selectProducts: Types.ProductCollection = createSelector(
   selectAllProducts,
-  products => filterCollectionObject(products, { type: "simple" })
+  products => filterCollectionObjectByType(products, Product)
 );
 
 export const selectSubscriptionProducts: Types.SubscriptionProductCollection = createSelector(
   selectAllProducts,
-  products => filterCollectionObject(products, { type: "subscription" })
+  products => filterCollectionObjectByType(products, SubscriptionProduct)
 );
 
-export function filterCollectionObject<T>(
+export function filterCollectionObjectByType<T, U>(
+  obj: { string: T },
+  type: U
+): Object {
+  const filtered: Object = {};
+  for (let key in obj) {
+    if (obj[key].constructor == type) filtered[key] = obj[key];
+  }
+
+  return filtered;
+}
+
+export function filterCollectionObjectByKey<T>(
   obj: { string: T },
   predicateObj: Object
 ): Object {
