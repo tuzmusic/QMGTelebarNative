@@ -1,5 +1,5 @@
 // @flow
-import type { ProductCollection } from "../redux/ProductTypes";
+import type { AllProductCollection } from "../redux/ProductTypes";
 import Product from "./Product";
 
 export default class SubscriptionProduct extends Product {

@@ -26,14 +26,16 @@ const productsArray: Object[] = [
   { ...props, id: 4, type: "subscription" }
 ];
 
-const state: Types.ProductState = {
-  products: Product.collectionFromApiArray(productsArray),
-  error: "",
-  isLoading: false
+const state: { productsReducer: Types.ProductState } = {
+  productsReducer: {
+    products: Product.collectionFromApiArray(productsArray),
+    error: "",
+    isLoading: false
+  }
 };
 
 describe("selectProducts", () => {
-  it("selects only products", () => {
+  it("selects only products, from the full application state", () => {
     const selected = selectProducts(state);
     const selectedKeys = Object.keys(selected);
     expect(selectedKeys).toEqual(["1", "2"]);
@@ -41,7 +43,7 @@ describe("selectProducts", () => {
 });
 
 describe("selectSubscriptionProducts", () => {
-  it("selects only subscription products", () => {
+  it("selects only subscription products, from the full application state", () => {
     const selected = selectSubscriptionProducts(state);
     const selectedKeys = Object.keys(selected);
     expect(selectedKeys).toEqual(["3", "4"]);

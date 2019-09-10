@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { FlatList, View, ScrollView, Text } from "react-native";
 import { connect } from "react-redux";
 import Product from "../models/Product";
-import type { ProductCollection } from "../redux/ProductTypes";
+import type { AllProductCollection } from "../redux/ProductTypes";
 import ProductListCellView from "../components/ProductListCellView";
 import { DEV_MODE } from "../constants/devMode";
 import { selectSubscriptionProducts } from "../redux/reducers/productsReducer";

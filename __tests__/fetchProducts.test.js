@@ -13,7 +13,7 @@ import type {
   FETCH_PRODUCTS_FAILURE
 } from "../src/redux/ProductTypes";
 import Product from "../src/models/Product";
-import type { ProductCollection } from "../src/redux/ProductTypes";
+import type { AllProductCollection } from "../src/redux/ProductTypes";
 // import recordSaga from "../recordSaga";
 
 const mock = productFetchMock();
@@ -27,7 +27,7 @@ describe("fetchProductsApi", () => {
 });
 
 fdescribe("fetchProductsSaga", () => {
-  const products: ProductCollection = Product.collectionFromApiArray(
+  const products: AllProductCollection = Product.collectionFromApiArray(
     productsResponse
   );
   const startAction: FETCH_PRODUCTS_START = { type: "FETCH_PRODUCTS_START" };

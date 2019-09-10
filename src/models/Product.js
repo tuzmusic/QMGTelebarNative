@@ -1,5 +1,5 @@
 // @flow
-import type { ProductCollection } from "../redux/ProductTypes";
+import type { AllProductCollection } from "../redux/ProductTypes";
 import Form from "./forms/Form";
 export default class Product {
   // #region TYPE PROPERTY DEFINITIONS
@@ -36,8 +36,8 @@ export default class Product {
     return prod;
   }
 
-  static collectionFromApiArray(array: Object[]): ProductCollection {
-    const products: ProductCollection = {};
+  static collectionFromApiArray(array: Object[]): AllProductCollection {
+    const products: AllProductCollection = {};
     array.forEach(p => (products[p.id] = Product.fromApi(p)));
     return products;
   }

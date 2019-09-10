@@ -24,16 +24,20 @@ export default function productsReducer(
   }
 }
 
-export function selectProducts(
-  state: Types.ProductState
-): Types.ProductCollection {
-  return filterObject(state.products, { type: "simple" });
+export function selectProductState(state: Object) {
+  return state.productsReducer;
+}
+
+export function selectProducts(state: Object): Types.ProductCollection {
+  const allProds = selectProductState(state);
+  return filterObject(allProds.products, { type: "simple" });
 }
 
 export function selectSubscriptionProducts(
-  state: Types.ProductState
+  state: Object
 ): Types.ProductCollection {
-  return filterObject(state.products, { type: "subscription" });
+  const allProds = selectProductState(state);
+  return filterObject(allProds.products, { type: "subscription" });
 }
 
 export function filterObject(obj: Object, predicateObj: Object): Object {

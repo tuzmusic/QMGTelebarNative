@@ -1,9 +1,14 @@
 import Product from "../models/Product";
+import SubscriptionProduct from "../models/SubscriptionProduct";
 
+export type AllProductCollection = { [number]: Product | SubscriptionProduct };
 export type ProductCollection = { [number]: Product };
+export type SubscriptionProductProductCollection = {
+  [number]: SubscriptionProduct
+};
 
 export type ProductState = {
-  +products: ProductCollection,
+  +products: AllProductCollection,
   +error: string,
   +isLoading: boolean
 };
@@ -12,7 +17,7 @@ export type ProductState = {
 export type FETCH_PRODUCTS_START = { type: "FETCH_PRODUCTS_START" };
 export type FETCH_PRODUCTS_SUCCESS = {
   type: "FETCH_PRODUCTS_SUCCESS",
-  products: ProductCollection
+  products: AllProductCollection
 };
 export type FETCH_PRODUCTS_FAILURE = {
   type: "FETCH_PRODUCTS_FAILURE",
