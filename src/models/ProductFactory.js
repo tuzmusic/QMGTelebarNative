@@ -11,5 +11,6 @@ export default class ProductFactory {
       if (p.type == "subscription")
         return (products[p.id] = SubscriptionProduct.fromApi(p));
     });
+    return products;
   }
 }
