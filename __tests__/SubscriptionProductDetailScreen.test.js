@@ -80,13 +80,17 @@ describe("Form interaction", () => {
     expect(wrapper.getByTestId("SUBSCRIPTION_FORM_VIEW")).toBeDefined();
   });
 
+  it("displays $0 when no items are selected", () => {
+    expect(wrapper.getByTestId("OPTIONS_PRICE").props.children).toEqual("$0");
+  });
+
   it("displays the tatal price of the currently selected options", () => {
     // select some options (3 $5 selections)
     check(1, 0);
     check(1, 1);
     expect(wrapper.getByTestId("OPTIONS_PRICE").props.children).toEqual("$10");
-    const quantity = wrapper.getByTestId("CHECKBOXES[1][1]_QUANTITY");
-    fireEvent.press(quantity);
+    const plusButton = wrapper.getAllByTestId("plus")[0];
+    fireEvent.press(plusButton);
     expect(wrapper.getByTestId("OPTIONS_PRICE").props.children).toEqual("$15");
   });
 });
