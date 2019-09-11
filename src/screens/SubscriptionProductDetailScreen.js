@@ -76,24 +76,25 @@ export default class SubscriptionProductDetailScreen extends Component<
                     {"$" + this.optionsPrice()}
                   </Text>
                 </Text>
+                <Text style={text.totalPrice} /* TOTAL PRICE */>
+                  Total Price:{" "}
+                  <Text testID="TOTAL_PRICE">{"$" + this.totalPrice}</Text>
+                </Text>
               </View>
-            </View>
-
-            <View /* BUYING */ style={styles.buyNowContainer}>
-              <Button title="Buy Now" style={{ width: 150 }} />
-              <Text style={text.price} /* TOTAL PRICE */>
-                Total Price:{" "}
-                <Text testID="TOTAL_PRICE">{"$" + this.totalPrice}</Text>
-              </Text>
             </View>
 
             <Space />
 
-            <View /* BODY (description) */ style={styles.bodyContainer}>
-              <Text style={text.description}>
-                {// the website itself appears to use the short_description
-                product.shortDescription || product.description}
-              </Text>
+            <View style={styles.rowContainer}>
+              <View /* BODY (description) */ style={styles.bodyContainer}>
+                <Text style={text.description}>
+                  {// the website itself appears to use the short_description
+                  product.shortDescription || product.description}
+                </Text>
+              </View>
+              <View /* BUYING */ style={styles.buyNowContainer}>
+                <Button title="Buy Now" style={{ width: 150 }} />
+              </View>
             </View>
 
             <Space />
@@ -112,19 +113,30 @@ export default class SubscriptionProductDetailScreen extends Component<
   }
 }
 
-const baseSize = 17;
+const baseSize = 18;
+const baseText = {
+  paddingBottom: 5
+};
+
 const text = {
   name: {
     fontWeight: "bold",
-    fontSize: 24
+    fontSize: baseSize + 2
   },
   price: {
-    fontSize: 22
+    fontSize: baseSize
+  },
+  totalPrice: {
+    fontWeight: "bold",
+    fontSize: baseSize
   },
   description: {
-    fontSize: 18
+    fontSize: baseSize
   }
 };
+
+Object.values(text).forEach((v: Object) => (v = Object.assign(v, baseText)));
+
 const full = "100%";
 const styles = {
   buyNowContainer: {
@@ -133,7 +145,15 @@ const styles = {
     alignItems: "center"
   },
   totalText: { fontSize: baseSize + 4, fontWeight: "bold" },
-  container: { margin: 20 },
+  container: { margin: 0 }, // scrollview or keyavoid gives us some margin/padding?
+  basicInfoContainer: {
+    justifyContent: "center",
+    alignItems: "flex-start",
+    paddingHorizontal: 15,
+    flex: 2
+    // borderWidth: 1
+  },
+  bodyContainer: { flex: 1 },
   rowContainer: {
     flexDirection: "row",
     alignItems: "flex-start",
@@ -146,13 +166,5 @@ const styles = {
     resizeMode: "cover",
     height: full,
     width: full
-  },
-  basicInfoContainer: {
-    justifyContent: "center",
-    alignItems: "flex-end",
-    padding: 15,
-    flex: 2
-    // borderWidth: 1
-  },
-  bodyContainer: {}
+  }
 };
