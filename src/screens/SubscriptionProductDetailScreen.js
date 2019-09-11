@@ -44,6 +44,10 @@ export default class SubscriptionProductDetailScreen extends Component<
     this.setState({ selection });
   }
 
+  get totalPrice() {
+    return this.product.price + this.optionsPrice();
+  }
+
   render() {
     const Space = () => <Divider height={20} backgroundColor="transparent" />;
     const product = this.product;
@@ -52,21 +56,21 @@ export default class SubscriptionProductDetailScreen extends Component<
       <KeyboardAvoidingView behavior="height" style={{}}>
         <ScrollView>
           <View style={styles.container}>
-            <View /* IMAGE */ style={styles.rowContainer}>
-              <Image
+            <View style={styles.rowContainer}>
+              <Image /* IMAGE */
                 style={[styles.image]}
                 containerStyle={[styles.imageContainer]}
                 source={{ uri: image.src }}
                 PlaceholderContent={<ActivityIndicator color={"blue"} />}
               />
 
-              <View /* BASIC INFO & PRICE */ style={styles.basicInfoContainer}>
+              <View style={styles.basicInfoContainer} /* BASIC INFO & PRICE */>
                 <Text style={text.name}>{product.name}</Text>
-                <Text style={text.price}>
+                <Text style={text.price} /* BASE PRICE */>
                   Subscription Price:{" "}
                   <Text testID="SUBSCRIPTION_PRICE">{"$" + product.price}</Text>
                 </Text>
-                <Text style={text.price}>
+                <Text style={text.price} /* OPTIONS PRICE */>
                   Options Price:{" "}
                   <Text testID="OPTIONS_PRICE">
                     {"$" + this.optionsPrice()}
@@ -77,7 +81,10 @@ export default class SubscriptionProductDetailScreen extends Component<
 
             <View /* BUYING */ style={styles.buyNowContainer}>
               <Button title="Buy Now" style={{ width: 150 }} />
-              <Text style={styles.totalText}>Total: ${this.totalPrice}</Text>
+              <Text style={text.price} /* TOTAL PRICE */>
+                Total Price:{" "}
+                <Text testID="TOTAL_PRICE">{"$" + this.totalPrice}</Text>
+              </Text>
             </View>
 
             <Space />

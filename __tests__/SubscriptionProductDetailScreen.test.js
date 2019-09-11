@@ -93,4 +93,11 @@ describe("Form interaction", () => {
     fireEvent.press(plusButton);
     expect(wrapper.getByTestId("OPTIONS_PRICE").props.children).toEqual("$15");
   });
+
+  it("displays the total price, for the subscription plus options", () => {
+    expect(wrapper.getByTestId("TOTAL_PRICE").props.children).toEqual("$20");
+    check(1, 0);
+    check(1, 1);
+    expect(wrapper.getByTestId("TOTAL_PRICE").props.children).toEqual("$30");
+  });
 });
