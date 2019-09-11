@@ -28,11 +28,16 @@ export default class SubscriptionProductDetailScreen extends Component<
   State
 > {
   product: Product;
+
   constructor(props: Props) {
     super(props);
     this.product =
       this.props.product || this.props.navigation.getParam("product");
   }
+
+  static navigationOptions = ({ navigation }: Object) => {
+    return { title: navigation.getParam("product").name; };
+  };
 
   state = { selection: { card: null, items: [] } };
 
@@ -147,7 +152,7 @@ const styles = {
     alignItems: "center"
   },
   totalText: { fontSize: baseSize + 4, fontWeight: "bold" },
-  container: { margin: 0 }, // scrollview or keyavoid gives us some margin/padding?
+  container: { margin: 20 }, // scrollview or keyavoid gives us some margin/padding?
   basicInfoContainer: {
     justifyContent: "center",
     alignItems: "flex-start",

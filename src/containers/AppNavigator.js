@@ -25,6 +25,7 @@ const TabNavigator = createBottomTabNavigator(
 
 class TabContainer extends Component<Object> {
   static router = TabNavigator.router;
+
   componentDidMount() {
     this.props.fetchProducts();
   }

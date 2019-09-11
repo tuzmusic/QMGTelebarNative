@@ -22,7 +22,7 @@ import SubscriptionProductDetailRenderer from "./src/utilities/SubscriptionProdu
 export default function App() {
   let component = <AppNavigator />;
 
-  component = <SubscriptionProductDetailRenderer />;
+  // component = <SubscriptionProductDetailRenderer />;
   // component = <SubscriptionFormRenderer />;
 
   return <Provider store={store}>{component}</Provider>;

@@ -25,6 +25,10 @@ export default class ProductDetailScreen extends Component<Props, State> {
   }
 
   state = { message: null, quantity: 1, optionsPrice: 0 };
+  
+  static navigationOptions = ({ navigation }: Object) => {
+    return { title: navigation.getParam("product").name; };
+  };
 
   reportPrice = (price: number) => this.setState({ optionsPrice: price });
   get totalPrice() {

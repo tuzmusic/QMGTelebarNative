@@ -28,13 +28,11 @@ const SubscriptionProductsList = {
 };
 
 const DetailScreen = {
-  screen: ProductDetailScreen,
-  navigationOptions: { title: "Product Detail" }
+  screen: ProductDetailScreen
 };
 
 const SubscriptionProductDetail = {
-  screen: SubscriptionProductDetailScreen,
-  navigationOptions: { title: "Subscription Product Detail" }
+  screen: SubscriptionProductDetailScreen
 };
 
 export const ListStack = createStackNavigator({ ListScreen, DetailScreen });

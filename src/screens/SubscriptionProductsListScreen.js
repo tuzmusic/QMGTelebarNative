@@ -27,7 +27,6 @@ class SubscriptionProductsListScreen extends Component<Props> {
 
   onProductPress(product) {
     this.props.navigation.navigate("SubscriptionProductDetail", {
-      title: product.name,
       product
     });
   }
