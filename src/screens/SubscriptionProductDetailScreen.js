@@ -16,10 +16,10 @@ import Quantity from "../components/Quantity";
 import { SubscriptionFormView } from "../subviews/SubscriptionFormView";
 import * as Types from "../redux/FormTypes";
 // #endregion
-
+type Selection = { card: ?Types.Card, items: Types.QuantifiedOrderItem[] };
 type Props = { product: Product };
 type State = {
-  selection: { card: ?Types.Card, items: Types.QuantifiedOrderItem[] }
+  selection: Selection
 };
 
 export default class SubscriptionProductDetailScreen extends Component<
@@ -35,12 +35,11 @@ export default class SubscriptionProductDetailScreen extends Component<
 
   state = { selection: { card: null, items: [] } };
 
-  reportPrice = (price: number) => this.setState({ optionsPrice: price });
-  get totalPrice() {
-    return this.state.quantity * this.product.price + this.state.optionsPrice;
-  }
-
   optionsPrice(): number {}
+
+  reportSelection(selection: Selection) {
+    this.setState({ selection });
+  }
 
   render() {
     const Space = () => <Divider height={20} backgroundColor="transparent" />;
@@ -93,7 +92,7 @@ export default class SubscriptionProductDetailScreen extends Component<
               <SubscriptionFormView
                 testID={"SUBSCRIPTION_FORM_VIEW"}
                 form={product.form}
-                priceDelegate={this.reportPrice.bind(this)}
+                selectionReporter={this.reportSelection.bind(this)}
               />
             </View>
           </View>

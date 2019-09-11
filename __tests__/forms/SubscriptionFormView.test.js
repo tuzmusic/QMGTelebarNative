@@ -2,26 +2,17 @@
 // @flow
 import React, { Fragment, useState } from "react";
 import "@testing-library/jest-native/extend-expect";
-import {
-  render,
-  fireEvent,
-  waitForElement,
-  debug
-} from "react-native-testing-library";
+import { render, fireEvent, debug } from "react-native-testing-library";
 import { Text } from "react-native";
 import { subscriptionProducts } from "../../__mocks__/subscription-products-response";
 import { CheckBox, Button } from "react-native-elements";
 import * as Types from "../../src/redux/FormTypes";
 import Form from "../../src/models/forms/Form";
-import {
-  SubscriptionFormView,
-  quantifiedItemList,
-  totalPrice
-} from "../../src/subviews/SubscriptionFormView";
+import { SubscriptionFormView } from "../../src/subviews/SubscriptionFormView";
 import Quantity from "../../src/components/Quantity";
 import SelectboxField from "../../src/models/fields/SelectboxField";
 import SubscriptionProduct from "../../src/models/SubscriptionProduct";
-
+import ShopWorker from "../../src/models/ShopWorker";
 // #endregion
 
 const product = SubscriptionProduct.fromApi(subscriptionProducts[0]);
@@ -219,32 +210,6 @@ describe("SubscriptionFormView integration", () => {
       expect(wrapper.getByTestId("REPORTED_CARD").props.children).toEqual(
         card.message
       );
-    });
-  });
-
-  describe("calculation methods", () => {
-    describe("quantifiedItemList", () => {
-      const items: Types.OrderItem[] = [
-        { name: "Butterfinger", price: null },
-        { name: "Twix", price: 5 },
-        { name: "Snickers", price: 5 }
-      ];
-      const quantities = [1, 2, 0];
-      const expectedItems: Types.QuantifiedOrderItem[] = [
-        { name: "Butterfinger", quantity: 1, price: null },
-        { name: "Twix", quantity: 2, price: 5 }
-      ];
-      expect(quantifiedItemList({ quantities, items })).toEqual(expectedItems);
-    });
-
-    describe("totalPrice", () => {
-      const items: Types.QuantifiedOrderItem[] = [
-        { name: "Butterfinger", quantity: 1, price: null },
-        { name: "Twix", quantity: 2, price: 5 },
-        { name: "Snickers", quantity: 1, price: 10 }
-      ];
-
-      expect(totalPrice(items)).toEqual(20);
     });
   });
 });

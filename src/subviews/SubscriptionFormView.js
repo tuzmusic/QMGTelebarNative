@@ -13,6 +13,8 @@ import { ExclusiveSelectboxesFormSectionView as CardFormView } from "./fields/Ex
 import * as Types from "../redux/FormTypes";
 import { Button, Divider } from "react-native-elements";
 import { connect } from "react-redux";
+import ShopWorker from "../models/ShopWorker";
+
 // #endregion
 
 type Props = {
@@ -28,28 +30,6 @@ type State = {
   quantities: number[][], // controls the checkbox fields; set with setQuantities
   card: ?Types.Card // controls card fields; set with setCard
 };
-
-export function quantifiedItemList({
-  quantities,
-  items
-}: {
-  quantities: number[],
-  items: Types.OrderItem[]
-}): Types.QuantifiedOrderItem[] {
-  if (!items) return [];
-  return items
-    .map((item: Types.OrderItem, i: number) => ({
-      ...item,
-      quantity: quantities[i]
-    }))
-    .filter(item => item.quantity > 0);
-}
-
-export function totalPrice(items: Types.QuantifiedOrderItem[]): number {
-  let total = 0;
-  items.forEach(item => (total += (item.price || 0) * item.quantity));
-  return total;
-}
 
 export class SubscriptionFormView extends Component<Props, State> {
   state = {
@@ -83,7 +63,7 @@ export class SubscriptionFormView extends Component<Props, State> {
     return this.state.quantities.flatMap((arr: number[], i: number) => {
       const field = this.props.form.fields[i];
       if (field instanceof CheckboxesField)
-        return quantifiedItemList({
+        return ShopWorker.quantifiedItemList({
           quantities: arr,
           items: field.options
         });
