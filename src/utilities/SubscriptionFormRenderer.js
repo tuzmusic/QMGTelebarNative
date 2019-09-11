@@ -20,7 +20,7 @@ class SubscriptionFormRenderer extends Component<Props, State> {
 
     return (
       <View style={{ marginHorizontal: 20, marginVertical: 70 }}>
-        <SubscriptionFormView form={form} />
+        <SubscriptionFormView selectionReporter={() => {}} form={form} />
       </View>
     );
   }
