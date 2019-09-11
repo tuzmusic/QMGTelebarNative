@@ -22,7 +22,8 @@ type Props = {
   selectionReporter: ({
     card: ?Types.Card,
     items: Types.QuantifiedOrderItem[]
-  }) => void // reports changes to parent
+  }) => void, // reports changes to parent
+  titleStyle?: Object
 };
 
 type State = {
@@ -96,15 +97,6 @@ export class SubscriptionFormView extends Component<Props, State> {
 
     return (
       <ScrollView>
-        {CARD_FORM_FIELDS && (
-          <CardFormView
-            testID={"CARD_FORM"}
-            fields={CARD_FORM_FIELDS}
-            cancelTitle="No card"
-            card={this.state.card}
-            setCard={this.setCard.bind(this)}
-          />
-        )}
         {FREE_CANDIES_FIELD instanceof CheckboxesField && (
           <CheckboxesQuantityFieldView
             testID="CHECKBOXES[0]"
@@ -112,6 +104,7 @@ export class SubscriptionFormView extends Component<Props, State> {
             quantities={this.state.quantities[0]}
             maximumSelections={FREE_CANDIES_FIELD.maximumSelections}
             changeQuantity={(i, v) => this.setQuantities(0, i, v)}
+            titleStyle={this.props.titleStyle}
           />
         )}
         {EXTRA_CANDIES_FIELD instanceof CheckboxesField && (
@@ -121,10 +114,24 @@ export class SubscriptionFormView extends Component<Props, State> {
             quantities={this.state.quantities[1]}
             maximumSelections={EXTRA_CANDIES_FIELD.maximumSelections}
             changeQuantity={(i, v) => this.setQuantities(1, i, v)}
+            titleStyle={this.props.titleStyle}
           />
         )}
         {fields[2] instanceof HeaderField && (
-          <HeaderFieldView field={fields[2]} testID={"HEADER"} />
+          <HeaderFieldView
+            field={fields[2]}
+            testID={"HEADER"}
+            textStyle={this.props.titleStyle}
+          />
+        )}
+        {CARD_FORM_FIELDS && (
+          <CardFormView
+            testID={"CARD_FORM"}
+            fields={CARD_FORM_FIELDS}
+            cancelTitle="No card"
+            card={this.state.card}
+            setCard={this.setCard.bind(this)}
+          />
         )}
       </ScrollView>
     );

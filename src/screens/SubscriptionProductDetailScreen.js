@@ -93,7 +93,7 @@ export default class SubscriptionProductDetailScreen extends Component<
                 </Text>
               </View>
               <View /* BUYING */ style={styles.buyNowContainer}>
-                <Button title="Buy Now" style={{ width: 150 }} />
+                <Button title="Add to Cart" style={{ width: 150 }} />
               </View>
             </View>
 
@@ -104,6 +104,7 @@ export default class SubscriptionProductDetailScreen extends Component<
                 testID={"SUBSCRIPTION_FORM_VIEW"}
                 form={product.form}
                 selectionReporter={this.reportSelection.bind(this)}
+                titleStyle={titleStyle}
               />
             </View>
           </View>
@@ -118,6 +119,7 @@ const baseText = {
   paddingBottom: 5
 };
 
+const titleStyle = { fontWeight: "normal", fontSize: baseSize, padding: 5 };
 const text = {
   name: {
     fontWeight: "bold",

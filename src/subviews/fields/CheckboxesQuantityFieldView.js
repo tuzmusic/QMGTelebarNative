@@ -12,7 +12,8 @@ type Props = {
   maximumSelections?: ?number,
   quantities?: number[],
   defaultQuantity?: number,
-  testID?: string
+  testID?: string,
+  titleStyle?: Object
 };
 
 type Option = { name: string, price: ?number };
@@ -47,7 +48,9 @@ export class CheckboxesQuantityFieldView extends Component<Props> {
   render() {
     return (
       <View>
-        <Text style={styles.title}>{this.props.field.title}</Text>
+        <Text style={[styles.title, this.props.titleStyle]}>
+          {this.props.field.title}
+        </Text>
         <Space />
         {this.props.field.options.map((option: Option, i: number) => {
           const testIdBase = this.props.testID && `${this.props.testID}[${i}]`;
