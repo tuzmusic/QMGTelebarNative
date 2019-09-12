@@ -1,10 +1,10 @@
 // @flow
-import productsReducer from "../src/redux/reducers/productsReducer";
-import { products as productsResponse } from "../__mocks__/products-response";
-import { subscriptionProducts as subscriptionProductsResponse } from "../__mocks__/subscription-products-response";
-import Product from "../src/models/Product";
-import * as Types from "../src/redux/ProductTypes";
-import ProductFactory from "../src/models/ProductFactory";
+import productsReducer from "../../src/redux/reducers/productsReducer";
+import { products as productsResponse } from "../../__mocks__/products-response";
+import { subscriptionProducts as subscriptionProductsResponse } from "../../__mocks__/subscription-products-response";
+import Product from "../../src/models/Product";
+import * as Types from "../../src/redux/ProductTypes";
+import ProductFactory from "../../src/models/ProductFactory";
 
 const response = [...productsResponse, ...subscriptionProductsResponse];
 

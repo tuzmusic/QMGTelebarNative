@@ -1,8 +1,8 @@
-import Product from "../src/models/Product";
-import { products } from "../__mocks__/products-response";
-import Form from "../src/models/Forms/Form";
-import SelectboxField from "../src/models/fields/SelectboxField";
-import TextareaField from "../src/models/fields/TextareaField";
+import Product from "../../src/models/Product";
+import { products } from "../../__mocks__/products-response";
+import Form from "../../src/models/Forms/Form";
+import SelectboxField from "../../src/models/fields/SelectboxField";
+import TextareaField from "../../src/models/fields/TextareaField";
 // import expectedProduct from "../__mocks__/mock-created-object";
 
 describe("Product", () => {

@@ -1,15 +1,15 @@
 // @flow
 import productsSaga, {
   fetchProducts
-} from "../src/redux/actions/productActions";
+} from "../../src/redux/actions/productActions";
 import MockAdapter from "axios-mock-adapter";
 import { call, take, put } from "redux-saga/effects";
 import SagaTester from "redux-saga-tester";
-import { ApiUrls } from "../src/constants/urls";
+import { ApiUrls } from "../../src/constants/urls";
 import axios from "axios";
 import { async } from "rxjs/internal/scheduler/async";
-import Product from "../src/models/Product";
-import SubscriptionProduct from "../src/models/SubscriptionProduct";
+import Product from "../../src/models/Product";
+import SubscriptionProduct from "../../src/models/SubscriptionProduct";
 
 const prodObj = {
   id: 1042,

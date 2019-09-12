@@ -1,5 +1,20 @@
 # Minimal info for posting selections
 
+- General notes:
+  - In all cases when we need a `section` key, it can be anything, including blank!
+  - All line items need `product_id` and `quantity`.
+  - A line item without a form needs no `meta_data`.
+  - Any line item with a form needs `meta_data._tmcartepo_data`, which as a `value` array with each form selection.
+    - The card form, with its exclusive-ness, only results in one object in the array.
+    - Each checked off candy (free/extra) results in one object. For example:
+      - 2 free Snickers is 1 field with quantity = 2
+      - 4 different free candies are 4 different fields (with the same name, which is the "name" of the free candy field)
+  - A line item that has a form may also include a `meta_data._tm_epo_product_original_price` object, which has the actual price of the _main item_.
+    - For a single candy with a card (which needs a form), the original price is the price of one candy.
+    - For a subscription product, the original price is the **price of a single subscription** (not the price of, for example, a single extra candy).
+      - If `subscription.quantity > 1`, original price is for one subscription (`price` in main `line_item` will be `quantity * original_price` but original price will not be found anywhere outside this meta field)
+      - An extra candy with `quantity > 1` will show its total price; original price of each candy not present, event in this original_price field.
+
 ## Single item
 
 ```json
@@ -21,25 +36,19 @@
 	        "meta_data": [
 	        	{
 	        		"key": "_tmcartepo_data",
-    				"value": [
-    					{
-			                "mode": "builder",
-			                "name": "",
-			                "value": "Weekly",
-			                "price": 2,
-			                "price_per_currency": {
-			                  "USD": 2
-			                },
-			                "quantity": 1,
-			                "multiple": "1",
-			                "key": "Weekly_0",
-                        	"section": "5d23b7e35e4df9.57432583"
-		                }
-					]
+              "value": [
+                {
+                  "name": "",
+                  "value": "Weekly",
+                  "price": 2,
+                  "quantity": 1,
+                  "section": ""
+                }
+              ]
 	        	},
 	        	{
-		            "key": "_tm_epo_product_original_price",
-		            "value": ["10"]
+              "key": "_tm_epo_product_original_price",
+              "value": ["10"]
 	        	}
         	]
 		}
@@ -47,6 +56,7 @@
 ```
 
 - Minimum info for frequency selection:
+
   - value
   - price - necessary!
     - trying without (and with)
@@ -79,7 +89,8 @@
 - We really just need to know what we need for each kind of field (checkboxes, cardfield)
 
 ### checkboxes
-- Trying: 
+
+- Trying:
   - 1. Full info - good
   - 2. Delete blank keys - good
   - 3. Delete `element` - good
@@ -89,13 +100,13 @@
   - 7. Delete `section` - no!
   - 8. Delete `key` - good!
 
-```json
+````json
 // FREE
 {
   "name": "Choose 1 free candy bar per gift",
   "value": "Twix",
-  "price": 0,  
-  "section": "5d23b756c6c877.78250726",
+  "price": 0,
+  "section": "",
   "quantity": 1
 }
 
@@ -105,39 +116,42 @@
   "name": "", // NOTE: Blank
   "value": "Twix",
   "price": 20,  // TOTAL PRICE OF THIS OPTION!!! (quantity * item price)
-  "section": "5d23b756c6c8c2.69989172",
+  "section": "",
   "quantity": 4
 }
 
-```
+````
 
-### card form - selectbox 
+### card form - selectbox
 
 - 1. Match with checkboxes (see above) - good!
+
 ```json
 {
   "name": "Add a Anniversary Gift Card",
-  "value":
-    "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
+  "value": "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
   "price": 0,
-  "section": "5d23b7e35e4e27.23351632",
+  "section": "",
   "quantity": 1
 }
 ```
 
 ### card form - custom message
+
 ```json
 {
   "name": "",
   "value": "Custom message on. this card. Woo hoo.",
   "price": 0,
-  "section": "5d23b756c6c8f3.18519071", // NOTE DIFFERENT SECTION NUMBER
+  "section": "",
   "quantity": 1
-}	
+}
 ```
 
 ## What do we need this info for?
+
 - Well...
+
   - Do we need to reproduce the whole form from an **order**? No! We just need to be able to POST an order.
     And possibly display it, with the id:100000+ summary fields, in the user profile section (which appears to be how the website does it)
     _However_, we do need to be able to reproduce a cart item.

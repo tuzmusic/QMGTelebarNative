@@ -1,7 +1,7 @@
 // @flow
 
-import * as Types from "../src/redux/FormTypes";
-import ShopWorker from "../src/models/ShopWorker";
+import * as Types from "../../src/redux/FormTypes";
+import ShopWorker from "../../src/models/ShopWorker";
 
 describe("calculation methods", () => {
   describe("quantifiedItemList", () => {

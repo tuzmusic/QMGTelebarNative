@@ -1,12 +1,12 @@
 // @flow
-import * as Types from "../src/redux/ProductTypes";
-import ProductFactory from "../src/models/ProductFactory";
+import * as Types from "../../src/redux/ProductTypes";
+import ProductFactory from "../../src/models/ProductFactory";
 import {
   selectProducts,
   selectSubscriptionProducts,
   selectProductState,
   selectAllProducts
-} from "../src/redux/reducers/productsReducer";
+} from "../../src/redux/reducers/productsReducer";
 
 const props = {
   name: "string",

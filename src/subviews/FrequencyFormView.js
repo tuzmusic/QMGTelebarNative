@@ -8,6 +8,13 @@ import FrequencyForm from "../models/forms/FrequencyForm";
 type Props = { form: FrequencyForm, priceDelegate: number => void };
 type State = { selections: FrequencyFormOption[] };
 
+/* NOTE!!!!1
+
+On 9/12/19, Noor said that this type of product page (with the frequency form)
+is DEPRECATED. (will NOT be used)
+
+*/
+
 export default class FrequencyFormView extends Component<Props, State> {
   state = { selections: [] };
   async onCheck(option: FrequencyFormOption) {

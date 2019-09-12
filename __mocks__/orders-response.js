@@ -143,53 +143,53 @@ export const ordersResponse = [
         meta_data: [
           /* THE FORM WITH SELECTIONS */ {
             id: 149,
-            "key": "_tmcartepo_data",
-            "value": [
+            key: "_tmcartepo_data",
+            value: [
               {
-                "mode": "builder",
-                "cssclass": "",
-                "hidelabelincart": "",
-                "hidevalueincart": "",
-                "hidelabelinorder": "",
-                "hidevalueinorder": "",
-                "element": {
-                  "type": "select",
-                  "rules_type": {
-                    "Butterfinger_0": [""],
-                    "Twix_1": [""],
+                mode: "builder",
+                cssclass: "",
+                hidelabelincart: "",
+                hidevalueincart: "",
+                hidelabelinorder: "",
+                hidevalueinorder: "",
+                element: {
+                  type: "select",
+                  rules_type: {
+                    Butterfinger_0: [""],
+                    Twix_1: [""],
                     "M&amp;M_2": [""],
-                    "Snickers_3": [""],
-                    "Skittles_4": [""],
+                    Snickers_3: [""],
+                    Skittles_4: [""],
                     "Reese’s_5": [""],
                     "M&amp;M Peanut_6": [""],
-                    "Milkyway_7": [""],
-                    "KitKat_8": [""],
+                    Milkyway_7: [""],
+                    KitKat_8: [""],
                     "Hershey’s_9": [""],
                     "3 Musketeers_10": [""]
                   },
-                  "_": {
-                    "price_type": ""
+                  _: {
+                    price_type: ""
                   }
                 },
-                "name": "Choose 1 free candy bar per gift",
-                "value": "Twix",
-                "price": 0,
-                "section": "5d23b756c6c877.78250726",
-                "section_label": "Choose 1 free candy bar per gift",
-                "percentcurrenttotal": 0,
-                "currencies": [],
-                "price_per_currency": {
-                  "USD": ""
+                name: "Choose 1 free candy bar per gift",
+                value: "Twix",
+                price: 0,
+                section: "5d23b756c6c877.78250726",
+                section_label: "Choose 1 free candy bar per gift",
+                percentcurrenttotal: 0,
+                currencies: [],
+                price_per_currency: {
+                  USD: ""
                 },
-                "quantity": 1,
-                "multiple": "1",
-                "key": "Twix_1",
-                "use_images": "",
-                "use_colors": "",
-                "changes_product_image": "",
-                "imagesp": "",
-                "images": "",
-                "color": ""
+                quantity: 1,
+                multiple: "1",
+                key: "Twix_1",
+                use_images: "",
+                use_colors: "",
+                changes_product_image: "",
+                imagesp: "",
+                images: "",
+                color: ""
               },
               {
                 mode: "builder",
@@ -238,28 +238,28 @@ export const ordersResponse = [
                 color: ""
               },
               {
-                "mode": "builder",
-                "cssclass": "",
-                "hidelabelincart": "",
-                "hidevalueincart": "",
-                "hidelabelinorder": "",
-                "hidevalueinorder": "",
-                "element": {
-                  "type": "textarea",
-                  "rules_type": [[""]],
-                  "_": {
-                    "price_type": ""
+                mode: "builder",
+                cssclass: "",
+                hidelabelincart: "",
+                hidevalueincart: "",
+                hidelabelinorder: "",
+                hidevalueinorder: "",
+                element: {
+                  type: "textarea",
+                  rules_type: [[""]],
+                  _: {
+                    price_type: ""
                   }
                 },
-                "name": "",
-                "value": "Custom message on. this card. Woo hoo.",
-                "price": 0,
-                "section": "5d23b756c6c8f3.18519071",
-                "section_label": "",
-                "percentcurrenttotal": 0,
-                "currencies": [],
-                "price_per_currency": [],
-                "quantity": 1
+                name: "",
+                value: "Custom message on. this card. Woo hoo.",
+                price: 0,
+                section: "5d23b756c6c8f3.18519071",
+                section_label: "",
+                percentcurrenttotal: 0,
+                currencies: [],
+                price_per_currency: [],
+                quantity: 1
               }
             ]
           },
@@ -441,7 +441,7 @@ export const ordersResponse = [
             id: 161,
             key: "_tmcartepo_data",
             value: [
-              /* Select frequency */{
+              /* Select frequency */ {
                 mode: "builder",
                 cssclass: "",
                 hidelabelincart: "",
@@ -647,7 +647,7 @@ export const ordersResponse = [
             id: 173,
             key: "_tmcartepo_data",
             value: [
-              {
+              /* Free candy 1 */ {
                 mode: "builder",
                 cssclass: "",
                 hidelabelincart: "",
@@ -695,7 +695,7 @@ export const ordersResponse = [
                 images: "",
                 color: ""
               },
-              {
+              /* Free candy 2 */ {
                 mode: "builder",
                 cssclass: "",
                 hidelabelincart: "",
@@ -743,7 +743,7 @@ export const ordersResponse = [
                 images: "",
                 color: ""
               },
-              {
+              /* Free candy 3 */ {
                 mode: "builder",
                 cssclass: "",
                 hidelabelincart: "",
@@ -791,7 +791,7 @@ export const ordersResponse = [
                 images: "",
                 color: ""
               },
-              {
+              /* Free candy 4 */ {
                 mode: "builder",
                 cssclass: "",
                 hidelabelincart: "",
@@ -839,7 +839,7 @@ export const ordersResponse = [
                 images: "",
                 color: ""
               },
-              {
+              /* Extra candy 1 (Hersheys x 2)*/ {
                 mode: "builder",
                 cssclass: "",
                 hidelabelincart: "",
@@ -885,7 +885,7 @@ export const ordersResponse = [
                 images: "",
                 color: ""
               },
-              {
+              /* Extra candy 2 (3 Musk x 2)*/ {
                 mode: "builder",
                 cssclass: "",
                 hidelabelincart: "",
@@ -931,7 +931,7 @@ export const ordersResponse = [
                 images: "",
                 color: ""
               },
-              {
+             /* Selected card */ {
                 mode: "builder",
                 cssclass: "",
                 hidelabelincart: "",
@@ -1375,15 +1375,15 @@ export const ordersResponse = [
                 color: ""
               },
               {
-                "mode": "builder",
-                "cssclass": "",
-                "hidelabelincart": "",
-                "hidevalueincart": "",
-                "hidelabelinorder": "",
-                "hidevalueinorder": "",
-                "element": {
-                  "type": "select",
-                  "rules_type": {
+                mode: "builder",
+                cssclass: "",
+                hidelabelincart: "",
+                hidevalueincart: "",
+                hidelabelinorder: "",
+                hidevalueinorder: "",
+                element: {
+                  type: "select",
+                  rules_type: {
                     "The secret of a happy marriage is finding the right person. You know they&#039;re right if you love to be with them all the time.  -Julia Child_0": [
                       ""
                     ],
@@ -1400,31 +1400,31 @@ export const ordersResponse = [
                       ""
                     ]
                   },
-                  "_": {
-                    "price_type": ""
+                  _: {
+                    price_type: ""
                   }
                 },
-                "name": "Add a Anniversary Gift Card",
-                "value":
+                name: "Add a Anniversary Gift Card",
+                value:
                   "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
-                "price": 0,
-                "section": "5d23b7e35e4e27.23351632",
-                "section_label": "Add a Anniversary Gift Card",
-                "percentcurrenttotal": 0,
-                "currencies": [],
-                "price_per_currency": {
-                  "USD": ""
+                price: 0,
+                section: "5d23b7e35e4e27.23351632",
+                section_label: "Add a Anniversary Gift Card",
+                percentcurrenttotal: 0,
+                currencies: [],
+                price_per_currency: {
+                  USD: ""
                 },
-                "quantity": 1,
-                "multiple": "1",
-                "key":
+                quantity: 1,
+                multiple: "1",
+                key:
                   "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake_3",
-                "use_images": "",
-                "use_colors": "",
-                "changes_product_image": "",
-                "imagesp": "",
-                "images": "",
-                "color": ""
+                use_images: "",
+                use_colors: "",
+                changes_product_image: "",
+                imagesp: "",
+                images: "",
+                color: ""
               }
             ]
           },

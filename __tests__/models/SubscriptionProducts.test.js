@@ -1,11 +1,11 @@
 // @flow
-import SubscriptionProduct from "../src/models/SubscriptionProduct";
-import { subscriptionProducts as apiResponse } from "../__mocks__/subscription-products-response";
-import Form from "../src/models/Forms/Form";
-import CheckboxesField from "../src/models/fields/CheckboxesField";
-import HeaderField from "../src/models/fields/HeaderField";
-import SelectboxField from "../src/models/fields/SelectboxField";
-import TextareaField from "../src/models/fields/TextareaField";
+import SubscriptionProduct from "../../src/models/SubscriptionProduct";
+import { subscriptionProducts as apiResponse } from "../../__mocks__/subscription-products-response";
+import Form from "../../src/models/Forms/Form";
+import CheckboxesField from "../../src/models/fields/CheckboxesField";
+import HeaderField from "../../src/models/fields/HeaderField";
+import SelectboxField from "../../src/models/fields/SelectboxField";
+import TextareaField from "../../src/models/fields/TextareaField";
 
 describe("SubscriptionProduct", () => {
   const obj = apiResponse[0];

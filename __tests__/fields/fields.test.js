@@ -1,8 +1,8 @@
-import Field from "../src/models/fields/Field";
-import CheckboxesField from "../src/models/fields/CheckboxesField";
-import SelectboxField from "../src/models/fields/SelectboxField";
-import TextareaField from "../src/models/fields/TextareaField";
-import HeaderField from "../src/models/fields/HeaderField";
+import Field from "../../src/models/fields/Field";
+import CheckboxesField from "../../src/models/fields/CheckboxesField";
+import SelectboxField from "../../src/models/fields/SelectboxField";
+import TextareaField from "../../src/models/fields/TextareaField";
+import HeaderField from "../../src/models/fields/HeaderField";
 
 // @flow
 

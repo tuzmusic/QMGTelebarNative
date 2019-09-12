@@ -1,7 +1,7 @@
 // @flow
-import Product from "../src/models/Product";
-import SubscriptionProduct from "../src/models/SubscriptionProduct";
-import ProductFactory from "../src/models/ProductFactory";
+import Product from "../../src/models/Product";
+import SubscriptionProduct from "../../src/models/SubscriptionProduct";
+import ProductFactory from "../../src/models/ProductFactory";
 
 const prodObj = {
   id: 1042,

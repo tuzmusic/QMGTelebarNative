@@ -8,12 +8,12 @@ import {
   waitForElement,
   debug
 } from "react-native-testing-library";
-import SubscriptionProductDetailScreen from "../src/screens/SubscriptionProductDetailScreen";
-import { subscriptionProducts } from "../__mocks__/subscription-products-response";
-import SubscriptionProduct from "../src/models/SubscriptionProduct";
+import SubscriptionProductDetailScreen from "../../src/screens/SubscriptionProductDetailScreen";
+import { subscriptionProducts } from "../../__mocks__/subscription-products-response";
+import SubscriptionProduct from "../../src/models/SubscriptionProduct";
 import { CheckBox } from "react-native-elements";
-import CheckboxesQuantityFieldView from "../src/subviews/fields/CheckboxesQuantityFieldView";
-import { SubscriptionFormView } from "../src/subviews/SubscriptionFormView";
+import CheckboxesQuantityFieldView from "../../src/subviews/fields/CheckboxesQuantityFieldView";
+import { SubscriptionFormView } from "../../src/subviews/SubscriptionFormView";
 // #endregion
 
 const product = SubscriptionProduct.fromApi(subscriptionProducts[0]);

@@ -12,6 +12,7 @@ export type Card = {
 };
 
 export type OrderItem = { name: string, price: ?number };
+
 export type QuantifiedOrderItem = {
   name: string,
   price: ?number,
