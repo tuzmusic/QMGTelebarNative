@@ -18,7 +18,7 @@ type OrderSelection = CardSelection | CheckboxesSelection;
 class LineItem {
   product: Product;
   quantity: number;
-  items: OrderSelection[];
+  items: (CardSelection | CheckboxesSelection)[];
 
   static toOrderApi(lineItem: LineItem): Object {
     const { product, quantity } = lineItem;
@@ -28,54 +28,44 @@ class LineItem {
     };
 
     if (lineItem.items) {
-      const values: MetaDataValueObject[] = [];
-
+      const items: MetaDataValueObject[] = [];
+      const section = "";
       for (let item of lineItem.items) {
-        /* 
-          const value = {};
-          value.name = null;
-          value.value = null;
-          value.price = null;
-          value.section = "";
-          value.quantity = null;
-         */
-
+        const name = item.fieldName;
         if (item.card && typeof item.card == "string") {
-          values.push({
+          items.push({
             quantity: 1,
             price: 0,
-            name: item.fieldName,
             value: item.card,
-            section: ""
-          }); // hold off on this flow error until the test passes
-        } else if (item.selections) {
-          const selections: Types.QuantifiedOrderItem[] = item.selections; // hold off on this flow error until the test passes
-
-          for (let selection of selections) {
-            const { quantity, price, name } = selection;
-            values.push({
-              quantity,
+            name,
+            section
+          });
+        } else if (item.selections && item.selections instanceof Array) {
+          for (let selection of (item.selections: Types.QuantifiedOrderItem[])) {
+            const { quantity, price, name: value } = selection;
+            items.push({
               price: (price || 0) * quantity,
-              name: item.fieldName,
-              value: name,
-              section: ""
+              name,
+              quantity,
+              value,
+              section
             });
           }
         }
       }
 
-      const formInfo: FormInfoObject = {
-        key: "_tmcartepo_data",
-        value: values
-      };
-
-      const origPriceInfo: OriginalPriceObject = {
-        key: "_tm_epo_product_original_price",
-        value: [product.price.toString()]
-      };
-
-      obj.meta_data = [formInfo, origPriceInfo];
+      obj.meta_data = [
+        {
+          key: "_tmcartepo_data",
+          value: items
+        },
+        {
+          key: "_tm_epo_product_original_price",
+          value: [product.price.toString()]
+        }
+      ];
     }
+
     return obj;
   }
 }
@@ -93,7 +83,7 @@ type MetaDataValueObject = {
 type ToOrderApiObject = {|
   product_id: number,
   quantity: number,
-  meta_data?: [FormInfoObject, ?OriginalPriceObject]
+  meta_data?: [FormInfoObject, OriginalPriceObject]
 |};
 
 type FormInfoObject = {
