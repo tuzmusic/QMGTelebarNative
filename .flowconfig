@@ -1,5 +1,4 @@
 [ignore]
-node_modules
 
 [include]
 
@@ -10,3 +9,6 @@ node_modules
 [options]
 
 [strict]
+
+[untyped]
+.*/node_modules/*

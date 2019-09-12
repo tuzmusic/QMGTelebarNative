@@ -40,16 +40,7 @@ class LineItem {
           value.quantity = null;
          */
 
-        if (item.card) {
-          /* 
-            value.quantity = 1;
-            value.price = 0;
-            value.name = item.fieldName;
-            value.value = item.card;
-            value.section = "";
-
-            values.push(value) 
-            */
+        if (item.card && typeof item.card == "string") {
           values.push({
             quantity: 1,
             price: 0,
