@@ -68,6 +68,7 @@ export class SubscriptionFormView extends Component<Props, State> {
           quantities: arr,
           items: field.options
         });
+      return [];
     });
   }
 

@@ -36,7 +36,6 @@ export class ExclusiveFieldView extends Component<Props, State> {
   overlay() {
     const field = this.props.field;
     const props = {
-      field: field,
       dismissOverlay: this.toggleOverlay.bind(this),
       onSubmit: this.handleSubmit.bind(this)
     };
@@ -45,8 +44,6 @@ export class ExclusiveFieldView extends Component<Props, State> {
       return <TextAreaOverlay field={field} {...props} />;
     } else if (field instanceof SelectboxField) {
       return <SelectOptionsOverlay field={field} {...props} />;
-    } else {
-      return <View />;
     }
   }
 

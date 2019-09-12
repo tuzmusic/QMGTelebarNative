@@ -36,7 +36,7 @@ export default class SubscriptionProductDetailScreen extends Component<
   }
 
   static navigationOptions = ({ navigation }: Object) => {
-    return { title: navigation.getParam("product").name; };
+    return { title: navigation.getParam("product").name };
   };
 
   state = { selection: { card: null, items: [] } };
