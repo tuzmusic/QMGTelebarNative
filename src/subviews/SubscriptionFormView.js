@@ -21,27 +21,29 @@ type Props = {
   form: Form,
   selectionReporter: ({
     card: ?Types.Card,
-    items: Types.QuantifiedOrderItem[]
+    items: Types.CheckboxesSelection[]
   }) => void, // reports changes to parent
   titleStyle?: Object
 };
 
 type State = {
   // these may ultimately be supplied by props???
-  quantities: number[][], // controls the checkbox fields; set with setQuantities
+  quantitiesLists: Array<number[]>, // controls the checkbox fields; set with setQuantities
   card: ?Types.Card // controls card fields; set with setCard
 };
 
+type ItemsListByField = Types.NamedItemList[];
+
 export class SubscriptionFormView extends Component<Props, State> {
   state = {
-    quantities: [[], []],
+    quantitiesLists: [[], []],
     card: null
   };
 
   reportState() {
     if (this.props.selectionReporter)
       this.props.selectionReporter({
-        items: this.getQuantifiedItems(),
+        items: this.getQuantifiedAndNamedItems(), // this WILL have fieldName
         card: this.state.card
       });
   }
@@ -52,7 +54,7 @@ export class SubscriptionFormView extends Component<Props, State> {
   };
 
   setQuantities(fieldIndex: number, boxIndex: number, value: number) {
-    const allQuantities = this.state.quantities;
+    const allQuantities = this.state.quantitiesLists;
     const quantities = allQuantities[fieldIndex];
     quantities[boxIndex] = value;
     allQuantities[fieldIndex] = quantities;
@@ -60,16 +62,29 @@ export class SubscriptionFormView extends Component<Props, State> {
     this.setState({ quantities: allQuantities }, this.reportState);
   }
 
-  getQuantifiedItems(): Types.QuantifiedOrderItem[] {
-    return this.state.quantities.flatMap((arr: number[], i: number) => {
-      const field = this.props.form.fields[i];
-      if (field instanceof CheckboxesField)
-        return ShopWorker.quantifiedItemList({
-          quantities: arr,
-          items: field.options
-        });
-      return [];
-    });
+  // THIS IS THE LAST PLACE WE HAVE FIELD INFO FOR CHECKBOXES
+  getQuantifiedAndNamedItems(): Types.CheckboxesSelection[] {
+    let quantifiedLists: Array<Types.QuantifiedOrderItem[]>;
+
+    const checkboxesFields = this.props.form.fields
+      .map(field => {
+        if (!(field instanceof CheckboxesField)) return null;
+        return field;
+      })
+      .filter(Boolean);
+
+    const { quantitiesLists } = this.state;
+    const itemsLists = checkboxesFields.map(field => field.options);
+
+    quantifiedLists = ShopWorker.mappedQuantifiedItemsFromArrayOfLists(
+      quantitiesLists,
+      itemsLists
+    );
+
+    return ShopWorker.mappedNamedItemsFromArrayOfLists(
+      quantifiedLists,
+      checkboxesFields
+    );
   }
 
   render() {
@@ -102,7 +117,7 @@ export class SubscriptionFormView extends Component<Props, State> {
           <CheckboxesQuantityFieldView
             testID="CHECKBOXES[0]"
             field={FREE_CANDIES_FIELD}
-            quantities={this.state.quantities[0]}
+            quantities={this.state.quantitiesLists[0]}
             maximumSelections={FREE_CANDIES_FIELD.maximumSelections}
             changeQuantity={(i, v) => this.setQuantities(0, i, v)}
             titleStyle={this.props.titleStyle}
@@ -112,7 +127,7 @@ export class SubscriptionFormView extends Component<Props, State> {
           <CheckboxesQuantityFieldView
             testID="CHECKBOXES[1]"
             field={EXTRA_CANDIES_FIELD}
-            quantities={this.state.quantities[1]}
+            quantities={this.state.quantitiesLists[1]}
             maximumSelections={EXTRA_CANDIES_FIELD.maximumSelections}
             changeQuantity={(i, v) => this.setQuantities(1, i, v)}
             titleStyle={this.props.titleStyle}

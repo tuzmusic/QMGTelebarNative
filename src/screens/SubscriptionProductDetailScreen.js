@@ -17,11 +17,9 @@ import { SubscriptionFormView } from "../subviews/SubscriptionFormView";
 import * as Types from "../redux/FormTypes";
 import ShopWorker from "../models/ShopWorker";
 // #endregion
-type Selection = { card: ?Types.Card, items: Types.QuantifiedOrderItem[] };
+
 type Props = { product: Product };
-type State = {
-  selection: Selection
-};
+type State = { selection: Types.ProductFormSelection };
 
 export default class SubscriptionProductDetailScreen extends Component<
   Props,
@@ -45,7 +43,7 @@ export default class SubscriptionProductDetailScreen extends Component<
     return ShopWorker.totalPrice(this.state.selection.items);
   }
 
-  reportSelection(selection: Selection) {
+  reportSelection(selection: Types.ProductFormSelection) {
     this.setState({ selection });
   }
 

@@ -5,6 +5,8 @@ import SelectboxField from "../../src/models/fields/SelectboxField";
 import LineItem from "../../src/models/LineItem";
 import SubscriptionProduct from "../../src/models/SubscriptionProduct";
 import { subscriptionProducts } from "../../__mocks__/subscription-products-response";
+import * as Types from "../../src/redux/FormTypes";
+
 describe("LineItem.toOrderApi", () => {
   it("converts a LineItem object for use in POSTing an order", () => {
     expect(LineItem.toOrderApi(lineItem)).toEqual(
@@ -13,7 +15,40 @@ describe("LineItem.toOrderApi", () => {
   });
 });
 
+describe("LineItem.fromProductForm", () => {
+  it("creates a LineItem from a form submission", () => {
+    expect(LineItem.fromProductForm(submissionObj)).toEqual(lineItem);
+  });
+});
+
 const product = SubscriptionProduct.fromApi(subscriptionProducts[0]);
+
+const submissionObj: Types.LineItemCreatorObject = {
+  product,
+  quantity: 1,
+  items: [
+    {
+      selections: [
+        { name: "Twix", quantity: 1, price: 0 },
+        { name: "Snickers", quantity: 1, price: 0 },
+        { name: "Butterfinger", quantity: 2, price: 0 }
+      ],
+      fieldName: "Have some free candies"
+    },
+    {
+      selections: [
+        { name: "Twix", quantity: 1, price: 5 },
+        { name: "M&M", quantity: 2, price: 5 }
+      ],
+      fieldName: ""
+    },
+    {
+      card:
+        "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
+      fieldName: "Add a Anniversary Gift Card"
+    }
+  ]
+};
 
 const lineItem = Object.assign(new LineItem(), {
   product,

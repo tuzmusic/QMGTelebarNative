@@ -1,8 +1,9 @@
 // @flow
 import Field from "./Field";
+import * as Types from "../../redux/FormTypes";
 
 class CheckboxesField extends Field {
-  options: { name: string, price: ?number }[];
+  options: Types.OrderItem[];
   defaultQuantity: number;
   maximumSelections: ?number;
 

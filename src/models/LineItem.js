@@ -3,22 +3,16 @@ import * as Types from "../redux/FormTypes";
 import ShopWorker from "./ShopWorker";
 import Product from "./Product";
 
-type CardSelection = {
-  card: string,
-  fieldName: string
-};
-
-type CheckboxesSelection = {
-  selections: Types.QuantifiedOrderItem[],
-  fieldName: string
-};
-
-type OrderSelection = CardSelection | CheckboxesSelection;
-
 class LineItem {
   product: Product;
   quantity: number;
-  items: (CardSelection | CheckboxesSelection)[];
+  items: Types.OrderSelection[];
+
+  static fromProductForm(obj: Types.LineItemCreatorObject): LineItem {
+    const item = new LineItem();
+
+    return Object.assign(item, obj);
+  }
 
   static toOrderApi(lineItem: LineItem): Object {
     const { product, quantity } = lineItem;
