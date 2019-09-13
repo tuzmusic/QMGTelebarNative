@@ -23,20 +23,15 @@ const TITLES = form.fields.map(f => f.title);
 const submitOrderMock = jest.fn();
 
 let wrapper;
+let card, field, formStateSpy, wrapperStateSpy;
 
 class Wrapper extends React.Component<Object, Object> {
-  state = { selection: {} };
+  // state = { selection: {} };
   render() {
     return (
       <Fragment>
-        <Text testID="REPORTED_ITEMS">
-          {JSON.stringify(this.state.selection.items)}
-        </Text>
-        <Text testID="REPORTED_CARD">
-          {this.state.selection.card && this.state.selection.card.message}
-        </Text>
         <SubscriptionFormView
-          selectionReporter={selection => this.setState({ selection })}
+          selectionReporter={selection => this.setState(selection)}
           submitOrder={submitOrderMock}
           form={form}
           testID={"SUBSCRIPTION_FORM_VIEW"}
@@ -97,25 +92,27 @@ describe("SubscriptionFormView integration", () => {
   });
 
   describe("card section", () => {
-    let card, field, stateSpy;
-
     beforeEach(async () => {
-      stateSpy = jest.spyOn(SubscriptionFormView.prototype, "setState");
+      formStateSpy = jest.spyOn(SubscriptionFormView.prototype, "setState");
+      wrapperStateSpy = jest.spyOn(Wrapper.prototype, "setState");
       wrapper = createWrapper();
       field = form.fields[3];
       if (!(field instanceof SelectboxField)) return;
       card = { message: field.options[0], field };
       await selectFirstCard();
     });
+    afterEach(() => {
+      formStateSpy.mockClear();
+      wrapperStateSpy.mockClear();
+    });
 
     it("sets the card", async () => {
-      expect(stateSpy).toHaveBeenCalledWith({ card });
-      stateSpy.mockClear();
+      expect(formStateSpy).toHaveBeenCalledWith({ card });
     });
 
     it("uses the selectionReporter prop to send the card to its parent", async () => {
-      expect(wrapper.getByTestId("REPORTED_CARD").props.children).toEqual(
-        card.message
+      expect(wrapperStateSpy).toHaveBeenCalledWith(
+        expect.objectContaining({ card })
       );
     });
   });
@@ -171,10 +168,10 @@ describe("SubscriptionFormView integration", () => {
         { name: "Butterfinger", price: null, quantity: 1 },
         { name: "Twix", price: 5, quantity: 1 }
       ];
-
-      expect(wrapper.getByTestId("REPORTED_ITEMS").props.children).toEqual(
-        JSON.stringify(items)
+      expect(wrapperStateSpy).toHaveBeenCalledWith(
+        expect.objectContaining({ items })
       );
+      wrapperStateSpy.mockClear();
     });
   });
 
@@ -182,7 +179,7 @@ describe("SubscriptionFormView integration", () => {
     // expected results
     const cardField = form.fields[3];
     if (!(cardField instanceof SelectboxField)) return;
-    const card = { message: cardField.options[1], cardField };
+    const card = { message: cardField.options[1], field: cardField };
     const items = [
       { name: "Butterfinger", price: null, quantity: 1 },
       { name: "Twix", price: 5, quantity: 1 }
@@ -201,14 +198,20 @@ describe("SubscriptionFormView integration", () => {
       // select another card (shouldn't nullify items; should change the selected card)
       await selectFirstCard(1);
     });
+
+    afterEach(() => {
+      formStateSpy.mockClear();
+      wrapperStateSpy.mockClear();
+    });
+
     it("reports the quantities", async () => {
-      expect(wrapper.getByTestId("REPORTED_ITEMS").props.children).toEqual(
-        JSON.stringify(items)
+      expect(wrapperStateSpy).toHaveBeenCalledWith(
+        expect.objectContaining({ items })
       );
     });
     it("reports the card", async () => {
-      expect(wrapper.getByTestId("REPORTED_CARD").props.children).toEqual(
-        card.message
+      expect(wrapperStateSpy).toHaveBeenCalledWith(
+        expect.objectContaining({ card })
       );
     });
   });
