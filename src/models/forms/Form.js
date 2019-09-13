@@ -23,4 +23,13 @@ export default class Form {
     form.fields = FieldCreator.createFieldsFromArray(object.fields);
     return form;
   }
+
+  static selectCheckboxesFields(fields: Field) {
+    return fields
+      .map(field => {
+        if (!(field instanceof CheckboxesField)) return null;
+        return field;
+      })
+      .filter(Boolean);
+  }
 }
