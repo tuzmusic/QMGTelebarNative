@@ -20,13 +20,8 @@ const form = product.form;
 const TITLES = form.fields.map(f => f.title);
 
 // #region Wrapper Setup
-const submitOrderMock = jest.fn();
-
-let wrapper;
-let card, field, formStateSpy, wrapperStateSpy;
 
 class Wrapper extends React.Component<Object, Object> {
-  // state = { selection: {} };
   render() {
     return (
       <Fragment>
@@ -48,6 +43,12 @@ function createWrapper(customProps) {
 // #endregion
 
 // #region Test Helper Functions
+const submitOrderMock = jest.fn();
+
+let wrapper, card, field, formStateSpy, wrapperStateSpy;
+formStateSpy = jest.spyOn(SubscriptionFormView.prototype, "setState");
+wrapperStateSpy = jest.spyOn(Wrapper.prototype, "setState");
+
 const checkbox = (fieldIndex, i) =>
   wrapper.getByTestId(`CHECKBOXES[${fieldIndex}][${i}]`);
 
@@ -93,8 +94,8 @@ describe("SubscriptionFormView integration", () => {
 
   describe("card section", () => {
     beforeEach(async () => {
-      formStateSpy = jest.spyOn(SubscriptionFormView.prototype, "setState");
-      wrapperStateSpy = jest.spyOn(Wrapper.prototype, "setState");
+      // formStateSpy = jest.spyOn(SubscriptionFormView.prototype, "setState");
+      // wrapperStateSpy = jest.spyOn(Wrapper.prototype, "setState");
       wrapper = createWrapper();
       field = form.fields[3];
       if (!(field instanceof SelectboxField)) return;
@@ -117,7 +118,7 @@ describe("SubscriptionFormView integration", () => {
     });
   });
 
-  describe("checkboxes fields", () => {
+  fdescribe("checkboxes fields", () => {
     beforeEach(() => {
       wrapper = createWrapper();
     });
@@ -164,9 +165,17 @@ describe("SubscriptionFormView integration", () => {
     it("uses the selectionReporter prop to send the items to its parent", () => {
       check(0, 0);
       check(1, 1);
-      const items = [
-        { name: "Butterfinger", price: null, quantity: 1 },
-        { name: "Twix", price: 5, quantity: 1 }
+      const items: Types.CheckboxesSelection[] = [
+        {
+          selections: [{ name: "Butterfinger", price: null, quantity: 1 }],
+          fieldName:
+            "Choose 4 separate or mix and match candy to began placing your order"
+        },
+        {
+          selections: [{ name: "Twix", price: 5, quantity: 1 }],
+          fieldName:
+            "Get 4 gifts per month starting at only $20 a month. Includes a gift box, 1 candy bar per week and gift message of your choice each week. Add additional candy bars for only $5 each."
+        }
       ];
       expect(wrapperStateSpy).toHaveBeenCalledWith(
         expect.objectContaining({ items })
