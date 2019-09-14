@@ -23,39 +23,39 @@ describe("quantity mapping functions", () => {
       );
     });
   });
-});
+  describe("mappedQuantifiedItemsFromArrayOfLists", () => {
+    it("maps multiple list arrays into a nested array", () => {
+      const freeItems: Types.OrderItem[] = [
+        { name: "Butterfinger", price: null },
+        { name: "Twix", price: null }
+      ];
+      const extraItems: Types.OrderItem[] = [
+        { name: "Butterfinger", price: 5 },
+        { name: "Twix", price: 5 }
+      ];
+      const quantitiesLists: Array<number[]> = [[1, 2], [3, 4]];
+      const itemsLists: Array<Types.OrderItem[]> = [freeItems, extraItems];
+      const expectedItems: Array<Types.QuantifiedOrderItem[]> = [
+        [
+          { name: "Butterfinger", quantity: 1, price: null },
+          { name: "Twix", quantity: 2, price: null }
+        ],
+        [
+          { name: "Butterfinger", quantity: 3, price: 5 },
+          { name: "Twix", quantity: 4, price: 5 }
+        ]
+      ];
 
-describe("mappedQuantifiedItemsFromArrayOfLists", () => {
-  it("maps multiple list arrays into a nested array", () => {
-    const freeItems: Types.OrderItem[] = [
-      { name: "Butterfinger", price: null },
-      { name: "Twix", price: null }
-    ];
-    const extraItems: Types.OrderItem[] = [
-      { name: "Butterfinger", price: 5 },
-      { name: "Twix", price: 5 }
-    ];
-    const quantitiesLists: Array<number[]> = [[1, 2], [3, 4]];
-    const itemsLists: Array<Types.OrderItem[]> = [freeItems, extraItems];
-    const expectedItems: Array<Types.QuantifiedOrderItem[]> = [
-      [
-        { name: "Butterfinger", quantity: 1, price: null },
-        { name: "Twix", quantity: 2, price: null }
-      ],
-      [
-        { name: "Butterfinger", quantity: 3, price: 5 },
-        { name: "Twix", quantity: 4, price: 5 }
-      ]
-    ];
-
-    expect(
-      ShopWorker.mappedQuantifiedItemsFromArrayOfLists(
-        quantitiesLists,
-        itemsLists
-      )
-    ).toEqual(expectedItems);
+      expect(
+        ShopWorker.mappedQuantifiedItemsFromArrayOfLists(
+          quantitiesLists,
+          itemsLists
+        )
+      ).toEqual(expectedItems);
+    });
   });
 });
+
 describe("naming functions", () => {
   let quantifiedList: Types.QuantifiedOrderItem[] = [
     {
@@ -116,14 +116,21 @@ describe("naming functions", () => {
     });
   });
 });
-
-describe("totalPrice", () => {
-  const items: Types.QuantifiedOrderItem[] = [
-    { name: "Butterfinger", quantity: 1, price: null },
-    { name: "Twix", quantity: 2, price: 5 },
-    { name: "Snickers", quantity: 1, price: 10 }
-  ];
-  it("calculates the total price from an array of objects with prices", () => {
-    expect(ShopWorker.totalPrice(items)).toEqual(20);
+describe("calculation functions", () => {
+  describe("totalPrice", () => {
+    const items: Types.CheckboxesSelection = {
+      selections: [
+        { name: "Butterfinger", quantity: 1, price: null },
+        { name: "Twix", quantity: 2, price: 5 },
+        { name: "Snickers", quantity: 1, price: 10 }
+      ],
+      fieldName: "doesn't matter"
+    };
+    it("calculates the total price from an array of objects with prices FROM A SINGLE FIELD", () => {
+      expect(ShopWorker.totalPrice(items)).toEqual(20);
+    });
+    it("can accept nested arrays", () => {
+      expect(ShopWorker.totalPrice([items, items])).toEqual(40);
+    });
   });
 });

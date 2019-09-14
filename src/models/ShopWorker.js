@@ -44,10 +44,18 @@ export default class ShopWorker {
       .filter(item => item.quantity > 0);
   }
 
-  static totalPrice(items: Types.QuantifiedOrderItem[]): number {
+  static totalPrice(
+    items: Types.CheckboxesSelection | Types.CheckboxesSelection[]
+  ): number {
     if (!items) return 0;
+    let allSelections = [];
+    if (items instanceof Array) {
+      allSelections = items.flatMap(item => item.selections);
+    } else {
+      allSelections = items.selections;
+    }
     let total = 0;
-    items.forEach(item => (total += (item.price || 0) * item.quantity));
+    allSelections.forEach(item => (total += (item.price || 0) * item.quantity));
     return total;
   }
 }

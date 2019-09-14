@@ -24,7 +24,7 @@ export default class Form {
     return form;
   }
 
-  static selectCheckboxesFields(fields: Field) {
+  static selectCheckboxesFields(fields: Field[]) {
     return fields
       .map(field => {
         if (!(field instanceof CheckboxesField)) return null;

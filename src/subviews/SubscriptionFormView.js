@@ -66,12 +66,9 @@ export class SubscriptionFormView extends Component<Props, State> {
   getQuantifiedAndNamedItems(): Types.CheckboxesSelection[] {
     let quantifiedLists: Array<Types.QuantifiedOrderItem[]>;
 
-    const checkboxesFields = this.props.form.fields
-      .map(field => {
-        if (!(field instanceof CheckboxesField)) return null;
-        return field;
-      })
-      .filter(Boolean);
+    const checkboxesFields = Form.selectCheckboxesFields(
+      this.props.form.fields
+    );
 
     const { quantitiesLists } = this.state;
     const itemsLists = checkboxesFields.map(field => field.options);
