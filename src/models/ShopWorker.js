@@ -46,6 +46,7 @@ export default class ShopWorker {
 
   static totalPrice(
     items: Types.CheckboxesSelection | Types.CheckboxesSelection[]
+    // items: Types.QuantifiedOrderItem | Types.QuantifiedOrderItem[]
   ): number {
     if (!items) return 0;
     let allSelections = [];

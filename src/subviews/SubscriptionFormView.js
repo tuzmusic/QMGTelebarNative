@@ -59,7 +59,7 @@ export class SubscriptionFormView extends Component<Props, State> {
     quantities[boxIndex] = value;
     allQuantities[fieldIndex] = quantities;
 
-    this.setState({ quantities: allQuantities }, this.reportState);
+    this.setState({ quantitiesLists: allQuantities }, this.reportState);
   }
 
   // THIS IS THE LAST PLACE WE HAVE FIELD INFO FOR CHECKBOXES

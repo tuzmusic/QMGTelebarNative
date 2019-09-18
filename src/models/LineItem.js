@@ -4,7 +4,7 @@ import ShopWorker from "./ShopWorker";
 import Product from "./Product";
 
 class LineItem {
-  product: Product;
+  product: Product; // product or
   quantity: number;
   items: Types.OrderSelection[];
 

@@ -47,9 +47,3 @@ export type LineItemCreatorObject = {
   quantity: number,
   items?: OrderSelection[]
 };
-
-// hoping for this to be unnecessary
-export type LineItemCreatorItem = {
-  ...QuantifiedOrderItem,
-  fieldName: string
-};
