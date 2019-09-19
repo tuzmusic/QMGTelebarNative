@@ -10,17 +10,34 @@ export default function cartReducer(
 ) {
   switch (action.type) {
     case "ADD_LINE_ITEM":
-      return {
-        ...state,
-        lineItems: { ...state.lineItems, [action.item.product.id]: action.item }
-      };
+      const id = action.item.product.id;
+      const item = state.lineItems[id];
+      if (item) {
+        return {
+          ...state,
+          lineItems: {
+            ...state.lineItems,
+            [id]: Object.assign(new LineItem(), {
+              ...item,
+              quantity: item.quantity + action.item.quantity
+            })
+          }
+        };
+      } else {
+        return {
+          ...state,
+          lineItems: {
+            ...state.lineItems,
+            [id]: action.item
+          }
+        };
+      }
     case "UPDATE_LINE_ITEM":
       const mutableItems = { ...state.lineItems };
       mutableItems[action.item.product.id] = action.item;
       return { ...state, lineItems: mutableItems };
     case "DELETE_LINE_ITEM":
       const lineItems = { ...state.lineItems };
-      debugger;
       delete lineItems[action.item.product.id];
       return { ...state, lineItems };
     default:
