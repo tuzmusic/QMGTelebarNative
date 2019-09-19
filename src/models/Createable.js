@@ -2,6 +2,6 @@
 
 export default class Createable {
   static create<T>(obj: Object): T {
-    return Object.assign(new this(), { ...obj });
+    return obj ? Object.assign(new this(), { ...obj }) : new this();
   }
 }
