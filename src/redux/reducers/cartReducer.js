@@ -1,6 +1,7 @@
 // @flow
 import * as Types from "../CartTypes";
 import LineItem from "../../models/LineItem";
+import { createSelector, OutputSelector } from "reselect";
 
 const initialState: Types.CartState = { lineItems: {} };
 
@@ -44,3 +45,21 @@ export default function cartReducer(
       return state;
   }
 }
+
+export const selectCartState: Object => Types.CartState = (state: Object) =>
+  state.cart;
+
+export const selectCartItemsObject = createSelector(
+  selectCartState,
+  cart => cart.lineItems
+);
+
+export const selectCartItems = createSelector(
+  selectCartItemsObject,
+  lineItems => Object.values(lineItems)
+);
+
+export const selectCartSize = createSelector(
+  selectCartItems,
+  items => items.length
+);
