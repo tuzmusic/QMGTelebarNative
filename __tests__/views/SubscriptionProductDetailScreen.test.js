@@ -8,7 +8,7 @@ import {
   waitForElement,
   debug
 } from "react-native-testing-library";
-import SubscriptionProductDetailScreen from "../../src/screens/SubscriptionProductDetailScreen";
+import { SubscriptionProductDetailScreen } from "../../src/screens/SubscriptionProductDetailScreen";
 import { subscriptionProducts } from "../../__mocks__/subscription-products-response";
 import SubscriptionProduct from "../../src/models/SubscriptionProduct";
 import { CheckBox } from "react-native-elements";
@@ -47,11 +47,11 @@ const pressSubmitButton = () =>
   fireEvent.press(wrapper.getByTestId("SUBMIT_BUTTON"));
 // #endregion
 
-describe("basic info", () => {
-  beforeEach(() => {
-    wrapper = createWrapper();
-  });
+beforeEach(() => {
+  wrapper = createWrapper();
+});
 
+describe("basic info", () => {
   it("shows the product title", () => {
     expect(wrapper.getByText(product.name)).toBeDefined();
   });
@@ -71,10 +71,6 @@ describe("basic info", () => {
 });
 
 describe("Form interaction", () => {
-  beforeEach(() => {
-    wrapper = createWrapper();
-  });
-
   it("displays the form using the correct form view", () => {
     expect(wrapper.getByType(SubscriptionFormView)).toBeDefined();
     expect(wrapper.getByTestId("SUBSCRIPTION_FORM_VIEW")).toBeDefined();
@@ -101,3 +97,5 @@ describe("Form interaction", () => {
     expect(wrapper.getByTestId("TOTAL_PRICE").props.children).toEqual("$30");
   });
 });
+
+describe("cart button, navigation container", () => {});

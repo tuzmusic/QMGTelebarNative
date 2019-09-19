@@ -6,7 +6,8 @@ import {
   View,
   ActivityIndicator,
   KeyboardAvoidingView,
-  ScrollView
+  ScrollView,
+  Button as NativeButton
 } from "react-native";
 import { Input, Icon, Image, Divider, Button } from "react-native-elements";
 import Product from "../models/Product";
@@ -16,15 +17,13 @@ import Quantity from "../components/Quantity";
 import { SubscriptionFormView } from "../subviews/SubscriptionFormView";
 import * as Types from "../redux/FormTypes";
 import ShopWorker from "../models/ShopWorker";
+import { connect } from "react-redux";
 // #endregion
 
 type Props = { product: Product };
 type State = { selection: Types.ProductFormSelection };
 
-export default class SubscriptionProductDetailScreen extends Component<
-  Props,
-  State
-> {
+export class SubscriptionProductDetailScreen extends Component<Props, State> {
   product: Product;
 
   constructor(props: Props) {
@@ -34,13 +33,18 @@ export default class SubscriptionProductDetailScreen extends Component<
   }
 
   static navigationOptions = ({ navigation }: Object) => {
-    return { title: navigation.getParam("product").name };
+    return {
+      title: navigation.getParam("product").name,
+      headerRight: (
+        <NativeButton onPress={() => alert("This is a button!")} title="Cart" />
+      )
+    };
   };
 
   state = { selection: { card: null, items: [] } };
 
   optionsPrice(): number {
-    return ShopWorker.totalPrice(this.state.selection.items);
+    return ShopWorker.totalPrice(this.state.selection.items); // not sure what this problem is; holding off for now (9/19/19)
   }
 
   reportSelection(selection: Types.ProductFormSelection) {
@@ -116,6 +120,9 @@ export default class SubscriptionProductDetailScreen extends Component<
     );
   }
 }
+
+const selectProps = state => ({});
+export default connect(selectProps)(SubscriptionProductDetailScreen);
 
 const baseSize = 18;
 const baseText = {
