@@ -6,6 +6,7 @@ import LineItem from "../../src/models/LineItem";
 import SubscriptionProduct from "../../src/models/SubscriptionProduct";
 import { subscriptionProducts } from "../../__mocks__/subscription-products-response";
 import * as Types from "../../src/redux/FormTypes";
+import Product from "../../src/models/Product";
 
 describe("LineItem.toOrderApi", () => {
   it("converts a LineItem object for use in POSTing an order", () => {
@@ -49,6 +50,19 @@ const submissionObj: Types.LineItemCreatorObject = {
     }
   ]
 };
+
+describe("LineItem.create", () => {
+  it("creates a new LineItem from a generic object", () => {
+    const product = new Product();
+    const obj = { product, quantity: 1 };
+    const lineItem = new LineItem();
+    lineItem.product = product;
+    lineItem.quantity = 1;
+    const created = LineItem.create(obj);
+    expect(created).toEqual(lineItem);
+    expect(created.constructor).toBe(LineItem);
+  });
+});
 
 const lineItem = Object.assign(new LineItem(), {
   product,

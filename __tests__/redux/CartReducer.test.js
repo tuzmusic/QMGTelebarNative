@@ -11,19 +11,19 @@ let item2: LineItem;
 
 describe("Cart reducer", () => {
   beforeEach(() => {
-    product1 = Object.assign(new Product(), {
+    product1 = Product.create({
       id: 1,
       name: "A Product"
     });
-    product2 = Object.assign(new Product(), {
+    product2 = Product.create({
       id: 2,
       name: "Another Product"
     });
-    item1 = Object.assign(new LineItem(), {
+    item1 = LineItem.create({
       product: product1,
       quantity: 1
     });
-    item2 = Object.assign(new LineItem(), {
+    item2 = LineItem.create({
       product: product2,
       quantity: 10
     });
@@ -55,11 +55,9 @@ describe("Cart reducer", () => {
       lineItems: { [item1.product.id]: item1, [item2.product.id]: item2 }
     };
     expect(initialState.lineItems[item1.product.id].quantity).toEqual(1);
-    const newItem: LineItem = Object.assign(
-      new LineItem(),
-      { ...item1 },
-      { quantity: 12 }
-    );
+
+    const newItem = LineItem.create(item1);
+    newItem.quantity = 12;
     expect(initialState.lineItems[item1.product.id].quantity).toEqual(1);
     const action: Types.UPDATE_LINE_ITEM = {
       type: "UPDATE_LINE_ITEM",
@@ -75,9 +73,6 @@ describe("Cart reducer", () => {
     };
     const action: Types.ADD_LINE_ITEM = { type: "ADD_LINE_ITEM", item: item2 };
     const result: Types.CartState = cartReducer(initialState, action);
-    console.log(initialState);
-
-    console.log(result);
 
     expect(Object.keys(result.lineItems).length).toEqual(1);
     expect(result.lineItems[item2.product.id].quantity).toEqual(20);

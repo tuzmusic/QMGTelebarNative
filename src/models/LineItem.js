@@ -2,8 +2,9 @@
 import * as Types from "../redux/FormTypes";
 import ShopWorker from "./ShopWorker";
 import Product from "./Product";
+import Createable from "./Createable";
 
-class LineItem {
+class LineItem extends Createable {
   product: Product; // product or
   quantity: number;
   items: Types.OrderSelection[];

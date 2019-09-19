@@ -1,7 +1,8 @@
 // @flow
 import type { AllProductCollection } from "../redux/ProductTypes";
 import Form from "./forms/Form";
-export default class Product {
+import Createable from "./Createable";
+export default class Product extends Createable {
   // #region TYPE PROPERTY DEFINITIONS
   id: number;
   name: string;
