@@ -47,11 +47,11 @@ export default function cartReducer(
 }
 
 export const selectCartState: Object => Types.CartState = (state: Object) =>
-  state.cart;
+  state.cartReducer;
 
 export const selectCartItemsObject = createSelector(
   selectCartState,
-  cart => cart.lineItems
+  cartReducer => cartReducer.lineItems
 );
 
 export const selectCartItems = createSelector(

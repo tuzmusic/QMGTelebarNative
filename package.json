@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
+    "run-ios": "react-native run-ios --simulator='iPhone 11'",
     "test": "jest --watchAll",
     "lint": "eslint ."
   },

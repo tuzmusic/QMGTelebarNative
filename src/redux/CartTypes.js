@@ -1,7 +1,7 @@
 // @flow
 import LineItem from "../models/LineItem";
 
-export type LineItemCollection = { [string]: LineItem };
+export type LineItemCollection = { [number]: LineItem };
 
 export type CartState = {
   lineItems: LineItemCollection

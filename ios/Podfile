@@ -28,7 +28,6 @@ target 'QMGTelebarNative' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
   target 'QMGTelebarNativeTests' do
@@ -37,14 +36,4 @@ target 'QMGTelebarNative' do
   end
 
   use_native_modules!
-end
-
-target 'QMGTelebarNative-tvOS' do
-  # Pods for QMGTelebarNative-tvOS
-
-  target 'QMGTelebarNative-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end

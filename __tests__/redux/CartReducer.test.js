@@ -79,25 +79,25 @@ describe("Cart reducer", () => {
 });
 
 describe("cart selectors", () => {
-  let cart: Types.CartState;
+  let cartReducer: Types.CartState;
   let state: Object;
   beforeAll(() => {
-    cart = {
+    cartReducer = {
       lineItems: {
-        "1": item1,
-        "2": item2
+        1: item1,
+        2: item2
       }
     };
-    state = { cart };
+    state = { cartReducer };
   });
   describe("selectCartState", () => {
     it("returns the cart state", () => {
-      expect(Selectors.selectCartState(state)).toEqual(cart);
+      expect(Selectors.selectCartState(state)).toEqual(cartReducer);
     });
   });
   describe("selectCartItemsObject", () => {
     it("returns the lineItems object", () => {
-      expect(Selectors.selectCartItemsObject(state)).toEqual(cart.lineItems);
+      expect(Selectors.selectCartItemsObject(state)).toEqual(cartReducer.lineItems);
     });
   });
   describe("selectCartItems", () => {
