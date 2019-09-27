@@ -1,4 +1,3 @@
-// #region Imports
 // @flow
 import React, { Component } from "react";
 import {
@@ -18,10 +17,14 @@ import { SubscriptionFormView } from "../subviews/SubscriptionFormView";
 import * as Types from "../redux/FormTypes";
 import ShopWorker from "../models/ShopWorker";
 import { connect } from "react-redux";
-// #endregion
+import { selectCartSize } from "../redux/reducers/cartReducer";
 
-type Props = { product: Product };
+type Props = { product: Product, navigation: Object, cartCount: number };
 type State = { selection: Types.ProductFormSelection };
+
+const selectProps = state => {
+  return { cartCount: selectCartSize(state) }
+};
 
 export class SubscriptionProductDetailScreen extends Component<Props, State> {
   product: Product;
@@ -33,13 +36,20 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
   }
 
   static navigationOptions = ({ navigation }: Object) => {
+    const cartCount = navigation.getParam('cartCount')
+    const cartStr = cartCount && ` (${cartCount})`
     return {
       title: navigation.getParam("product").name,
       headerRight: (
-        <NativeButton onPress={() => alert("This is a button!")} title="Cart" />
+        <NativeButton onPress={() => alert("This is a button!")} title={"Cart" + (cartStr || '')} />
       )
     };
   };
+
+  componentDidMount() {
+    this.props.navigation.setParams({ cartCount: `${this.props.cartCount}` })
+  }
+
 
   state = { selection: { card: null, items: [] } };
 
@@ -96,7 +106,7 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
               <View /* BODY (description) */ style={styles.bodyContainer}>
                 <Text style={text.description}>
                   {// the website itself appears to use the short_description
-                  product.shortDescription || product.description}
+                    product.shortDescription || product.description}
                 </Text>
               </View>
               <View /* BUYING */ style={styles.buyNowContainer}>
@@ -121,7 +131,6 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
   }
 }
 
-const selectProps = state => ({});
 export default connect(selectProps)(SubscriptionProductDetailScreen);
 
 const baseSize = 18;
