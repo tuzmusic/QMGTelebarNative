@@ -23,13 +23,29 @@ import LineItem from "../models/LineItem";
 
 const Space = () => <Divider height={20} backgroundColor="transparent" />;
 
-const Container = props => (
+const Container = (props: any) => (
   <KeyboardAvoidingView behavior="height" style={{}}>
     <ScrollView>
       <View style={styles.container}>
-        {props.children}</View>
+        {props.children}
+      </View>
     </ScrollView>
   </KeyboardAvoidingView>
+)
+
+const Row = (props: any) => (
+  <View style={styles.rowContainer}>
+    {props.children}
+  </View>
+)
+
+const ProductImage = ({ product }) => (
+  <Image /* IMAGE */
+    style={[styles.image]}
+    containerStyle={[styles.imageContainer]}
+    source={{ uri: product.images[0].src }}
+    PlaceholderContent={<ActivityIndicator color={"blue"} />}
+  />
 )
 
 type Props = {
@@ -111,13 +127,8 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
     const image = product.images[0];
     return (
       <Container>
-        <View style={styles.rowContainer}>
-          <Image /* IMAGE */
-            style={[styles.image]}
-            containerStyle={[styles.imageContainer]}
-            source={{ uri: image.src }}
-            PlaceholderContent={<ActivityIndicator color={"blue"} />}
-          />
+        <Row>
+          <ProductImage product={product} />
 
           <View style={styles.basicInfoContainer} /* BASIC INFO & PRICE */>
             <Text style={text.name}>{product.name}</Text>
@@ -136,7 +147,7 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
               <Text testID="TOTAL_PRICE">{"$" + this.totalPrice}</Text>
             </Text>
           </View>
-        </View>
+        </Row>
 
         <Space />
 
