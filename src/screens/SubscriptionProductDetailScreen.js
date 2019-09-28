@@ -34,9 +34,12 @@ const Container = ({ children }: any) => (
 )
 
 const Row = ({ children }: any) => (
-  <View style={styles.rowContainer}>
-    {children}
-  </View>
+  <>
+    <View style={styles.rowContainer}>
+      {children}
+    </View>
+    <Space />
+  </>
 )
 
 const InfoContainer = ({ children }) => (
@@ -50,6 +53,46 @@ const ProductImage = ({ product }) => (
     source={{ uri: product.images[0].src }}
     PlaceholderContent={<ActivityIndicator color={"blue"} />}
   />
+)
+
+const ProductText = ({ product }) => (
+  <Text style={text.name}>{product.name}</Text>
+)
+
+const SubscriptionProductPriceText = ({ price }) => (
+  <Text style={text.price} /* BASE PRICE */>
+    Subscription Price:{" "}
+    <Text testID="SUBSCRIPTION_PRICE">{"$" + price}</Text>
+  </Text>
+)
+const OptionsPriceText = ({ price }) => (
+  <Text style={text.price} /* OPTIONS PRICE */>
+    Options Price:{" "}
+    <Text testID="OPTIONS_PRICE">
+      {"$" + price}
+    </Text>
+  </Text>
+)
+const TotalPriceText = ({ price }) => (
+  <Text style={text.totalPrice} /* TOTAL PRICE */>
+    Total Price:{" "}
+    <Text testID="TOTAL_PRICE">{"$" + price}</Text>
+  </Text>
+)
+
+const ProductDescription = ({ product }) => (
+  <View /* BODY (description) */ style={styles.bodyContainer}>
+    <Text style={text.description}>
+      {// the website itself appears to use the short_description
+        product.shortDescription || product.description}
+    </Text>
+  </View>
+)
+
+const AddToCartButton = ({ onPress }) => (
+  <View /* BUYING */ style={styles.buyNowContainer}>
+    <Button testID="SUBMIT_BUTTON" title="Add to Cart" style={{ width: 150 }} onPress={onPress} />
+  </View>
 )
 
 type Props = {
@@ -94,7 +137,7 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
 
   state = { selection: { card: null, items: [] } };
 
-  optionsPrice(): number {
+  get optionsPrice(): number {
     return ShopWorker.totalPrice(this.state.selection.items);
   }
 
@@ -103,7 +146,7 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
   }
 
   get totalPrice() {
-    return this.product.price + this.optionsPrice();
+    return this.product.price + this.optionsPrice;
   }
 
   addToCart() {
@@ -129,54 +172,30 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
     this.updateCartCount()
     const product = this.product;
     const image = product.images[0];
+
     return (
       <Container>
         <Row>
           <ProductImage product={product} />
-
           <InfoContainer>
-            <Text style={text.name}>{product.name}</Text>
-            <Text style={text.price} /* BASE PRICE */>
-              Subscription Price:{" "}
-              <Text testID="SUBSCRIPTION_PRICE">{"$" + product.price}</Text>
-            </Text>
-            <Text style={text.price} /* OPTIONS PRICE */>
-              Options Price:{" "}
-              <Text testID="OPTIONS_PRICE">
-                {"$" + this.optionsPrice()}
-              </Text>
-            </Text>
-            <Text style={text.totalPrice} /* TOTAL PRICE */>
-              Total Price:{" "}
-              <Text testID="TOTAL_PRICE">{"$" + this.totalPrice}</Text>
-            </Text>
+            <ProductText product={product} />
+            <SubscriptionProductPriceText price={product.price} />
+            <OptionsPriceText price={this.optionsPrice} />
+            <TotalPriceText price={this.totalPrice} />
           </InfoContainer>
         </Row>
 
-        <Space />
+        <Row>
+          <ProductDescription product={product} />
+          <AddToCartButton onPress={this.addToCart.bind(this)} />
+        </Row>
 
-        <View style={styles.rowContainer}>
-          <View /* BODY (description) */ style={styles.bodyContainer}>
-            <Text style={text.description}>
-              {// the website itself appears to use the short_description
-                product.shortDescription || product.description}
-            </Text>
-          </View>
-          <View /* BUYING */ style={styles.buyNowContainer}>
-            <Button testID="SUBMIT_BUTTON" title="Add to Cart" style={{ width: 150 }} onPress={this.addToCart.bind(this)} />
-          </View>
-        </View>
-
-        <Space />
-
-        <View /* FORM!!! */>
-          <SubscriptionFormView
-            testID={"SUBSCRIPTION_FORM_VIEW"}
-            form={product.form}
-            selectionReporter={this.reportSelection.bind(this)}
-            titleStyle={titleStyle}
-          />
-        </View>
+        <SubscriptionFormView
+          testID={"SUBSCRIPTION_FORM_VIEW"}
+          form={product.form}
+          selectionReporter={this.reportSelection.bind(this)}
+          titleStyle={titleStyle}
+        />
       </Container>
     );
   }
@@ -184,6 +203,7 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
 
 export default connect(selectProps, actions)(SubscriptionProductDetailScreen);
 
+// #region STYLES
 const baseSize = 18;
 const baseText = {
   paddingBottom: 5
@@ -240,3 +260,4 @@ const styles = {
     width: full
   }
 };
+// #endregion
