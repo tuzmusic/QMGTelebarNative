@@ -23,20 +23,24 @@ import LineItem from "../models/LineItem";
 
 const Space = () => <Divider height={20} backgroundColor="transparent" />;
 
-const Container = (props: any) => (
+const Container = ({ children }: any) => (
   <KeyboardAvoidingView behavior="height" style={{}}>
     <ScrollView>
       <View style={styles.container}>
-        {props.children}
+        {children}
       </View>
     </ScrollView>
   </KeyboardAvoidingView>
 )
 
-const Row = (props: any) => (
+const Row = ({ children }: any) => (
   <View style={styles.rowContainer}>
-    {props.children}
+    {children}
   </View>
+)
+
+const InfoContainer = ({ children }) => (
+  <View style={styles.basicInfoContainer}>{children}</View>
 )
 
 const ProductImage = ({ product }) => (
@@ -130,7 +134,7 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
         <Row>
           <ProductImage product={product} />
 
-          <View style={styles.basicInfoContainer} /* BASIC INFO & PRICE */>
+          <InfoContainer>
             <Text style={text.name}>{product.name}</Text>
             <Text style={text.price} /* BASE PRICE */>
               Subscription Price:{" "}
@@ -146,7 +150,7 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
               Total Price:{" "}
               <Text testID="TOTAL_PRICE">{"$" + this.totalPrice}</Text>
             </Text>
-          </View>
+          </InfoContainer>
         </Row>
 
         <Space />
