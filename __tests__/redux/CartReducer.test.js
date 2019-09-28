@@ -84,8 +84,8 @@ describe("cart selectors", () => {
   beforeAll(() => {
     cartReducer = {
       lineItems: {
-        1: item1,
-        2: item2
+        '1': item1,
+        '2': item2
       }
     };
     state = { cartReducer };
