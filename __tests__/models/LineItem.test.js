@@ -1,5 +1,4 @@
 // @flow
-
 import CheckboxesField from "../../src/models/fields/CheckboxesField";
 import SelectboxField from "../../src/models/fields/SelectboxField";
 import LineItem from "../../src/models/LineItem";
@@ -43,12 +42,12 @@ const submissionObj: Types.LineItemCreatorObject = {
       ],
       fieldName: ""
     },
-    {
-      card:
-        "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
-      fieldName: "Add a Anniversary Gift Card"
-    }
-  ]
+  ],
+  card: {
+    card:
+      "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
+    fieldName: "Add a Anniversary Gift Card"
+  }
 };
 
 describe("LineItem.create", () => {
@@ -64,9 +63,14 @@ describe("LineItem.create", () => {
   });
 });
 
-const lineItem = Object.assign(new LineItem(), {
+const lineItem = LineItem.create({
   product,
   quantity: 1,
+  card: {
+    card:
+      "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
+    fieldName: "Add a Anniversary Gift Card"
+  },
   items: [
     {
       selections: [
@@ -83,12 +87,7 @@ const lineItem = Object.assign(new LineItem(), {
       ],
       fieldName: ""
     },
-    {
-      card:
-        "An anniversary is a reminder as to why you love and married this person.  -Zoe Foster Blake",
-      fieldName: "Add a Anniversary Gift Card"
-    }
-  ]
+  ],
 });
 
 // Base object!!!

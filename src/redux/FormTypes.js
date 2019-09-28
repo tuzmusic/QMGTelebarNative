@@ -3,30 +3,25 @@ import Field from "../models/fields/Field";
 import Product from "../models/Product";
 
 /* USED BY FORMS */
-export type ProductFormSelection = {
-  card: ?Card,
-  items: QuantifiedOrderItem[]
-};
 
 export type Card = {
   message: ?string,
   field: ?Field
 };
 
+// Items
 export type OrderItem = { name: string, price: ?number };
-export type NamedOrderItem = {
-  name: string,
-  price: ?number,
-  fieldName: string
-};
-
-export type NamedItemList = {
-  items: QuantifiedOrderItem[],
-  fieldName: string
-};
 
 export type QuantifiedOrderItem = { ...OrderItem, quantity: number };
-export type QuantifiedNamedOrderItem = { ...NamedOrderItem, quantity: number };
+
+// Collection
+export type ProductFormSelection = {
+  card: ?Card,
+  items: {
+    items: QuantifiedOrderItem[],
+    fieldName: string
+  }[]
+};
 
 /* USED BY LineItem */
 
@@ -40,11 +35,16 @@ export type CheckboxesSelection = {
   fieldName: string
 };
 
-export type OrderSelection = CardSelection | CheckboxesSelection;
-
 // AKA "CartObject"
 export type LineItemCreatorObject = {
   product: Product,
   quantity: number,
-  items?: OrderSelection[]
+  items?: { // CheckboxesSelection[]
+    selections: QuantifiedOrderItem[],
+    fieldName: string
+  }[],
+  card: ?{ // ?CardSelection
+    card: string,
+    fieldName: string
+  }
 };

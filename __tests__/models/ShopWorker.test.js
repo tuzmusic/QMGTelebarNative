@@ -23,7 +23,7 @@ describe("quantity mapping functions", () => {
       );
     });
   });
-  describe("mappedQuantifiedItemsFromArrayOfLists", () => {
+  describe("mappedQuantifiedItemListsFromArrayOfLists", () => {
     it("maps multiple list arrays into a nested array", () => {
       const freeItems: Types.OrderItem[] = [
         { name: "Butterfinger", price: null },
@@ -47,7 +47,7 @@ describe("quantity mapping functions", () => {
       ];
 
       expect(
-        ShopWorker.mappedQuantifiedItemsFromArrayOfLists(
+        ShopWorker.mappedQuantifiedItemListsFromArrayOfLists(
           quantitiesLists,
           itemsLists
         )

@@ -7,7 +7,8 @@ import Createable from "./Createable";
 class LineItem extends Createable {
   product: Product; // product or
   quantity: number;
-  items: Types.OrderSelection[];
+  card: Types.CardSelection
+  items: Types.CheckboxesSelection[];
 
   static fromProductForm(obj: Types.LineItemCreatorObject): LineItem {
     const item = new LineItem();
@@ -16,29 +17,26 @@ class LineItem extends Createable {
   }
 
   static toOrderApi(lineItem: LineItem): Object {
-    const { product, quantity } = lineItem;
+    // Get simple properties for our object
+    const { product, quantity, card, items } = lineItem;
     const obj: ToOrderApiObject = {
       product_id: product.id,
       quantity
     };
 
-    if (lineItem.items) {
-      const items: MetaDataValueObject[] = [];
-      const section = "";
-      for (let item of lineItem.items) {
+    const metaObjects: MetaDataValueObject[] = [];
+    const section = "";
+
+
+    if (items) {
+      // EACH item field needs to have a 'name' property
+      for (let item of items) {
         const name = item.fieldName;
-        if (item.card && typeof item.card == "string") {
-          items.push({
-            quantity: 1,
-            price: 0,
-            value: item.card,
-            name,
-            section
-          });
-        } else if (item.selections && item.selections instanceof Array) {
-          for (let selection of (item.selections: Types.QuantifiedOrderItem[])) {
+        if (item.selections && item.selections instanceof Array) {
+          // assemble meta object for items
+          for (let selection of (item.selections)) {
             const { quantity, price, name: value } = selection;
-            items.push({
+            metaObjects.push({
               price: (price || 0) * quantity,
               name,
               quantity,
@@ -48,19 +46,28 @@ class LineItem extends Createable {
           }
         }
       }
-
-      obj.meta_data = [
-        {
-          key: "_tmcartepo_data",
-          value: items
-        },
-        {
-          key: "_tm_epo_product_original_price",
-          value: [product.price.toString()]
-        }
-      ];
     }
 
+    if (card) {
+      metaObjects.push({
+        quantity: 1,
+        price: 0,
+        value: card.card, // TODO: rename this
+        name: card.fieldName,
+        section
+      });
+    }
+
+    obj.meta_data = [
+      {
+        key: "_tmcartepo_data",
+        value: metaObjects
+      },
+      {
+        key: "_tm_epo_product_original_price",
+        value: [product.price.toString()]
+      }
+    ];
     return obj;
   }
 }

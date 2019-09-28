@@ -1,4 +1,3 @@
-// #region Imports
 // @flow
 import React, { Fragment, Component } from "react";
 import { Text, View, ScrollView } from "react-native";
@@ -15,8 +14,6 @@ import { Button, Divider } from "react-native-elements";
 import { connect } from "react-redux";
 import ShopWorker from "../models/ShopWorker";
 
-// #endregion
-
 type Props = {
   form: Form,
   selectionReporter: ({
@@ -31,8 +28,6 @@ type State = {
   quantitiesLists: Array<number[]>, // controls the checkbox fields; set with setQuantities
   card: ?Types.Card // controls card fields; set with setCard
 };
-
-type ItemsListByField = Types.NamedItemList[];
 
 export class SubscriptionFormView extends Component<Props, State> {
   state = {
@@ -73,7 +68,8 @@ export class SubscriptionFormView extends Component<Props, State> {
     const { quantitiesLists } = this.state;
     const itemsLists = checkboxesFields.map(field => field.options);
 
-    quantifiedLists = ShopWorker.mappedQuantifiedItemsFromArrayOfLists(
+    // Map quantities to items
+    quantifiedLists = ShopWorker.mappedQuantifiedItemListsFromArrayOfLists(
       quantitiesLists,
       itemsLists
     );

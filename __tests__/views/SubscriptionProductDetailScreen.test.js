@@ -117,10 +117,11 @@ describe('addToCart', () => {
     expect(addToCartSpy).toHaveBeenCalled()
   });
 
-  it("calls the dispatch action with the selected fields", () => {
+  xit("calls the dispatch action with the selected fields", () => {
     const obj: FormTypes.LineItemCreatorObject = {
       product,
       quantity: 1,
+      card: null,
       items: [
         {
           selections: [

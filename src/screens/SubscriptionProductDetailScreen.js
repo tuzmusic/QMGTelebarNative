@@ -8,7 +8,7 @@ import {
   ScrollView,
   Button as NativeButton
 } from "react-native";
-import { Input, Icon, Image, Divider, Button } from "react-native-elements";
+import { Input, Icon, Image, Divider, Button, Card } from "react-native-elements";
 import Product from "../models/Product";
 import { MaterialIndicator } from "react-native-indicators";
 import FormContainer from "../subviews/FormContainer";
@@ -21,6 +21,7 @@ import { selectCartSize, selectCartItems } from "../redux/reducers/cartReducer";
 import { addItemToCart } from "../redux/actions/cartActions";
 import LineItem from "../models/LineItem";
 
+// #region COMPONENTS
 const Space = () => <Divider height={20} backgroundColor="transparent" />;
 
 const Container = ({ children }: any) => (
@@ -95,17 +96,10 @@ const AddToCartButton = ({ onPress }) => (
   </View>
 )
 
-type Props = {
-  product: Product,
-  navigation?: Object,
-  cartCount?: number,
-  addToCart: Types.LineItemCreatorObject => void
-};
+// #endregion
 
-type State = { selection: Types.ProductFormSelection };
-
+// #region Types and redux
 const selectProps = state => {
-  // console.log(selectCartItems(state));
   return { cartCount: selectCartSize(state) }
 };
 
@@ -114,6 +108,22 @@ const actions = dispatch => {
     addToCart: (item) => dispatch(addItemToCart(LineItem.fromProductForm(item)))
   }
 }
+
+type Props = {
+  product: Product,
+  navigation?: Object,
+  cartCount?: number,
+  addToCart: Types.LineItemCreatorObject => void
+};
+
+type State = {
+  card: ?Card,
+  items: { // CheckboxesSelection[]
+    selections: Types.QuantifiedOrderItem[],
+    fieldName: string
+  }[]
+};
+// #endregion
 
 export class SubscriptionProductDetailScreen extends Component<Props, State> {
   product: Product;
@@ -135,14 +145,14 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
     };
   };
 
-  state = { selection: { card: null, items: [] } };
+  state: State = { card: null, items: [] };
 
   get optionsPrice(): number {
-    return ShopWorker.totalPrice(this.state.selection.items);
+    return ShopWorker.totalPrice(this.state.items);
   }
 
-  reportSelection(selection: Types.ProductFormSelection) {
-    this.setState({ selection });
+  reportSelection(selection: State) {
+    this.setState(selection);
   }
 
   get totalPrice() {
@@ -153,7 +163,8 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
     const item: Types.LineItemCreatorObject = {
       product: this.product,
       quantity: 1, // default for Subscription Product
-      items: this.state.selection,
+      items: this.state.items,
+      card: this.state.card
     }
     this.props.addToCart(item)
   }
