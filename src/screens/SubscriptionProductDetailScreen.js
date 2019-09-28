@@ -17,14 +17,40 @@ import { SubscriptionFormView } from "../subviews/SubscriptionFormView";
 import * as Types from "../redux/FormTypes";
 import ShopWorker from "../models/ShopWorker";
 import { connect } from "react-redux";
-import { selectCartSize } from "../redux/reducers/cartReducer";
+import { selectCartSize, selectCartItems } from "../redux/reducers/cartReducer";
+import { addItemToCart } from "../redux/actions/cartActions";
+import LineItem from "../models/LineItem";
 
-type Props = { product: Product, navigation: Object, cartCount: number };
+const Space = () => <Divider height={20} backgroundColor="transparent" />;
+
+const Container = props => (
+  <KeyboardAvoidingView behavior="height" style={{}}>
+    <ScrollView>
+      <View style={styles.container}>
+        {props.children}</View>
+    </ScrollView>
+  </KeyboardAvoidingView>
+)
+
+type Props = {
+  product: Product,
+  navigation?: Object,
+  cartCount?: number,
+  addToCart: Types.LineItemCreatorObject => void
+};
+
 type State = { selection: Types.ProductFormSelection };
 
 const selectProps = state => {
+  // console.log(selectCartItems(state));
   return { cartCount: selectCartSize(state) }
 };
+
+const actions = dispatch => {
+  return {
+    addToCart: (item) => dispatch(addItemToCart(LineItem.fromProductForm(item)))
+  }
+}
 
 export class SubscriptionProductDetailScreen extends Component<Props, State> {
   product: Product;
@@ -46,15 +72,10 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
     };
   };
 
-  componentDidMount() {
-    this.props.navigation.setParams({ cartCount: `${this.props.cartCount}` })
-  }
-
-
   state = { selection: { card: null, items: [] } };
 
   optionsPrice(): number {
-    return ShopWorker.totalPrice(this.state.selection.items); // not sure what this problem is; holding off for now (9/19/19)
+    return ShopWorker.totalPrice(this.state.selection.items);
   }
 
   reportSelection(selection: Types.ProductFormSelection) {
@@ -65,73 +86,88 @@ export class SubscriptionProductDetailScreen extends Component<Props, State> {
     return this.product.price + this.optionsPrice();
   }
 
+  addToCart() {
+    const item: Types.LineItemCreatorObject = {
+      product: this.product,
+      quantity: 1, // default for Subscription Product
+      items: this.state.selection,
+    }
+    this.props.addToCart(item)
+  }
+
+  updateCartCount() {
+    const { navigation, cartCount } = this.props
+    if (navigation && (cartCount || cartCount === 0)) {
+      const oldCount = navigation.getParam('cartCount')
+      if (oldCount != cartCount) { // !== doesn't work here for some reason
+        navigation.setParams({ cartCount: `${cartCount}` })
+      }
+    }
+  }
+
   render() {
-    const Space = () => <Divider height={20} backgroundColor="transparent" />;
+    this.updateCartCount()
     const product = this.product;
     const image = product.images[0];
     return (
-      <KeyboardAvoidingView behavior="height" style={{}}>
-        <ScrollView>
-          <View style={styles.container}>
-            <View style={styles.rowContainer}>
-              <Image /* IMAGE */
-                style={[styles.image]}
-                containerStyle={[styles.imageContainer]}
-                source={{ uri: image.src }}
-                PlaceholderContent={<ActivityIndicator color={"blue"} />}
-              />
+      <Container>
+        <View style={styles.rowContainer}>
+          <Image /* IMAGE */
+            style={[styles.image]}
+            containerStyle={[styles.imageContainer]}
+            source={{ uri: image.src }}
+            PlaceholderContent={<ActivityIndicator color={"blue"} />}
+          />
 
-              <View style={styles.basicInfoContainer} /* BASIC INFO & PRICE */>
-                <Text style={text.name}>{product.name}</Text>
-                <Text style={text.price} /* BASE PRICE */>
-                  Subscription Price:{" "}
-                  <Text testID="SUBSCRIPTION_PRICE">{"$" + product.price}</Text>
-                </Text>
-                <Text style={text.price} /* OPTIONS PRICE */>
-                  Options Price:{" "}
-                  <Text testID="OPTIONS_PRICE">
-                    {"$" + this.optionsPrice()}
-                  </Text>
-                </Text>
-                <Text style={text.totalPrice} /* TOTAL PRICE */>
-                  Total Price:{" "}
-                  <Text testID="TOTAL_PRICE">{"$" + this.totalPrice}</Text>
-                </Text>
-              </View>
-            </View>
-
-            <Space />
-
-            <View style={styles.rowContainer}>
-              <View /* BODY (description) */ style={styles.bodyContainer}>
-                <Text style={text.description}>
-                  {// the website itself appears to use the short_description
-                    product.shortDescription || product.description}
-                </Text>
-              </View>
-              <View /* BUYING */ style={styles.buyNowContainer}>
-                <Button title="Add to Cart" style={{ width: 150 }} />
-              </View>
-            </View>
-
-            <Space />
-
-            <View /* FORM!!! */>
-              <SubscriptionFormView
-                testID={"SUBSCRIPTION_FORM_VIEW"}
-                form={product.form}
-                selectionReporter={this.reportSelection.bind(this)}
-                titleStyle={titleStyle}
-              />
-            </View>
+          <View style={styles.basicInfoContainer} /* BASIC INFO & PRICE */>
+            <Text style={text.name}>{product.name}</Text>
+            <Text style={text.price} /* BASE PRICE */>
+              Subscription Price:{" "}
+              <Text testID="SUBSCRIPTION_PRICE">{"$" + product.price}</Text>
+            </Text>
+            <Text style={text.price} /* OPTIONS PRICE */>
+              Options Price:{" "}
+              <Text testID="OPTIONS_PRICE">
+                {"$" + this.optionsPrice()}
+              </Text>
+            </Text>
+            <Text style={text.totalPrice} /* TOTAL PRICE */>
+              Total Price:{" "}
+              <Text testID="TOTAL_PRICE">{"$" + this.totalPrice}</Text>
+            </Text>
           </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
+        </View>
+
+        <Space />
+
+        <View style={styles.rowContainer}>
+          <View /* BODY (description) */ style={styles.bodyContainer}>
+            <Text style={text.description}>
+              {// the website itself appears to use the short_description
+                product.shortDescription || product.description}
+            </Text>
+          </View>
+          <View /* BUYING */ style={styles.buyNowContainer}>
+            <Button testID="SUBMIT_BUTTON" title="Add to Cart" style={{ width: 150 }} onPress={this.addToCart.bind(this)} />
+          </View>
+        </View>
+
+        <Space />
+
+        <View /* FORM!!! */>
+          <SubscriptionFormView
+            testID={"SUBSCRIPTION_FORM_VIEW"}
+            form={product.form}
+            selectionReporter={this.reportSelection.bind(this)}
+            titleStyle={titleStyle}
+          />
+        </View>
+      </Container>
     );
   }
 }
 
-export default connect(selectProps)(SubscriptionProductDetailScreen);
+export default connect(selectProps, actions)(SubscriptionProductDetailScreen);
 
 const baseSize = 18;
 const baseText = {

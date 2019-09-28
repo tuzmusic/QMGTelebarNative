@@ -18,7 +18,7 @@ export default function cartReducer(
           ...state,
           lineItems: {
             ...state.lineItems,
-            [id]: Object.assign(new LineItem(), {
+            [id]: LineItem.create({
               ...item,
               quantity: item.quantity + action.item.quantity
             })

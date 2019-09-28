@@ -41,6 +41,7 @@ export type CheckboxesSelection = {
 };
 
 export type OrderSelection = CardSelection | CheckboxesSelection;
+
 // AKA "CartObject"
 export type LineItemCreatorObject = {
   product: Product,

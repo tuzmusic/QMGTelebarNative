@@ -12,7 +12,7 @@ class LineItem extends Createable {
   static fromProductForm(obj: Types.LineItemCreatorObject): LineItem {
     const item = new LineItem();
 
-    return Object.assign(item, obj);
+    return LineItem.create(obj);
   }
 
   static toOrderApi(lineItem: LineItem): Object {
@@ -77,9 +77,9 @@ type MetaDataValueObject = {
 
 type ToOrderApiObject = {|
   product_id: number,
-  quantity: number,
-  meta_data?: [FormInfoObject, OriginalPriceObject]
-|};
+    quantity: number,
+      meta_data ?: [FormInfoObject, OriginalPriceObject]
+        |};
 
 type FormInfoObject = {
   key: "_tmcartepo_data",
